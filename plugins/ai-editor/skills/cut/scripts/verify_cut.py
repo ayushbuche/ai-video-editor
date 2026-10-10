@@ -115,7 +115,8 @@ def report(d, expected, actual, removed, same, differ, gone, new, act=None, span
             if words and any(fragment(t) for t in words):
                 plays.append({"text": " ".join(actual[j1:j2]), "start": round(to_source(act[j1][1], spans), 3),
                               "end": round(to_source(act[j2 - 1][2], spans), 3)})
-    (d / "heard.json").write_text(json.dumps(plays, indent=1))
+    if (d / "cut.mp4").exists():   # an edit folder (the demo reports on ".")
+        (d / "heard.json").write_text(json.dumps(plays, indent=1))
     if survived:
         print(f"\nSURVIVED ({len(survived)}), heard in the render where nothing was expected [in brackets].")
         print("A real survivor is a repeat or a stumble. Clean speech here means the raw transcript misheard it:")

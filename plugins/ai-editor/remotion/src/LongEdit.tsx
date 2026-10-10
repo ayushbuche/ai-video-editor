@@ -44,7 +44,7 @@ type Zoom = { start: number; end: number; scale: number };
 type Face = { cx: number; top: number; h: number }; // the head box (hair to chin) in the source, fractions of the frame (face.py)
 type Track = { src: string; start: number; volume?: number };
 export type LongPlan = { video: string; width: number; height: number; fps: number; durationInFrames: number; face: Face;
-  zooms: Zoom[]; graphics: Graphic[]; music?: Track[]; sfx?: Track[]; palette?: Partial<Palette> };
+  zooms: Zoom[]; graphics: Graphic[]; music?: Track; sfx?: Track[]; palette?: Partial<Palette> };
 
 export const longMeta: CalculateMetadataFunction<LongPlan> = ({ props }) => ({
   width: props.width, height: props.height, fps: props.fps, durationInFrames: props.durationInFrames,
@@ -129,7 +129,8 @@ const Draw: React.FC<{ el: El; lt: number; pal: Palette }> = ({ el, lt, pal }) =
     <g transform={el.rot ? `rotate(${el.rot} ${el.x} ${el.y})` : undefined}>
       <text x={el.x} y={el.y} fontFamily={fam} fontSize={size} fill={el.color ?? pal.grey} textAnchor={anchor}
         fontWeight={el.font === "script" ? 600 : 400}>
-        {chars.map((c, i) => <tspan key={i} opacity={clamp01((p - i * per) / (per * 1.6))}>{c}</tspan>)}
+        {/* each letter fades in over 1.6 letters' time; the run is stretched so the last one finishes too */}
+        {chars.map((c, i) => <tspan key={i} opacity={clamp01((p * (1 + 0.6 * per) - i * per) / (per * 1.6))}>{c}</tspan>)}
       </text>
       {under ? <path d={`M ${ux - 6} ${el.y + size * 0.3} Q ${ux + width / 2} ${el.y + size * 0.36} ${ux + width + 10} ${el.y + size * 0.26}`}
         pathLength={1} fill="none" stroke={under} strokeWidth={6} strokeLinecap="round" strokeDasharray="1 1"
@@ -161,7 +162,7 @@ const Bullets: React.FC<{ heading: string; bullets: Bullet[]; lt: number; S: num
     {bullets.map((b, i) => {
       const p = easeOut((lt - b.at) / 0.35);
       return p <= 0 ? null : (
-        <div key={i} style={{ fontFamily: SANS, fontWeight: 400, fontSize: size * 0.5 * S, color: pal.blue, marginTop: 14 * S,
+        <div key={i} style={{ fontFamily: SANS, fontWeight: 400, fontSize: size * 0.42 * S, color: pal.blue, marginTop: 14 * S,
           opacity: p, transform: `translateY(${(1 - p) * 12 * S}px)` }}>- {b.text}</div>
       );
     })}
@@ -177,6 +178,8 @@ const Pill: React.FC<{ text: string; S: number; pal: Palette; p: number; size?: 
 const Quote: React.FC<{ text: string; lt: number; S: number; pal: Palette }> = ({ text, lt, S, pal }) => {
   const parts = text.split(/(\*\*[^*]+\*\*)/).filter(Boolean);
   const p = easeOut(lt / 0.4);
+  // the references' 92 px, smaller only when the quote would run past four lines across 1560 px
+  const fs = Math.min(92, 12500 / Math.max(1, text.replace(/\*/g, "").length));
   return (
     <AbsoluteFill style={{ background: pal.cream }}>
       <Paper S={S} />
@@ -185,7 +188,7 @@ const Quote: React.FC<{ text: string; lt: number; S: number; pal: Palette }> = (
         <g fill="rgba(140,165,140,0.12)"><QuoteMark x={955} y={400} s={6.6} flip /><QuoteMark x={1470} y={400} s={6.6} flip /></g>
         <g fill={pal.blue} opacity={p}><QuoteMark x={177} y={172} s={2.08} /><QuoteMark x={300} y={172} s={2.08} /></g>
       </svg>
-      <div style={{ position: "absolute", left: 176 * S, top: 430 * S, width: 1560 * S, fontFamily: SANS, fontWeight: 400, fontSize: 92 * S,
+      <div style={{ position: "absolute", left: 176 * S, top: 430 * S, width: 1560 * S, fontFamily: SANS, fontWeight: 400, fontSize: fs * S,
         lineHeight: 1.08, letterSpacing: -1 * S, color: pal.blue, opacity: p, transform: `translateY(${(1 - p) * 14 * S}px)` }}>
         {parts.map((s, i) => s.startsWith("**") ? <b key={i} style={{ fontWeight: 800 }}>{s.slice(2, -2)}</b> : <span key={i}>{s}</span>)}
       </div>
@@ -250,9 +253,8 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
   const zoom = zooms.find((z) => t >= z.start && t < z.end)?.scale ?? 1;
   const audio = (
     <>
-      {(music ?? []).map((m, i) => (
-        <Sequence key={`m${i}`} from={Math.round(m.start * fps)} layout="none"><Audio src={staticFile(m.src)} volume={m.volume ?? 1} /></Sequence>
-      ))}
+      {/* the bed (longplan.py): already levelled, faded and padded to the cut's length */}
+      {music ? <Sequence from={Math.round(music.start * fps)} layout="none"><Audio src={staticFile(music.src)} volume={music.volume ?? 1} /></Sequence> : null}
       {(sfx ?? []).map((s, i) => (
         <Sequence key={`s${i}`} from={Math.round(s.start * fps)} layout="none"><Audio src={staticFile(s.src)} volume={s.volume ?? 1} /></Sequence>
       ))}
@@ -269,7 +271,7 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
             <Img src={staticFile(b.src)} style={{ width: "100%", height: "100%", objectFit: b.fit ?? "cover",
               objectPosition: b.focus ? `${b.focus[0]}% ${b.focus[1]}%` : "50% 0%" }} />
           ) : b.type === "bullets" ? (
-            <Bullets heading={b.heading} bullets={b.bullets} lt={lt} S={S} pal={pal} x={60} y={70} size={92} />
+            <Bullets heading={b.heading} bullets={b.bullets} lt={lt} S={S} pal={pal} x={60} y={70} size={112} />
           ) : (
             <svg width="100%" height="100%" viewBox={`0 0 ${PANEL.w} ${PANEL.h}`}>
               <Header n={g.number} title={g.title} lt={lt} pal={pal} />
@@ -283,7 +285,7 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
   } else if (g?.kind === "title") {
     view = (
       <AbsoluteFill style={{ background: pal.white }}>
-        <Bullets heading={g.heading} bullets={g.bullets} lt={lt} S={S} pal={pal} x={110} y={150} size={96} />
+        <Bullets heading={g.heading} bullets={g.bullets} lt={lt} S={S} pal={pal} x={110} y={140} size={124} />
         <SpeakerCard video={video} face={face} S={S} pal={pal} />
       </AbsoluteFill>
     );

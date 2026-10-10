@@ -97,8 +97,9 @@ def prepare_public(edit, plan, tag):
                         "-keyint_min", "15", "-sc_threshold", "0", "-pix_fmt", "yuv420p",
                         "-c:a", "copy", str(proxy)], check=True)
     # Card images, plus every image an anim's or a capture card's props name (a logo card, a diagram's logos, props.logo_src).
-    rels = [c["src"] for c in plan["cards"] if c.get("src")]
-    rels += re.findall(r'"(images/[^"]+)"', json.dumps([[c.get("anim"), c.get("props")] for c in plan["cards"]]))
+    rels = [c["src"] for c in plan.get("cards", []) if c.get("src")]
+    rels += re.findall(r'"(images/[^"]+)"', json.dumps(plan.get("graphics", [])))   # LongEdit: supplied screenshots in panels
+    rels += re.findall(r'"(images/[^"]+)"', json.dumps([[c.get("anim"), c.get("props")] for c in plan.get("cards", [])]))
     rels += [c["src"] for c in plan.get("sfx", [])]   # sound cues, from sfx.py
     rels += [plan["music"]["src"]] if plan.get("music") else []   # the music bed, from sfx.py music
     rels += [plan["cover"]["src"]] if plan.get("cover") else []   # an audio clip's cover, from clips.py trim

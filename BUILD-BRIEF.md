@@ -18,10 +18,11 @@ A fork of NextWork's open-source editor (github.com/nextwork-projects/ai-video-e
 | Styles | **One style to start**, measured from the three reference videos below. Keep the per-style folder system so more styles can be added later. |
 | Rendering | On Ayush's Mac (Apple Silicon). Cloud rendering later if needed. |
 | Mode | **Automatic.** One approval point only: the cut, shown as a transcript with removals struck through (text, no rendering). **No visuals approval: no stills sheet, no preview clips.** Make the visuals and render. Drop every visual review step: the stills sheet, the LOOK pass where Claude inspects rendered frames, and `check.py render`. The only checks kept are the instant script checks on the plan (`check.py` plan check, `ai_tells.py --plan`). They render nothing and use no Claude usage; they just stop graphics covering the face or running off-screen. If Ayush asks for those to go too, remove them. |
-| Screenshots | **Real screenshots of websites, apps and tools are allowed, and so are company logos.** Still no real people and no stock footage. |
+| Screenshots | **Real screenshots of websites, apps and tools are allowed, and so are company logos.** Still no real people and no stock footage, **except the client's own content**: thumbnails, screenshots and clips of the client's own videos and podcasts are allowed even with people in them (decided 2026-10-10). |
+| Spoken-words overlay | The big white words over the speaker are **only for a short phrase or number that needs no explaining** (a visual beat). Never for a process, a list or a script (decided 2026-10-10). |
+| Scripts | A script he reads out goes in the **panel layout** (panel left, speaker card right), **the whole script**, each line writing on as he starts saying it and staying (decided 2026-10-10). |
 | How often graphics appear | **Only where they make what he says easier to understand**: a concept, a framework, a process, a number worth seeing. Not to fill time, and not to match the references' share of screen time (decided 2026-10-10). |
 | Small graphics | **Overlays on the speaker, not their own screen**: a few words or a short list sits over the face cam (decided 2026-10-10). |
-| Scripts he reads out | When he quotes a script or a line someone said, **show the words on screen as he says them**, over the speaker (decided 2026-10-10). |
 | Silence | **Never graphics on screen with no talking**, and the voice never drops out under a graphic (decided 2026-10-10). |
 | Captions | **Copy the reference videos' caption style exactly**: font, size, colour, position, how many words at a time, highlighting, animation, and when captions appear at all. Add nothing the references don't do. |
 

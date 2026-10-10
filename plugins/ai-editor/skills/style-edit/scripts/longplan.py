@@ -48,6 +48,7 @@ HOLD = {"chapter": 3.5, "lower": 2.4}       # graphics with no "to": seconds up 
 MIN_HOLD = {"panel": 4.0, "title": 4.0, "quote": 3.0, "pills": 2.5, "buttons": 2.5, "label": 2.0}
 LEAD_S = 0.15                              # a graphic cuts in this long before its first word
 TAIL_S = 0.35                              # and holds this long after its last
+OVERLAY_EXIT_S = 0.3                       # overlays hold this much longer: their soft exit (0.5 s) starts after the last word
 ZOOM_MIN_GAP_S = 7.0                       # between framing changes (first minute: 2.5); references: 2.8 a minute
 MUSIC_FADE_S = 2.0
 QUOTE_MAX_CHARS = 230                      # LongEdit shrinks a quote past ~135 characters to stay in 4 lines; past this it is too small
@@ -106,6 +107,20 @@ def timed_words(shown, words, toks, start):
     return out
 
 
+def line_start(line, words, toks, after):
+    """When a script line starts being said: the first place at or after `after` where its opening words are
+    spoken in order (three, else two, else one). A line not said fails the plan rather than guess a time."""
+    q = [norm(x) for x in line.split() if norm(x)]
+    i0 = next((k for k, w in enumerate(words) if w["start"] + 1e-6 >= after), len(words))
+    for n in (3, 2, 1):
+        if len(q) < n:
+            continue
+        k = next((k for k in range(i0, len(words) - n + 1) if toks[k:k + n] == q[:n]), None)
+        if k is not None:
+            return words[k]["start"]
+    raise ValueError(f"script line not found in words.json after {after:.1f}s: {line!r}")
+
+
 def head_box(face_json):
     """The median head box (hair to chin), fractions of the frame."""
     boxes = [h["box"] for h in face_json.get("heads", []) if h.get("box")]
@@ -136,7 +151,9 @@ def resolve(board, words):
         else:
             a, _ = find(words, toks, g["from"], after)
             _, b = find(words, toks, g["to"], a) if g.get("to") else (None, a + HOLD.get(k, 3.0))
-            start, end = a - LEAD_S, b + TAIL_S
+            # an overlay on the speaker also holds through its 0.5 s soft exit (LongEdit EXIT_S), so the last word
+            # is never fading while it is still being said
+            start, end = a - LEAD_S, b + TAIL_S + (OVERLAY_EXIT_S if k in ("lower", "buttons", "label") else 0)
         start = max(0.0, start)
         # an element said near the end still finishes writing on (about 1 s) before the graphic leaves
         at = lambda phrase: round(min(find(words, toks, phrase, start)[0] - start, max(0.0, end - start - WRITE_DONE_S)), 3)  # noqa: E731
@@ -158,7 +175,8 @@ def resolve(board, words):
                                 "bullets": [{"text": b["text"], "at": at(b["on"])} for b in g["bullets"]]}
                 item.pop("title", None)
             elif "image" in g:
-                item["body"] = {"type": "image", "src": g["image"], **({"focus": g["focus"]} if g.get("focus") else {})}
+                item["body"] = {"type": "image", "src": g["image"], **({"focus": g["focus"]} if g.get("focus") else {}),
+                                **({"fit": g["fit"]} if g.get("fit") else {})}
         elif k == "title":
             item.update(heading=g["heading"], bullets=[{"text": b["text"], "at": at(b["on"])} for b in g.get("bullets", [])])
         elif k in ("pills", "buttons"):
@@ -170,10 +188,12 @@ def resolve(board, words):
         elif k == "script":
             cursor, lines = start, []
             for line in g["lines"]:
-                ws = timed_words(line, words, toks, cursor)
+                t0 = line_start(line, words, toks, cursor)   # where this line is said, found by its opening words
+                ws = [dict(w, at=round(w["at"] + t0 - start, 3)) for w in timed_words(line, words, toks, t0)]
                 lines.append(ws)
-                cursor = start + (ws[-1]["at"] if ws else 0) + 0.01
+                cursor = start + ws[-1]["at"] + 0.01
             item["lines"] = lines
+            item["heading"] = g.get("heading", "")
         elif k in ("quote", "label"):
             item["text"] = g["text"]
         else:
@@ -187,9 +207,9 @@ BRIDGE_S = 1.0     # two full-frame graphics closer than this join: the speaker 
 
 def bridge(graphics):
     for a, b in zip(graphics, graphics[1:]):
-        if 0 < a["end"] - b["start"] <= LEAD_S + TAIL_S:   # one's tail meets the next one's lead-in: cut there
+        if 0 < a["end"] - b["start"] <= LEAD_S + TAIL_S + OVERLAY_EXIT_S:   # a tail meets the next lead-in: cut there
             a["end"] = b["start"]
-    full = [g for g in graphics if g["kind"] not in ("label", "buttons", "lower", "script")]
+    full = [g for g in graphics if g["kind"] not in ("label", "buttons", "lower")]
     for a, b in zip(full, full[1:]):
         if 0 < b["start"] - a["end"] < BRIDGE_S:
             a["end"] = b["start"]
@@ -200,7 +220,7 @@ def plan_zooms(dur, graphics, cut_joins, scale):
     """Hard punches on the jump cuts while the speaker is full frame (the references change framing on
     their cuts, 2.8 a minute, busier in the first minute). Alternates in and out; a stretch under a graphic
     that hides the speaker resets to 1."""
-    covered = lambda t: any(g["start"] - 0.05 <= t < g["end"] + 0.05 and g["kind"] not in ("label", "buttons", "lower", "script")  # noqa: E731
+    covered = lambda t: any(g["start"] - 0.05 <= t < g["end"] + 0.05 and g["kind"] not in ("label", "buttons", "lower")  # noqa: E731
                             for g in graphics)
     zooms, inn, last = [], False, -1e9
     start = None
@@ -209,7 +229,7 @@ def plan_zooms(dur, graphics, cut_joins, scale):
         if covered(t) or t - last < gap:
             continue
         # a graphic between the last change and this one already reset the framing
-        if inn and any(last <= g["start"] < t for g in graphics if g["kind"] not in ("label", "buttons", "lower", "script")):
+        if inn and any(last <= g["start"] < t for g in graphics if g["kind"] not in ("label", "buttons", "lower")):
             inn = False
         if not inn:
             start, inn = t, True
@@ -218,14 +238,14 @@ def plan_zooms(dur, graphics, cut_joins, scale):
             inn = False
         last = t
     if inn and start is not None:
-        nxt = min([g["start"] for g in graphics if g["start"] > start and g["kind"] not in ("label", "buttons", "lower", "script")]
+        nxt = min([g["start"] for g in graphics if g["start"] > start and g["kind"] not in ("label", "buttons", "lower")]
                   + [dur])
         zooms.append({"start": start, "end": nxt, "scale": scale})
     # a zoom never runs under a full-frame graphic
     out = []
     for z in zooms:
         for g in graphics:
-            if g["kind"] not in ("label", "buttons", "lower", "script") and z["start"] < g["start"] < z["end"]:
+            if g["kind"] not in ("label", "buttons", "lower") and z["start"] < g["start"] < z["end"]:
                 z = dict(z, end=g["start"])
         if z["end"] - z["start"] >= 1.0:
             out.append({k: round(v, 3) if isinstance(v, float) else v for k, v in z.items()})
@@ -342,7 +362,7 @@ def pacing(plan, style):
     """The plan's numbers next to the references' (style.json "longform")."""
     lf = style.get("longform", {})
     dur = plan["durationInFrames"] / plan["fps"]
-    full = [g for g in plan["graphics"] if g["kind"] not in ("label", "buttons", "lower", "script")]
+    full = [g for g in plan["graphics"] if g["kind"] not in ("label", "buttons", "lower")]
     share = 100 * sum(g["end"] - g["start"] for g in full) / dur
     gaps, t = [], 0.0
     for g in full:

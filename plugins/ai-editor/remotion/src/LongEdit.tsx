@@ -34,7 +34,7 @@ type Bullet = { text: string; at: number };
 type Item = { text: string; at: number };
 export type Graphic = { start: number; end: number } & (
   | { kind: "panel"; number?: number; title?: string; body: { type: "diagram"; els: El[] } | { type: "image"; src: string;
-      fit?: "cover" | "contain"; focus?: [number, number] } | { type: "bullets"; heading: string; bullets: Bullet[] } }
+      fit?: "cover" | "contain" | "frame"; focus?: [number, number] } | { type: "bullets"; heading: string; bullets: Bullet[] } }
   | { kind: "title"; heading: string; bullets: Bullet[] } // white page, serif heading, blue bullets, speaker card
   | { kind: "quote"; text: string } // **bold** marks the key phrase
   | { kind: "chapter"; number: number; title: string }
@@ -42,7 +42,8 @@ export type Graphic = { start: number; end: number } & (
   | { kind: "buttons"; items: Item[] } // red pills over the speaker, under the chin, popping in as each is said
   | { kind: "label"; text: string } // small white pill, bottom-left
   | { kind: "lower"; words: Item[] } // big white serif words over the speaker, each fading in as it is said
-  | { kind: "script"; lines: Item[][] } // a quoted script over the speaker: one sentence at a time, word by word
+  | { kind: "script"; heading: string; lines: Item[][] } // a script he says: white page, serif heading, the script in blue
+                                                          // quotes, each sentence sweeping on as he starts it (reference "How to Pitch")
 );
 type Zoom = { start: number; end: number; scale: number };
 type Face = { cx: number; top: number; h: number }; // the head box (hair to chin) in the source, fractions of the frame (face.py)
@@ -59,9 +60,12 @@ export const longMeta: CalculateMetadataFunction<LongPlan> = ({ props }) => ({
 const DRAW_S = 0.6; // a stroke draws on (the panel's first curve: 0.6 s)
 const WRITE_S = 0.9; // a marker label writes on letter by letter (SAME: 1.0 s)
 const INK_S = 1.0; // a chapter title inks in
-const POP_S = 0.25; // a red button pops in
+const POP_S = 0.55; // a red pill eases in (was a 0.25 s pop; smooth, Ayush 2026-10-10)
 const clamp01 = (x: number) => Math.max(0, Math.min(1, x));
 const easeOut = (x: number) => 1 - Math.pow(1 - clamp01(x), 3);
+// smooth motion (Ayush, 2026-10-10): long, soft ease-outs, no snap and no overshoot
+const easeSoft = (x: number) => 1 - Math.pow(1 - clamp01(x), 5); // quint out: quick start, a long gentle settle
+const EXIT_S = 0.5;       // overlays on the speaker leave over this, never cut off
 const easeInOut = (x: number) => { const p = clamp01(x); return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; };
 
 // ---------- layout (design px, measured on the references' 1920 x 1080 frames) ----------
@@ -177,7 +181,8 @@ const Bullets: React.FC<{ heading: string; bullets: Bullet[]; lt: number; S: num
 const Pill: React.FC<{ text: string; S: number; pal: Palette; p: number; size?: number; serif?: boolean }> = ({ text, S, pal, p, size = 44, serif = true }) => (
   <div style={{ display: "inline-block", background: pal.red, color: pal.white, fontFamily: serif ? SERIF : SANS, fontWeight: 500,
     fontSize: size * S, padding: `${size * 0.28 * S}px ${size * 0.9 * S}px`, borderRadius: size * 0.42 * S, lineHeight: 1.15,
-    transform: `scale(${0.6 + 0.4 * easeOut(p)})`, opacity: clamp01(p * 3), whiteSpace: "nowrap" }}>{text}</div>
+    transform: `translateY(${(1 - easeSoft(p)) * size * 0.45 * S}px) scale(${0.94 + 0.06 * easeSoft(p)})`,
+    opacity: easeSoft(p * 1.4), filter: p < 1 ? `blur(${(1 - easeSoft(p)) * 5 * S}px)` : undefined, whiteSpace: "nowrap" }}>{text}</div>
 );
 
 const Quote: React.FC<{ text: string; lt: number; S: number; pal: Palette }> = ({ text, lt, S, pal }) => {
@@ -267,12 +272,52 @@ const Spoken: React.FC<{ words: Item[]; lt: number; S: number; face: Face; max: 
       whiteSpace: lines === 1 ? "nowrap" : undefined, // one line never wraps up over the face
       textShadow: `0 0 ${14 * S}px rgba(255,255,255,0.55), 0 0 ${38 * S}px rgba(255,255,255,0.28), 0 ${3 * S}px ${18 * S}px rgba(0,0,0,0.35)` }}>
       {words.map((w, i) => {
-        const q = easeOut((lt - w.at) / 0.3);
+        const q = easeSoft((lt - w.at) / 0.45);
         // words not said yet keep their place (the line never re-centres as it grows), unseen
         return (
           <span key={i} style={{ opacity: q, filter: q > 0 && q < 1 ? `blur(${(1 - q) * 6 * S}px)` : undefined }}>{w.text}{i < words.length - 1 ? " " : ""}</span>
         );
       })}
+    </div>
+  );
+};
+
+const SWEEP_S = 0.6; // a sentence sweeps on left to right (reference: the second script in "How to Pitch", about 0.6 s)
+
+/** A script he says, as the references show one ("How to Pitch", m_D2yOUapNQ 6:43): a large black serif heading, the
+ *  script under it in blue in curly quotes with the opening mark hanging, left of the speaker card. Each sentence
+ *  sweeps on as he starts it and stays, so the whole script is up by the end (Ayush, 2026-10-10). The type is the
+ *  reference's 62 px, smaller only so a long script still fits above the foot of the page. */
+const Script: React.FC<{ heading: string; lines: Item[][]; lt: number; S: number; pal: Palette }> = ({ heading, lines, lt, S, pal }) => {
+  const all = lines.flat();
+  // the largest size (at most the reference's 62 px) at which the whole script, wrapped word by word at Inter's
+  // ~0.52 em a character across 1150 px, ends above the page's foot
+  const fits = (f: number, top: number) => {
+    let n = 1, x = 0;
+    for (const w of all) {
+      const ww = (w.text.length + 1) * 0.52 * f;
+      if (x + ww > 1150 && x > 0) { n += 1; x = 0; }
+      x += ww;
+    }
+    return top + 124 + 46 + n * 1.3 * f <= 1000;
+  };
+  let fs = 62, top = 260;
+  while (fs > 34 && !fits(fs, top)) { if (top > 130) top -= 10; else fs -= 1; }
+  return (
+    <div style={{ position: "absolute", left: 100 * S, top: top * S, width: 1190 * S }}>
+      <div style={{ fontFamily: SERIF, fontWeight: 500, fontSize: 124 * S, lineHeight: 1, color: pal.ink, letterSpacing: -1.5 * S,
+        marginBottom: 46 * S }}>{heading}</div>
+      <div style={{ fontFamily: SANS, fontWeight: 500, fontSize: fs * S, lineHeight: 1.3, color: pal.blue, letterSpacing: -0.6 * S,
+        textIndent: -0.38 * fs * S, paddingLeft: 0.38 * fs * S }}>
+        {all.map((w, i) => {
+          const line = lines.find((l) => l.includes(w))!;
+          const start = line[0].at, k = line.indexOf(w);
+          // the sweep: a sentence's words come up left to right across SWEEP_S from its first word
+          const q = easeOut((lt - start - (k / Math.max(1, line.length)) * SWEEP_S * 0.7) / (SWEEP_S * 0.45));
+          const open = i === 0 ? "\u201C" : "", close = i === all.length - 1 ? "\u201D" : "";
+          return <span key={i} style={{ opacity: q }}>{open}{w.text}{close}{i < all.length - 1 ? " " : ""}</span>;
+        })}
+      </div>
     </div>
   );
 };
@@ -302,13 +347,25 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
   );
   const speaker = <Footage video={video} face={face} zoom={zoom} S={S} />;
   let view: React.ReactNode = speaker;
+  let overlay: React.ReactNode = null; // buttons, label, lower: drawn over the speaker (below)
   if (g?.kind === "panel") {
     const b = g.body;
     view = (
       <AbsoluteFill style={{ background: pal.white }}>
         <Board S={S} pal={pal} white={b.type === "bullets"}>
-          {b.type === "image" ? (
-            <Img src={staticFile(b.src)} style={{ width: "100%", height: "100%", objectFit: b.fit ?? "cover",
+          {b.type === "image" && b.fit === "frame" ? (
+            // a picture of something (an episode's thumbnail): framed under the panel's marker title, clear of the
+            // speaker card, landing with a short rise
+            <>
+              <svg width="100%" height="100%" viewBox={`0 0 ${PANEL.w} ${PANEL.h}`} style={{ position: "absolute", inset: 0 }}>
+                <Header n={g.number} title={g.title} lt={lt} pal={pal} />
+              </svg>
+              <Img src={staticFile(b.src)} style={{ position: "absolute", left: 66 * S, top: 250 * S, width: 1120 * S, height: 630 * S,
+                objectFit: "cover", borderRadius: 26 * S, boxShadow: `0 ${14 * S}px ${44 * S}px rgba(20,30,50,0.22)`,
+                opacity: easeOut((lt - 0.2) / 0.35), transform: `translateY(${(1 - easeOut((lt - 0.2) / 0.35)) * 24 * S}px)` }} />
+            </>
+          ) : b.type === "image" ? (
+            <Img src={staticFile(b.src)} style={{ width: "100%", height: "100%", objectFit: b.fit === "contain" ? "contain" : "cover",
               objectPosition: b.focus ? `${b.focus[0]}% ${b.focus[1]}%` : "50% 0%" }} />
           ) : b.type === "bullets" ? (
             <Bullets heading={b.heading} bullets={b.bullets} lt={lt} S={S} pal={pal} x={60} y={70} size={112} />
@@ -337,7 +394,7 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
     view = (
       <AbsoluteFill style={{ background: "#F4F7FB", display: "flex", alignItems: "center", justifyContent: "center" }}>
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 22 * S, width: 1300 * S }}>
-          {g.items.map((it, i) => lt >= it.at ? <Pill key={i} text={it.text} S={S} pal={pal} p={(lt - it.at) / POP_S} size={58} /> : null)}
+          {g.items.map((it, i) => <Pill key={i} text={it.text} S={S} pal={pal} p={Math.max(0, (lt - it.at) / POP_S)} size={58} />)}
         </div>
       </AbsoluteFill>
     );
@@ -345,40 +402,46 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
     // one centred row under the chin (the references put them over the chest), shrunk to fit the room there
     const chinPx = (face.top + face.h * CHIN_IN_HEAD) * 1080;
     const size = Math.max(40, Math.min(64, (1040 - chinPx - 40) / 1.7));
-    view = (
-      <AbsoluteFill>
-        {speaker}
-        <BottomShade S={S} p={easeOut(lt / 0.3)} />
+    overlay = (
+      <>
+        <BottomShade S={S} p={easeSoft(lt / 0.5)} />
         <div style={{ position: "absolute", left: 0, right: 0, bottom: 44 * S, display: "flex", flexWrap: "wrap", justifyContent: "center",
           gap: 22 * S, padding: `0 ${120 * S}px` }}>
-          {g.items.map((it, i) => lt >= it.at ? <Pill key={i} text={it.text} S={S} pal={pal} p={(lt - it.at) / POP_S} size={size} /> : null)}
+          {/* every pill keeps its place from the start (the row never re-centres), unseen until it is said */}
+          {g.items.map((it, i) => <Pill key={i} text={it.text} S={S} pal={pal} p={Math.max(0, (lt - it.at) / POP_S)} size={size} />)}
         </div>
-      </AbsoluteFill>
+      </>
     );
   } else if (g?.kind === "label") {
-    view = (
-      <AbsoluteFill>
-        {speaker}
-        <div style={{ position: "absolute", left: 40 * S, bottom: 46 * S, background: pal.white, color: pal.ink, fontFamily: SANS,
-          fontWeight: 600, fontSize: 40 * S, padding: `${16 * S}px ${38 * S}px`, borderRadius: 50 * S }}>{g.text}</div>
-      </AbsoluteFill>
+    overlay = (
+      <div style={{ position: "absolute", left: 40 * S, bottom: 46 * S, background: pal.white, color: pal.ink, fontFamily: SANS,
+        fontWeight: 600, fontSize: 40 * S, padding: `${16 * S}px ${38 * S}px`, borderRadius: 50 * S, opacity: easeSoft(lt / 0.5) }}>{g.text}</div>
     );
   } else if (g?.kind === "lower") {
-    view = (
-      <AbsoluteFill>
-        {speaker}
-        <BottomShade S={S} p={easeOut(lt / 0.3)} />
+    overlay = (
+      <>
+        <BottomShade S={S} p={easeSoft(lt / 0.5)} />
         <Spoken words={g.words} lt={lt} S={S} face={face} max={230} />
-      </AbsoluteFill>
+      </>
     );
   } else if (g?.kind === "script") {
-    // the sentence being said: shown from its first word until the next sentence starts
-    const line = [...g.lines].reverse().find((l) => l.length && lt >= l[0].at - 0.05) ?? [];
+    view = (
+      <AbsoluteFill style={{ background: "#F8F9FA" }}>
+        <Paper S={S} />
+        <Script heading={g.heading} lines={g.lines} lt={lt} S={S} pal={pal} />
+        <SpeakerCard video={video} face={face} S={S} pal={pal} />
+      </AbsoluteFill>
+    );
+  }
+  if (g && overlay) {
+    // an overlay on the speaker eases out over its last EXIT_S: words, pills and shade fade, drift down and soften
+    // together, never cut off (Ayush, 2026-10-10); the speaker under them is untouched
+    const out = easeInOut((g.end - t) / EXIT_S);
     view = (
       <AbsoluteFill>
         {speaker}
-        <BottomShade S={S} p={easeOut(lt / 0.3)} />
-        <Spoken words={line} lt={lt} S={S} face={face} max={104} lines={2} />
+        <AbsoluteFill style={{ opacity: out, transform: `translateY(${(1 - out) * 18 * S}px)`,
+          filter: out < 1 ? `blur(${(1 - out) * 6 * S}px)` : undefined }}>{overlay}</AbsoluteFill>
       </AbsoluteFill>
     );
   }

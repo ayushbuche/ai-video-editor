@@ -428,7 +428,7 @@ def merge_spans(spans):
 
 RELEASE_DB = 14.0     # a word rings out until its level is this far under the silence threshold
 RELEASE_MAX_S = 0.5   # at most this long past where it crossed the threshold (a drawn-out "s" runs 0.35 s)
-RELEASE_PAD_S = 0.06  # then a frame more (cuts land on whole frames: 42 ms at 24 fps)
+RELEASE_PAD_S = 0.12  # then this much more, so the word rings out naturally (0.06 still sounded clipped on "market")
 ONSET_KEEP_S = 0.08   # silence always left before the next kept word's first sound
 GAP_WINDOWS = 5       # 100 ms under the threshold before a rise counts as a new sound, not the word's last consonant
 

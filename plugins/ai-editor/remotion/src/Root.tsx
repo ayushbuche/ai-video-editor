@@ -5,6 +5,7 @@ import { resolveLook, useFonts } from "./look";
 import { SplitText, pickMotion, useTl } from "./motion";
 import { footageX } from "./Scene";
 import { ProductVideo, ProductPlan, productMeta } from "./product/ProductVideo";
+import { LongEdit, LongPlan, longMeta } from "./LongEdit";
 
 // Real values come from plan.json via --props; these only let the studio open.
 const empty: Plan = {
@@ -88,6 +89,10 @@ export const Root: React.FC = () => (
       defaultProps={{ width: 1080, height: 1920, dur: 3, card: { anim: { type: "logo_sting", props: { src: "images/logo.svg" } }, start: 0, end: 3, entrance: "pop",
         box: [8, 20, 84, 30] } } as PreviewProps} />
     <Composition id="Proof" component={Proof} width={1080} height={1080} fps={30} durationInFrames={60} defaultProps={{ plugin: "drawsvg" }} />
+    {/* long-form 16:9 in a measured style (styles/<name>/style.json), planned by skills/style-edit/scripts/longplan.py */}
+    <Composition id="LongEdit" component={LongEdit} calculateMetadata={longMeta} width={1920} height={1080} fps={30} durationInFrames={90}
+      defaultProps={{ video: "", width: 1920, height: 1080, fps: 30, durationInFrames: 90, face: { cx: 0.5, cy: 0.3, h: 0.25 }, zooms: [],
+        graphics: [] } as LongPlan} />
     {/* product-video skill: a website's real UI as a launch video (plan from skills/product-video/scripts/product.py) */}
     <Composition id="ProductVideo" component={ProductVideo} calculateMetadata={productMeta} width={1920} height={1080} fps={30}
       durationInFrames={90} defaultProps={{ width: 1920, height: 1080, fps: 30, durationInFrames: 90, variant: "apple", url: "",

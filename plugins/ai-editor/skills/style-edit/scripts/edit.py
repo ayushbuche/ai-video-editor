@@ -102,6 +102,7 @@ def prepare_public(edit, plan, tag):
     rels += re.findall(r'"(images/[^"]+)"', json.dumps([[c.get("anim"), c.get("props")] for c in plan.get("cards", [])]))
     rels += [c["src"] for c in plan.get("sfx", [])]   # sound cues, from sfx.py
     rels += [plan["music"]["src"]] if plan.get("music") else []   # the music bed, from sfx.py music
+    rels += [plan["voice"]] if plan.get("voice") else []          # LongEdit: the voice as its own track (longplan.py)
     rels += [plan["cover"]["src"]] if plan.get("cover") else []   # an audio clip's cover, from clips.py trim
     for c in plan.get("cutouts", []):   # the speaker cut out for behind cards: a folder of PNGs from matte.py
         if not (edit / c["src"]).is_dir():

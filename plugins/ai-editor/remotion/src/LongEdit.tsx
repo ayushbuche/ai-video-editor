@@ -10,10 +10,13 @@ import { loadFont as loadSerif } from "@remotion/google-fonts/PlayfairDisplay";
 import { loadFont as loadSans } from "@remotion/google-fonts/Inter";
 import { loadFont as loadMarker } from "@remotion/google-fonts/PatrickHand";
 import { loadFont as loadScript } from "@remotion/google-fonts/Caveat";
+import { loadFont as loadSpoken } from "@remotion/google-fonts/Gloock";
 
 const SERIF = loadSerif("normal", { weights: ["500", "600"], subsets: ["latin"] }).fontFamily;
 const SANS = loadSans("normal", { weights: ["400", "500", "700", "800"], subsets: ["latin"] }).fontFamily;
 const MARKER = loadMarker("normal", { weights: ["400"], subsets: ["latin"] }).fontFamily;
+// the references' spoken-words overlay (m_D2yOUapNQ 2:18 "$20k to $400k"): a heavy high-contrast display serif
+const SPOKEN = loadSpoken("normal", { weights: ["400"], subsets: ["latin"] }).fontFamily;
 const SCRIPT = loadScript("normal", { weights: ["500", "600"], subsets: ["latin"] }).fontFamily;
 
 export type Palette = { cream: string; ink: string; blue: string; red: string; panel: string; white: string; pip_glow: string;
@@ -36,15 +39,17 @@ export type Graphic = { start: number; end: number } & (
   | { kind: "quote"; text: string } // **bold** marks the key phrase
   | { kind: "chapter"; number: number; title: string }
   | { kind: "pills"; items: Item[] } // full-screen white, red buttons pop in as each is said
-  | { kind: "buttons"; items: Item[] } // red buttons over the lower half of the speaker
+  | { kind: "buttons"; items: Item[] } // red pills over the speaker, under the chin, popping in as each is said
   | { kind: "label"; text: string } // small white pill, bottom-left
-  | { kind: "lower"; text: string } // large white serif words, lower third, over the speaker
+  | { kind: "lower"; words: Item[] } // big white serif words over the speaker, each fading in as it is said
+  | { kind: "script"; lines: Item[][] } // a quoted script over the speaker: one sentence at a time, word by word
 );
 type Zoom = { start: number; end: number; scale: number };
 type Face = { cx: number; top: number; h: number }; // the head box (hair to chin) in the source, fractions of the frame (face.py)
 type Track = { src: string; start: number; volume?: number };
 export type LongPlan = { video: string; width: number; height: number; fps: number; durationInFrames: number; face: Face;
-  zooms: Zoom[]; graphics: Graphic[]; music?: Track; sfx?: Track[]; palette?: Partial<Palette> };
+  zooms: Zoom[]; graphics: Graphic[]; music?: Track; sfx?: Track[]; palette?: Partial<Palette>;
+  voice?: string }; // the cut's voice as a stereo file (longplan.py); else the cut's own audio
 
 export const longMeta: CalculateMetadataFunction<LongPlan> = ({ props }) => ({
   width: props.width, height: props.height, fps: props.fps, durationInFrames: props.durationInFrames,
@@ -71,7 +76,7 @@ const Footage: React.FC<{ video: string; face: Face; box?: { w: number; h: numbe
     const ox = face.cx * 100, oy = face.top * 100; // the top of the head holds its place: the hair never leaves the frame
     return (
       <AbsoluteFill style={{ transform: `scale(${zoom})`, transformOrigin: `${ox}% ${oy}%` }}>
-        <OffthreadVideo src={staticFile(video)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+        <OffthreadVideo muted src={staticFile(video)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </AbsoluteFill>
     );
   }
@@ -84,7 +89,7 @@ const Footage: React.FC<{ video: string; face: Face; box?: { w: number; h: numbe
   const top = Math.min(0, Math.max(bh - vh, bh * 0.09 - face.top * vh));
   return (
     <div style={{ position: "absolute", left, top, width: vw, height: vh }}>
-      <OffthreadVideo src={staticFile(video)} style={{ width: "100%", height: "100%" }} />
+      <OffthreadVideo muted src={staticFile(video)} style={{ width: "100%", height: "100%" }} />
     </div>
   );
 };
@@ -239,10 +244,43 @@ const Chapter: React.FC<{ n: number; title: string; lt: number; S: number; pal: 
   );
 };
 
+const SPOKEN_EM = 0.6;   // Gloock's average character width, em (measured: "$100M SaaS company" at 175 px ran 1.2x the 0.52 guess)
+const CHIN_IN_HEAD = 0.9; // face.py's head box runs 15% of the face past the chin: the chin is 90% of the way down it
+
+/** The bottom of the shot darkens a little under the spoken words (measured on the reference: before the first word). */
+const BottomShade: React.FC<{ S: number; p: number }> = ({ p }) => (
+  <AbsoluteFill style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0) 45%, rgba(0,0,0,0.42) 100%)", opacity: p }} />
+);
+
+/** Spoken words, the references' overlay: white display serif with a soft white glow, centred low in the frame, each
+ *  word fading in out of a slight blur as it is said (0.3 s). The size fits the width and keeps the type under the chin. */
+const Spoken: React.FC<{ words: Item[]; lt: number; S: number; face: Face; max: number; lines?: number }> = ({ words, lt, S, face, max, lines = 1 }) => {
+  const text = words.map((w) => w.text).join(" ");
+  const chinPx = (face.top + face.h * CHIN_IN_HEAD) * 1080;
+  const base = 990; // the last line's baseline, design px (reference: about 960 for a 230 px line)
+  const byWidth = (1640 * lines) / Math.max(1, text.length * SPOKEN_EM); // Gloock: about 0.6 em a character
+  const byChin = (base - chinPx - 24) / (0.72 + 1.05 * (lines - 1));
+  const fs = Math.max(56, Math.min(max, byWidth, byChin));
+  return (
+    <div style={{ position: "absolute", left: 140 * S, right: 140 * S, bottom: (1080 - base - fs * 0.24) * S, textAlign: "center",
+      fontFamily: SPOKEN, fontSize: fs * S, lineHeight: 1.05, color: "#FFFFFF", fontVariantNumeric: "lining-nums",
+      whiteSpace: lines === 1 ? "nowrap" : undefined, // one line never wraps up over the face
+      textShadow: `0 0 ${14 * S}px rgba(255,255,255,0.55), 0 0 ${38 * S}px rgba(255,255,255,0.28), 0 ${3 * S}px ${18 * S}px rgba(0,0,0,0.35)` }}>
+      {words.map((w, i) => {
+        const q = easeOut((lt - w.at) / 0.3);
+        // words not said yet keep their place (the line never re-centres as it grows), unseen
+        return (
+          <span key={i} style={{ opacity: q, filter: q > 0 && q < 1 ? `blur(${(1 - q) * 6 * S}px)` : undefined }}>{w.text}{i < words.length - 1 ? " " : ""}</span>
+        );
+      })}
+    </div>
+  );
+};
+
 /** The graphic up at t, if any (graphics never overlap; plan check). */
 const at = (gs: Graphic[], t: number) => gs.find((g) => t >= g.start && t < g.end);
 
-export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, music, sfx, palette }) => {
+export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, music, sfx, palette, voice }) => {
   const frame = useCurrentFrame();
   const { fps, width } = useVideoConfig();
   const t = frame / fps;
@@ -253,6 +291,8 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
   const zoom = zooms.find((z) => t >= z.start && t < z.end)?.scale ?? 1;
   const audio = (
     <>
+      {/* the voice: its own track for the whole cut, so no graphic (a full-screen card shows no footage) silences it */}
+      <Audio src={staticFile(voice ?? video)} />
       {/* the bed (longplan.py): already levelled, faded and padded to the cut's length */}
       {music ? <Sequence from={Math.round(music.start * fps)} layout="none"><Audio src={staticFile(music.src)} volume={music.volume ?? 1} /></Sequence> : null}
       {(sfx ?? []).map((s, i) => (
@@ -302,16 +342,16 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
       </AbsoluteFill>
     );
   } else if (g?.kind === "buttons") {
+    // one centred row under the chin (the references put them over the chest), shrunk to fit the room there
+    const chinPx = (face.top + face.h * CHIN_IN_HEAD) * 1080;
+    const size = Math.max(40, Math.min(64, (1040 - chinPx - 40) / 1.7));
     view = (
       <AbsoluteFill>
         {speaker}
-        <div style={{ position: "absolute", left: 226 * S, top: 706 * S, width: 1480 * S, display: "grid", gridTemplateColumns: "1fr 1fr",
-          gap: 24 * S }}>
-          {g.items.map((it, i) => lt >= it.at ? (
-            <div key={i} style={{ display: "flex" }}>
-              <div style={{ flex: 1, display: "flex" }}><PillBlock text={it.text} S={S} pal={pal} p={(lt - it.at) / POP_S} /></div>
-            </div>
-          ) : <div key={i} />)}
+        <BottomShade S={S} p={easeOut(lt / 0.3)} />
+        <div style={{ position: "absolute", left: 0, right: 0, bottom: 44 * S, display: "flex", flexWrap: "wrap", justifyContent: "center",
+          gap: 22 * S, padding: `0 ${120 * S}px` }}>
+          {g.items.map((it, i) => lt >= it.at ? <Pill key={i} text={it.text} S={S} pal={pal} p={(lt - it.at) / POP_S} size={size} /> : null)}
         </div>
       </AbsoluteFill>
     );
@@ -324,12 +364,21 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
       </AbsoluteFill>
     );
   } else if (g?.kind === "lower") {
-    const p = easeOut(lt / 0.3);
     view = (
       <AbsoluteFill>
         {speaker}
-        <div style={{ position: "absolute", left: 0, right: 0, bottom: 150 * S, textAlign: "center", fontFamily: SERIF, fontWeight: 600,
-          fontSize: 150 * S, color: pal.white, opacity: p, fontVariantNumeric: "lining-nums", textShadow: `0 ${4 * S}px ${30 * S}px rgba(0,0,0,0.45)` }}>{g.text}</div>
+        <BottomShade S={S} p={easeOut(lt / 0.3)} />
+        <Spoken words={g.words} lt={lt} S={S} face={face} max={230} />
+      </AbsoluteFill>
+    );
+  } else if (g?.kind === "script") {
+    // the sentence being said: shown from its first word until the next sentence starts
+    const line = [...g.lines].reverse().find((l) => l.length && lt >= l[0].at - 0.05) ?? [];
+    view = (
+      <AbsoluteFill>
+        {speaker}
+        <BottomShade S={S} p={easeOut(lt / 0.3)} />
+        <Spoken words={line} lt={lt} S={S} face={face} max={104} lines={2} />
       </AbsoluteFill>
     );
   }
@@ -340,10 +389,3 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
     </AbsoluteFill>
   );
 };
-
-const PillBlock: React.FC<{ text: string; S: number; pal: Palette; p: number }> = ({ text, S, pal, p }) => (
-  <div style={{ flex: 1, background: pal.red, color: pal.white, fontFamily: SERIF, fontWeight: 600, fontSize: 76 * S, textAlign: "center",
-    padding: `${26 * S}px ${30 * S}px`, borderRadius: 30 * S, transform: `scale(${0.85 + 0.15 * easeOut(p)})`, opacity: clamp01(p * 3) }}>
-    {text}
-  </div>
-);

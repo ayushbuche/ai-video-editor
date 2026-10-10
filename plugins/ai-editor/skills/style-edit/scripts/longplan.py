@@ -107,6 +107,31 @@ def timed_words(shown, words, toks, start):
     return out
 
 
+READ_MIN_S = 2.0        # a graphic, once all of it is up, stays at least this long (Ayush, 2026-10-10: too short to read
+READ_PER_WORD_S = 0.3   # is not worth having), and this much longer for each word on it
+STAGGER_S = 0.35        # items brought forward to make that room arrive this far apart
+EASE_IN_S = 0.55        # an item takes this long to settle (LongEdit POP_S)
+
+
+def read_s(items):
+    return max(READ_MIN_S, READ_PER_WORD_S * sum(len(i["text"].split()) for i in items))
+
+
+def readable(items, dur):
+    """Items whose last one would leave too little time to read the whole graphic come in earlier, one after
+    another from the graphic's start, so the full set is up for read_s before the graphic leaves (its soft exit
+    not counted)."""
+    if not items:
+        return items
+    latest = dur - OVERLAY_EXIT_S - 0.2 - EASE_IN_S - read_s(items)   # settled (not just arriving) for read_s
+    n = len(items)
+    out = [dict(it, at=round(max(0.15 + i * STAGGER_S * 0.5, min(it["at"], latest - (n - 1 - i) * STAGGER_S)), 3))
+           for i, it in enumerate(items)]
+    for a, b in zip(out, out[1:]):
+        b["at"] = max(b["at"], a["at"] + 0.1)
+    return out
+
+
 def line_start(line, words, toks, after):
     """When a script line starts being said: the first place at or after `after` where its opening words are
     spoken in order (three, else two, else one). A line not said fails the plan rather than guess a time."""
@@ -180,7 +205,7 @@ def resolve(board, words):
         elif k == "title":
             item.update(heading=g["heading"], bullets=[{"text": b["text"], "at": at(b["on"])} for b in g.get("bullets", [])])
         elif k in ("pills", "buttons"):
-            item["items"] = [{"text": i["text"], "at": at(i["on"])} for i in g["items"]]
+            item["items"] = readable([{"text": i["text"], "at": at(i["on"])} for i in g["items"]], end - start)
         elif k == "chapter":
             item.update(number=g["number"], title=g["title"])
         elif k == "lower":
@@ -340,6 +365,10 @@ def checks(plan, head, style):
             if room < 60:
                 fails.append(f"{g['kind']} at {g['start']:.1f}s: no room under the chin for words over the speaker "
                              f"({room:.0f} px): use a quote or panel instead")
+        items = g.get("items") or g.get("bullets") or []
+        if items and d - max(x["at"] for x in items) - EASE_IN_S - (0.5 if g["kind"] in ("lower", "buttons", "label") else 0) < read_s(items) - 0.05:
+            fails.append(f"{g['kind']} at {g['start']:.1f}s is all up for only {d - max(x['at'] for x in items):.1f}s: too short to "
+                         f"read (at least {read_s(items):.1f} s). Start it earlier in the sentence or leave it out")
         for t in [x["at"] for x in g.get("items", []) + g.get("bullets", [])]:
             if t > d:
                 fails.append(f"{g['kind']} at {g['start']:.1f}s: an element draws on after the graphic ends")
@@ -398,6 +427,8 @@ def build(edit, style_path=DEFAULT_STYLE, music=None):
     graphics = bridge(resolve(board, words))
     for g in graphics:
         g["end"] = min(g["end"], dur)
+        if g["kind"] in ("pills", "buttons"):   # after trimming: the room to read is what is left
+            g["items"] = readable(g["items"], g["end"] - g["start"])
     scale = zoom_scale(head)
     plan = {"composition": "LongEdit", "video": "cut.mp4", "width": 1920, "height": 1080, "fps": fps,
             "durationInFrames": int(round(dur * fps)), "face": {k: head[k] for k in ("cx", "top", "h")},

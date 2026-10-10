@@ -282,7 +282,9 @@ const Spoken: React.FC<{ words: Item[]; lt: number; S: number; face: Face; max: 
   );
 };
 
-const SWEEP_S = 0.6; // a sentence sweeps on left to right (reference: the second script in "How to Pitch", about 0.6 s)
+const SWEEP_S = 1.0;       // a sentence's words flow in left to right across this (reference sweep ~0.6 s; slower reads calmer)
+const WORD_FADE_S = 0.7;   // each word's soft fade
+const SCRIPT_LEAD_S = 0.6; // a sentence starts coming in this long before he says it
 
 /** A script he says, as the references show one ("How to Pitch", m_D2yOUapNQ 6:43): a large black serif heading, the
  *  script under it in blue in curly quotes with the opening mark hanging, left of the speaker card. Each sentence
@@ -312,8 +314,9 @@ const Script: React.FC<{ heading: string; lines: Item[][]; lt: number; S: number
         {all.map((w, i) => {
           const line = lines.find((l) => l.includes(w))!;
           const start = line[0].at, k = line.indexOf(w);
-          // the sweep: a sentence's words come up left to right across SWEEP_S from its first word
-          const q = easeOut((lt - start - (k / Math.max(1, line.length)) * SWEEP_S * 0.7) / (SWEEP_S * 0.45));
+          // the sweep: a sentence starts SCRIPT_LEAD_S before he says it, its words flowing in left to right across
+          // SWEEP_S, each fading in softly over WORD_FADE_S (unhurried: Ayush, 2026-10-10)
+          const q = easeSoft((lt - (start - SCRIPT_LEAD_S) - (k / Math.max(1, line.length)) * SWEEP_S) / WORD_FADE_S);
           const open = i === 0 ? "\u201C" : "", close = i === all.length - 1 ? "\u201D" : "";
           return <span key={i} style={{ opacity: q }}>{open}{w.text}{close}{i < all.length - 1 ? " " : ""}</span>;
         })}

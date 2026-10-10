@@ -1,5 +1,8 @@
 # AI Video Editor
 
+This is Axis Story's fork: read `BUILD-BRIEF.md` first. An edit of a client's talking-head take follows
+`plugins/ai-editor/skills/longform/SKILL.md` (long-form 16:9, one approval: the cut).
+
 Most people who open this folder want to edit a video. When the user asks for an edit, drops a
 video, pastes a link, names a creator, or asks how to start:
 

@@ -13,8 +13,9 @@ Read `${CLAUDE_PLUGIN_ROOT}/PRINCIPLES.md` first: the rules every video in this 
 
 Every question to the user goes in the question box: call the AskUserQuestion tool (2-4 options, the recommended one first). Only in an agent without that tool, ask numbered questions in text.
 
+**Axis Story:** edit a take with `${CLAUDE_PLUGIN_ROOT}/skills/longform/SKILL.md` instead.
+
 The user's whole job: drop a video, answer a few questions, approve the cut, approve the stills sheet.
-Everything else is this skill's job.
 
 `P="${CLAUDE_PLUGIN_ROOT}/lib/ai_editor/profile.py"`. Run it with `python3` on Mac and Linux, `py` on Windows.
 

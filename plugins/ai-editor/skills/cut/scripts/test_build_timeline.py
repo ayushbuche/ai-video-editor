@@ -206,6 +206,36 @@ def test_mid_speech_removal_starts_in_the_dip():
     assert B.valley(lvl, -42, 1.5, 1.4) == 1.5     # already silent: unchanged
 
 
+def test_last_consonant_is_kept():
+    # "market": the vowel fades under the threshold, a 40 ms stop, then the "t" burst; the cut waits for the burst
+    lvl = _lvl([(0.2, 1.0)], 2, speech=-28)
+    for k, v in enumerate([-46, -50, -35, -34, -48, -65]):
+        lvl[int(1.0 / B.RMS_WIN_S) + k] = v
+    assert B.release_end(lvl, -42, 1.0) >= 1.1
+    # "response": a dip to -52 for 60 ms, then the "s" at -36 tailing off; the cut waits for the "s"
+    lvl = _lvl([(0.2, 1.0)], 2, speech=-28)
+    for k, v in enumerate([-52, -52, -42, -36, -37, -38, -40, -44, -50, -56, -61]):
+        lvl[int(1.0 / B.RMS_WIN_S) + k] = v
+    assert B.release_end(lvl, -42, 1.0) >= 1.18
+    # a breath after a real 200 ms gap is not the word's: the cut goes in front of it
+    lvl = _lvl([(0.2, 1.0), (1.2, 1.3)], 2, speech=-28)
+    for k in range(10):
+        lvl[int(1.0 / B.RMS_WIN_S) + k] = -60
+    assert B.release_end(lvl, -42, 1.0) <= 1.2
+
+
+def test_restart_in_one_breath_is_never_kept():
+    # "is," dips to -48 for 20 ms, then "it's" at -23: a spoken word, so the removal starts in the dip
+    lvl = _lvl([(0.2, 1.6)], 2, speech=-23)
+    lvl[int(0.70 / B.RMS_WIN_S)] = -48
+    assert B.voiced_rise(lvl, -42, 0.56, 1.2)
+    # "response": the "s" after the dip peaks at -36, under voice level: the word's own ending
+    lvl = _lvl([(0.2, 1.0)], 2, speech=-28)
+    for k, v in enumerate([-52, -52, -42, -36, -37, -38, -40, -44, -50, -56, -61]):
+        lvl[int(1.0 / B.RMS_WIN_S) + k] = v
+    assert not B.voiced_rise(lvl, -42, 1.0, 1.3)
+
+
 if __name__ == "__main__":
     test_derive()
     test_audible_end()
@@ -219,4 +249,6 @@ if __name__ == "__main__":
     test_cut_stops_where_the_removed_word_does()
     test_word_rings_out_before_a_pause_cut()
     test_mid_speech_removal_starts_in_the_dip()
+    test_last_consonant_is_kept()
+    test_restart_in_one_breath_is_never_kept()
     print("all ok")

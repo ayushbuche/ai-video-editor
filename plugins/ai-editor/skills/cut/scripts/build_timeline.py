@@ -170,7 +170,7 @@ def snap_and_pad(cuts, words, pad):
         # of the last frames after the last removed word
         if nxt is None:
             b = math.inf
-        out.append(dict(c, start=a, end=b, _next=nxt["start"] if nxt else None))
+        out.append(dict(c, start=a, end=b, _next=nxt["start"] if nxt else None, _first=c["start"]))
     return out
 
 
@@ -427,24 +427,27 @@ def merge_spans(spans):
 
 
 RELEASE_DB = 14.0     # a word rings out until its level is this far under the silence threshold
-RELEASE_MAX_S = 0.25  # at most this long past where it crossed the threshold
+RELEASE_MAX_S = 0.5   # at most this long past where it crossed the threshold (a drawn-out "s" runs 0.35 s)
 RELEASE_PAD_S = 0.06  # then a frame more (cuts land on whole frames: 42 ms at 24 fps)
 ONSET_KEEP_S = 0.08   # silence always left before the next kept word's first sound
+GAP_WINDOWS = 5       # 100 ms under the threshold before a rise counts as a new sound, not the word's last consonant
 
 
 def release_end(lvl, noise_db, t):
     """Where the sound that crossed under the threshold at t has really died away: the soft ends of words
     ("s", "f", a falling vowel) sit under the threshold, and a cut there stops the word mid-sound. It ends
-    RELEASE_DB under the threshold, or where the level turns back up (the next word starting), and at most
-    RELEASE_MAX_S on."""
+    RELEASE_DB under the threshold, or before a new sound (a breath, the next word) that rises after a real
+    gap, and at most RELEASE_MAX_S on. A rise after a shorter dip is the word's own last consonant: the "t"
+    burst after the stop in "market", the "s" after the "n" in "response"."""
     if not lvl or noise_db is None:
         return t
     floor = noise_db - RELEASE_DB
     j, end = int(t / RMS_WIN_S), min(len(lvl), int((t + RELEASE_MAX_S) / RMS_WIN_S))
-    low = lvl[j] if j < len(lvl) else floor
+    low, quiet = (lvl[j] if j < len(lvl) else floor), 0
     while j < end and lvl[j] > floor:
-        if low < noise_db and lvl[j] > low + 10:   # under the threshold and rising again: the next sound
-            return max(t, j * RMS_WIN_S - RMS_WIN_S)     # (a breath, a click): cut before it, not into it
+        if quiet >= GAP_WINDOWS and lvl[j] > low + 10:   # a new sound after a real gap: cut in front of it
+            return max(t, (j - 1) * RMS_WIN_S)
+        quiet = quiet + 1 if lvl[j] < noise_db else 0
         low = min(low, lvl[j])
         j += 1
     if j >= end and low > noise_db:
@@ -542,6 +545,24 @@ def splice_neighbours(c, kept, lvl, noise_db):
     return left, nxt
 
 
+VOICED_DB = 12.0   # a rise this far over the threshold is a spoken word; a word's own last consonant is weaker
+
+
+def voiced_rise(lvl, noise_db, a, b):
+    """True when the sound between a and b dips and then comes back at voice level: a new word (a restart
+    said in one breath), not the word's own fading "s" or "t" burst (measured: those peak 6-8 dB over the
+    threshold, a spoken word 15-20)."""
+    if not lvl or noise_db is None:
+        return False
+    i, j = int(a / RMS_WIN_S), min(len(lvl), int(b / RMS_WIN_S) + 1)
+    low = 0.0
+    for k in range(i, j):
+        low = min(low, lvl[k])
+        if low < noise_db and lvl[k] > noise_db + VOICED_DB:
+            return True
+    return False
+
+
 def valley(lvl, noise_db, t, prev_end):
     """A removal that starts mid-speech (a false start said in the same breath: "the thing is, it's not a")
     starts at the quietest 20 ms between the last kept word and t instead: the gap between the two words."""
@@ -566,9 +587,20 @@ def enforce_splice_budget(cuts, words, model_cuts, budget, lvl=None, noise_db=No
         if prev_end is None or nxt is None:
             continue
         c["_next"] = nxt["start"]   # the audible onset: the frame clamp must not reach back past it
+        dipped = False
         if lvl and noise_db is not None and c.get("kind") != "silence":
-            c["start"] = valley(lvl, noise_db, c["start"], prev_end)
-        rel = release_end(lvl, noise_db, prev_end) if lvl and noise_db is not None else prev_end
+            v = valley(lvl, noise_db, c["start"], prev_end)
+            dipped, c["start"] = v != c["start"], v
+        # said in one breath: the dip between the words is the edit point, there is no tail to wait for
+        rel = release_end(lvl, noise_db, prev_end) if lvl and noise_db is not None and not dipped else prev_end
+        first = c.get("_first")
+        if first is not None and rel > max(first, prev_end) + 1e-6 and voiced_rise(lvl, noise_db, prev_end, rel):
+            # the "tail" runs on into the words this cut removes (a restart said in one breath): never keep
+            # any of them; start in the quietest point before the first one instead
+            # the quietest point before the voice comes back (labels here run early or late, so the audio decides)
+            back = next(k * RMS_WIN_S for k in range(int(prev_end / RMS_WIN_S), int(rel / RMS_WIN_S) + 1)
+                        if voiced_rise(lvl, noise_db, prev_end, k * RMS_WIN_S))
+            rel = c["start"] = valley(lvl, noise_db, back, prev_end)
         if rel < c["end"] - 0.04:
             c["start"] = max(c["start"], rel)   # never inside the previous word's release,
             prev_end = max(prev_end, rel)       # and the pause budget counts from where it has died away
@@ -757,6 +789,7 @@ def main():
 
     for c in allcuts:
         c.pop("_next", None)
+        c.pop("_first", None)
         if c["end"] == math.inf:
             c["end"] = dur
     (d / "decisions.json").write_text(json.dumps(spans, indent=1))

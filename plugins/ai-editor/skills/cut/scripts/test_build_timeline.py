@@ -187,6 +187,25 @@ def test_cut_stops_where_the_removed_word_does():
     assert B.close_tails([{"start": 0.2, "end": 1.02}], lvl, -45)[0]["end"] == 1.02
 
 
+def test_word_rings_out_before_a_pause_cut():
+    # speech to 1.0 s, a soft tail 12 dB down to 1.14 s, silence to 2.0 s: the pause cut starts after the tail
+    lvl = _lvl([(0.2, 1.0), (2.0, 2.6)], 3)
+    for i in range(int(1.0 / B.RMS_WIN_S), int(1.14 / B.RMS_WIN_S)):
+        lvl[i] = -52.0
+    words = [{"text": "this", "start": 0.2, "end": 0.95}, {"text": "next", "start": 2.0, "end": 2.5}]
+    c = B.silence_cuts(words, 0.3, 0.2, [(1.0, 2.0)], lvl, -45)[0]
+    assert c["start"] >= 1.14, c
+    assert B.release_end(lvl, -45, 1.0) >= 1.14
+
+
+def test_mid_speech_removal_starts_in_the_dip():
+    # "is," then "it's" with no pause: a dip to -48 at 0.70 s between them; the removal starts there
+    lvl = _lvl([(0.2, 1.2)], 2, speech=-28)
+    lvl[int(0.70 / B.RMS_WIN_S)] = -48
+    assert abs(B.valley(lvl, -42, 0.86, 0.56) - 0.71) < 0.02
+    assert B.valley(lvl, -42, 1.5, 1.4) == 1.5     # already silent: unchanged
+
+
 if __name__ == "__main__":
     test_derive()
     test_audible_end()
@@ -198,4 +217,6 @@ if __name__ == "__main__":
     test_label_ahead_of_its_word()
     test_label_on_the_previous_words_tail()
     test_cut_stops_where_the_removed_word_does()
+    test_word_rings_out_before_a_pause_cut()
+    test_mid_speech_removal_starts_in_the_dip()
     print("all ok")

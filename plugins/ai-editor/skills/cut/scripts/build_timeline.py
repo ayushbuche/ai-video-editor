@@ -255,6 +255,16 @@ def fit_labels(toks, lvl, noise_db):
         est = plausible_s(w["text"])
         nxt = next((t["start"] for t in toks[i + 1:] if t.get("type") in ("word", "audio_event")), w["end"] + est)
         a = audible_start(lvl, noise_db, w["start"], min(nxt, w["end"] + est)) if lvl else None
+        prev = next((t["end"] for t in reversed(toks[:i]) if t.get("type") in ("word", "audio_event")), None)
+        if a is not None and prev is not None and a - w["start"] < 1e-6 and w["start"] - prev < 0.06:
+            # the audio at the label's start is the previous word ringing out ("best, Now," with Now said 5 s
+            # later): look past that run, up to the next word
+            r = run_end(lvl, noise_db, a)
+            a = audible_start(lvl, noise_db, r, nxt) if r < nxt else None
+        elif a is None and lvl:
+            # a label run AHEAD of its word into a pause ("Good" labelled 2 s before it is said, inside the
+            # silence): the word is the first sound before the next word
+            a = audible_start(lvl, noise_db, w["end"], nxt)
         if a is None:
             out[i] = (w["start"], round(w["start"] + est, 3))
             continue
@@ -262,6 +272,43 @@ def fit_labels(toks, lvl, noise_db):
         while j < len(lvl) and lvl[j] > noise_db and j * RMS_WIN_S < a + est:
             j += 1
         out[i] = (round(a, 3), round(max(min(j * RMS_WIN_S, nxt), a + 0.04), 3))
+    return out
+
+
+def run_end(lvl, noise_db, t, bridge=0):
+    """The end of the audible run at t (t itself when t is silent). bridge: dips of up to this many
+    windows do not end it (a word's fading tail flickers around the threshold)."""
+    j = int(t / RMS_WIN_S)
+    while j < len(lvl) and (lvl[j] > noise_db or any(v > noise_db for v in lvl[j + 1:j + 1 + bridge])):
+        j += 1
+    return max(t, j * RMS_WIN_S)
+
+
+TAIL_MAX_S = 0.25     # how far past its label a removed word's sound may ring
+TAIL_GAP_S = 0.10     # the silence that must follow it, so the word after is never touched
+TAIL_BRIDGE = 3       # 60 ms dips inside the fading tail do not end it
+
+
+def close_tails(cuts, lvl, noise_db):
+    """A cut whose end lands inside the sound of the speech it removes stops where that sound does.
+    Transcribers end a word early when a repeat follows a pause ("beautiful ... beautiful combination"
+    played 0.08 s of the first "beautiful"). Only when that run began inside the cut (it is the removed
+    speech, not the onset of the kept word) and silence follows it. Model cuts only."""
+    if not lvl or noise_db is None:
+        return cuts
+    out = []
+    for c in cuts:
+        e = c["end"]
+        i = int(e / RMS_WIN_S)
+        if math.isfinite(e) and 0 <= i < len(lvl) and lvl[i] > noise_db:
+            k = i
+            while k > 0 and lvl[k - 1] > noise_db:
+                k -= 1
+            began, r = k * RMS_WIN_S, run_end(lvl, noise_db, e, bridge=TAIL_BRIDGE)
+            quiet = audible_start(lvl, noise_db, r, r + TAIL_GAP_S) is None
+            if began < e - 0.1 and began >= c["start"] - 0.05 and r - e <= TAIL_MAX_S and quiet:
+                c = dict(c, end=round(r + 0.02, 3))
+        out.append(c)
     return out
 
 
@@ -596,7 +643,7 @@ def main():
         speech_db = sorted(lvl)[int(0.99 * (len(lvl) - 1))] if lvl else 0.0
         heard = merge_spans(heard + quiet_word_gaps(kept_words, gap_max, lvl, speech_db - GAP_QUIET_DB))
     splice_noise = None if bed else noise    # over a bed, word labels bound the splices
-    allcuts = merge(snap_and_pad(model_cuts, words, a.pad)
+    allcuts = merge(close_tails(snap_and_pad(model_cuts, words, a.pad), lvl, splice_noise)
                     + silence_cuts(words, gap_max, gap_keep, heard)
                     + lead_trail_cuts(kept_words, dur, gap_keep))
     allcuts = enforce_splice_budget(allcuts, words, model_cuts, splice_max, lvl, splice_noise)

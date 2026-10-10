@@ -91,7 +91,7 @@ export const Root: React.FC = () => (
     <Composition id="Proof" component={Proof} width={1080} height={1080} fps={30} durationInFrames={60} defaultProps={{ plugin: "drawsvg" }} />
     {/* long-form 16:9 in a measured style (styles/<name>/style.json), planned by skills/style-edit/scripts/longplan.py */}
     <Composition id="LongEdit" component={LongEdit} calculateMetadata={longMeta} width={1920} height={1080} fps={30} durationInFrames={90}
-      defaultProps={{ video: "", width: 1920, height: 1080, fps: 30, durationInFrames: 90, face: { cx: 0.5, cy: 0.3, h: 0.25 }, zooms: [],
+      defaultProps={{ video: "", width: 1920, height: 1080, fps: 30, durationInFrames: 90, face: { cx: 0.5, top: 0.1, h: 0.4 }, zooms: [],
         graphics: [] } as LongPlan} />
     {/* product-video skill: a website's real UI as a launch video (plan from skills/product-video/scripts/product.py) */}
     <Composition id="ProductVideo" component={ProductVideo} calculateMetadata={productMeta} width={1920} height={1080} fps={30}

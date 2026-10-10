@@ -106,6 +106,16 @@ def report(d, expected, actual, removed, same, differ, gone, new, act=None, span
         print(f"\nMISSING ({len(missing)}), with the kept words around each:")
         for i, t in missing[:30]:
             print(f"  {t!r:14} ... {' '.join(expected[max(0, i - 4):i + 5])} ...")
+    # every heard-only run that plays (a repeat the first transcript folded into one word, a word it placed in
+    # a pause): cut-check.html shows these as playing, so the approval page matches the video
+    plays = []
+    if act and spans:
+        for j1, j2 in runs:
+            words = [t for t in actual[j1:j2] if t not in FILLERS]
+            if words and any(fragment(t) for t in words):
+                plays.append({"text": " ".join(actual[j1:j2]), "start": round(to_source(act[j1][1], spans), 3),
+                              "end": round(to_source(act[j2 - 1][2], spans), 3)})
+    (d / "heard.json").write_text(json.dumps(plays, indent=1))
     if survived:
         print(f"\nSURVIVED ({len(survived)}), heard in the render where nothing was expected [in brackets].")
         print("A real survivor is a repeat or a stumble. Clean speech here means the raw transcript misheard it:")

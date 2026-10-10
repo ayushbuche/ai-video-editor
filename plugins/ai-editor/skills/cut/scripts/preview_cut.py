@@ -28,10 +28,24 @@ def kept_len(a, b, spans):
     return sum(max(0.0, min(b, s["end"]) - max(a, s["start"])) for s in spans)
 
 
+def heard_tokens(d):
+    """Words the verify pass heard playing in the render where the first transcript has none (heard.json),
+    as tokens on the source timeline, while that pass is newer than cut.mp4."""
+    d = Path(d)
+    h, cut = d / "heard.json", d / "cut.mp4"
+    if not (h.exists() and cut.exists() and h.stat().st_mtime > cut.stat().st_mtime):
+        return []
+    return [{"text": x["text"], "type": "word", "start": x["start"], "end": max(x["end"], x["start"] + 0.01), "heard": True}
+            for x in json.loads(h.read_text())]
+
+
 def label(toks, cuts, spans):
-    """[(token, cut index or None, removed?)]"""
+    """[(token, cut index or None, removed?)]. A heard token (verify_cut.py) plays: it was heard in the render."""
     out = []
     for t in toks:
+        if t.get("heard"):
+            out.append((t, None, False))
+            continue
         mid = (t["start"] + t["end"]) / 2
         ci = next((i for i, c in enumerate(cuts) if c["start"] <= mid <= c["end"]), None)
         gone = not is_kept(t, spans)
@@ -83,6 +97,7 @@ video {{ width:100%; max-height:60vh; background:#000; border-radius:8px; margin
 p {{ margin:0 0 1em; }}
 del {{ color:var(--cut); text-decoration-thickness:2px; opacity:.75; }}
 del.check {{ background:var(--flag); opacity:1; }}
+.heard {{ text-decoration: underline dotted; text-underline-offset: 3px; }}
 del.clip {{ background:var(--cut); color:var(--bg); opacity:1; }}
 sup {{ font-size:11px; color:var(--mute); margin-right:2px; }}
 .pause {{ font-size:12px; color:var(--mute); white-space:nowrap; }}
@@ -92,6 +107,7 @@ sup {{ font-size:11px; color:var(--mute); margin-right:2px; }}
 {video}
 <div class="legend">Normal text plays. <del>Struck text</del> is cut.
 <del class="check">Highlighted</del> cuts are judgement calls worth a second look.
+<span class="heard">Underlined</span> words play in the video; the first transcript missed them.
 Small grey marks show long pauses and what they were shortened to.
 To keep something, say "keep" and quote the line.</div>
 {body}
@@ -129,7 +145,8 @@ def cut_check(lab, cuts, spans, dur, final, has_video):
         text = t["text"].strip()
         if not gone:
             flush()
-            cur.append(html.escape(text))
+            cur.append(f'<span class="heard" title="heard in the video; the first transcript missed it">{html.escape(text)}</span>'
+                       if t.get("heard") else html.escape(text))
             continue
         c = cuts[ci] if ci is not None else None
         cls = "clip" if c is None else ("check" if c["confidence"] == "low" or c["kind"] == "redundant" else "")
@@ -166,6 +183,7 @@ if __name__ == "__main__":
     d = Path(args[0])
     rep = json.loads((d / "report.json").read_text())
     toks = [t for t in load_fitted(d) if t.get("type") in ("word", "audio_event")]
+    toks = sorted(toks + heard_tokens(d), key=lambda t: t["start"])
     write_all(d, toks, rep["model_cuts"], json.loads((d / "decisions.json").read_text()),
               rep["duration"], rep["final_s"])
     print(d / "paper-edit.md")

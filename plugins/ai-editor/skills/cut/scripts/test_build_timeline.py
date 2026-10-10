@@ -148,6 +148,45 @@ def test_hidden_repeat_is_listed_and_shown():
         B.window_rms_db, B.derive_noise_db = old
 
 
+def _lvl(runs, total_s, speech=-20.0, floor=-70.0):
+    """20 ms window levels: speech inside each (start, end) run, floor elsewhere."""
+    n = int(total_s / B.RMS_WIN_S)
+    return [speech if any(a <= i * B.RMS_WIN_S < b for a, b in runs) else floor for i in range(n)]
+
+
+def test_label_ahead_of_its_word():
+    # Whisper labels "Good" 2 s early, inside the pause; the word is said just before "deals"
+    lvl = _lvl([(1.0, 1.8), (3.75, 5.0)], 6)
+    toks = [{"text": "deals", "type": "word", "start": 1.3, "end": 1.8},
+            {"text": "Good", "type": "word", "start": 1.83, "end": 2.87},
+            {"text": "deals", "type": "word", "start": 3.96, "end": 4.3}]
+    a, b = B.fit_labels(toks, lvl, -45)[1]
+    assert 3.69 <= a <= 3.76 and b <= 3.96, (a, b)
+
+
+def test_label_on_the_previous_words_tail():
+    # "best, Now," with "Now" said 5 s later: the audio at the label's start is "best" ringing out
+    lvl = _lvl([(0.5, 1.0), (6.08, 7.0)], 8)
+    toks = [{"text": "best,", "type": "word", "start": 0.6, "end": 0.95},
+            {"text": "Now,", "type": "word", "start": 0.95, "end": 1.97},
+            {"text": "if", "type": "word", "start": 6.25, "end": 6.35}]
+    a, b = B.fit_labels(toks, lvl, -45)[1]
+    assert 6.0 <= a <= 6.1 and b <= 6.25, (a, b)
+
+
+def test_cut_stops_where_the_removed_word_does():
+    # "beautiful (pause) beautiful combination": the first is cut, its label ends 0.08 s before its sound
+    lvl = _lvl([(0.76, 1.08), (1.66, 2.5)], 3)
+    cut = [{"start": 0.56, "end": 1.0}]
+    assert B.close_tails(cut, lvl, -45)[0]["end"] == 1.1
+    # a fading tail that flickers around the threshold still ends the run
+    lvl[int(1.08 / B.RMS_WIN_S) + 1] = -30
+    assert 1.1 < B.close_tails(cut, lvl, -45)[0]["end"] <= 1.15
+    # the onset of a kept word right after the cut is never taken
+    lvl = _lvl([(0.2, 0.9), (1.0, 1.3)], 3)
+    assert B.close_tails([{"start": 0.2, "end": 1.02}], lvl, -45)[0]["end"] == 1.02
+
+
 if __name__ == "__main__":
     test_derive()
     test_audible_end()
@@ -156,4 +195,7 @@ if __name__ == "__main__":
     test_frames_and_retime()
     test_stretched_label_is_not_clipped()
     test_hidden_repeat_is_listed_and_shown()
+    test_label_ahead_of_its_word()
+    test_label_on_the_previous_words_tail()
+    test_cut_stops_where_the_removed_word_does()
     print("all ok")

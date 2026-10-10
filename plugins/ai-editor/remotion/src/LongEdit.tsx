@@ -41,7 +41,7 @@ export type Graphic = { start: number; end: number } & (
   | { kind: "lower"; text: string } // large white serif words, lower third, over the speaker
 );
 type Zoom = { start: number; end: number; scale: number };
-type Face = { cx: number; cy: number; h: number }; // the head in the source, fractions of the frame (face.py)
+type Face = { cx: number; top: number; h: number }; // the head box (hair to chin) in the source, fractions of the frame (face.py)
 type Track = { src: string; start: number; volume?: number };
 export type LongPlan = { video: string; width: number; height: number; fps: number; durationInFrames: number; face: Face;
   zooms: Zoom[]; graphics: Graphic[]; music?: Track[]; sfx?: Track[]; palette?: Partial<Palette> };
@@ -68,19 +68,20 @@ const Footage: React.FC<{ video: string; face: Face; box?: { w: number; h: numbe
   const { width, height } = useVideoConfig();
   if (!box) {
     // full frame: scale about the head, never past the frame's edge
-    const ox = face.cx * 100, oy = Math.max(0, face.cy - face.h * 0.9) * 100;
+    const ox = face.cx * 100, oy = face.top * 100; // the top of the head holds its place: the hair never leaves the frame
     return (
       <AbsoluteFill style={{ transform: `scale(${zoom})`, transformOrigin: `${ox}% ${oy}%` }}>
         <OffthreadVideo src={staticFile(video)} style={{ width: "100%", height: "100%", objectFit: "cover" }} />
       </AbsoluteFill>
     );
   }
-  // card: the head 22% of the card high, a third of the way down, the frame always covering the card
+  // card: the head box 42% of the card high, its top 9% down (measured on the references' speaker card),
+  // the frame always covering the card
   const bw = box.w * S, bh = box.h * S;
-  const k = Math.max(bh / height, bw / width, (0.22 * bh) / (face.h * height));
+  const k = Math.max(bh / height, bw / width, (0.42 * bh) / (face.h * height));
   const vw = width * k, vh = height * k;
   const left = Math.min(0, Math.max(bw - vw, bw / 2 - face.cx * vw));
-  const top = Math.min(0, Math.max(bh - vh, bh * 0.36 - face.cy * vh));
+  const top = Math.min(0, Math.max(bh - vh, bh * 0.09 - face.top * vh));
   return (
     <div style={{ position: "absolute", left, top, width: vw, height: vh }}>
       <OffthreadVideo src={staticFile(video)} style={{ width: "100%", height: "100%" }} />

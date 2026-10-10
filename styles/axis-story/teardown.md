@@ -76,8 +76,8 @@ Motion is calm: no bounce, no spinning, no flashy transitions.
 These are where your decisions or single-camera footage stop us copying the references exactly.
 
 1. **Second camera.** The references cut between a wide and a medium camera. Ayush decided
-   (2026-10-10) not to imitate this: the edit stays on the one camera angle, with no crop punch-ins
-   standing in for the second camera.
+   (2026-10-10) not to imitate this: the edit stays on the one camera angle. Some punch-in zooms
+   are kept, at the references' rate of framing changes (2.8 a minute, busier in the first minute).
 2. **Real overhead whiteboard.** About 60% of az1Zh-FNSno is a real camera over a whiteboard with
    his hand drawing. We can't copy that; the editor will use drawn-on marker diagrams, like the
    other two videos.

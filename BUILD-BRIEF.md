@@ -10,7 +10,7 @@ A fork of NextWork's open-source editor (github.com/nextwork-projects/ai-video-e
 
 | Area | Decision |
 |---|---|
-| Input | One camera, talking head, raw footage of 30–40 min (mp4/mov). **Stay on that one angle: don't imitate the references' second camera with crop punch-ins** (decided 2026-10-10). |
+| Input | One camera, talking head, raw footage of 30–40 min (mp4/mov). **Stay on that one angle; don't imitate the references' second camera.** Some punch-in zooms are fine, at the references' rate of framing changes (decided 2026-10-10). |
 | Output | 16:9 YouTube, finished length roughly 10–20 min. One finished `render.mp4`. |
 | Premiere / NLE export | **Not now.** Changes happen by asking Claude in chat. Leave `export_nle.py` alone; it isn't part of the main workflow. |
 | Visuals | **Only motion graphics and animations the editor makes itself**, plus screenshots or B-roll the client supplies. **No stock B-roll (Pexels etc.) and no footage or images of real people.** |

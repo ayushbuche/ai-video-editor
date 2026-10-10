@@ -1,0 +1,663 @@
+{
+ "handle": "axis-story",
+ "videos": 3,
+ "aspect": "16:9",
+ "pace": {
+  "wpm": 224,
+  "max_pause_s": 0.4,
+  "cuts_per_10s": 1.29,
+  "median_shot_s": 3.76,
+  "cut_kinds": {
+   "hard": 45,
+   "zoom-punch": 31,
+   "jump": 12,
+   "whip": 9,
+   "dissolve": 1,
+   "match": 1,
+   "mask": 1
+  }
+ },
+ "zoom": {
+  "per_min": 2.8,
+  "kind": "punch",
+  "scale": 1.25,
+  "duration_s": 0.0,
+  "on": "every_cut",
+  "ease": "none"
+ },
+ "camera": {
+  "pan_per_min": 1.0,
+  "shake_pct": 0,
+  "push_per_min": 0.1
+ },
+ "transitions": [
+  "push"
+ ],
+ "captions": {
+  "present": false,
+  "note": "No burned-in captions in any of the 3 references, full length."
+ },
+ "face": {
+  "present_pct": 91,
+  "x_pct": 54.9,
+  "y_pct": 33.2,
+  "height_pct": 24.2,
+  "framing": "close"
+ },
+ "graphics": {
+  "share_pct": 61,
+  "per_min": 2.7,
+  "hold_s": 7.33,
+  "ease_in_s": 0.04,
+  "palette": [
+   {
+    "hex": "#FFFFFF",
+    "pct": 32
+   },
+   {
+    "hex": "#DBDFDF",
+    "pct": 16
+   },
+   {
+    "hex": "#D6D8DB",
+    "pct": 11
+   },
+   {
+    "hex": "#C8C8C9",
+    "pct": 9
+   },
+   {
+    "hex": "#ACA9A6",
+    "pct": 7
+   },
+   {
+    "hex": "#272528",
+    "pct": 5
+   }
+  ],
+  "kinds": {
+   "photo": 60,
+   "text card": 34,
+   "real screenshot": 4,
+   "logo": 1,
+   "b-roll": 1,
+   "UI recording": 0
+  },
+  "kinds_source": "code",
+  "measured": 193,
+  "per_min_measured": 4.7,
+  "share_pct_measured": 72,
+  "hold_s_measured": 5.4,
+  "layout": {
+   "zones_pct": {
+    "top": 36,
+    "middle": 31,
+    "bottom": 31,
+    "full": 1
+   },
+   "median_box": [
+    30.6,
+    33.3,
+    17.8,
+    17.6
+   ],
+   "area_pct": 3.2,
+   "covers_face_pct": 15,
+   "heatmap": "graphics/heatmap.png",
+   "grid": [
+    [
+     40,
+     40,
+     51,
+     47,
+     48,
+     48,
+     48,
+     47,
+     46,
+     62,
+     58,
+     41,
+     20,
+     21,
+     14,
+     14
+    ],
+    [
+     40,
+     47,
+     86,
+     85,
+     80,
+     72,
+     78,
+     55,
+     52,
+     62,
+     58,
+     43,
+     21,
+     22,
+     39,
+     51
+    ],
+    [
+     42,
+     54,
+     97,
+     98,
+     94,
+     88,
+     100,
+     73,
+     70,
+     60,
+     69,
+     71,
+     37,
+     25,
+     44,
+     53
+    ],
+    [
+     34,
+     41,
+     63,
+     64,
+     63,
+     66,
+     80,
+     75,
+     73,
+     61,
+     63,
+     62,
+     28,
+     18,
+     46,
+     55
+    ],
+    [
+     32,
+     37,
+     58,
+     55,
+     75,
+     80,
+     88,
+     60,
+     60,
+     50,
+     65,
+     60,
+     20,
+     18,
+     43,
+     42
+    ],
+    [
+     28,
+     33,
+     50,
+     51,
+     74,
+     77,
+     76,
+     46,
+     42,
+     39,
+     64,
+     58,
+     20,
+     18,
+     37,
+     55
+    ],
+    [
+     15,
+     20,
+     26,
+     28,
+     24,
+     25,
+     28,
+     31,
+     31,
+     31,
+     36,
+     36,
+     26,
+     28,
+     27,
+     45
+    ],
+    [
+     16,
+     20,
+     22,
+     25,
+     21,
+     27,
+     28,
+     35,
+     39,
+     38,
+     33,
+     24,
+     23,
+     33,
+     31,
+     32
+    ],
+    [
+     16,
+     17,
+     20,
+     24,
+     20,
+     27,
+     31,
+     36,
+     40,
+     40,
+     30,
+     22,
+     38,
+     43,
+     25,
+     22
+    ]
+   ]
+  },
+  "entrances": [
+   {
+    "kind": "fade",
+    "ease": "expo.out",
+    "share_pct": 32,
+    "n": 48,
+    "duration_s": 0.25,
+    "overshoot": 0.0,
+    "fade": true
+   },
+   {
+    "kind": "cut",
+    "ease": "none",
+    "share_pct": 31,
+    "n": 47,
+    "duration_s": 0.0,
+    "overshoot": 0.0,
+    "fade": false
+   },
+   {
+    "kind": "fade",
+    "ease": "none",
+    "share_pct": 10,
+    "n": 15,
+    "duration_s": 0.88,
+    "overshoot": 0.0,
+    "fade": true
+   },
+   {
+    "kind": "fade",
+    "ease": "power3.inOut",
+    "share_pct": 5,
+    "n": 7,
+    "duration_s": 0.82,
+    "overshoot": 0.0,
+    "fade": true
+   },
+   {
+    "kind": "fade",
+    "ease": "power1.out",
+    "share_pct": 4,
+    "n": 6,
+    "duration_s": 0.77,
+    "overshoot": 0.0,
+    "fade": true
+   }
+  ],
+  "exits": [
+   {
+    "kind": "cut",
+    "ease": "none",
+    "share_pct": 50,
+    "n": 73,
+    "duration_s": 0.0,
+    "overshoot": 0.0,
+    "fade": false
+   },
+   {
+    "kind": "fade",
+    "ease": "expo.in",
+    "share_pct": 20,
+    "n": 29,
+    "duration_s": 0.14,
+    "overshoot": 0.0,
+    "fade": true
+   },
+   {
+    "kind": "fade",
+    "ease": "none",
+    "share_pct": 5,
+    "n": 8,
+    "duration_s": 0.66,
+    "overshoot": 0.0,
+    "fade": true
+   },
+   {
+    "kind": "fade",
+    "ease": "sine.inOut",
+    "share_pct": 5,
+    "n": 7,
+    "duration_s": 0.44,
+    "overshoot": 0.0,
+    "fade": true
+   },
+   {
+    "kind": "fade",
+    "ease": "power3.inOut",
+    "share_pct": 3,
+    "n": 5,
+    "duration_s": 0.52,
+    "overshoot": 0.0,
+    "fade": true
+   }
+  ],
+  "secondary_motion": {
+   "still": 94,
+   "video": 4,
+   "push": 2,
+   "drift": 1
+  },
+  "blur_behind_pct": 4,
+  "crop_palette": [
+   {
+    "hex": "#FFFFFF",
+    "pct": 30
+   },
+   {
+    "hex": "#D9DEDD",
+    "pct": 29
+   },
+   {
+    "hex": "#1F1F23",
+    "pct": 16
+   },
+   {
+    "hex": "#B0A699",
+    "pct": 12
+   },
+   {
+    "hex": "#626061",
+    "pct": 11
+   },
+   {
+    "hex": "#D3363D",
+    "pct": 3
+   }
+  ]
+ },
+ "motion": {
+  "cuts_per_min": 7.7,
+  "ease_in_s": 0.04,
+  "hold_s": 7.33,
+  "caption_ease_s": null,
+  "zoom_punch_per_min": 2.8,
+  "personality": "calm"
+ },
+ "sound": {
+  "sfx_per_min": 0.3,
+  "sfx_per_min_by_video": [
+   0.1,
+   0.2,
+   0.4
+  ],
+  "kinds": {
+   "pop": 27,
+   "impact": 27,
+   "other": 18,
+   "click": 9,
+   "riser": 9,
+   "ding": 9
+  },
+  "on_cut_pct": 0,
+  "on_graphic_pct": 0,
+  "in_voice_pct": 55,
+  "music": {
+   "present_pct": 100,
+   "level_db": -21.9
+  },
+  "measured": 3,
+  "source": "code"
+ },
+ "sources": [
+  "https://www.youtube.com/watch?v=NEi32Vn302w",
+  "https://www.youtube.com/watch?v=az1Zh-FNSno",
+  "https://www.youtube.com/watch?v=m_D2yOUapNQ"
+ ],
+ "longform": {
+  "measured_on_s": {
+   "NEi32Vn302w": 565.71,
+   "az1Zh-FNSno": 722.01,
+   "m_D2yOUapNQ": 1164.92
+  },
+  "layout_share_pct": {
+   "NEi32Vn302w": {
+    "speaker_close": 18.6,
+    "panel_pip": 38.8,
+    "speaker_wide": 24.5,
+    "full_graphic": 18.1
+   },
+   "az1Zh-FNSno": {
+    "speaker_close": 0.5,
+    "panel_pip": 63.2,
+    "speaker_wide": 26.9,
+    "full_graphic": 9.4
+   },
+   "m_D2yOUapNQ": {
+    "speaker_close": 17.3,
+    "panel_pip": 45.4,
+    "speaker_wide": 32.8,
+    "full_graphic": 4.5
+   }
+  },
+  "graphics_on_screen_pct_median": 56.9,
+  "panel_pip_segment_s_median": 10.3,
+  "full_graphic_segment_s_median": 4.0,
+  "speaker_only_gap_s": {
+   "median": 3.7,
+   "max_seen": 104.7
+  },
+  "first_graphic_s_median": 6.0,
+  "cuts_per_min": {
+   "NEi32Vn302w": [
+    15,
+    5,
+    8,
+    11,
+    6,
+    14,
+    23,
+    6,
+    4,
+    2
+   ],
+   "az1Zh-FNSno": [
+    15,
+    13,
+    8,
+    3,
+    4,
+    8,
+    3,
+    3,
+    5,
+    0,
+    24,
+    7,
+    0
+   ],
+   "m_D2yOUapNQ": [
+    14,
+    9,
+    13,
+    8,
+    6,
+    0,
+    11,
+    8,
+    6,
+    2,
+    0,
+    10,
+    3,
+    9,
+    4,
+    11,
+    4,
+    5,
+    5,
+    4
+   ]
+  },
+  "punch_per_min": {
+   "NEi32Vn302w": [
+    1,
+    1,
+    2,
+    0,
+    3,
+    4,
+    4,
+    3,
+    1,
+    2
+   ],
+   "az1Zh-FNSno": [
+    10,
+    0,
+    0,
+    2,
+    1,
+    2,
+    0,
+    0,
+    1,
+    0,
+    2,
+    3,
+    0
+   ],
+   "m_D2yOUapNQ": [
+    11,
+    3,
+    2,
+    8,
+    4,
+    0,
+    4,
+    8,
+    2,
+    1,
+    0,
+    6,
+    0,
+    5,
+    0,
+    6,
+    1,
+    3,
+    1,
+    4
+   ]
+  },
+  "graphics_pct_per_min": {
+   "NEi32Vn302w": [
+    73,
+    85,
+    35,
+    88,
+    41,
+    58,
+    61,
+    32,
+    63,
+    0
+   ],
+   "az1Zh-FNSno": [
+    39,
+    46,
+    78,
+    85,
+    82,
+    77,
+    92,
+    72,
+    79,
+    100,
+    87,
+    37,
+    0
+   ],
+   "m_D2yOUapNQ": [
+    52,
+    60,
+    62,
+    29,
+    84,
+    100,
+    60,
+    9,
+    0,
+    80,
+    100,
+    19,
+    64,
+    27,
+    37,
+    17,
+    74,
+    61,
+    33,
+    0
+   ]
+  },
+  "chapters": {
+   "count": 3,
+   "card": "full-screen cream, red number in white rounded square, black serif title, 3-5 s"
+  }
+ },
+ "design": {
+  "colors": {
+   "cream": "#F5F3E4",
+   "ink": "#000000",
+   "blue": "#2655A3",
+   "red": "#C71338",
+   "red_dark": "#A02838",
+   "panel": "#DDE1E0",
+   "white": "#FFFFFF",
+   "pip_glow": "#D0E0F8"
+  },
+  "fonts": {
+   "display": "high-contrast serif (Tiempos/Playfair-like), black or white",
+   "body": "neo-grotesk sans (Inter/Suisse-like), blue, key phrase bold",
+   "marker": "hand-lettered marker, blue/red/green/black"
+  },
+  "layouts": {
+   "panel_pip": "light-grey rounded panel x 4-75% y 5-95% (radius ~48px); speaker crop in rounded portrait card x 70-97% y 12-88% with soft pale-blue glow; panel holds a marker diagram, title+bullets, or a screenshot",
+   "quote": "full-screen cream, big blue open-quote top-left, faint giant close-quote right, blue sans text left-aligned 4 lines max, key phrase bold",
+   "chapter": "full-screen cream, red numeral in white rounded square centred above huge black serif title",
+   "title_bullets": "white page, black serif title top-left, blue \"- \" bullets beneath, speaker PiP right",
+   "buttons": "red rounded rectangles with white serif labels over the speaker, lower half, appear one by one as named",
+   "pill": "small white rounded pill bottom-left with black sans label (e.g. \"Example 2\")",
+   "lower_text": "white bold sans text bottom-left over speaker (e.g. \"Book $10-$20\")"
+  },
+  "diagrams": "marker drawings on the panel that build stroke by stroke in step with speech; one diagram can stay up 40-100 s while it grows; headed by a red-circled number + blue marker title"
+ },
+ "not_copied": {
+  "second_camera": "refs cut between a wide and a medium camera; single-camera input imitates this with crop punch-ins",
+  "overhead_whiteboard_cam": "az1Zh-FNSno is ~60% a real overhead whiteboard; replaced by drawn-on marker diagrams",
+  "people_photos_and_stock": "banned by brief (\"Example\" clips, cut-out photos of people)",
+  "music": "present in all 3 at about -22 dB; left out for now by brief"
+ }
+}

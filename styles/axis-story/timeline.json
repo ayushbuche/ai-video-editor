@@ -1,0 +1,1896 @@
+{
+ "NEi32Vn302w": {
+  "duration_s": 565.71,
+  "share_pct": {
+   "speaker_close": 18.6,
+   "panel_pip": 38.8,
+   "speaker_wide": 24.5,
+   "full_graphic": 18.1
+  },
+  "segments": {
+   "speaker_close": {
+    "n": 22,
+    "median_s": 4.0,
+    "p90_s": 7.0
+   },
+   "panel_pip": {
+    "n": 17,
+    "median_s": 10.0,
+    "p90_s": 23.7
+   },
+   "speaker_wide": {
+    "n": 26,
+    "median_s": 4.5,
+    "p90_s": 8.7
+   },
+   "full_graphic": {
+    "n": 18,
+    "median_s": 4.3,
+    "p90_s": 11.3
+   }
+  },
+  "graphic_gap_s": {
+   "median": 3.3,
+   "p90": 16.3,
+   "max": 26.7
+  },
+  "first_graphic_s": 2.3,
+  "per_min": [
+   {
+    "min": 0,
+    "cuts": 15,
+    "punch": 1,
+    "graphics_pct": 73
+   },
+   {
+    "min": 1,
+    "cuts": 5,
+    "punch": 1,
+    "graphics_pct": 85
+   },
+   {
+    "min": 2,
+    "cuts": 8,
+    "punch": 2,
+    "graphics_pct": 35
+   },
+   {
+    "min": 3,
+    "cuts": 11,
+    "punch": 0,
+    "graphics_pct": 88
+   },
+   {
+    "min": 4,
+    "cuts": 6,
+    "punch": 3,
+    "graphics_pct": 41
+   },
+   {
+    "min": 5,
+    "cuts": 14,
+    "punch": 4,
+    "graphics_pct": 58
+   },
+   {
+    "min": 6,
+    "cuts": 23,
+    "punch": 4,
+    "graphics_pct": 61
+   },
+   {
+    "min": 7,
+    "cuts": 6,
+    "punch": 3,
+    "graphics_pct": 32
+   },
+   {
+    "min": 8,
+    "cuts": 4,
+    "punch": 1,
+    "graphics_pct": 63
+   },
+   {
+    "min": 9,
+    "cuts": 2,
+    "punch": 2,
+    "graphics_pct": 0
+   }
+  ],
+  "runs": [
+   [
+    "speaker_close",
+    0.0,
+    2.3
+   ],
+   [
+    "full_graphic",
+    2.3,
+    5.3
+   ],
+   [
+    "speaker_close",
+    5.3,
+    8.7
+   ],
+   [
+    "full_graphic",
+    8.7,
+    12.3
+   ],
+   [
+    "speaker_close",
+    12.3,
+    14.3
+   ],
+   [
+    "full_graphic",
+    14.3,
+    19.3
+   ],
+   [
+    "speaker_close",
+    19.3,
+    22.0
+   ],
+   [
+    "full_graphic",
+    22.0,
+    28.0
+   ],
+   [
+    "speaker_close",
+    28.0,
+    32.7
+   ],
+   [
+    "full_graphic",
+    32.7,
+    44.0
+   ],
+   [
+    "speaker_wide",
+    44.0,
+    45.3
+   ],
+   [
+    "panel_pip",
+    45.3,
+    69.0
+   ],
+   [
+    "speaker_close",
+    69.0,
+    73.0
+   ],
+   [
+    "speaker_wide",
+    73.0,
+    74.0
+   ],
+   [
+    "full_graphic",
+    74.0,
+    76.0
+   ],
+   [
+    "speaker_wide",
+    76.0,
+    79.3
+   ],
+   [
+    "panel_pip",
+    79.3,
+    119.3
+   ],
+   [
+    "speaker_close",
+    119.3,
+    122.3
+   ],
+   [
+    "full_graphic",
+    122.3,
+    125.0
+   ],
+   [
+    "speaker_wide",
+    125.0,
+    129.3
+   ],
+   [
+    "speaker_close",
+    129.3,
+    136.3
+   ],
+   [
+    "speaker_wide",
+    136.3,
+    143.3
+   ],
+   [
+    "full_graphic",
+    143.3,
+    145.3
+   ],
+   [
+    "speaker_wide",
+    145.3,
+    151.3
+   ],
+   [
+    "speaker_close",
+    151.3,
+    161.7
+   ],
+   [
+    "full_graphic",
+    161.7,
+    165.0
+   ],
+   [
+    "panel_pip",
+    165.0,
+    174.7
+   ],
+   [
+    "speaker_close",
+    174.7,
+    176.7
+   ],
+   [
+    "panel_pip",
+    176.7,
+    186.0
+   ],
+   [
+    "speaker_close",
+    186.0,
+    187.0
+   ],
+   [
+    "panel_pip",
+    187.0,
+    191.3
+   ],
+   [
+    "full_graphic",
+    191.3,
+    196.0
+   ],
+   [
+    "panel_pip",
+    196.0,
+    212.0
+   ],
+   [
+    "speaker_wide",
+    212.0,
+    214.3
+   ],
+   [
+    "panel_pip",
+    214.3,
+    228.7
+   ],
+   [
+    "panel_pip",
+    229.7,
+    237.3
+   ],
+   [
+    "speaker_wide",
+    237.3,
+    244.7
+   ],
+   [
+    "speaker_close",
+    244.7,
+    251.7
+   ],
+   [
+    "speaker_wide",
+    251.7,
+    260.0
+   ],
+   [
+    "full_graphic",
+    260.0,
+    262.7
+   ],
+   [
+    "speaker_wide",
+    262.7,
+    266.7
+   ],
+   [
+    "full_graphic",
+    266.7,
+    271.7
+   ],
+   [
+    "speaker_wide",
+    271.7,
+    277.7
+   ],
+   [
+    "speaker_close",
+    277.7,
+    283.0
+   ],
+   [
+    "panel_pip",
+    283.0,
+    306.7
+   ],
+   [
+    "speaker_close",
+    306.7,
+    312.0
+   ],
+   [
+    "speaker_wide",
+    312.0,
+    314.3
+   ],
+   [
+    "full_graphic",
+    314.3,
+    318.0
+   ],
+   [
+    "panel_pip",
+    318.0,
+    319.0
+   ],
+   [
+    "speaker_wide",
+    319.0,
+    321.7
+   ],
+   [
+    "speaker_close",
+    321.7,
+    323.0
+   ],
+   [
+    "panel_pip",
+    323.0,
+    338.3
+   ],
+   [
+    "speaker_wide",
+    338.3,
+    340.3
+   ],
+   [
+    "panel_pip",
+    340.3,
+    345.3
+   ],
+   [
+    "speaker_wide",
+    345.3,
+    354.0
+   ],
+   [
+    "speaker_close",
+    354.0,
+    356.7
+   ],
+   [
+    "full_graphic",
+    356.7,
+    360.7
+   ],
+   [
+    "speaker_wide",
+    360.7,
+    364.0
+   ],
+   [
+    "panel_pip",
+    364.0,
+    374.3
+   ],
+   [
+    "speaker_wide",
+    374.3,
+    382.3
+   ],
+   [
+    "panel_pip",
+    382.3,
+    386.0
+   ],
+   [
+    "full_graphic",
+    386.0,
+    395.3
+   ],
+   [
+    "speaker_close",
+    395.3,
+    399.7
+   ],
+   [
+    "speaker_wide",
+    399.7,
+    403.0
+   ],
+   [
+    "full_graphic",
+    403.0,
+    407.7
+   ],
+   [
+    "panel_pip",
+    407.7,
+    415.3
+   ],
+   [
+    "speaker_close",
+    415.3,
+    418.0
+   ],
+   [
+    "speaker_wide",
+    418.0,
+    420.3
+   ],
+   [
+    "full_graphic",
+    420.3,
+    426.0
+   ],
+   [
+    "speaker_wide",
+    426.0,
+    433.0
+   ],
+   [
+    "speaker_close",
+    433.0,
+    439.7
+   ],
+   [
+    "panel_pip",
+    439.7,
+    449.7
+   ],
+   [
+    "speaker_wide",
+    449.7,
+    464.0
+   ],
+   [
+    "speaker_close",
+    464.0,
+    470.7
+   ],
+   [
+    "speaker_wide",
+    470.7,
+    476.3
+   ],
+   [
+    "panel_pip",
+    476.3,
+    494.3
+   ],
+   [
+    "speaker_wide",
+    494.3,
+    497.0
+   ],
+   [
+    "full_graphic",
+    497.0,
+    520.7
+   ],
+   [
+    "speaker_wide",
+    520.7,
+    529.3
+   ],
+   [
+    "speaker_close",
+    529.3,
+    546.3
+   ],
+   [
+    "speaker_wide",
+    546.3,
+    557.0
+   ],
+   [
+    "speaker_close",
+    557.0,
+    561.0
+   ],
+   [
+    "speaker_wide",
+    561.0,
+    565.7
+   ]
+  ],
+  "sfx": [
+   {
+    "kind": "click",
+    "dur_s": 0.035,
+    "rise_s": 0.012,
+    "centroid_hz": 6946,
+    "flatness": 0.156,
+    "t": 299.932,
+    "in_voice": false,
+    "z": 8.6,
+    "on_cut": false,
+    "on_graphic": false
+   }
+  ],
+  "music": {
+   "present": true,
+   "level_db": -20.7,
+   "gaps": 45,
+   "gaps_with_music": 3,
+   "span_s": [
+    75.3,
+    502.7
+   ]
+  }
+ },
+ "az1Zh-FNSno": {
+  "duration_s": 722.01,
+  "share_pct": {
+   "speaker_close": 0.5,
+   "panel_pip": 63.2,
+   "speaker_wide": 26.9,
+   "full_graphic": 9.4
+  },
+  "segments": {
+   "speaker_close": {
+    "n": 1,
+    "median_s": 3.3,
+    "p90_s": 3.3
+   },
+   "panel_pip": {
+    "n": 27,
+    "median_s": 10.3,
+    "p90_s": 38.7
+   },
+   "speaker_wide": {
+    "n": 32,
+    "median_s": 4.7,
+    "p90_s": 12.0
+   },
+   "full_graphic": {
+    "n": 12,
+    "median_s": 3.5,
+    "p90_s": 10.3
+   }
+  },
+  "graphic_gap_s": {
+   "median": 3.7,
+   "p90": 11.3,
+   "max": 13.3
+  },
+  "first_graphic_s": 6.0,
+  "per_min": [
+   {
+    "min": 0,
+    "cuts": 15,
+    "punch": 10,
+    "graphics_pct": 39
+   },
+   {
+    "min": 1,
+    "cuts": 13,
+    "punch": 0,
+    "graphics_pct": 46
+   },
+   {
+    "min": 2,
+    "cuts": 8,
+    "punch": 0,
+    "graphics_pct": 78
+   },
+   {
+    "min": 3,
+    "cuts": 3,
+    "punch": 2,
+    "graphics_pct": 85
+   },
+   {
+    "min": 4,
+    "cuts": 4,
+    "punch": 1,
+    "graphics_pct": 82
+   },
+   {
+    "min": 5,
+    "cuts": 8,
+    "punch": 2,
+    "graphics_pct": 77
+   },
+   {
+    "min": 6,
+    "cuts": 3,
+    "punch": 0,
+    "graphics_pct": 92
+   },
+   {
+    "min": 7,
+    "cuts": 3,
+    "punch": 0,
+    "graphics_pct": 72
+   },
+   {
+    "min": 8,
+    "cuts": 5,
+    "punch": 1,
+    "graphics_pct": 79
+   },
+   {
+    "min": 9,
+    "cuts": 0,
+    "punch": 0,
+    "graphics_pct": 100
+   },
+   {
+    "min": 10,
+    "cuts": 24,
+    "punch": 2,
+    "graphics_pct": 87
+   },
+   {
+    "min": 11,
+    "cuts": 7,
+    "punch": 3,
+    "graphics_pct": 37
+   },
+   {
+    "min": 12,
+    "cuts": 0,
+    "punch": 0,
+    "graphics_pct": 0
+   }
+  ],
+  "runs": [
+   [
+    "speaker_wide",
+    0.0,
+    6.0
+   ],
+   [
+    "full_graphic",
+    6.0,
+    13.0
+   ],
+   [
+    "speaker_wide",
+    13.0,
+    14.3
+   ],
+   [
+    "full_graphic",
+    14.3,
+    17.0
+   ],
+   [
+    "speaker_wide",
+    17.0,
+    29.0
+   ],
+   [
+    "full_graphic",
+    29.0,
+    36.0
+   ],
+   [
+    "speaker_wide",
+    36.0,
+    46.3
+   ],
+   [
+    "full_graphic",
+    46.3,
+    49.0
+   ],
+   [
+    "speaker_wide",
+    49.0,
+    52.0
+   ],
+   [
+    "panel_pip",
+    52.0,
+    54.3
+   ],
+   [
+    "speaker_wide",
+    54.3,
+    58.0
+   ],
+   [
+    "full_graphic",
+    58.0,
+    64.0
+   ],
+   [
+    "speaker_wide",
+    64.0,
+    67.7
+   ],
+   [
+    "panel_pip",
+    67.7,
+    70.3
+   ],
+   [
+    "speaker_wide",
+    70.3,
+    74.7
+   ],
+   [
+    "panel_pip",
+    74.7,
+    90.3
+   ],
+   [
+    "speaker_wide",
+    90.3,
+    97.7
+   ],
+   [
+    "panel_pip",
+    97.7,
+    100.3
+   ],
+   [
+    "speaker_wide",
+    100.3,
+    105.0
+   ],
+   [
+    "speaker_close",
+    105.0,
+    108.3
+   ],
+   [
+    "panel_pip",
+    108.3,
+    111.0
+   ],
+   [
+    "speaker_wide",
+    111.0,
+    122.0
+   ],
+   [
+    "panel_pip",
+    122.0,
+    137.7
+   ],
+   [
+    "speaker_wide",
+    137.7,
+    140.3
+   ],
+   [
+    "panel_pip",
+    140.3,
+    143.3
+   ],
+   [
+    "speaker_wide",
+    143.3,
+    148.0
+   ],
+   [
+    "panel_pip",
+    148.0,
+    164.3
+   ],
+   [
+    "full_graphic",
+    164.3,
+    168.3
+   ],
+   [
+    "panel_pip",
+    168.3,
+    176.0
+   ],
+   [
+    "speaker_wide",
+    176.0,
+    187.3
+   ],
+   [
+    "panel_pip",
+    187.3,
+    225.0
+   ],
+   [
+    "full_graphic",
+    225.0,
+    227.3
+   ],
+   [
+    "panel_pip",
+    227.3,
+    228.7
+   ],
+   [
+    "full_graphic",
+    228.7,
+    230.3
+   ],
+   [
+    "panel_pip",
+    230.3,
+    231.3
+   ],
+   [
+    "speaker_wide",
+    231.3,
+    233.0
+   ],
+   [
+    "panel_pip",
+    233.0,
+    243.3
+   ],
+   [
+    "speaker_wide",
+    243.3,
+    247.0
+   ],
+   [
+    "panel_pip",
+    247.0,
+    258.0
+   ],
+   [
+    "full_graphic",
+    258.0,
+    260.7
+   ],
+   [
+    "speaker_wide",
+    260.7,
+    268.0
+   ],
+   [
+    "panel_pip",
+    268.0,
+    310.0
+   ],
+   [
+    "speaker_wide",
+    310.0,
+    312.3
+   ],
+   [
+    "panel_pip",
+    312.3,
+    317.7
+   ],
+   [
+    "speaker_wide",
+    317.7,
+    321.3
+   ],
+   [
+    "panel_pip",
+    321.3,
+    325.3
+   ],
+   [
+    "speaker_wide",
+    325.3,
+    328.0
+   ],
+   [
+    "panel_pip",
+    328.0,
+    351.3
+   ],
+   [
+    "speaker_wide",
+    351.3,
+    356.3
+   ],
+   [
+    "panel_pip",
+    356.3,
+    380.0
+   ],
+   [
+    "speaker_wide",
+    380.0,
+    383.0
+   ],
+   [
+    "panel_pip",
+    383.0,
+    418.3
+   ],
+   [
+    "speaker_wide",
+    418.3,
+    424.7
+   ],
+   [
+    "panel_pip",
+    424.7,
+    442.0
+   ],
+   [
+    "speaker_wide",
+    442.0,
+    454.3
+   ],
+   [
+    "panel_pip",
+    454.3,
+    493.0
+   ],
+   [
+    "speaker_wide",
+    493.0,
+    499.0
+   ],
+   [
+    "full_graphic",
+    499.0,
+    502.0
+   ],
+   [
+    "speaker_wide",
+    502.0,
+    504.0
+   ],
+   [
+    "panel_pip",
+    504.0,
+    531.7
+   ],
+   [
+    "speaker_wide",
+    531.7,
+    536.3
+   ],
+   [
+    "panel_pip",
+    536.3,
+    628.0
+   ],
+   [
+    "speaker_wide",
+    628.0,
+    634.7
+   ],
+   [
+    "panel_pip",
+    634.7,
+    637.7
+   ],
+   [
+    "full_graphic",
+    637.7,
+    656.3
+   ],
+   [
+    "speaker_wide",
+    656.3,
+    657.3
+   ],
+   [
+    "full_graphic",
+    657.3,
+    667.7
+   ],
+   [
+    "speaker_wide",
+    667.7,
+    676.0
+   ],
+   [
+    "panel_pip",
+    676.0,
+    684.7
+   ],
+   [
+    "speaker_wide",
+    684.7,
+    698.0
+   ],
+   [
+    "panel_pip",
+    698.0,
+    703.7
+   ],
+   [
+    "speaker_wide",
+    703.7,
+    722.0
+   ]
+  ],
+  "sfx": [
+   {
+    "kind": "pop",
+    "dur_s": 0.093,
+    "rise_s": 0.023,
+    "centroid_hz": 3251,
+    "flatness": 0.231,
+    "t": 200.783,
+    "in_voice": false,
+    "z": 12.1,
+    "on_cut": false,
+    "on_graphic": false
+   },
+   {
+    "kind": "pop",
+    "dur_s": 0.116,
+    "rise_s": 0.104,
+    "centroid_hz": 3588,
+    "flatness": 0.119,
+    "t": 523.564,
+    "in_voice": false,
+    "z": 8.2,
+    "on_cut": false,
+    "on_graphic": false
+   }
+  ],
+  "music": {
+   "present": true,
+   "level_db": -23.0,
+   "gaps": 63,
+   "gaps_with_music": 22,
+   "span_s": [
+    46.5,
+    705.0
+   ]
+  }
+ },
+ "m_D2yOUapNQ": {
+  "duration_s": 1164.92,
+  "share_pct": {
+   "speaker_close": 17.3,
+   "panel_pip": 45.4,
+   "speaker_wide": 32.8,
+   "full_graphic": 4.5
+  },
+  "segments": {
+   "speaker_close": {
+    "n": 35,
+    "median_s": 4.7,
+    "p90_s": 11.0
+   },
+   "panel_pip": {
+    "n": 19,
+    "median_s": 14.3,
+    "p90_s": 104.3
+   },
+   "speaker_wide": {
+    "n": 49,
+    "median_s": 5.3,
+    "p90_s": 17.7
+   },
+   "full_graphic": {
+    "n": 11,
+    "median_s": 4.0,
+    "p90_s": 7.7
+   }
+  },
+  "graphic_gap_s": {
+   "median": 14.3,
+   "p90": 41.7,
+   "max": 104.7
+  },
+  "first_graphic_s": 6.7,
+  "per_min": [
+   {
+    "min": 0,
+    "cuts": 14,
+    "punch": 11,
+    "graphics_pct": 52
+   },
+   {
+    "min": 1,
+    "cuts": 9,
+    "punch": 3,
+    "graphics_pct": 60
+   },
+   {
+    "min": 2,
+    "cuts": 13,
+    "punch": 2,
+    "graphics_pct": 62
+   },
+   {
+    "min": 3,
+    "cuts": 8,
+    "punch": 8,
+    "graphics_pct": 29
+   },
+   {
+    "min": 4,
+    "cuts": 6,
+    "punch": 4,
+    "graphics_pct": 84
+   },
+   {
+    "min": 5,
+    "cuts": 0,
+    "punch": 0,
+    "graphics_pct": 100
+   },
+   {
+    "min": 6,
+    "cuts": 11,
+    "punch": 4,
+    "graphics_pct": 60
+   },
+   {
+    "min": 7,
+    "cuts": 8,
+    "punch": 8,
+    "graphics_pct": 9
+   },
+   {
+    "min": 8,
+    "cuts": 6,
+    "punch": 2,
+    "graphics_pct": 0
+   },
+   {
+    "min": 9,
+    "cuts": 2,
+    "punch": 1,
+    "graphics_pct": 80
+   },
+   {
+    "min": 10,
+    "cuts": 0,
+    "punch": 0,
+    "graphics_pct": 100
+   },
+   {
+    "min": 11,
+    "cuts": 10,
+    "punch": 6,
+    "graphics_pct": 19
+   },
+   {
+    "min": 12,
+    "cuts": 3,
+    "punch": 0,
+    "graphics_pct": 64
+   },
+   {
+    "min": 13,
+    "cuts": 9,
+    "punch": 5,
+    "graphics_pct": 27
+   },
+   {
+    "min": 14,
+    "cuts": 4,
+    "punch": 0,
+    "graphics_pct": 37
+   },
+   {
+    "min": 15,
+    "cuts": 11,
+    "punch": 6,
+    "graphics_pct": 17
+   },
+   {
+    "min": 16,
+    "cuts": 4,
+    "punch": 1,
+    "graphics_pct": 74
+   },
+   {
+    "min": 17,
+    "cuts": 5,
+    "punch": 3,
+    "graphics_pct": 61
+   },
+   {
+    "min": 18,
+    "cuts": 5,
+    "punch": 1,
+    "graphics_pct": 33
+   },
+   {
+    "min": 19,
+    "cuts": 4,
+    "punch": 4,
+    "graphics_pct": 0
+   }
+  ],
+  "runs": [
+   [
+    "speaker_wide",
+    0.7,
+    3.3
+   ],
+   [
+    "speaker_close",
+    3.3,
+    6.7
+   ],
+   [
+    "full_graphic",
+    6.7,
+    10.3
+   ],
+   [
+    "speaker_wide",
+    10.3,
+    19.3
+   ],
+   [
+    "full_graphic",
+    19.3,
+    26.0
+   ],
+   [
+    "speaker_wide",
+    26.7,
+    31.0
+   ],
+   [
+    "speaker_close",
+    31.0,
+    32.3
+   ],
+   [
+    "panel_pip",
+    32.3,
+    42.7
+   ],
+   [
+    "speaker_wide",
+    42.7,
+    47.0
+   ],
+   [
+    "speaker_close",
+    47.0,
+    49.7
+   ],
+   [
+    "panel_pip",
+    49.7,
+    82.0
+   ],
+   [
+    "speaker_wide",
+    82.0,
+    83.7
+   ],
+   [
+    "speaker_close",
+    83.7,
+    86.7
+   ],
+   [
+    "speaker_wide",
+    87.0,
+    89.7
+   ],
+   [
+    "panel_pip",
+    89.7,
+    103.3
+   ],
+   [
+    "speaker_wide",
+    103.3,
+    110.3
+   ],
+   [
+    "speaker_close",
+    110.3,
+    121.3
+   ],
+   [
+    "panel_pip",
+    121.3,
+    129.7
+   ],
+   [
+    "speaker_wide",
+    129.7,
+    144.0
+   ],
+   [
+    "speaker_close",
+    144.0,
+    147.7
+   ],
+   [
+    "panel_pip",
+    147.7,
+    150.3
+   ],
+   [
+    "speaker_wide",
+    150.3,
+    151.3
+   ],
+   [
+    "panel_pip",
+    151.3,
+    177.3
+   ],
+   [
+    "speaker_close",
+    177.3,
+    183.3
+   ],
+   [
+    "speaker_wide",
+    183.3,
+    189.0
+   ],
+   [
+    "speaker_close",
+    189.0,
+    192.0
+   ],
+   [
+    "speaker_wide",
+    192.0,
+    201.7
+   ],
+   [
+    "speaker_close",
+    201.7,
+    206.7
+   ],
+   [
+    "speaker_wide",
+    206.7,
+    212.0
+   ],
+   [
+    "speaker_close",
+    212.0,
+    218.0
+   ],
+   [
+    "speaker_wide",
+    218.0,
+    222.3
+   ],
+   [
+    "panel_pip",
+    222.3,
+    256.0
+   ],
+   [
+    "full_graphic",
+    256.0,
+    258.3
+   ],
+   [
+    "speaker_wide",
+    258.3,
+    262.7
+   ],
+   [
+    "full_graphic",
+    262.7,
+    266.7
+   ],
+   [
+    "speaker_wide",
+    266.7,
+    268.3
+   ],
+   [
+    "speaker_close",
+    268.3,
+    271.7
+   ],
+   [
+    "panel_pip",
+    271.7,
+    376.0
+   ],
+   [
+    "speaker_wide",
+    376.0,
+    380.3
+   ],
+   [
+    "speaker_close",
+    380.3,
+    382.0
+   ],
+   [
+    "speaker_wide",
+    382.0,
+    383.7
+   ],
+   [
+    "full_graphic",
+    383.7,
+    388.3
+   ],
+   [
+    "speaker_wide",
+    388.3,
+    391.0
+   ],
+   [
+    "speaker_close",
+    391.0,
+    396.3
+   ],
+   [
+    "speaker_wide",
+    396.3,
+    398.7
+   ],
+   [
+    "speaker_close",
+    398.7,
+    402.7
+   ],
+   [
+    "panel_pip",
+    402.7,
+    418.0
+   ],
+   [
+    "speaker_wide",
+    418.0,
+    425.0
+   ],
+   [
+    "full_graphic",
+    425.0,
+    428.0
+   ],
+   [
+    "speaker_wide",
+    428.0,
+    438.0
+   ],
+   [
+    "speaker_close",
+    438.0,
+    443.0
+   ],
+   [
+    "speaker_wide",
+    443.0,
+    444.7
+   ],
+   [
+    "full_graphic",
+    444.7,
+    447.3
+   ],
+   [
+    "speaker_wide",
+    447.3,
+    450.0
+   ],
+   [
+    "speaker_close",
+    450.0,
+    459.7
+   ],
+   [
+    "speaker_wide",
+    459.7,
+    478.7
+   ],
+   [
+    "speaker_close",
+    478.7,
+    494.3
+   ],
+   [
+    "speaker_wide",
+    494.3,
+    500.7
+   ],
+   [
+    "speaker_close",
+    500.7,
+    503.3
+   ],
+   [
+    "speaker_wide",
+    503.3,
+    530.7
+   ],
+   [
+    "speaker_close",
+    530.7,
+    541.7
+   ],
+   [
+    "speaker_wide",
+    541.7,
+    552.0
+   ],
+   [
+    "panel_pip",
+    552.0,
+    669.0
+   ],
+   [
+    "speaker_wide",
+    669.0,
+    684.0
+   ],
+   [
+    "speaker_close",
+    684.0,
+    693.3
+   ],
+   [
+    "speaker_wide",
+    693.3,
+    701.7
+   ],
+   [
+    "speaker_close",
+    701.7,
+    705.7
+   ],
+   [
+    "speaker_wide",
+    705.7,
+    708.7
+   ],
+   [
+    "full_graphic",
+    708.7,
+    711.3
+   ],
+   [
+    "speaker_close",
+    711.7,
+    715.0
+   ],
+   [
+    "speaker_wide",
+    715.0,
+    731.0
+   ],
+   [
+    "panel_pip",
+    731.0,
+    769.3
+   ],
+   [
+    "speaker_wide",
+    769.3,
+    787.0
+   ],
+   [
+    "speaker_close",
+    787.0,
+    796.3
+   ],
+   [
+    "speaker_wide",
+    796.3,
+    805.0
+   ],
+   [
+    "panel_pip",
+    805.0,
+    810.3
+   ],
+   [
+    "speaker_wide",
+    810.3,
+    811.7
+   ],
+   [
+    "speaker_close",
+    811.7,
+    813.3
+   ],
+   [
+    "panel_pip",
+    813.3,
+    824.3
+   ],
+   [
+    "speaker_close",
+    824.3,
+    829.0
+   ],
+   [
+    "speaker_wide",
+    829.0,
+    840.3
+   ],
+   [
+    "full_graphic",
+    840.3,
+    848.0
+   ],
+   [
+    "speaker_wide",
+    848.0,
+    876.3
+   ],
+   [
+    "panel_pip",
+    876.3,
+    890.7
+   ],
+   [
+    "speaker_wide",
+    890.7,
+    903.0
+   ],
+   [
+    "speaker_close",
+    903.0,
+    912.7
+   ],
+   [
+    "speaker_wide",
+    912.7,
+    916.3
+   ],
+   [
+    "panel_pip",
+    916.3,
+    926.3
+   ],
+   [
+    "speaker_wide",
+    926.3,
+    930.7
+   ],
+   [
+    "speaker_close",
+    930.7,
+    932.7
+   ],
+   [
+    "speaker_wide",
+    932.7,
+    938.0
+   ],
+   [
+    "speaker_close",
+    938.0,
+    942.7
+   ],
+   [
+    "speaker_wide",
+    942.7,
+    953.7
+   ],
+   [
+    "speaker_close",
+    953.7,
+    959.0
+   ],
+   [
+    "speaker_wide",
+    959.0,
+    968.0
+   ],
+   [
+    "full_graphic",
+    968.0,
+    976.7
+   ],
+   [
+    "panel_pip",
+    976.7,
+    1012.7
+   ],
+   [
+    "speaker_wide",
+    1012.7,
+    1017.7
+   ],
+   [
+    "speaker_close",
+    1017.7,
+    1020.7
+   ],
+   [
+    "speaker_wide",
+    1020.7,
+    1029.0
+   ],
+   [
+    "speaker_close",
+    1029.0,
+    1035.7
+   ],
+   [
+    "panel_pip",
+    1035.7,
+    1065.3
+   ],
+   [
+    "full_graphic",
+    1065.3,
+    1072.3
+   ],
+   [
+    "speaker_wide",
+    1072.3,
+    1076.0
+   ],
+   [
+    "speaker_close",
+    1076.0,
+    1089.3
+   ],
+   [
+    "panel_pip",
+    1089.3,
+    1096.3
+   ],
+   [
+    "speaker_close",
+    1096.3,
+    1101.0
+   ],
+   [
+    "speaker_wide",
+    1101.0,
+    1106.0
+   ],
+   [
+    "panel_pip",
+    1106.0,
+    1118.7
+   ],
+   [
+    "speaker_wide",
+    1118.7,
+    1140.3
+   ],
+   [
+    "speaker_close",
+    1140.3,
+    1150.0
+   ],
+   [
+    "speaker_wide",
+    1150.0,
+    1155.7
+   ],
+   [
+    "speaker_close",
+    1155.7,
+    1161.7
+   ],
+   [
+    "speaker_wide",
+    1161.7,
+    1165.0
+   ]
+  ],
+  "sfx": [
+   {
+    "kind": "impact",
+    "dur_s": 0.337,
+    "rise_s": 0.081,
+    "centroid_hz": 214,
+    "flatness": 0.006,
+    "t": 23.65,
+    "in_voice": true,
+    "z": 8.3,
+    "on_cut": false,
+    "on_graphic": false
+   },
+   {
+    "kind": "riser",
+    "dur_s": 1.173,
+    "rise_s": 0.766,
+    "centroid_hz": 355,
+    "flatness": 0.039,
+    "t": 216.329,
+    "in_voice": true,
+    "z": 8.3,
+    "on_cut": false,
+    "on_graphic": false
+   },
+   {
+    "kind": "pop",
+    "dur_s": 0.07,
+    "rise_s": 0.023,
+    "centroid_hz": 957,
+    "flatness": 0.009,
+    "t": 265.52,
+    "in_voice": false,
+    "z": 9.3,
+    "on_cut": false,
+    "on_graphic": false
+   },
+   {
+    "kind": "other",
+    "dur_s": 0.197,
+    "rise_s": 0.128,
+    "centroid_hz": 826,
+    "flatness": 0.004,
+    "t": 535.893,
+    "in_voice": true,
+    "z": 9.4,
+    "on_cut": false,
+    "on_graphic": false
+   },
+   {
+    "kind": "impact",
+    "dur_s": 0.209,
+    "rise_s": 0.081,
+    "centroid_hz": 476,
+    "flatness": 0.027,
+    "t": 707.094,
+    "in_voice": true,
+    "z": 8.4,
+    "on_cut": false,
+    "on_graphic": false
+   },
+   {
+    "kind": "ding",
+    "dur_s": 0.534,
+    "rise_s": 0.476,
+    "centroid_hz": 1211,
+    "flatness": 0.054,
+    "t": 990.389,
+    "in_voice": true,
+    "z": 10.2,
+    "on_cut": false,
+    "on_graphic": false
+   },
+   {
+    "kind": "other",
+    "dur_s": 0.232,
+    "rise_s": 0.209,
+    "centroid_hz": 551,
+    "flatness": 0.091,
+    "t": 1005.157,
+    "in_voice": false,
+    "z": 12.2,
+    "on_cut": false,
+    "on_graphic": false
+   },
+   {
+    "kind": "impact",
+    "dur_s": 0.685,
+    "rise_s": 0.511,
+    "centroid_hz": 354,
+    "flatness": 0.03,
+    "t": 1053.803,
+    "in_voice": true,
+    "z": 10.0,
+    "on_cut": false,
+    "on_graphic": false
+   }
+  ],
+  "music": {
+   "present": true,
+   "level_db": -21.9,
+   "gaps": 66,
+   "gaps_with_music": 7,
+   "span_s": [
+    265.9,
+    1062.6
+   ]
+  }
+ }
+}

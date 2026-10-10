@@ -10,11 +10,11 @@ A fork of NextWork's open-source editor (github.com/nextwork-projects/ai-video-e
 
 | Area | Decision |
 |---|---|
-| Input | One camera, talking head, raw footage of 30–40 min (mp4/mov) |
+| Input | One camera, talking head, raw footage of 30–40 min (mp4/mov). **Stay on that one angle: don't imitate the references' second camera with crop punch-ins** (decided 2026-10-10). |
 | Output | 16:9 YouTube, finished length roughly 10–20 min. One finished `render.mp4`. |
 | Premiere / NLE export | **Not now.** Changes happen by asking Claude in chat. Leave `export_nle.py` alone; it isn't part of the main workflow. |
 | Visuals | **Only motion graphics and animations the editor makes itself**, plus screenshots or B-roll the client supplies. **No stock B-roll (Pexels etc.) and no footage or images of real people.** |
-| Music | **Left out for now.** Add later. |
+| Music | **Use music the way the references do** (changed 2026-10-10; was "left out for now"). |
 | Styles | **One style to start**, measured from the three reference videos below. Keep the per-style folder system so more styles can be added later. |
 | Rendering | On Ayush's Mac (Apple Silicon). Cloud rendering later if needed. |
 | Mode | **Automatic.** One approval point only: the cut, shown as a transcript with removals struck through (text, no rendering). **No visuals approval: no stills sheet, no preview clips.** Make the visuals and render. Drop every visual review step: the stills sheet, the LOOK pass where Claude inspects rendered frames, and `check.py render`. The only checks kept are the instant script checks on the plan (`check.py` plan check, `ai_tells.py --plan`). They render nothing and use no Claude usage; they just stop graphics covering the face or running off-screen. If Ayush asks for those to go too, remove them. |

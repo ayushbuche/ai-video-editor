@@ -655,9 +655,8 @@
   "diagrams": "marker drawings on the panel that build stroke by stroke in step with speech; one diagram can stay up 40-100 s while it grows; headed by a red-circled number + blue marker title"
  },
  "not_copied": {
-  "second_camera": "refs cut between a wide and a medium camera; single-camera input imitates this with crop punch-ins",
+  "second_camera": "refs cut between a wide and a medium camera; Ayush 2026-10-10: stay on one angle, no crop punch-ins standing in for it",
   "overhead_whiteboard_cam": "az1Zh-FNSno is ~60% a real overhead whiteboard; replaced by drawn-on marker diagrams",
-  "people_photos_and_stock": "banned by brief (\"Example\" clips, cut-out photos of people)",
-  "music": "present in all 3 at about -22 dB; left out for now by brief"
+  "people_photos_and_stock": "banned by brief (\"Example\" clips, cut-out photos of people)"
  }
 }

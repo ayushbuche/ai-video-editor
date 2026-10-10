@@ -68,19 +68,19 @@ Motion is calm: no bounce, no spinning, no flashy transitions.
 
 - Sound effects: very rare, 0.1-0.4 a minute (about 1-8 a video): a pop, a click, a low impact or
   a riser on a big moment. The editor will match that rate.
-- Music: a quiet bed (about -22 dB) under most of every video. **Left out for now, as the brief says.**
+- Music: a quiet bed (about -22 dB) under most of every video, starting after the opening (0:46,
+  1:15, 4:26) and ending before the close. **Copied** (Ayush, 2026-10-10).
 
 ## What the references do that we will not copy
 
 These are where your decisions or single-camera footage stop us copying the references exactly.
 
-1. **Second camera.** The references cut between a wide and a medium camera. With one camera the
-   editor imitates this with punch-in crops. On 1080p footage a 1.25x crop looks a little softer;
-   on 4K footage it is invisible.
+1. **Second camera.** The references cut between a wide and a medium camera. Ayush decided
+   (2026-10-10) not to imitate this: the edit stays on the one camera angle, with no crop punch-ins
+   standing in for the second camera.
 2. **Real overhead whiteboard.** About 60% of az1Zh-FNSno is a real camera over a whiteboard with
    his hand drawing. We can't copy that; the editor will use drawn-on marker diagrams, like the
    other two videos.
 3. **Photos and footage of people.** The "Example 1/2" clips and the cut-out photos of people are
    stock or real people, which the brief bans. Those moments will use a diagram, a screenshot or a
    text panel instead.
-4. **Music**, until you want it added.

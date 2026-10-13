@@ -24,10 +24,23 @@ the graphic covers, "on" the word an element draws on. "after": seconds on the c
     {"kind": "lower", "on": "...", "text": "..."}],
    "music": {"from": "<first words under music>", "to": "<last words under music>"}}
 
+The sdr-mastery style's white pages (Pages.tsx). A "said" field is the words as they should read, either a
+string said nearly verbatim (its time is found by its opening words) or {"text": "...", "on": "<quote>"}:
+    {"kind": "list", "from", "to", "heading": "...", "sub": said, "items": [said, ...], "marker": "number|dot|none", "card": false}
+    {"kind": "rows", "from", "to", "items": [{"label": "Part 1", "text": "The list", "on": "<quote>"}], "preview": false}
+        preview: every row up from the start, a row's text blurred until said (the part card); a row with no "on" stays blurred
+    {"kind": "dialogue", "from", "to", "turns": [{"head": "Let's say someone said:", "line": said, "head_on": "<quote>"}]}
+    {"kind": "rule", "from", "to", "heading": "...", "items": [said], "dots": false, "card": true}
+    {"kind": "acronym", "from", "to", "word": "BANT", "items": [{"text": "Budget", "on": "budget"}, ...]}
+    {"kind": "illustration", "from", "to", "image": "images/x.png", "line": said, "side_image": "...", "side_text": said}
+    {"kind": "shot", "from", "to", "image": "images/site.png", "fit": "full|frame", "scroll": false}
+    {"kind": "phrase", "from", "to", "lines": [{"text": "Most people mess up"}, {"text": "because they start off wrong", "italic": true}]}
+A style lists the kinds it uses (style.json design.kinds); a board kind outside that list fails the plan.
+
 Copied from the references (styles/<name>/style.json, teardown.md), never invented: no captions; zoom
-changes are hard punches on the jump cuts while the speaker is full frame; music a bed about 22 dB under
-the voice from after the opening to before the close, no ducking; sound cues at the measured rate, on
-full-screen cards.
+changes are hard punches on the jump cuts while the speaker is full frame, at the style's rate; music a bed
+under the voice at the style's level from after the opening to before the close, no ducking; sound cues at
+the measured rate, on full-screen cards.
 """
 import json
 import math
@@ -44,6 +57,8 @@ import diagrams  # noqa: E402
 REPO = HERE.parents[4]
 DEFAULT_STYLE = REPO / "styles" / "axis-story" / "style.json"
 
+OVERLAYS = ("label", "buttons", "lower", "phrase")   # drawn over the speaker; every other kind fills the frame
+PAGES = ("list", "rows", "dialogue", "rule", "acronym", "illustration", "shot", "phrase")   # Pages.tsx: words timed as said
 HOLD = {"chapter": 3.5, "lower": 2.4}       # graphics with no "to": seconds up (references: chapter 3-5 s)
 MIN_HOLD = {"panel": 4.0, "title": 4.0, "quote": 3.0, "pills": 2.5, "buttons": 2.5, "label": 2.0}
 LEAD_S = 0.15                              # a graphic cuts in this long before its first word
@@ -178,10 +193,21 @@ def resolve(board, words):
             _, b = find(words, toks, g["to"], a) if g.get("to") else (None, a + HOLD.get(k, 3.0))
             # an overlay on the speaker also holds through its 0.5 s soft exit (LongEdit EXIT_S), so the last word
             # is never fading while it is still being said
-            start, end = a - LEAD_S, b + TAIL_S + (OVERLAY_EXIT_S if k in ("lower", "buttons", "label") else 0)
+            start, end = a - LEAD_S, b + TAIL_S + (OVERLAY_EXIT_S if k in OVERLAYS else 0)
         start = max(0.0, start)
         # an element said near the end still finishes writing on (about 1 s) before the graphic leaves
-        at = lambda phrase: round(min(find(words, toks, phrase, start)[0] - start, max(0.0, end - start - WRITE_DONE_S)), 3)  # noqa: E731
+        latest = max(0.0, end - start - WRITE_DONE_S)
+        at = lambda phrase: round(min(find(words, toks, phrase, start)[0] - start, latest), 3)  # noqa: E731
+        cursor = [start]
+
+        def said(spec):
+            """A "said" field -> [{"text", "at"}], each word at the moment it is said (seconds into the graphic), found
+            after the last one placed, so a list's lines are matched in the order he says them."""
+            text, on = (spec, None) if isinstance(spec, str) else (spec["text"], spec.get("on"))
+            t0 = find(words, toks, on, cursor[0])[0] if on else line_start(text, words, toks, cursor[0])
+            ws = timed_words(text, words, toks, t0)
+            cursor[0] = t0 + ws[-1]["at"] + 0.01 if ws else t0
+            return [dict(w, at=round(max(0.0, min(w["at"] + t0 - start, latest)), 3)) for w in ws]
         item = {"kind": k, "start": round(start, 3), "end": round(end, 3)}
         if k == "panel":
             item.update({x: g[x] for x in ("number", "title") if g.get(x)})
@@ -221,6 +247,52 @@ def resolve(board, words):
             item["heading"] = g.get("heading", "")
         elif k in ("quote", "label"):
             item["text"] = g["text"]
+        elif k == "list":
+            item.update(heading=g.get("heading", ""), marker=g.get("marker", "dot"), card=bool(g.get("card")))
+            if g.get("sub"):
+                item["sub"] = said(g["sub"])
+            item["items"] = [said(x) for x in g["items"]]
+        elif k == "rows":
+            rows = []
+            for r in g["items"]:
+                if r.get("on"):
+                    t0 = find(words, toks, r["on"], cursor[0])[0]
+                    cursor[0] = t0 + 0.01
+                    rows.append({"label": r["label"], "at": round(min(t0 - start, latest), 3),
+                                 "text": [dict(w, at=round(min(w["at"] + t0 - start, latest), 3)) for w in timed_words(r["text"], words, toks, t0)]})
+                elif g.get("preview"):    # a part still to come: up and blurred, never said here
+                    rows.append({"label": r["label"], "at": None, "text": [{"text": x, "at": 1e6} for x in r["text"].split()]})
+                else:
+                    raise ValueError(f"rows at {start:.1f}s: row {r['label']!r} has no \"on\" (only a preview row may stay unsaid)")
+            item.update(items=rows, preview=bool(g.get("preview")))
+        elif k == "dialogue":
+            turns = []
+            for tn in g["turns"]:
+                head_at = at(tn["head_on"]) if tn.get("head_on") else None
+                line = said(tn["line"])
+                turns.append({"head": tn["head"], "head_at": head_at if head_at is not None else round(max(0.0, line[0]["at"] - 0.6), 3),
+                              "line": line})
+            item["turns"] = turns
+        elif k == "rule":
+            item.update(heading=g["heading"], items=[said(x) for x in g.get("items", [])], dots=bool(g.get("dots")),
+                        card=bool(g.get("card", True)))
+        elif k == "acronym":
+            item.update(word=g["word"], items=[{"text": i["text"], "at": at(i["on"])} for i in g["items"]])
+            if len(g["items"]) != len(g["word"]):
+                raise ValueError(f"acronym {g['word']!r}: {len(g['items'])} words for {len(g['word'])} letters")
+        elif k == "illustration":
+            item.update(image=g["image"], line=said(g["line"]))
+            if g.get("side_image"):
+                item["side_image"] = g["side_image"]
+            if g.get("side_text"):
+                item["side_text"] = said(g["side_text"])
+            if g.get("side_image") or g.get("side_text"):
+                item["side_at"] = at(g["side_on"]) if g.get("side_on") else (item["side_text"][0]["at"] if g.get("side_text") else 0.0)
+        elif k == "shot":
+            item.update(image=g["image"], fit=g.get("fit", "full"), scroll=bool(g.get("scroll")))
+        elif k == "phrase":
+            item["lines"] = [{"words": said(ln), "italic": bool(ln.get("italic"))} if isinstance(ln, dict)
+                             else {"words": said(ln), "italic": False} for ln in g["lines"]]
         else:
             raise ValueError(f"unknown graphic kind {k!r}")
         out.append(item)
@@ -234,27 +306,34 @@ def bridge(graphics):
     for a, b in zip(graphics, graphics[1:]):
         if 0 < a["end"] - b["start"] <= LEAD_S + TAIL_S + OVERLAY_EXIT_S:   # a tail meets the next lead-in: cut there
             a["end"] = b["start"]
-    full = [g for g in graphics if g["kind"] not in ("label", "buttons", "lower")]
+    full = [g for g in graphics if g["kind"] not in OVERLAYS]
     for a, b in zip(full, full[1:]):
         if 0 < b["start"] - a["end"] < BRIDGE_S:
             a["end"] = b["start"]
     return graphics
 
 
-def plan_zooms(dur, graphics, cut_joins, scale):
+def zoom_gap(style):
+    """Seconds between framing changes after the first minute: 7 s at axis-story's 2.8 punches a minute, shorter
+    in proportion for a style that punches more often (sdr-mastery: 4.9 a minute -> 4 s)."""
+    per_min = (style.get("zoom") or {}).get("per_min") or 2.8
+    return round(ZOOM_MIN_GAP_S * 2.8 / per_min, 2)
+
+
+def plan_zooms(dur, graphics, cut_joins, scale, gap_s=ZOOM_MIN_GAP_S):
     """Hard punches on the jump cuts while the speaker is full frame (the references change framing on
-    their cuts, 2.8 a minute, busier in the first minute). Alternates in and out; a stretch under a graphic
-    that hides the speaker resets to 1."""
-    covered = lambda t: any(g["start"] - 0.05 <= t < g["end"] + 0.05 and g["kind"] not in ("label", "buttons", "lower")  # noqa: E731
+    their cuts at the style's rate, busier in the first minute). Alternates in and out; a stretch under a
+    graphic that hides the speaker resets to 1."""
+    covered = lambda t: any(g["start"] - 0.05 <= t < g["end"] + 0.05 and g["kind"] not in OVERLAYS  # noqa: E731
                             for g in graphics)
     zooms, inn, last = [], False, -1e9
     start = None
     for t in cut_joins:
-        gap = 2.5 if t < 60 else ZOOM_MIN_GAP_S
+        gap = 2.5 if t < 60 else gap_s
         if covered(t) or t - last < gap:
             continue
         # a graphic between the last change and this one already reset the framing
-        if inn and any(last <= g["start"] < t for g in graphics if g["kind"] not in ("label", "buttons", "lower")):
+        if inn and any(last <= g["start"] < t for g in graphics if g["kind"] not in OVERLAYS):
             inn = False
         if not inn:
             start, inn = t, True
@@ -263,14 +342,14 @@ def plan_zooms(dur, graphics, cut_joins, scale):
             inn = False
         last = t
     if inn and start is not None:
-        nxt = min([g["start"] for g in graphics if g["start"] > start and g["kind"] not in ("label", "buttons", "lower")]
+        nxt = min([g["start"] for g in graphics if g["start"] > start and g["kind"] not in OVERLAYS]
                   + [dur])
         zooms.append({"start": start, "end": nxt, "scale": scale})
     # a zoom never runs under a full-frame graphic
     out = []
     for z in zooms:
         for g in graphics:
-            if g["kind"] not in ("label", "buttons", "lower") and z["start"] < g["start"] < z["end"]:
+            if g["kind"] not in OVERLAYS and z["start"] < g["start"] < z["end"]:
                 z = dict(z, end=g["start"])
         if z["end"] - z["start"] >= 1.0:
             out.append({k: round(v, 3) if isinstance(v, float) else v for k, v in z.items()})
@@ -281,14 +360,15 @@ REF_FACE_H = 0.242     # the references' speaker: YuNet face 24.2% of the frame 
 FACE_IN_HEAD = 1.5     # face.py's head box is the face grown 35% up and 15% down
 
 
-def zoom_scale(head):
-    """The references punch 1.25x from a face 24% of the frame high, so they never go tighter than about
-    30%. Footage framed tighter than that gets only a small punch (at least 1.08x, or the framing change
-    would not read), and never so far the head box leaves the frame (the zoom grows from the top of the head)."""
+def zoom_scale(head, ref_face_h=REF_FACE_H, ref_scale=1.25):
+    """The references punch `ref_scale` from a face `ref_face_h` of the frame high (axis-story: 1.25x from 24%,
+    so never tighter than about 30%; sdr-mastery: 1.15x from 41%). Footage framed tighter than the reference
+    gets a smaller punch (at least 1.08x, or the framing change would not read), and never so far the head box
+    leaves the frame (the zoom grows from the top of the head)."""
     face = head["h"] / FACE_IN_HEAD
-    tight = REF_FACE_H * 1.25 / max(0.05, face)
+    tight = ref_face_h * ref_scale / max(0.05, face)
     room = 1.0 / max(0.3, head["bottom"] - head["top"] + 0.05)
-    return round(max(1.08, min(1.25, tight, room)), 2)
+    return round(max(1.08, min(ref_scale, tight, room)), 2)
 
 
 def music_bed(edit, track, start, end, dur, under_db):
@@ -326,23 +406,56 @@ def voice_track(edit):
     return out.relative_to(edit).as_posix()
 
 
-def place_sfx(edit, graphics, dur):
-    """The references' rate (0.1-0.4 a minute), each on the cut to a full-screen card: a low hit on a chapter,
-    a pop on a quote or pills. Never more than the rate allows; the earliest cards first."""
-    n = max(0, round(dur / 60 * SFX_PER_MIN))
-    if not n:
+def pick_sfx(graphics, dur, conf=None):
+    """Which full-screen cards get a sound cue. axis-story (no "sfx" in style.json longform): 0.3 a minute, a low
+    hit on a chapter, a pop on a quote or pills, chapters then the earliest cards. A style's own
+    {"per_min", "on": [kinds], "name", "opening"}: its rate, the first `opening` cards in the first minute (the
+    sdr-mastery reference bunches its impacts there), the rest spread evenly over the later cards."""
+    if not conf:
+        n = max(0, round(dur / 60 * SFX_PER_MIN))
+        cands = [g for g in graphics if g["kind"] in ("chapter", "quote", "pills")]
+        pick = sorted(cands, key=lambda g: (g["kind"] != "chapter", g["start"]))[:n]
+        return [(g, "hit" if g["kind"] == "chapter" else "pop") for g in sorted(pick, key=lambda g: g["start"])]
+    n = max(0, round(dur / 60 * conf["per_min"]))
+    cands = [g for g in graphics if g["kind"] in conf["on"]]
+    early = [g for g in cands if g["start"] < 60][:min(n, conf.get("opening", 0))]
+    later = [g for g in cands if g not in early]
+    k = n - len(early)
+    spread = [later[round(i * (len(later) - 1) / max(1, k - 1))] for i in range(k)] if k > 0 and later else []
+    pick = sorted({id(g): g for g in early + spread}.values(), key=lambda g: g["start"])
+    return [(g, conf.get("name", "hit")) for g in pick]
+
+
+def place_sfx(edit, graphics, dur, conf=None):
+    """Sound cues on the cut to full-screen cards, at the style's measured rate (pick_sfx)."""
+    pick = pick_sfx(graphics, dur, conf)
+    if not pick:
         return []
     kit = edit / ".sfx" / "kit.json"
     if not kit.exists():
         subprocess.run([sys.executable, str(HERE / "sfx.py"), "build", str(edit)], check=True, capture_output=True)
-    cands = [g for g in graphics if g["kind"] in ("chapter", "quote", "pills")]
-    pick = sorted(cands, key=lambda g: (g["kind"] != "chapter", g["start"]))[:n]
     cues = json.loads(kit.read_text())["cues"]
-    out = []
-    for g in sorted(pick, key=lambda g: g["start"]):
-        name = "hit" if g["kind"] == "chapter" else "pop"
-        out.append({"src": f".sfx/{name}.wav", "start": round(max(0.0, g["start"] - cues[name]["attack_s"]), 3)})
-    return out
+    return [{"src": f".sfx/{name}.wav", "start": round(max(0.0, g["start"] - cues[name]["attack_s"]), 3)} for g, name in pick]
+
+
+def page_words(g):
+    """Every timed word or element of a Pages.tsx graphic."""
+    k = g["kind"]
+    if k == "list":
+        return g.get("sub", []) + [w for it in g["items"] for w in it]
+    if k == "rows":
+        return [w for r in g["items"] for w in r["text"]]
+    if k == "dialogue":
+        return [{"at": t["head_at"]} for t in g["turns"]] + [w for t in g["turns"] for w in t["line"]]
+    if k == "rule":
+        return [w for it in g["items"] for w in it]
+    if k == "acronym":
+        return g["items"]
+    if k == "illustration":
+        return g["line"] + g.get("side_text", []) + ([{"at": g["side_at"]}] if "side_at" in g else [])
+    if k == "phrase":
+        return [w for ln in g["lines"] for w in ln["words"]]
+    return []
 
 
 def checks(plan, head, style):
@@ -360,11 +473,24 @@ def checks(plan, head, style):
             fails.append(f"panel at {g['start']:.1f}s: diagram text runs off the panel: {', '.join(g['_bounds'])}")
         if g["kind"] == "quote" and len(g["text"].replace("*", "")) > QUOTE_MAX_CHARS:
             fails.append(f"quote at {g['start']:.1f}s is {len(g['text'])} characters: over 4 lines (max {QUOTE_MAX_CHARS})")
-        if g["kind"] in ("buttons", "lower", "script"):
+        if g["kind"] in ("buttons", "lower", "script", "phrase"):
             room = 990 - (head["top"] + head["h"] * 0.9) * 1080 - 24     # under the chin, above the frame's foot
             if room < 60:
                 fails.append(f"{g['kind']} at {g['start']:.1f}s: no room under the chin for words over the speaker "
                              f"({room:.0f} px): use a quote or panel instead")
+        allowed = (style.get("design") or {}).get("kinds")
+        if allowed and g["kind"] not in allowed:
+            fails.append(f"{g['kind']} at {g['start']:.1f}s is not a graphic this style uses ({', '.join(allowed)})")
+        if g["kind"] in PAGES:
+            # words arrive as they are said, so the eye reads along: the whole graphic need only stay READ_MIN_S
+            # once its last word is in (overlays: before their soft exit)
+            ats = [w["at"] for w in page_words(g) if w["at"] < 1e5]
+            if ats:
+                left = d - max(ats) - 0.45 - (OVERLAY_EXIT_S + 0.2 if g["kind"] in OVERLAYS else 0)
+                if left < READ_MIN_S - 0.05:
+                    fails.append(f"{g['kind']} at {g['start']:.1f}s is all up for only {left:.1f}s after its last word: too short "
+                                 f"to read (at least {READ_MIN_S:.1f} s). End it later or leave it out")
+            continue
         items = g.get("items") or g.get("bullets") or []
         if items and d - max(x["at"] for x in items) - EASE_IN_S - (0.5 if g["kind"] in ("lower", "buttons", "label") else 0) < read_s(items) - 0.05:
             fails.append(f"{g['kind']} at {g['start']:.1f}s is all up for only {d - max(x['at'] for x in items):.1f}s: too short to "
@@ -391,7 +517,7 @@ def pacing(plan, style):
     """The plan's numbers next to the references' (style.json "longform")."""
     lf = style.get("longform", {})
     dur = plan["durationInFrames"] / plan["fps"]
-    full = [g for g in plan["graphics"] if g["kind"] not in ("label", "buttons", "lower")]
+    full = [g for g in plan["graphics"] if g["kind"] not in OVERLAYS]
     share = 100 * sum(g["end"] - g["start"] for g in full) / dur
     gaps, t = [], 0.0
     for g in full:
@@ -403,9 +529,10 @@ def pacing(plan, style):
              f"first graphic       {first:.1f}s  (references: median {lf.get('first_graphic_s_median', '?')} s)" if first is not None
              else "first graphic       none",
              f"speaker-only gaps   median {statistics.median(gaps):.1f}s, longest {max(gaps):.1f}s  (references: median "
-             f"{lf.get('speaker_only_gap_s', {}).get('median', '?')} s, longest 13-27 s in two of three)",
-             f"zoom changes        {2 * len(plan['zooms']) / (dur / 60):.1f} a minute  (references: 2.8)",
-             f"sound cues          {len(plan.get('sfx', []))}  (references: 0.1-0.4 a minute)"]
+             f"{lf.get('speaker_only_gap_s', {}).get('median', '?')} s, longest {lf.get('speaker_only_gap_s', {}).get('max', '13-27')} s)",
+             f"zoom changes        {2 * len(plan['zooms']) / (dur / 60):.1f} a minute  (references: {(style.get('zoom') or {}).get('per_min', 2.8)})",
+             f"sound cues          {len(plan.get('sfx', []))}  (references: "
+             f"{(lf.get('sfx') or {}).get('per_min', '0.1-0.4')} a minute)"]
     # information only: graphics go where they make what is said easier to understand, never to fill time or
     # to reach the references' share (Ayush, 2026-10-10)
     return lines, []
@@ -429,10 +556,13 @@ def build(edit, style_path=DEFAULT_STYLE, music=None):
         g["end"] = min(g["end"], dur)
         if g["kind"] in ("pills", "buttons"):   # after trimming: the room to read is what is left
             g["items"] = readable(g["items"], g["end"] - g["start"])
-    scale = zoom_scale(head)
+    face_ref = (style.get("face") or {}).get("height_pct")
+    scale = zoom_scale(head, face_ref / 100 if face_ref else REF_FACE_H, (style.get("zoom") or {}).get("scale") or 1.25)
     plan = {"composition": "LongEdit", "video": "cut.mp4", "width": 1920, "height": 1080, "fps": fps,
             "durationInFrames": int(round(dur * fps)), "face": {k: head[k] for k in ("cx", "top", "h")},
-            "zooms": plan_zooms(dur, graphics, joins(spans), scale), "graphics": graphics, "cards": []}
+            "zooms": plan_zooms(dur, graphics, joins(spans), scale, zoom_gap(style)), "graphics": graphics, "cards": []}
+    if (style.get("design") or {}).get("plan_palette"):    # the style's own colours (sdr-mastery's reds and ink)
+        plan["palette"] = style["design"]["plan_palette"]
     if music and board.get("music"):
         toks = tokens(words)
         a, _ = find(words, toks, board["music"]["from"])
@@ -442,7 +572,7 @@ def build(edit, style_path=DEFAULT_STYLE, music=None):
         plan["music"] = {"src": src, "start": 0}
         print(f"music     {music} from {a:.1f}s to {b:.1f}s, {abs(style['sound']['music']['level_db'])} dB under the voice")
     plan["voice"] = voice_track(edit)
-    plan["sfx"] = place_sfx(edit, graphics, dur)
+    plan["sfx"] = place_sfx(edit, graphics, dur, style.get("longform", {}).get("sfx"))
     plan["_words"] = words
     fails, warns = checks(plan, head, style)
     plan.pop("_words")
@@ -491,6 +621,45 @@ def demo():
     spoken = [{"text": t, "start": 10 + i, "end": 10.5 + i} for i, t in enumerate("at a $100 million SaaS company".split())]
     ws = timed_words("$100M SaaS company", spoken, tokens(spoken), 10.0)
     assert [w["at"] for w in ws] == [2.0, 4.0, 5.0], ws     # "$100M" lands on "$100", as it is said
+
+    # the sdr-mastery pages: every word timed as it is said, lines matched in the order he says them
+    talk = [{"text": w, "start": i * 0.5, "end": i * 0.5 + 0.4} for i, w in enumerate(
+        ("so the list matters . things to do : get specific on your icp , use a simple structure . part one is "
+         "the list building . let's say someone said hey send me an email and I will say happy to . "
+         "budget authority need timing . most people mess up because they start off wrong . end of it all here now").split())]
+    page_board = {"graphics": [
+        {"kind": "list", "from": "things to do", "to": "simple structure", "heading": "Things to do while list building:",
+         "marker": "number", "items": ["Get specific on your ICP", {"text": "Use a simple structure", "on": "use a simple"}]},
+        {"kind": "rows", "from": "part one", "to": "list building", "preview": True,
+         "items": [{"label": "Part 1", "text": "The list building", "on": "list building"}, {"label": "Part 2", "text": "The script"}]},
+        {"kind": "dialogue", "from": "let's say", "to": "happy to", "turns": [
+            {"head": "Let's say someone said:", "line": {"text": "Hey, send me an email", "on": "hey send"}, "head_on": "let's say"},
+            {"head": "I will say:", "line": {"text": "Happy to", "on": "happy to"}}]},
+        {"kind": "acronym", "from": "budget", "to": "timing", "word": "BANT",
+         "items": [{"text": t.title(), "on": t} for t in ("budget", "authority", "need", "timing")]},
+        {"kind": "phrase", "from": "most people", "to": "off wrong", "lines": [{"text": "Most people mess up"},
+                                                                             {"text": "because they start off wrong", "italic": True}]}]}
+    pg = resolve(page_board, talk)
+    lst, rows, dia, acr, phr = pg
+    assert [w["text"] for w in lst["items"][0]] == "Get specific on your ICP".split(), lst
+    assert lst["items"][1][0]["at"] > lst["items"][0][-1]["at"], "the second line is timed after the first"
+    assert rows["items"][0]["at"] is not None and rows["items"][1]["at"] is None, rows     # Part 2 stays blurred
+    assert dia["turns"][1]["head_at"] < dia["turns"][1]["line"][0]["at"], dia
+    assert [i["at"] for i in acr["items"]] == sorted(i["at"] for i in acr["items"]), acr
+    assert phr["lines"][1]["italic"] and phr["lines"][1]["words"][0]["text"] == "because", phr
+    sty = {"design": {"kinds": ["list", "rows"]}}
+    bad = {"graphics": [dict(acr)], "zooms": [], "durationInFrames": 3000, "fps": 30, "_words": talk}
+    assert any("not a graphic this style uses" in f for f in checks(bad, head, sty)[0]), "a kind outside the style must fail"
+    short = {"graphics": [dict(phr, end=phr["start"] + phr["lines"][1]["words"][-1]["at"] + 0.5)], "zooms": [],
+             "durationInFrames": 3000, "fps": 30, "_words": talk}
+    assert any("too short to read" in f for f in checks(short, head, {})[0]), "a phrase gone as its last word lands must fail"
+    # zooms and sound cues follow the style: sdr-mastery punches 4.9 a minute at 1.15x from a 41% face
+    assert zoom_gap({"zoom": {"per_min": 2.8}}) == ZOOM_MIN_GAP_S and zoom_gap({"zoom": {"per_min": 4.9}}) == 4.0
+    assert zoom_scale({"cx": 0.5, "top": 0.15, "h": 0.6, "bottom": 0.75}, 0.407, 1.15) == 1.15
+    cards = [{"kind": "list", "start": float(t), "end": t + 5.0} for t in (5, 20, 40, 55, 120, 300, 500, 700, 900)]
+    got = pick_sfx(cards, 600, {"per_min": 0.6, "on": ["list"], "opening": 4})
+    assert len(got) == 6 and sum(g["start"] < 60 for g, _ in got) == 4, got   # 4 in the opening, the rest spread
+    assert len(pick_sfx([{"kind": "chapter", "start": 9.0, "end": 12.0}], 600)) == 1, "axis-story's cues unchanged"
 
     print("longplan ok")
 

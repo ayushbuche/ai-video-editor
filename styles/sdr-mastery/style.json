@@ -577,17 +577,33 @@
    "client_footage_blurred": 1,
    "text_over_speaker": 5,
    "false_detections_speaker_only": 14
+  },
+  "sfx": {
+   "per_min": 0.6,
+   "on": [
+    "list",
+    "rows",
+    "dialogue",
+    "rule",
+    "acronym",
+    "illustration",
+    "shot"
+   ],
+   "name": "hit",
+   "opening": 4,
+   "note": "reference: 13 cues in 22:55, 4 low impacts in the first minute on the first graphics, the rest scattered"
   }
  },
  "design": {
   "colors": {
    "white": "#FFFFFF",
    "page": "#FAFAFA",
-   "ink": "#313535",
+   "ink": "#333333",
    "grey_word_not_yet_said": "#A8A8A8",
-   "red": "#F44643",
+   "red": "#FF4A4A",
    "red_pill": "#E8344A",
-   "illustration_navy": "#2B3A67"
+   "illustration_navy": "#2B3A67",
+   "red_marker": "#FE2828"
   },
   "fonts": {
    "body": "clean neo-grotesk sans (Inter / SF Pro-like), dark grey, sentence case",
@@ -610,6 +626,22 @@
    "words": "write on word by word as spoken, each fading up from light grey/soft blur",
    "enter": "hard cut (about half), or a quick scale-up from 0.4-0.8x with a fade (0.25-1 s, power3.inOut); small images slide or pop in with a slight overshoot (back.out)",
    "underline": "red marker underline draws on left to right"
+  },
+  "kinds": [
+   "list",
+   "rows",
+   "dialogue",
+   "rule",
+   "acronym",
+   "illustration",
+   "shot",
+   "phrase"
+  ],
+  "plan_palette": {
+   "red": "#FF4A4A",
+   "marker": "#FE2828",
+   "ink": "#333333",
+   "page": "#FFFFFF"
   }
  },
  "not_copied": {},

@@ -11,6 +11,7 @@ import { loadFont as loadSans } from "@remotion/google-fonts/Inter";
 import { loadFont as loadMarker } from "@remotion/google-fonts/PatrickHand";
 import { loadFont as loadScript } from "@remotion/google-fonts/Caveat";
 import { loadFont as loadSpoken } from "@remotion/google-fonts/Gloock";
+import { PAGE_PAL, Page, PageGraphic, PagePal, Phrase } from "./Pages";
 
 const SERIF = loadSerif("normal", { weights: ["500", "600"], subsets: ["latin"] }).fontFamily;
 const SANS = loadSans("normal", { weights: ["400", "500", "700", "800"], subsets: ["latin"] }).fontFamily;
@@ -44,12 +45,13 @@ export type Graphic = { start: number; end: number } & (
   | { kind: "lower"; words: Item[] } // big white serif words over the speaker, each fading in as it is said
   | { kind: "script"; heading: string; lines: Item[][] } // a script he says: white page, serif heading, the script in blue
                                                           // quotes, each sentence sweeping on as he starts it (reference "How to Pitch")
+  | PageGraphic // the sdr-mastery style's white pages and its phrase over the speaker (Pages.tsx)
 );
 type Zoom = { start: number; end: number; scale: number };
 type Face = { cx: number; top: number; h: number }; // the head box (hair to chin) in the source, fractions of the frame (face.py)
 type Track = { src: string; start: number; volume?: number };
 export type LongPlan = { video: string; width: number; height: number; fps: number; durationInFrames: number; face: Face;
-  zooms: Zoom[]; graphics: Graphic[]; music?: Track; sfx?: Track[]; palette?: Partial<Palette>;
+  zooms: Zoom[]; graphics: Graphic[]; music?: Track; sfx?: Track[]; palette?: Partial<Palette> & Partial<PagePal>;
   voice?: string }; // the cut's voice as a stereo file (longplan.py); else the cut's own audio
 
 export const longMeta: CalculateMetadataFunction<LongPlan> = ({ props }) => ({
@@ -334,6 +336,7 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
   const t = frame / fps;
   const S = width / 1920;
   const pal = { ...PALETTE, ...(palette ?? {}) };
+  const ppal: PagePal = { ...PAGE_PAL, ...(palette ?? {}) };
   const g = at(graphics, t);
   const lt = g ? t - g.start : 0;
   const zoom = zooms.find((z) => t >= z.start && t < z.end)?.scale ?? 1;
@@ -427,6 +430,10 @@ export const LongEdit: React.FC<LongPlan> = ({ video, face, zooms, graphics, mus
         <Spoken words={g.words} lt={lt} S={S} face={face} max={230} />
       </>
     );
+  } else if (g?.kind === "phrase") {
+    overlay = <Phrase lines={g.lines} lt={lt} S={S} chinPx={(face.top + face.h * CHIN_IN_HEAD) * 1080} pal={ppal} />;
+  } else if (g && ["list", "rows", "dialogue", "rule", "acronym", "illustration", "shot"].includes(g.kind)) {
+    view = <Page g={g as PageGraphic} lt={lt} dur={g.end - g.start} S={S} pal={ppal} />;
   } else if (g?.kind === "script") {
     view = (
       <AbsoluteFill style={{ background: "#F8F9FA" }}>

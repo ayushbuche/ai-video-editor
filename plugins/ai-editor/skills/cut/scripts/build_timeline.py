@@ -748,7 +748,10 @@ def quiet_edges(cuts, lvl, noise_db, dur, kept=(), removed=(), hf=None, hf_floor
         if s > W and loud(i - 1) and loud(i):
             kw = max((w for w in kept if w["start"] < s), key=lambda w: w["start"], default=None)
             rs = run_start(i) * W
-            if kw is not None and rs <= kw["end"] + 0.02:
+            # the sound began after a dip, where a removed word begins (its label within 0.15 s): that word, said
+            # early, not the kept word ringing on ("thing that, that can": the first "that" heard 60 ms before its label)
+            began_removed = rs > (kw["start"] + 0.05 if kw else 0) and any(abs(w["start"] - rs) <= 0.15 for w in removed)
+            if kw is not None and rs <= kw["end"] + 0.02 and not began_removed:
                 nxt_removed = min((w["start"] for w in removed if w["start"] >= s - 0.02), default=math.inf)
                 limit = min(e - 0.02, s + EDGE_TAIL_S, nxt_removed)
                 hold = int(EDGE_HOLD_S / W)
@@ -757,7 +760,10 @@ def quiet_edges(cuts, lvl, noise_db, dur, kept=(), removed=(), hf=None, hf_floor
                 if j is not None and j * W < limit:
                     c["start"], c["_settled"] = round(j * W, 3), True   # frames round this one up, past the tail
             else:
-                c["start"] = round(max(rs - W / 2, kw["end"] if kw else 0.0), 3)
+                # back to the quiet before the sound; past the kept word's label end only when the removed word was
+                # heard early (its label is late, and so is the one before it)
+                floor_t = (kw["start"] + 0.05 if began_removed else kw["end"]) if kw else 0.0
+                c["start"] = round(max(rs - W / 2, floor_t), 3)
         i = int(c["end"] / W)
         if c["end"] < dur - W and loud(i - 1) and loud(i):
             f = next((k for k in range(i, min(n, i + int(EDGE_GAP_S / W) + 1)) if not loud(k)), None)
@@ -768,6 +774,67 @@ def quiet_edges(cuts, lvl, noise_db, dur, kept=(), removed=(), hf=None, hf_floor
                 rs = run_start(i) * W
                 if not any(w["end"] > rs + 0.02 and w["start"] < c["end"] for w in removed) and rs - W / 2 > c["start"]:
                     c["end"] = round(rs - W / 2, 3)
+    return [c for c in cuts if c["end"] > c["start"] + 1e-3]
+
+SCRAP_MAX_S = 0.2       # a sound this short, alone at a join between quiet, is a scrap: a split word or a mouth click
+SCRAP_QUIET_S = 0.06    # ...with this much room-level quiet between it and the speech
+SCRAP_VOICE_S = 0.4     # a scrap the kept speech resumes within this long after is the start of that phrase
+SCRAP_DB = 4.0          # a scrap's sound: this far over the threshold (a click can sit right at EDGE_DB)
+CLICK_MAX_S = 0.08      # a mouth click: this short and weak (the six on cold-calling-one: 40-60 ms, 15-20 dB over the
+CLICK_MAX_DB = 20.0     # threshold); a short word ("A", "I") is longer or louder (the split "A": 100 ms, 23 dB over)
+
+
+def edge_scraps(cuts, lvl, noise_db, hf=None, hf_floor=None):
+    """No join keeps a scrap of sound (join_audit.py FRAGMENT, cold-calling-one 2026-10-13: six of 195 joins).
+      At a kept END: a short sound alone after quiet, right at the cut. If the kept speech resumes within
+        SCRAP_VOICE_S after it (across the cut), it is the first word of that phrase said earlier than its label
+        ("A lot of people" at 421.71 s, labelled 422.08: the pause cut split the "A"), so the cut ends before it and
+        the word plays whole; else it is a mouth click, so the kept audio stops before it.
+      At a kept START: a short sound alone, then quiet, then the words: a click before speaking, so the kept audio
+        starts after it.
+    A plosive's burst is followed by aspiration above room level, never by SCRAP_QUIET_S of room tone, so it is
+    left alone."""
+    if not lvl or noise_db is None:
+        return cuts
+    W, n = RMS_WIN_S, len(lvl)
+    loud = lambda k: 0 <= k < n and (lvl[k] > noise_db + SCRAP_DB or hissing(lvl, hf, hf_floor, k))  # noqa: E731
+    room = lambda a, b: all(lvl[k] <= noise_db + 2 for k in range(max(0, int(a / W)), min(n, int(b / W))))  # noqa: E731
+    voiced = lambda a, b: sum(1 for k in range(max(0, int(a / W)), min(n, int(b / W))) if loud(k)) * W >= 0.06  # noqa: E731
+
+    def run_at(k):
+        if not loud(k):
+            return None
+        a = b = k
+        while a > 0 and loud(a - 1):
+            a -= 1
+        while b + 1 < n and loud(b + 1):
+            b += 1
+        return a * W, (b + 1) * W
+
+    def click(r):
+        return r[1] - r[0] <= CLICK_MAX_S + 1e-6 and \
+            max(lvl[k] for k in range(int(r[0] / W), max(int(r[0] / W) + 1, int(r[1] / W)))) <= noise_db + CLICK_MAX_DB
+
+    for c in cuts:
+        s, e = c["start"], c["end"]
+        if not (math.isfinite(s) and math.isfinite(e)) or e - s < 0.04:
+            continue
+        moved = False
+        i = int(s / W)
+        r = next((run_at(k) for k in range(i - 1, max(-1, i - 4), -1) if loud(k)), None) or run_at(i)
+        # the quiet is looked for just before the run's first window (a word's onset ramps up through it)
+        if r and r[1] - r[0] <= SCRAP_MAX_S and r[1] <= s + SCRAP_MAX_S and room(r[0] - SCRAP_QUIET_S - W, r[0] - W):
+            if click(r):
+                c["start"] = round(r[0] - 0.01, 3)                # a click after the words
+            elif voiced(e, e + SCRAP_VOICE_S) and e - r[1] <= SCRAP_VOICE_S + 0.1:
+                c["end"] = round(r[0] - ONSET_MARGIN_S, 3)        # the phrase's first word, said early: keep it whole
+                c["start"] = round(min(c["start"], c["end"] - 0.02), 3)
+                moved = True
+        j = int(c["end"] / W)
+        r = None if moved else run_at(j) or next((run_at(k) for k in range(j + 1, min(n, j + 3)) if loud(k)), None)
+        if r and click(r) and r[0] >= c["end"] - SCRAP_MAX_S and room(r[1], r[1] + SCRAP_QUIET_S) \
+                and voiced(r[1] + SCRAP_QUIET_S, r[1] + SCRAP_QUIET_S + 0.3):
+            c["end"] = round(r[1] + 0.01, 3)                      # a click before the words
     return [c for c in cuts if c["end"] > c["start"] + 1e-3]
 
 def splice_gaps(cuts, words, model_cuts, lvl=None, noise_db=None):
@@ -916,6 +983,7 @@ def main():
     allcuts = enforce_splice_budget(allcuts, words, model_cuts, splice_max, lvl, splice_noise)
     allcuts = quiet_edges(allcuts, lvl, splice_noise, dur, kept_words, [w for w in words if covered_by(w, model_cuts)],
                           hf, hf_floor)
+    allcuts = edge_scraps(allcuts, lvl, splice_noise, hf, hf_floor)
     labels.update(held_labels(raw, allcuts, starts))
     raw = apply_labels(raw, labels)
     toks = [t for t in raw if t.get("type") in ("word", "audio_event")]

@@ -268,6 +268,11 @@ def test_quiet_edges():
     c = B.quiet_edges([{"start": 1.2, "end": 2.02}], win([(0.5, 1.1), (1.96, 2.8)]), -40.0, 3.0,
                       kept=[w("a", 0.5, 1.1), w("b", 2.04, 2.8)])
     assert 1.9 <= c[0]["end"] <= 1.96, c
+    # "thing that, that can": the removed first "that" sounds from 0.88, after a dip, 0.06 s before its label: the
+    # cut moves back into the dip instead of keeping its first 60 ms
+    c = B.quiet_edges([{"start": 0.94, "end": 1.12}], win([(0.4, 0.8), (0.88, 1.06), (1.16, 2.0)]), -40.0, 3.0,
+                      kept=[w("thing", 0.4, 0.94), w("that", 1.12, 1.3)], removed=[w("that", 0.94, 1.12)])
+    assert 0.8 <= c[0]["start"] <= 0.88, c
     # removed "You When" run straight into the kept "that": moving back would bring them in, so the edge stays
     c = B.quiet_edges([{"start": 0.5, "end": 1.94}], win([(0.1, 0.4), (1.78, 2.4)]), -40.0, 3.0,
                       kept=[w("x", 0.1, 0.4), w("that", 1.94, 2.12)], removed=[w("You", 1.58, 1.94), w("When", 1.94, 1.94)])
@@ -333,9 +338,49 @@ def test_sibilant_and_breath():
     assert B.breath_end([-63.0] * 100 + [-15.0] * 50, -15.0, 2.0) == 2.0
 
 
+
+def test_edge_scraps():
+    """No join keeps a scrap of sound: a split first word goes whole to its phrase, a click goes (2026-10-13)."""
+    W = B.RMS_WIN_S
+    def lv(spans, n=250, base=-63.0):
+        out = [base] * n
+        for a, b, v in spans:
+            for k in range(int(a / W), int(b / W)):
+                out[k] = v
+        return out
+    # "up." to 1.0; "A" said at 1.30-1.44 (labelled later); "lot of people" from 1.62: the pause cut 1.38-1.58
+    # split the "A". The cut now ends before it, so "A" plays whole
+    c = B.edge_scraps([{"start": 1.38, "end": 1.58}], lv([(0.4, 1.0, -18), (1.3, 1.44, -18), (1.62, 2.4, -18)]), -41.0)
+    assert c[0]["end"] <= 1.3 and c[0]["start"] < c[0]["end"], c
+    # a click 0.4 s before the next words is still a click, not a word said early
+    c = B.edge_scraps([{"start": 1.36, "end": 1.75}], lv([(0.4, 1.0, -18), (1.3, 1.34, -31), (1.78, 2.6, -18)]), -41.0)
+    assert c[0]["start"] <= 1.3 and c[0]["end"] == 1.75, c
+    # the split "A" whose first window ramps up (-38) after room tone: still found and kept whole
+    c = B.edge_scraps([{"start": 1.42, "end": 1.6}], lv([(0.4, 1.0, -18), (1.3, 1.32, -38), (1.32, 1.4, -18),
+                                                        (1.62, 2.4, -18)]), -41.0)
+    assert c[0]["end"] <= 1.3, c
+    # a click at 1.30-1.34 after "block." (to 1.0), the next words 2.0 s away: the kept audio stops before it
+    c = B.edge_scraps([{"start": 1.36, "end": 3.0}], lv([(0.4, 1.0, -18), (1.3, 1.34, -30), (3.1, 4.0, -18)]), -41.0)
+    assert c[0]["start"] <= 1.3, c
+    # a click at 2.02-2.08, room tone, then "problem" from 2.14: the kept audio starts after the click
+    c = B.edge_scraps([{"start": 1.2, "end": 2.0}], lv([(0.4, 1.0, -18), (2.02, 2.08, -34), (2.14, 3.0, -20)]), -41.0)
+    assert 2.08 <= c[0]["end"] <= 2.12, c
+    # a "p" burst then aspiration (well over room level) then the vowel: one sound, left alone
+    c = B.edge_scraps([{"start": 1.2, "end": 2.0}], lv([(0.4, 1.0, -18), (2.02, 2.06, -30), (2.06, 2.12, -36),
+                                                        (2.12, 3.0, -20)]), -41.0)
+    assert c[0]["end"] == 2.0, c
+    # a click right at the edge threshold (-35 dB, 6 over): still a click
+    c = B.edge_scraps([{"start": 1.36, "end": 3.0}], lv([(0.4, 1.0, -18), (1.3, 1.34, -35), (3.1, 4.0, -18)]), -41.0)
+    assert c[0]["start"] <= 1.3, c
+    # a short word ("I", 120 ms, loud) alone before a pause and the next words: a word, not a click, so kept
+    c = B.edge_scraps([{"start": 1.2, "end": 2.0}], lv([(0.4, 1.0, -18), (2.02, 2.14, -18), (2.22, 3.0, -20)]), -41.0)
+    assert c[0]["end"] == 2.0, c
+
+
 if __name__ == "__main__":
     test_derive()
     test_quiet_edges()
+    test_edge_scraps()
     test_sibilant_and_breath()
     test_onset_walk_stops_at_removed_words()
     test_audible_end()

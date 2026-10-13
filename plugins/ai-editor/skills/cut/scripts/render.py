@@ -12,7 +12,10 @@ How it stays exact on a big 4K source:
   - Frames are counted per segment and again after joining. Frames in == frames out.
   - Audio is cut in ONE pass and muxed on at the end. Separate AAC tracks per
     segment add encoder padding at every join and drift by seconds.
-  - Every audio span gets an 8 ms fade in and out, so a join never clicks.
+  - Joins crossfade over 24 ms (each side reaches 12 ms past its cut into the source), so a join never clicks
+    and a cut inside a sound (a restart said in one breath) blends instead of dipping to nothing and snapping
+    back (Ayush, 2026-10-13: "a weird, harsh cut" at "teams that I worked at"). Length is unchanged: the
+    overlap is exactly what each side reaches past its cut.
   - Keyframe every 15 frames, so the next step (Remotion) can seek quickly.
 Never stream-copy (-c copy) across cuts: that snaps to keyframes, up to 2 s off.
 """
@@ -26,7 +29,8 @@ import sys
 import tempfile
 from pathlib import Path
 
-FADE_S = 0.008
+FADE_S = 0.008    # the first and last span fade in / out
+XFADE_S = 0.012   # each side of a join reaches this far past its cut; the crossfade is twice it
 LEAD_S = 0.5     # seek this far early, let the time-based trim pick the frames
 
 
@@ -120,14 +124,7 @@ def main():
         sys.exit(f"ERROR concat lost frames (kept in {tmp})")
 
     print("  audio, one pass", flush=True)
-    parts = []
-    for i, (s, e) in enumerate(frames):
-        t0, t1 = off + s / fps, off + e / fps
-        fo = max(0.0, t1 - t0 - FADE_S)
-        parts.append(f"[0:a:0]atrim=start={t0:.6f}:end={t1:.6f},asetpts=PTS-STARTPTS,"
-                     f"afade=t=in:d={FADE_S},afade=t=out:st={fo:.6f}:d={FADE_S}[a{i}]")
-    fc = ";".join(parts) + ";" + "".join(f"[a{i}]" for i in range(len(frames))) + \
-        f"concat=n={len(frames)}:v=0:a=1[ac]"
+    fc = audio_graph(frames, fps, off)
     aud = tmp / "a.m4a"
     if subprocess.run(["ffmpeg", "-v", "error", "-y", "-vn", "-i", src,
                        "-filter_complex", fc, "-map", "[ac]",
@@ -146,5 +143,40 @@ def main():
     print(out)
 
 
+def audio_graph(frames, fps, off, x=XFADE_S):
+    """The audio filter graph: each kept span trimmed, reaching x past each inner cut, and joined by
+    crossfades of 2x, so the total length is exactly the kept frames' length."""
+    n, parts = len(frames), []
+    for i, (s, e) in enumerate(frames):
+        t0 = off + s / fps - (x if i > 0 else 0.0)
+        t1 = off + e / fps + (x if i < n - 1 else 0.0)
+        fades = f"afade=t=in:d={FADE_S}," if i == 0 else ""
+        if i == n - 1:
+            fades += f"afade=t=out:st={max(0.0, t1 - t0 - FADE_S):.6f}:d={FADE_S},"
+        parts.append(f"[0:a:0]atrim=start={max(0.0, t0):.6f}:end={t1:.6f},asetpts=PTS-STARTPTS,{fades}anull[a{i}]")
+    if n == 1:
+        return parts[0].replace("[a0]", "[ac]")
+    chain, prev = [], "a0"
+    for i in range(1, n):
+        out = "ac" if i == n - 1 else f"x{i}"
+        chain.append(f"[{prev}][a{i}]acrossfade=d={2 * x:.6f}:c1=tri:c2=tri[{out}]")
+        prev = out
+    return ";".join(parts + chain)
+
+
+def demo():
+    g = audio_graph([(0, 30), (60, 90), (120, 150)], 30, 0.0)
+    assert g.count("acrossfade") == 2 and g.endswith("[ac]"), g
+    assert "atrim=start=1.988000:end=3.012000" in g, g        # the middle span reaches 12 ms past both cuts
+    assert "atrim=start=0.000000:end=1.012000" in g and "atrim=start=3.988000:end=5.000000" in g, g
+    # length: spans 1.024 + 1.024 + 1.012 + ... minus two 24 ms overlaps = the kept 3.000 s
+    lens = [1.012, 1.024, 1.012]
+    assert abs(sum(lens) - 2 * 0.024 - 3.0) < 1e-9
+    print("render demo ok")
+
+
 if __name__ == "__main__":
+    if sys.argv[1:] == ["demo"]:
+        demo()
+        sys.exit(0)
     main()

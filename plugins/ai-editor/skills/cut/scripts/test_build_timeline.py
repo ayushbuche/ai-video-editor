@@ -291,9 +291,42 @@ def test_onset_walk_stops_at_removed_words():
     assert nxt["start"] >= 2.7, nxt                              # never back into the removed 1.0-3.0
 
 
+
+def test_sibilant_and_breath():
+    """The "s" after a closure stays with its word; the in-breath before the next sentence goes (2026-10-13)."""
+    W = B.RMS_WIN_S
+    lv = [-63.0] * 300
+    for k in range(int(0.5 / W), int(0.92 / W)):
+        lv[k] = -18.0                          # "meeting" to 0.92
+    for k in range(int(1.0 / W), int(1.18 / W)):
+        lv[k] = -30.0                          # its "s", after an 80 ms closure
+    assert B.sibilant_end(lv, -41.0, 0.94, 5.0) >= 1.18
+    # the real "meetings": its "s" only 5 dB over the threshold, but almost all hiss; a breath has no hiss
+    lv2, hf = [-63.0] * 100, [-78.0] * 100
+    for k in range(10, 46):
+        lv2[k], hf[k] = -20.0, -60.0           # "meeting"
+    for k in range(51, 60):
+        lv2[k], hf[k] = -37.0, -40.0           # its "s" after a closure
+    assert B.sibilant_end(lv2, -41.0, 0.94, 5.0) == 0.94                     # by level alone it is missed
+    assert B.sibilant_end(lv2, -41.0, 0.94, 5.0, hf, -78.0) >= 1.2           # by its hiss it is kept
+    for k in range(51, 60):
+        lv2[k], hf[k] = -37.0, -77.0           # the same level with no hiss: a breath, not kept
+    assert B.sibilant_end(lv2, -41.0, 0.94, 5.0, hf, -78.0) == 0.94
+    for k in range(int(4.3 / W), int(4.7 / W)):
+        lv[k] = -45.0 + 8                      # an in-breath at -37 (speech -15: 22 dB under)
+    for k in range(int(4.75 / W), int(5.5 / W)):
+        lv[k] = -15.0                          # "The funny thing"
+    assert abs(B.breath_end(lv, -15.0, 4.3) - 4.74) < 0.03
+    cuts = B.silence_cuts([{"text": "The", "start": 4.75, "end": 5.0}], 0.3, 0.2, [(0.94, 4.3)], lv, -41.0)
+    assert cuts and cuts[0]["start"] >= 1.18 and 4.6 <= cuts[0]["end"] <= 4.66, cuts
+    # no breath: the pause keeps its 0.1 s before the next word as before
+    assert B.breath_end([-63.0] * 100 + [-15.0] * 50, -15.0, 2.0) == 2.0
+
+
 if __name__ == "__main__":
     test_derive()
     test_quiet_edges()
+    test_sibilant_and_breath()
     test_onset_walk_stops_at_removed_words()
     test_audible_end()
     test_splice_budget()

@@ -194,10 +194,11 @@ FLOOR_HEADROOM_DB = 6.0
 RMS_WIN_S = 0.020
 
 
-def window_rms_db(src):
+def window_rms_db(src, af=None):
+    """Level per RMS_WIN_S window, dB. af: an ffmpeg audio filter first (HISS_AF: only the hiss)."""
     n = int(16000 * RMS_WIN_S)
-    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(src), "-vn", "-ac", "1", "-ar", "16000",
-                          "-f", "s16le", "-"], capture_output=True).stdout
+    raw = subprocess.run(["ffmpeg", "-v", "error", "-i", str(src), "-vn", *(["-af", af] if af else []), "-ac", "1",
+                          "-ar", "16000", "-f", "s16le", "-"], capture_output=True).stdout
     a = array.array("h")
     a.frombytes(raw[: len(raw) // 2 * 2])
     out = []
@@ -205,6 +206,9 @@ def window_rms_db(src):
         m = sum(v * v for v in a[i:i + n]) / n
         out.append(10 * math.log10(m / 32768.0 ** 2) if m > 0 else -120.0)
     return out
+
+
+HISS_AF = "highpass=f=3500,highpass=f=3500"   # an "s" or "sh" lives up here; a breath and the voice mostly below
 
 
 def audible_end(lvl, noise_db, t):
@@ -464,21 +468,66 @@ def release_end(lvl, noise_db, t):
     return max(t, j * RMS_WIN_S + RELEASE_PAD_S)
 
 
-def silence_cuts(words, gap_max, gap_keep, heard, lvl=None, noise_db=None):
+SIB_GAP_S = 0.12      # a word's "s" or "t" release can follow a closure this long after the voice stops
+SIB_DB = 10.0         # ...and is strong (this far over the threshold); a breath is weak
+SIB_MAX_S = 0.3       # ...and short
+HISS_DB = 20.0        # hiss this far over the room's hiss floor is a spoken "s"
+PRE_ONSET_S = 0.10    # kept before a sentence's first voiced sound (soft "h" or "f" onsets) when a breath is cut
+BREATH_UNDER_DB = 18  # sound this far under speech, right before the words, is breath, not voice
+BREATH_MAX_S = 0.8
+
+
+def hissing(lvl, hf, hf_floor, k):
+    """Window k is an "s", "sh" or "t" release: strong hiss that is most of the sound. A breath has none (measured
+    on cold-calling-one: the "s" of "meetings" -40 dB of hiss over a -78 floor; an in-breath -77)."""
+    return hf is not None and 0 <= k < len(hf) and hf[k] > hf_floor + HISS_DB and hf[k] >= lvl[k] - 6
+
+
+def sibilant_end(lvl, noise_db, t, limit, hf=None, hf_floor=None):
+    """t, or past the word's own release when a short burst follows a closure just after t: strong (SIB_DB over
+    the threshold) or hissing (cold-calling-one, 2026-10-13: the "s" of "meetings" came 80 ms after the "t", only
+    5 dB over the threshold, was taken for a breath starting in the pause, and the pause cut began in front of it)."""
+    W, n = RMS_WIN_S, len(lvl)
+    k0 = int(t / W)
+    bs = next((k for k in range(k0, min(n, k0 + int(SIB_GAP_S / W) + 1))
+               if lvl[k] > noise_db + SIB_DB or hissing(lvl, hf, hf_floor, k)), None)
+    if bs is None or bs * W >= limit:
+        return t
+    hold = int(0.1 / W)
+    be = next((k for k in range(bs, min(n, bs + int(SIB_MAX_S / W) + 1))
+               if all(lvl[x] <= noise_db and not hissing(lvl, hf, hf_floor, x) for x in range(k, min(n, k + hold)))), None)
+    return t if be is None or be * W >= limit else round(be * W + 0.02, 3)
+
+
+def breath_end(lvl, speech_db, b):
+    """Where the voice starts after the pause that ends at b: if the sound from b on stays BREATH_UNDER_DB under
+    speech for a while before the voice comes in, that was an in-breath; else b."""
+    W, n = RMS_WIN_S, len(lvl)
+    k = int(b / W)
+    on = next((j for j in range(k, min(n, k + int(BREATH_MAX_S / W) + 1)) if lvl[j] > speech_db - BREATH_UNDER_DB), None)
+    return b if on is None or on * W - b < PRE_ONSET_S + 0.06 else on * W
+
+
+def silence_cuts(words, gap_max, gap_keep, heard, lvl=None, noise_db=None, hf=None, hf_floor=None):
     """Tighten (never fully close) every silence longer than gap_max: measured
     silence plus the audio-checked word gaps from quiet_word_gaps. The cut starts only once the word
     before has died away (release_end)."""
     out = []
+    speech_db = sorted(lvl)[int(0.99 * (len(lvl) - 1))] if lvl else None
     for a, b in heard:
         if b - a <= gap_max:
             continue
         nxt = next((w for w in words if w["start"] >= b - 0.05), None)
         keep = max(gap_keep, RUNWAY_S) if nxt and nxt["end"] - nxt["start"] < SHORT_WORD_S else gap_keep
         rel = release_end(lvl, noise_db, a)
+        if lvl and noise_db is not None:
+            rel = sibilant_end(lvl, noise_db, rel, b, hf, hf_floor)
         # a sound starting in the pause (a breath) ends the release early: cut in front of it, not into it
         rising = lvl and noise_db is not None and rel < a + RELEASE_MAX_S and rel - a < keep / 2 and \
             any(v > noise_db - 6 for v in lvl[int(rel / RMS_WIN_S) + 1:int((a + keep / 2) / RMS_WIN_S) + 2])
         s, e = (rel if rising else max(a + keep / 2, rel)), b - keep / 2
+        if lvl and noise_db is not None and speech_db is not None:
+            e = max(e, breath_end(lvl, speech_db, b) - PRE_ONSET_S)   # the in-breath before the next words goes too
         if e - s >= 0.04:
             out.append({"start": s, "end": e, "kind": "silence", "confidence": "high",
                         "evidence": f"{b - a:.2f}s silence", "note": f"tightened to {keep:.2f}s"})
@@ -638,7 +687,7 @@ EDGE_GAP_S = 0.14       # how far forward a kept start may move past a removed s
 EDGE_HOLD_S = 0.12      # a tail has died only if the quiet holds this long (a dip inside "And that's" does not)
 
 
-def quiet_edges(cuts, lvl, noise_db, dur, kept=(), removed=()):
+def quiet_edges(cuts, lvl, noise_db, dur, kept=(), removed=(), hf=None, hf_floor=None):
     """Last pass: no kept audio starts or stops while the voice is sounding, judged by the audio AND by whose
     sound it is. Word labels run early or late (cold-calling-one, 2026-10-13: "And" labelled to 336.83 s but
     said to 336.95; "comfortable." labelled to 1258.60 but still sounding at 1259.2; a removed "er" heard at the
@@ -658,7 +707,7 @@ def quiet_edges(cuts, lvl, noise_db, dur, kept=(), removed=()):
         return cuts
     n = len(lvl)
     W = RMS_WIN_S
-    loud = lambda k: 0 <= k < n and lvl[k] > noise_db + EDGE_DB  # noqa: E731
+    loud = lambda k: 0 <= k < n and (lvl[k] > noise_db + EDGE_DB or hissing(lvl, hf, hf_floor, k))  # noqa: E731
 
     def run_start(k):
         while k > 0 and loud(k - 1):
@@ -678,7 +727,7 @@ def quiet_edges(cuts, lvl, noise_db, dur, kept=(), removed=()):
                 limit = min(e - 0.02, s + EDGE_TAIL_S, nxt_removed)
                 hold = int(EDGE_HOLD_S / W)
                 j = next((k for k in range(i, min(n, int(limit / W) + 1))
-                          if lvl[k] <= noise_db and not any(loud(x) for x in range(k, min(n, k + hold)))), None)
+                          if lvl[k] <= noise_db and not loud(k) and not any(loud(x) for x in range(k, min(n, k + hold)))), None)
                 if j is not None and j * W < limit:
                     c["start"], c["_settled"] = round(j * W, 3), True   # frames round this one up, past the tail
             else:
@@ -828,12 +877,19 @@ def main():
         speech_db = sorted(lvl)[int(0.99 * (len(lvl) - 1))] if lvl else 0.0
         heard = merge_spans(heard + quiet_word_gaps(kept_words, gap_max, lvl, speech_db - GAP_QUIET_DB))
     splice_noise = None if bed else noise    # over a bed, word labels bound the splices
+    hf = hf_floor = None
+    if not bed:   # the hiss track: an "s" is quiet overall but loud up here, a breath is not
+        hf = window_rms_db(a.source, HISS_AF)
+        quiet_hf = sorted(h for h, v in zip(hf, lvl) if v <= noise)
+        hf_floor = quiet_hf[len(quiet_hf) // 2] if quiet_hf else None
+        hf = hf if hf_floor is not None else None
     allcuts = merge(close_tails(snap_and_pad(model_cuts, words, a.pad), lvl, splice_noise)
-                    + silence_cuts(words, gap_max, gap_keep, heard, lvl, splice_noise)
+                    + silence_cuts(words, gap_max, gap_keep, heard, lvl, splice_noise, hf, hf_floor)
                     + lead_trail_cuts(kept_words, dur, gap_keep))
     starts = {id(c): c["start"] for c in allcuts}
     allcuts = enforce_splice_budget(allcuts, words, model_cuts, splice_max, lvl, splice_noise)
-    allcuts = quiet_edges(allcuts, lvl, splice_noise, dur, kept_words, [w for w in words if covered_by(w, model_cuts)])
+    allcuts = quiet_edges(allcuts, lvl, splice_noise, dur, kept_words, [w for w in words if covered_by(w, model_cuts)],
+                          hf, hf_floor)
     labels.update(held_labels(raw, allcuts, starts))
     raw = apply_labels(raw, labels)
     toks = [t for t in raw if t.get("type") in ("word", "audio_event")]

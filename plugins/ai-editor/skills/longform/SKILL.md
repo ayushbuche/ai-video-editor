@@ -91,12 +91,19 @@ the panel, words over the chin, a script line that is not in the transcript.
 ## 5. Render
 
 ```bash
-python3 "$S/edit.py" render edits/<name>
+python3 "$S/fast_render.py" edits/<name>
 ```
 
-About 1 minute of rendering per minute of video on the Mac. Then confirm the voice survived the render
-(it must match the cut within 0.5 dB, with no dropouts) and hand over `edits/<name>/render.mp4`: send it
-to the user (SendUserFile) and give its path.
+About 15-20 minutes for a 23-minute edit on the Mac (`edit.py render` took 49-80): the plain speaker stretches
+(about three quarters of a long-form edit) are cut and zoomed with ffmpeg on the hardware encoder, only the
+graphics' stretches go through Remotion, the sound is mixed once, and the whole is encoded once at 12 Mbit/s
+(YouTube's 1080p rate; about 1.4 GB for 23 min). Checked against a full Remotion render of the same plan
+(cold-calling-one, first minute): frame for frame 51 dB median PSNR, worst 39; sound identical. `--frames A-B`
+renders a test stretch. It needs about 2x the finished file free on disk plus the render copy of the cut.
+
+Then confirm the voice survived the render (each channel must match the cut's level within 0.5 dB, with no
+dropouts; the cut is mono, so compare per channel, never after a downmix) and hand over
+`edits/<name>/render.mp4`: send it to the user (SendUserFile) and give its path.
 
 ## 6. Notes on the finished edit
 

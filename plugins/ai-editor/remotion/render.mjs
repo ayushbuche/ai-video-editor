@@ -4,6 +4,8 @@
 //   node render.mjs bench  <publicDir> <plan.json>            -> JSON: laptop seconds per frame
 //   node render.mjs local  <publicDir> <plan.json> <out.mp4> [--draft] [--concurrency=N]
 //   node render.mjs chunk  <publicDir> <plan.json> <out.mkv> <from> <to> [--concurrency=N]   frames from..to inclusive
+//   node render.mjs ranges <publicDir> <plan.json> <outDir> a-b c-d ...   video only, one <a>-<b>.mp4 per range (b exclusive);
+//                                                                         fast_render.py renders the graphics' stretches with it
 //   node render.mjs bundle <publicDir> <outDir>               a bundle folder another machine renders from (Modal)
 //
 // <publicDir> can also be a bundle folder made by `bundle` (it holds bundle.js): nothing is bundled again.
@@ -136,6 +138,21 @@ async function local(publicDir, planPath, out) {
   console.log(`\nrendered ${out} in ${((Date.now() - t0) / 1000).toFixed(1)} s`);
 }
 
+// The stretches of a long-form edit that carry a graphic (fast_render.py does the plain speaker itself, far faster):
+// bundled once, each range rendered video-only to its own file at a near-lossless crf (the final encode is once, at the end).
+async function ranges(publicDir, planPath, outDir, ...rs) {
+  const { serveUrl, composition, inputProps } = await prepare(publicDir, planPath);
+  fs.mkdirSync(outDir, { recursive: true });
+  const t0 = Date.now();
+  for (const r of rs) {
+    const [a, b] = r.split("-").map(Number);
+    const outputLocation = path.join(outDir, `${a}-${b}.mp4`);
+    await renderMedia({ serveUrl, composition, inputProps, codec: "h264", crf: 14, muted: true, frameRange: [a, b - 1],
+      outputLocation, concurrency: concurrency(), timeoutInMilliseconds: TIMEOUT_MS });
+    console.log(`range ${a}-${b} (${((Date.now() - t0) / 1000).toFixed(0)} s)`);
+  }
+}
+
 // One slice of the video, for the GitHub workflow's parallel render. The join step concatenates them.
 async function chunk(publicDir, planPath, out, from, to) {
   const { serveUrl, composition, inputProps } = await prepare(publicDir, planPath);
@@ -203,7 +220,7 @@ async function lambda(publicDir, planPath, out, siteName) {
   }
 }
 
-const cmds = { stills, bench, local, chunk, bundle: bundleTo, "lambda-estimate": lambdaEstimate, lambda };
+const cmds = { stills, bench, local, chunk, ranges, bundle: bundleTo, "lambda-estimate": lambdaEstimate, lambda };
 if (!cmds[cmd]) {
   console.error(`usage: node render.mjs ${Object.keys(cmds).join("|")} ...`);
   process.exit(2);

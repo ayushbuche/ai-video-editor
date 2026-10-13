@@ -243,49 +243,58 @@ def test_restart_in_one_breath_is_never_kept():
 
 
 def test_quiet_edges():
-    """No kept audio starts or stops while the voice is sounding (cold-calling-one, 2026-10-13)."""
+    """No kept audio starts or stops while the voice is sounding, judged by whose sound it is (cold-calling-one,
+    2026-10-13)."""
     q, v = -60.0, -20.0
-    win = lambda spans, n=150: [v if any(a <= i * B.RMS_WIN_S < b for a, b in spans) else q for i in range(n)]  # noqa: E731
-    # the kept word rings on to 1.0 s, past its label: a cut starting at 0.9 waits for the tail
-    c = B.quiet_edges([{"start": 0.9, "end": 1.5}], win([(0.5, 1.0), (1.6, 2.5)]), -40.0, 3.0)
-    assert abs(c[0]["start"] - 1.0) < 0.03, c
-    # a removed word already began at 0.76 (said straight on to 1.4): the cut moves back to the quiet before it
-    c = B.quiet_edges([{"start": 0.8, "end": 1.6}], win([(0.3, 0.7), (0.76, 1.4), (1.7, 2.5)]), -40.0, 3.0)
+    win = lambda spans, n=200: [v if any(a <= i * B.RMS_WIN_S < b for a, b in spans) else q for i in range(n)]  # noqa: E731
+    w = lambda t, a, b: {"text": t, "start": a, "end": b}  # noqa: E731
+    # "comfortable." labelled to 0.9 but sounding to 1.3: the cut placed on its label waits for it to die
+    c = B.quiet_edges([{"start": 0.9, "end": 2.5}], win([(0.5, 1.3), (2.6, 3.5)]), -40.0, 4.0,
+                      kept=[w("comfortable.", 0.5, 0.9), w("next", 2.6, 3.0)])
+    assert 1.28 <= c[0]["start"] <= 1.34 and c[0].get("_settled"), c
+    # ...but never into a removed word said straight after it (a restart in one breath): the edge stays
+    c = B.quiet_edges([{"start": 0.9, "end": 2.5}], win([(0.5, 2.0), (2.6, 3.5)]), -40.0, 4.0,
+                      kept=[w("at,", 0.5, 0.9), w("I", 2.6, 2.8)], removed=[w("and", 0.95, 1.2)])
+    assert c[0]["start"] == 0.9, c
+    # a removed "And" began at 0.76, after the kept word ended at 0.7: the cut moves back to the quiet before it
+    c = B.quiet_edges([{"start": 0.8, "end": 1.6}], win([(0.3, 0.7), (0.76, 1.4), (1.7, 2.5)]), -40.0, 3.0,
+                      kept=[w("meeting.", 0.3, 0.7), w("I", 1.7, 1.9)], removed=[w("And", 0.74, 0.9)])
     assert 0.7 <= c[0]["start"] <= 0.76, c
-    # the kept audio began inside a removed "er" (0.6-0.78): it starts in the quiet after it instead
-    c = B.quiet_edges([{"start": 0.2, "end": 0.74}], win([(0.0, 0.15), (0.6, 0.78), (0.86, 2.0)]), -40.0, 3.0)
+    # the kept audio began inside a removed "er" (0.6-0.78): it starts in the quiet after it
+    c = B.quiet_edges([{"start": 0.2, "end": 0.74}], win([(0.0, 0.15), (0.6, 0.78), (0.86, 2.0)]), -40.0, 3.0,
+                      kept=[w("call", 0.0, 0.15), w("every", 0.86, 1.1)], removed=[w("er,", 0.6, 0.62)])
     assert 0.78 <= c[0]["end"] <= 0.86, c
     # the kept audio began inside its own word's onset (from 1.96): it starts in the quiet before it
-    c = B.quiet_edges([{"start": 1.2, "end": 2.02}], win([(0.5, 1.1), (1.96, 2.8)]), -40.0, 3.0)
+    c = B.quiet_edges([{"start": 1.2, "end": 2.02}], win([(0.5, 1.1), (1.96, 2.8)]), -40.0, 3.0,
+                      kept=[w("a", 0.5, 1.1), w("b", 2.04, 2.8)])
     assert 1.9 <= c[0]["end"] <= 1.96, c
-    # a soft tail 8 dB over the room (a word ringing out) is kept until the room, not just until it is soft
-    lv = win([(0.5, 0.9), (1.6, 2.5)])
-    for k in range(45, 55):
-        lv[k] = -33.0                                            # 0.90-1.10 s: the fading release
-    c = B.quiet_edges([{"start": 0.9, "end": 1.5}], lv, -40.0, 3.0)
-    assert c[0]["start"] >= 1.08, c
-    # a dip inside the removed words (0.8 s), then the voice again: not a tail, so back to the quiet before them
-    lv = win([(0.3, 0.7), (0.74, 0.8), (0.84, 1.4), (1.7, 2.5)])
-    c = B.quiet_edges([{"start": 0.78, "end": 1.6}], lv, -40.0, 3.0)
-    assert 0.7 <= c[0]["start"] <= 0.74, c
-    # the kept audio began in a removed word's fading tail (0.62-0.70, then quiet a long while): forward, not back
-    lv = win([(0.2, 0.62), (1.4, 2.0)])
-    lv[31], lv[32], lv[33], lv[34] = -30.0, -31.0, -36.0, -45.0
-    c = B.quiet_edges([{"start": 0.1, "end": 0.64}], lv, -40.0, 3.0)
-    assert c[0]["end"] >= 0.64, c
-    # a start settled on a tail's end is rounded UP to the next frame, so the frame never takes the tail back off
-    fr = B.kept_frames([{"start": 1.001, "end": 1.5, "_settled": True}], 30, 3.0)
-    assert fr[0] == [0, 31], fr
-    # an edge in silence is left alone
+    # removed "You When" run straight into the kept "that": moving back would bring them in, so the edge stays
+    c = B.quiet_edges([{"start": 0.5, "end": 1.94}], win([(0.1, 0.4), (1.78, 2.4)]), -40.0, 3.0,
+                      kept=[w("x", 0.1, 0.4), w("that", 1.94, 2.12)], removed=[w("You", 1.58, 1.94), w("When", 1.94, 1.94)])
+    assert c[0]["end"] == 1.94, c
+    # a settled start is rounded UP to the next frame, so the frame never takes the tail back off
+    assert B.kept_frames([{"start": 1.001, "end": 1.5, "_settled": True}], 30, 3.0)[0] == [0, 31]
+    # an edge in silence, and a cut to the end of the take, are left alone
     c = B.quiet_edges([{"start": 1.2, "end": 1.8}], win([(0.5, 1.1), (1.96, 2.8)]), -40.0, 3.0)
     assert c == [{"start": 1.2, "end": 1.8}], c
     c = B.quiet_edges([{"start": 2.9, "end": math.inf}], win([(0.5, 1.1), (1.96, 2.8)]), -40.0, 3.0)
-    assert c[0]["end"] == math.inf, c                            # a cut to the end of the take is left alone
+    assert c[0]["end"] == math.inf, c
+
+
+def test_onset_walk_stops_at_removed_words():
+    """A removed restart said in one breath with the kept words: finding the kept word's onset never walks back
+    through the removed words (cold-calling-one, 2026-10-13)."""
+    lvl = [-60.0] * 50 + [-20.0] * 150 + [-60.0] * 50          # one continuous sound 1.0-4.0 s
+    cut = {"start": 1.0, "end": 3.0}                             # removes 1.0-3.0, said straight into the kept word
+    kept = [{"text": "I", "start": 3.0, "end": 3.3}, {"text": "x", "start": 0.2, "end": 0.6}]
+    _, nxt = B.splice_neighbours(cut, kept, lvl, -40.0)
+    assert nxt["start"] >= 2.7, nxt                              # never back into the removed 1.0-3.0
 
 
 if __name__ == "__main__":
     test_derive()
     test_quiet_edges()
+    test_onset_walk_stops_at_removed_words()
     test_audible_end()
     test_splice_budget()
     test_spans()

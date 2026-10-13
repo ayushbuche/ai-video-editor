@@ -219,6 +219,7 @@ def audible_end(lvl, noise_db, t):
     return None if i < 0 else min(t, (i + 1) * RMS_WIN_S)
 
 
+ONSET_WALK_MAX_S = 0.25   # a late label's onset is looked for this far back at most (labels drift 0.2-0.3 s)
 ONSET_MARGIN_S = 0.04   # soft onsets (p, f, h) start under the threshold
 
 
@@ -545,7 +546,11 @@ def splice_neighbours(c, kept, lvl, noise_db):
         else:
             # a label that starts late, inside its own sound ("Intellectual" labelled 0.3 s after it begins):
             # the onset is where that sound starts, back to the cut's start at most
-            k, lo = int(nxt["start"] / RMS_WIN_S), int(c["start"] / RMS_WIN_S) + 1
+            # never more than ONSET_WALK_MAX_S: a removed restart said in one breath with the kept word is one
+            # continuous sound, and walking back through it brought the removed words back (cold-calling-one,
+            # 2026-10-13: "that's what I do at SDR Master." 1.3 s back in a cut pitch)
+            k = int(nxt["start"] / RMS_WIN_S)
+            lo = max(int(c["start"] / RMS_WIN_S) + 1, int((nxt["start"] - ONSET_WALK_MAX_S) / RMS_WIN_S))
             if 0 <= k < len(lvl) and lvl[k] > noise_db:
                 while k > lo and (lvl[k - 1] > noise_db or any(v > noise_db for v in lvl[max(lo, k - 3):k - 1])):
                     k -= 1
@@ -628,57 +633,67 @@ def enforce_splice_budget(cuts, words, model_cuts, budget, lvl=None, noise_db=No
 
 
 EDGE_DB = 6.0           # a window this far over the threshold is sound (room flicker sits under it)
-EDGE_TAIL_S = 0.26      # a sound under a cut's start that dies within this, with no new word, is a word's tail
-EDGE_SEARCH_S = 0.30    # how far back a cut edge may move to the quiet before a sound
+EDGE_TAIL_S = 0.8       # how far a kept word's sound may ring past the cut that was placed on its label
 EDGE_GAP_S = 0.14       # how far forward a kept start may move past a removed sound's tail
 EDGE_HOLD_S = 0.12      # a tail has died only if the quiet holds this long (a dip inside "And that's" does not)
 
 
-def quiet_edges(cuts, lvl, noise_db, dur):
-    """Last pass: no kept audio ever starts or stops while the voice is sounding. Word labels run early or late
-    (cold-calling-one, 2026-10-13: "And" labelled to 336.83 s but said to 336.95, the kept audio stopped at
-    336.80 on its first sliver; a removed "er" heard at the start of the next kept span), and every earlier
-    step trusts them somewhere. Measured from the audio:
-      a cut's START (kept audio stops) inside a sound: if the sound dies within EDGE_TAIL_S with no new word,
-        it is the kept word's tail, so the cut waits for it; else a removed word had already begun, so the cut
-        moves back to the quiet before it;
-      a cut's END (kept audio starts) inside a sound: if it goes quiet within EDGE_GAP_S and the voice comes
-        back, the edge sat in a removed sound's tail, so the kept audio starts in that quiet; else the sound is
-        the kept word's own onset, so the kept audio starts in the quiet before it."""
+def quiet_edges(cuts, lvl, noise_db, dur, kept=(), removed=()):
+    """Last pass: no kept audio starts or stops while the voice is sounding, judged by the audio AND by whose
+    sound it is. Word labels run early or late (cold-calling-one, 2026-10-13: "And" labelled to 336.83 s but
+    said to 336.95; "comfortable." labelled to 1258.60 but still sounding at 1259.2; a removed "er" heard at the
+    start of the next kept span), and every earlier step trusts them somewhere.
+      a cut's START (kept audio stops) inside a sound:
+        the sound began inside the last kept word's label: that word rings on past its label, so the cut waits
+          for it to die (up to EDGE_TAIL_S, never into a removed word's label);
+        it began after that word: a removed word (or a breath) had already started, so the cut moves back to
+          the quiet before it;
+      a cut's END (kept audio starts) inside a sound:
+        the sound dies within EDGE_GAP_S: the edge sat in a removed sound's tail, so the kept audio starts in
+          the quiet after it;
+        it runs on into the kept word and holds no removed word: it is that word's onset, so the kept audio
+          starts in the quiet before it;
+        otherwise (removed and kept words said in one breath) the edge stays where the labels put it."""
     if not lvl or noise_db is None:
         return cuts
     n = len(lvl)
-    loud = lambda k: 0 <= k < n and lvl[k] > noise_db + EDGE_DB  # noqa: E731
     W = RMS_WIN_S
+    loud = lambda k: 0 <= k < n and lvl[k] > noise_db + EDGE_DB  # noqa: E731
+
+    def run_start(k):
+        while k > 0 and loud(k - 1):
+            k -= 1
+        return k
+
     for c in cuts:
         s, e = c["start"], c["end"]
         if not (math.isfinite(s) and math.isfinite(e)):   # a cut to the end of the take
             continue
         i = int(s / W)
         if s > W and loud(i - 1) and loud(i):
-            # the tail has died when the level is back at the room (not just under "loud") and stays there
-            hold = int(EDGE_HOLD_S / W)
-            j = next((k for k in range(i, min(n, i + int(EDGE_TAIL_S / W) + 1)) if lvl[k] <= noise_db), None)
-            held = j is not None and not any(loud(k) for k in range(j, min(n, j + hold, int(e / W))))
-            if held and j * W < e - 0.02 and not voiced_rise(lvl, noise_db, s, j * W):
-                c["start"], c["_settled"] = round(j * W, 3), True   # frames round this one up, past the tail
+            kw = max((w for w in kept if w["start"] < s), key=lambda w: w["start"], default=None)
+            rs = run_start(i) * W
+            if kw is not None and rs <= kw["end"] + 0.02:
+                nxt_removed = min((w["start"] for w in removed if w["start"] >= s - 0.02), default=math.inf)
+                limit = min(e - 0.02, s + EDGE_TAIL_S, nxt_removed)
+                hold = int(EDGE_HOLD_S / W)
+                j = next((k for k in range(i, min(n, int(limit / W) + 1))
+                          if lvl[k] <= noise_db and not any(loud(x) for x in range(k, min(n, k + hold)))), None)
+                if j is not None and j * W < limit:
+                    c["start"], c["_settled"] = round(j * W, 3), True   # frames round this one up, past the tail
             else:
-                b = next((k for k in range(i - 1, max(-1, i - int(EDGE_SEARCH_S / W) - 1), -1) if not loud(k)), None)
-                if b is not None:
-                    c["start"] = round(b * W + W / 2, 3)
+                c["start"] = round(max(rs - W / 2, kw["end"] if kw else 0.0), 3)
         i = int(c["end"] / W)
         if c["end"] < dur - W and loud(i - 1) and loud(i):
-            # a sound that dies away within EDGE_GAP_S is a removed word's tail (a kept word's onset builds)
             f = next((k for k in range(i, min(n, i + int(EDGE_GAP_S / W) + 1)) if not loud(k)), None)
             if f is not None:
                 back_in = next((k for k in range(f, min(n, f + 12)) if loud(k)), None)
                 c["end"] = round(f * W if back_in is None else max(f * W, back_in * W - ONSET_MARGIN_S), 3)
             else:
-                b = next((k for k in range(i - 1, max(-1, i - int(EDGE_SEARCH_S / W) - 1), -1) if not loud(k)), None)
-                if b is not None and b * W + W / 2 > c["start"]:
-                    c["end"] = round(b * W + W / 2, 3)
+                rs = run_start(i) * W
+                if not any(w["end"] > rs + 0.02 and w["start"] < c["end"] for w in removed) and rs - W / 2 > c["start"]:
+                    c["end"] = round(rs - W / 2, 3)
     return [c for c in cuts if c["end"] > c["start"] + 1e-3]
-
 
 def splice_gaps(cuts, words, model_cuts, lvl=None, noise_db=None):
     kept = [w for w in words if not covered_by(w, model_cuts)]
@@ -818,7 +833,7 @@ def main():
                     + lead_trail_cuts(kept_words, dur, gap_keep))
     starts = {id(c): c["start"] for c in allcuts}
     allcuts = enforce_splice_budget(allcuts, words, model_cuts, splice_max, lvl, splice_noise)
-    allcuts = quiet_edges(allcuts, lvl, splice_noise, dur)
+    allcuts = quiet_edges(allcuts, lvl, splice_noise, dur, kept_words, [w for w in words if covered_by(w, model_cuts)])
     labels.update(held_labels(raw, allcuts, starts))
     raw = apply_labels(raw, labels)
     toks = [t for t in raw if t.get("type") in ("word", "audio_event")]

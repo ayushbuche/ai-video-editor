@@ -67,11 +67,11 @@ $PY "$S/transcribe.py" <source> edits/<name>/words.raw.json
 ```
 
 Say the time first: Whisper takes 1-4 minutes for a 3-minute take on a laptop, CrisperWhisper about
-the length of the take. It picks ElevenLabs Scribe when a key is saved, else CrisperWhisper if setup
-installed it, else the free local Whisper (`--engine whisper|crisper|scribe` overrides). Whisper drops
-some ums and false starts; Scribe and CrisperWhisper keep them for the cut. With neither, say once that
+the length of the take. Engine: ElevenLabs Scribe with a saved key, else CrisperWhisper if
+installed, else the free local Whisper (`--engine` overrides). Whisper drops
+some ums and false starts; the others keep them. With neither, say once that
 setup can add one (CrisperWhisper's weights are non-commercial only). A take full of retakes:
-`AI_EDITOR_WHISPER_MODEL=medium` hears them better (1.5 GB, twice as slow). Step 5 catches the rest.
+`AI_EDITOR_WHISPER_MODEL=medium` hears them better (1.5 GB, twice as slow).
 
 **Never read `words.raw.json`** (12x the size of `transcript.txt`, which has the same words).
 
@@ -128,20 +128,24 @@ Loop until it reads clean. It costs nothing; a render costs minutes.
 python3 "$S/render.py" <source> edits/<name>
 ```
 
-Source resolution, frame-accurate, short audio fades at every join. A 3-minute 4K take takes a few
-minutes: run long takes in the background.
+Source resolution, frame-accurate, a 24 ms crossfade at every join. A 3-minute 4K take takes a few
+minutes: run long ones in the background.
 
 ## 5. Verify
 
 ```bash
-$PY "$S/verify_cut.py" edits/<name> --engine <same engine as step 1>
+$PY "$S/verify_cut.py" edits/<name>
+$PY "$S/join_audit.py" edits/<name>
 ```
 
-Re-transcribes cut.mp4 and diffs it against the words the cut meant to keep.
+Re-hears cut.mp4, diffs it with the words meant to play.
 - **MISSING**: a kept word is not in the render. Raise `--pad` (or narrow the span), rebuild, re-render.
-- **SURVIVED**: each line prints its cut and source time and the span to add. A real repeat or
-  stumble: add that span to `spans.json`. Clean speech there is a mishearing.
+- **SURVIVED**: prints the span to add. A real repeat or stumble: add it to `spans.json`; clean
+  speech there is a mishearing.
 - **HEARD DIFFERENTLY** ("jev -> jeff") and filler notes are transcriber variance: no rebuild.
+
+`join_audit.py` hears each join alone (a whole-file pass tidies doubled or half words): act on flags
+2+ listens agree on, and every FRAGMENT (its docstring).
 
 One fix cycle, then show the user whatever is left.
 

@@ -4,6 +4,23 @@ What changed for every user, newest first.
 
 ## Unreleased
 
+- A whole-file re-transcription tidies speech, so a doubled "how how", a clipped "a volume" or a scrap of a
+  removed take at a join came back as clean words and `verify_cut.py` passed them. New `join_audit.py` hears a
+  window round every join on its own (local Whisper, no voice detection, nothing carried between windows),
+  hears each flag twice more in shorter and longer windows, and reads the level for sounds under 0.18 s on the
+  join: DOUBLED, SURVIVED, CLIPPED, FRAGMENT, each with its cut and source time and the span to add. On a
+  23-minute cut with 195 joins it found five problems two of three listens agreed on, which the whole-file
+  pass had missed. Cut and long-form skills run it after `verify_cut.py`. Test: `join_audit.py demo` (in demos.sh).
+
+- `verify_cut.py` re-heard the cut with whatever engine `--engine` named (the long-form skill said whisper)
+  while the raw transcript may have come from another, which fills the diff with spelling noise.
+  `transcribe.py` now writes `<out>.meta.json` (engine and model); `verify_cut.py --engine auto` (the
+  default) and `join_audit.py` use what made `words.raw.json`, and a cached `cut.transcript.json` from
+  another engine is heard again. Test: `verify_cut.py demo`.
+
+- Long-form: the cut is approved by watching `cut.mp4` with a short list of joins worth a listen, not on
+  the struck-through page alone (BUILD-BRIEF.md, longform skill).
+
 ## ai-editor 2.1.0, creator-teardown 2.4.0 (2026-10-08)
 
 - Setup times are now measured, not guessed. Six clean GitHub runs of the e2e job (2026-10-08) took

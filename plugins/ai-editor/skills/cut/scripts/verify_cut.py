@@ -4,8 +4,8 @@
     python verify_cut.py <edit_dir> [--engine auto|whisper|scribe]
     python verify_cut.py demo        self-check (offline)
 
-Run it with the venv python (it calls transcribe.py). Use the same engine as the
-raw transcript, or the diff fills with spelling noise.
+Run it with the venv python (it calls transcribe.py). --engine auto (the default) uses the engine and
+model that made words.raw.json (words.raw.meta.json): another engine fills the diff with spelling noise.
 
   MISSING   a kept word is not in the render: a boundary landed too tight.
             Fix: raise --pad, or narrow the span that ate it, rebuild, re-render.
@@ -22,6 +22,7 @@ Writes <edit_dir>/cut.transcript.json (reused while it is newer than cut.mp4). E
 """
 import argparse
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -30,6 +31,7 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from build_timeline import is_kept, load_fitted, retime  # noqa: E402
 from textnorm import load_words, pair_by_time, timed_words, transcript_words  # noqa: E402
+from transcribe import read_meta  # noqa: E402
 
 FILLERS = {"um", "uh", "umm", "uhh", "hmm", "mm", "ah", "er", "erm"}
 
@@ -43,6 +45,22 @@ def to_source(t, spans):
             return round(s["start"] + max(0.0, t - off), 2)
         off += n
     return round(spans[-1]["end"], 2) if spans else round(t, 2)
+
+
+def same_engine(d, asked):
+    """The engine (and environment) for the second pass: what was asked, or with "auto" the engine and model
+    that made words.raw.json (its .meta.json), so both passes hear alike. A raw transcript from before the
+    meta file falls back to auto."""
+    env = dict(os.environ)
+    meta = read_meta(Path(d) / "words.raw.json")
+    if asked != "auto" or not meta.get("engine"):
+        return asked, env
+    if meta["engine"] == "whisper" and meta.get("model"):
+        env["AI_EDITOR_WHISPER_MODEL"] = meta["model"]
+    if meta["engine"] == "crisper" and meta.get("model"):
+        env["AI_EDITOR_CRISPER_MODEL"] = meta["model"]
+    print(f"engine {meta['engine']} {meta.get('model', '')} (the one words.raw.json was made with)".strip(), flush=True)
+    return meta["engine"], env
 
 
 def span_to_add(raw, a, b):
@@ -68,10 +86,12 @@ def main():
     expected = [t for t, _, _ in exp]
     removed = set(transcript_words([w for w in raw if not is_kept(w, spans)]))
 
+    engine, env = same_engine(d, a.engine)
     ft = d / "cut.transcript.json"
-    fresh = ft.exists() and ft.stat().st_mtime > (d / "cut.mp4").stat().st_mtime
+    fresh = (ft.exists() and ft.stat().st_mtime > (d / "cut.mp4").stat().st_mtime
+             and read_meta(ft) == read_meta(d / "words.raw.json"))
     r = subprocess.CompletedProcess([], 0) if fresh else subprocess.run([sys.executable, str(HERE / "transcribe.py"), str(d / "cut.mp4"), str(ft),
-                        "--engine", a.engine])
+                        "--engine", engine], env=env)
     if r.returncode:
         sys.exit(1)
     act = timed_words(load_words(ft))

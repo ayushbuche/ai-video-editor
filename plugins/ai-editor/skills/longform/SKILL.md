@@ -1,6 +1,6 @@
 ---
 name: longform
-description: Edits a long-form 16:9 YouTube video for an Axis Story client, start to finish, in a measured house style (styles/<name>/). Takes one raw single-camera talking-head take (mp4/mov, 5-40 min), cuts the retakes and pauses, has the user approve the cut as a struck-through transcript (the only approval), then plans and renders the graphics, music and sound without further sign-off. Use when the user says "edit this client video", "edit my client's video", "long-form edit", drops a long take, or asks to change one part of a finished edit ("change the graphic at 4:12", "remove the zoom at 7:30"). Not for Shorts or vertical clips (clips), not for measuring a new reference style (creator-teardown), and not for a product video (product-video).
+description: Edits a long-form 16:9 YouTube video for an Axis Story client, start to finish, in a measured house style (styles/<name>/). Takes one raw single-camera talking-head take (mp4/mov, 5-40 min), cuts the retakes and pauses, has the user approve the cut by watching it (the only approval), then plans and renders the graphics, music and sound without further sign-off. Use when the user says "edit this client video", "edit my client's video", "long-form edit", drops a long take, or asks to change one part of a finished edit ("change the graphic at 4:12", "remove the zoom at 7:30"). Not for Shorts or vertical clips (clips), not for measuring a new reference style (creator-teardown), and not for a product video (product-video).
 license: MIT
 compatibility: Everything the setup skill installs (Python venv, ffmpeg, Node, Remotion). Renders on the Mac. Runs from the full ai-editor plugin folder.
 ---
@@ -36,14 +36,27 @@ Then build, read `paper-edit.md` straight through, render and verify, exactly as
 ```bash
 python3 "$C/build_timeline.py" <source> edits/<name> --max-pause 0.3
 python3 "$C/render.py" <source> edits/<name>
-$PY "$C/verify_cut.py" edits/<name> --engine whisper
+$PY "$C/verify_cut.py" edits/<name>
+$PY "$C/join_audit.py" edits/<name>
 python3 "$C/preview_cut.py" edits/<name>
 ```
+
+`verify_cut.py` re-hears the whole cut with the engine that made `words.raw.json` (its `.meta.json`); never
+pass another `--engine`. `join_audit.py` then hears every join on its own, where a whole-file pass smooths over
+a doubled word, a clipped word or a scrap of a removed one (about 5-8 min for a 25-min cut). Act on every flag
+it reports as heard in 2 or more listens and on every FRAGMENT: a real repeat or survivor gets the span it
+prints; a clipped word is a `build_timeline.py` fault (below). "Heard once only" is usually the window
+mishearing: leave it unless the words either side of that join read wrong in `paper-edit.md`. One fix cycle
+(build, render, verify, join audit), then hand over.
 
 Pauses follow the references (0.2-0.3 s between sentences): always pass `--max-pause 0.3`, because the
 taste file's `cut.max_pause` is a Shorts setting (0.1). Every pause and breath over 0.3 s is cut, the intro
 included (Ayush, 2026-10-13: "relatively fast-paced"); every word rings out before a cut. The
-page underlines words that play though the first transcript missed them. **Wait for the cut approval.** A
+page underlines words that play though the first transcript missed them.
+
+**The approval is watching the cut** (Ayush, 2026-10-13: he reviews by watching, not the page). Give him the
+path to `cut.mp4` (too big to send) and, in a few lines, the joins still worth a listen: the time in the cut,
+the words either side, and what may be wrong. Then **wait for the cut approval.** A
 note about a word clipped or a join that sounds wrong is a timing fault in `build_timeline.py`: fix it there
 (with a test in `test_build_timeline.py`), not by hand in this edit.
 

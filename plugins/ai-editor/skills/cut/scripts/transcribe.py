@@ -3,6 +3,8 @@
 
     python transcribe.py <media> <out.json> [--engine auto|whisper|crisper|scribe] [--lang en]
 
+Also writes <out>.meta.json ({"engine", "model"}), so a later pass can use the same engine.
+
 Output (docs/CONTRACTS.md, Transcription):
     [{"text": "so", "start": 0.12, "end": 0.31, "type": "word"},
      {"text": " ", "start": 0.31, "end": 0.40, "type": "spacing"}, ...]
@@ -182,6 +184,29 @@ def run_scribe(wav, key, lang):
             for w in payload.get("words", []) if w.get("type") in ("word", "spacing", "audio_event")]
 
 
+def meta_path(out):
+    """Which engine and model made a transcript: words.raw.json -> words.raw.meta.json. verify_cut.py and
+    join_audit.py read it, so the second pass hears the way the first did (another engine fills the diff with
+    spelling noise)."""
+    out = Path(out)
+    return out.with_name(out.name[:-5] + ".meta.json" if out.name.endswith(".json") else out.name + ".meta.json")
+
+
+def model_of(engine):
+    return {"whisper": os.environ.get("AI_EDITOR_WHISPER_MODEL", "small"),
+            "crisper": os.environ.get("AI_EDITOR_CRISPER_MODEL", "small"),
+            "scribe": "scribe_v2"}.get(engine, "")
+
+
+def read_meta(out):
+    """{"engine", "model"} for a transcript, or {} when it predates the meta file."""
+    p = meta_path(out)
+    try:
+        return json.loads(p.read_text())
+    except (OSError, ValueError):
+        return {}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("media")
@@ -209,6 +234,7 @@ def main():
     out = Path(a.out)
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(json.dumps(words, indent=1))
+    meta_path(out).write_text(json.dumps({"engine": engine, "model": model_of(engine)}))
     n = sum(1 for w in words if w["type"] == "word")
     print(f"{n} words -> {out}")
 

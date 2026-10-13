@@ -161,5 +161,11 @@
   "text": "Now usually we'll know within a month I can run a Pi lab and doing this long enough, but especially if you're new to this or you're trying to get into it, there's a time frame and especially if you have a long sales cycle, you probably won't see an ROI for a while.",
   "kind": "redundant",
   "note": "restates (and blurs) the it-takes-time point"
+ },
+ {
+  "text": "that",
+  "after": 164.4,
+  "kind": "retake",
+  "note": "stutter 'that, that can happen' (verify SURVIVED): cut the first"
  }
 ]

@@ -1,4 +1,54 @@
-# Handoff: cold-calling-one (paused 2026-10-13)
+# Handoff: cold-calling-one
+
+## Update 2026-10-13 afternoon: fix cycle after join_audit (cut ready for Ayush to watch)
+
+Pushed e65b58c (join_audit.py, verify engine from .meta.json, cut approved by watching). Ran `join_audit.py` on the
+previous cut (12 of 195 joins flagged), fixed, rebuilt (`--max-pause 0.3`), rendered, `verify_cut.py` (engine from
+meta: whisper small), `join_audit.py` again, `preview_cut.py`. One cycle, as asked.
+
+**Current cut.mp4**: 42,051 frames, 23:21.7, built from `decisions.json` of this cycle. Verify: 98.8% match.
+join_audit: 9 of 196 joins flagged (`joins.json`, `join_audit.log`).
+
+Fixed this cycle:
+- Cut-script rule `edge_scraps` (committed f41f157, tested): a scrap at a join is either a phrase's first word said
+  before its label (put back whole: "A lot of people" at 5:48) or a mouth click (removed). `quiet_edges`: a removed
+  word heard before its label is not taken for the kept word's tail.
+- Span: the first "that" in "the worst thing that, that can happen" (now "...thing that can happen").
+- Fragments at 8:01, 8:34 and 16:53 (mouth clicks) are gone.
+
+Not changed, on purpose:
+- 3:46 "a volume" CLIPPED and 5:49 "them" CLIPPED: false alarms. The audio says the intended "it's a volume game"
+  and "a lot of people, they'll call someone": the raw transcript muddled the takes, so the expected words are off.
+- 10:17 and 22:45 "and" SURVIVED: real, natural words ("calling earlier, and that leads into lesson six"); the
+  printed spans ("and that", "and you") would also delete the next word.
+- 8:56 "how how": he says "if you know how... how other customers"; "know how" is one sound and the transcript
+  stretches "other" over the pause, so no span cuts the first "how" cleanly (tried "how" and "if you know how":
+  both left it or cut 0.9 s into the second one). Needs a cut point from the audio.
+- The other stutters (I, I ran; at, at least; more, more; contract to SDR): each a blur the transcript lumps
+  into one word; a span would clip the word that stays.
+
+**Regressions this cycle (fix in the cut scripts):** the click rule took two short words for clicks:
+- 1:25.1 "makes sense or not || problem is": **"the"** removed (heard 3 of 3). Its sound (60 ms, peak -34 dB at
+  source 109.22) sits right before "problem", 4 s after its label.
+- 17:55.8 "before I call || before that": **"them"** removed (2 of 3); source ~1429.44, 60 ms, peak -26 dB.
+  Real clicks here were 40-60 ms at -31 to -35 dB: length and level do not separate them from "the"/"them".
+  Suggest: only remove a scrap as a click when no word label (fitted) lies within 0.5 s of it, or never at a kept
+  START.
+
+**Joins worth a listen in cut.mp4** (given to Ayush):
+
+| Time | Words either side | What may be wrong |
+|---|---|---|
+| 1:25 | "makes sense or not \|\| problem is what happens" | "the" lost (regression) |
+| 2:50 | "based on the volume. \|\| Now, typically" | verify heard "now now" |
+| 5:48 | "then I break it up \|\| A lot of people..." | a short sound heard as "um" |
+| 8:56 | "if you know how \|\| how other customers" | "how how" doubled |
+| 14:03 | "I just hung up, but \|\| I was terrified" | "but" mumbled, heard as "I didn't" |
+| 17:55 | "before I call them \|\| Before that" | "them" lost (regression) |
+| 21:23 | "for quite a while. \|\| This is super consistent" | heard "this this", "is" clipped |
+
+## Earlier state (before this update)
+
 
 SDR Mastery, video 1 of 2: "If you only watch one cold calling video, make it this."
 Source: `/Users/ayushbuche/Downloads/If You Only Watch One Cold Calling Video Make It This.mp4` (30:39, 1920x1080, 30 fps).

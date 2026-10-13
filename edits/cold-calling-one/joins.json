@@ -1,0 +1,2548 @@
+[
+ {
+  "join": 1,
+  "cut": 7.367,
+  "source": [
+   8.033333,
+   8.266667
+  ],
+  "before": "industries",
+  "after": "ranging from",
+  "heard": "different industries ranging from",
+  "flags": []
+ },
+ {
+  "join": 2,
+  "cut": 9.367,
+  "source": [
+   10.266667,
+   10.466667
+  ],
+  "before": "saas",
+  "after": "to business",
+  "heard": "sass to business",
+  "flags": []
+ },
+ {
+  "join": 3,
+  "cut": 11.0,
+  "source": [
+   12.1,
+   12.233333
+  ],
+  "before": "business",
+  "after": "to drones",
+  "heard": "business to drone",
+  "flags": []
+ },
+ {
+  "join": 4,
+  "cut": 11.767,
+  "source": [
+   13.0,
+   13.166667
+  ],
+  "before": "to",
+  "after": "drones to",
+  "heard": "to drones to",
+  "flags": []
+ },
+ {
+  "join": 5,
+  "cut": 17.8,
+  "source": [
+   19.2,
+   19.433333
+  ],
+  "before": "products you name it",
+  "after": "i have generated over 10",
+  "heard": "products you name it i have generated over 10",
+  "flags": []
+ },
+ {
+  "join": 6,
+  "cut": 25.467,
+  "source": [
+   27.1,
+   27.366667
+  ],
+  "before": "booked over",
+  "after": "500 demos",
+  "heard": "booked over 500 demos",
+  "flags": []
+ },
+ {
+  "join": 7,
+  "cut": 29.3,
+  "source": [
+   31.2,
+   31.866667
+  ],
+  "before": "an sdr",
+  "after": "and in all that time i",
+  "heard": "as an sdr and in all that time i",
+  "flags": []
+ },
+ {
+  "join": 8,
+  "cut": 36.367,
+  "source": [
+   38.933333,
+   39.033333
+  ],
+  "before": "like and what i found",
+  "after": "a lot of the perfect openers",
+  "heard": "looked like and what i found a lot of the perfect openers",
+  "flags": []
+ },
+ {
+  "join": 9,
+  "cut": 39.567,
+  "source": [
+   42.233333,
+   42.633333
+  ],
+  "before": "matter at the end of the day",
+  "after": "i really focus on a",
+  "heard": "matter at the end of the day i really focus on a conversation",
+  "flags": []
+ },
+ {
+  "join": 10,
+  "cut": 50.167,
+  "source": [
+   53.233333,
+   56.933333
+  ],
+  "before": "more meetings",
+  "after": "the funny thing is",
+  "heard": "more meetings the funny thing is most",
+  "flags": []
+ },
+ {
+  "join": 11,
+  "cut": 64.167,
+  "source": [
+   70.933333,
+   81.1
+  ],
+  "before": "on the phone",
+  "after": "and here's the first",
+  "heard": "conversation on the phone and here's the first one",
+  "flags": []
+ },
+ {
+  "join": 12,
+  "cut": 65.6,
+  "source": [
+   82.533333,
+   85.333333
+  ],
+  "before": "and here's the first one",
+  "after": "they're going to forget about you",
+  "heard": "and here's the first one they're going to forget about you",
+  "flags": []
+ },
+ {
+  "join": 13,
+  "cut": 85.1,
+  "source": [
+   104.833333,
+   109.3
+  ],
+  "before": "makes sense or not the",
+  "after": "problem is what happens",
+  "heard": "makes sense or not problem is what happens",
+  "flags": [
+   {
+    "kind": "CLIPPED",
+    "text": "the",
+    "start": 84.847,
+    "end": 85.1,
+    "heard_in": 3,
+    "source": 104.58
+   }
+  ]
+ },
+ {
+  "join": 14,
+  "cut": 101.8,
+  "source": [
+   126.0,
+   126.033333
+  ],
+  "before": "because i had a bad experience",
+  "after": "that's not the",
+  "heard": "because i had a bad experience that's not the",
+  "flags": []
+ },
+ {
+  "join": 15,
+  "cut": 105.867,
+  "source": [
+   130.1,
+   130.733333
+  ],
+  "before": "get through the pitch",
+  "after": "and have a conversation",
+  "heard": "get through the pitch and have a conversation",
+  "flags": []
+ },
+ {
+  "join": 16,
+  "cut": 107.233,
+  "source": [
+   132.1,
+   135.733333
+  ],
+  "before": "have a conversation",
+  "after": "and that's the problem most",
+  "heard": "have a conversation and that's the problem most",
+  "flags": []
+ },
+ {
+  "join": 17,
+  "cut": 114.233,
+  "source": [
+   142.733333,
+   143.2
+  ],
+  "before": "bad about it",
+  "after": "that's the number one",
+  "heard": "bad about it that's the number one",
+  "flags": []
+ },
+ {
+  "join": 18,
+  "cut": 115.8,
+  "source": [
+   144.766667,
+   144.866667
+  ],
+  "before": "the number one thing",
+  "after": "and i had the benefit",
+  "heard": "the number one thing and i had the benefit",
+  "flags": []
+ },
+ {
+  "join": 19,
+  "cut": 129.2,
+  "source": [
+   158.266667,
+   158.433333
+  ],
+  "before": "realized at the end of the day is",
+  "after": "all these people",
+  "heard": "realized at the end of the day is all of these people",
+  "flags": []
+ },
+ {
+  "join": 20,
+  "cut": 130.367,
+  "source": [
+   159.6,
+   159.8
+  ],
+  "before": "all these people",
+  "after": "they're just people",
+  "heard": "all of these people they're just people",
+  "flags": []
+ },
+ {
+  "join": 21,
+  "cut": 131.667,
+  "source": [
+   161.1,
+   161.233333
+  ],
+  "before": "they're just people",
+  "after": "you can just have a conversation",
+  "heard": "they're just people you can just have a conversation",
+  "flags": []
+ },
+ {
+  "join": 22,
+  "cut": 134.767,
+  "source": [
+   164.333333,
+   164.6
+  ],
+  "before": "through a pitch and the worst thing",
+  "after": "can happen is they",
+  "heard": "through a pitch and the worst that can happen is they",
+  "flags": []
+ },
+ {
+  "join": 23,
+  "cut": 137.267,
+  "source": [
+   167.1,
+   167.333333
+  ],
+  "before": "you not a fit",
+  "after": "don't call me again and",
+  "heard": "you not a fit don't call me again",
+  "flags": []
+ },
+ {
+  "join": 24,
+  "cut": 143.367,
+  "source": [
+   173.433333,
+   173.566667
+  ],
+  "before": "people get caught up",
+  "after": "so my number one",
+  "heard": "people get caught up so my number one",
+  "flags": []
+ },
+ {
+  "join": 25,
+  "cut": 151.2,
+  "source": [
+   181.4,
+   181.7
+  ],
+  "before": "water off a duck's back",
+  "after": "and just get into",
+  "heard": "water off a duck's back and just get into",
+  "flags": []
+ },
+ {
+  "join": 26,
+  "cut": 156.967,
+  "source": [
+   187.466667,
+   187.666667
+  ],
+  "before": "because",
+  "after": "that's what lesson two is",
+  "heard": "because that's what lesson two is",
+  "flags": []
+ },
+ {
+  "join": 27,
+  "cut": 159.3,
+  "source": [
+   190.0,
+   190.133333
+  ],
+  "before": "is it's volume",
+  "after": "it's not a lead problem it's",
+  "heard": "us it's volume it's not a lead problem it's",
+  "flags": []
+ },
+ {
+  "join": 28,
+  "cut": 163.7,
+  "source": [
+   194.533333,
+   194.666667
+  ],
+  "before": "of the day the reps that",
+  "after": "always always were",
+  "heard": "of the day the reps that always always run",
+  "flags": []
+ },
+ {
+  "join": 29,
+  "cut": 166.333,
+  "source": [
+   197.3,
+   203.533333
+  ],
+  "before": "top of the leaderboards",
+  "after": "the top three you could",
+  "heard": "top of the leaderboards the top three you could",
+  "flags": []
+ },
+ {
+  "join": 30,
+  "cut": 170.6,
+  "source": [
+   207.8,
+   208.233333
+  ],
+  "before": "based on the volume",
+  "after": "now typically they",
+  "heard": "based on the volume now typically they",
+  "flags": []
+ },
+ {
+  "join": 31,
+  "cut": 192.767,
+  "source": [
+   230.4,
+   230.566667
+  ],
+  "before": "a lot and i say this a lot",
+  "after": "if the top rep's making",
+  "heard": "a lot and i say this a lot if the top rep's making",
+  "flags": []
+ },
+ {
+  "join": 32,
+  "cut": 202.067,
+  "source": [
+   239.866667,
+   240.266667
+  ],
+  "before": "the same amount of volume",
+  "after": "so if i ever want to catch him i",
+  "heard": "the same amount of volume so if i ever want to catch him i",
+  "flags": []
+ },
+ {
+  "join": 33,
+  "cut": 204.167,
+  "source": [
+   242.366667,
+   242.433333
+  ],
+  "before": "him i have to do more",
+  "after": "and so i would always",
+  "heard": "have to catch him i have to do more and so i would always",
+  "flags": []
+ },
+ {
+  "join": 34,
+  "cut": 210.067,
+  "source": [
+   248.333333,
+   248.866667
+  ],
+  "before": "top rep was doing",
+  "after": "and then for quota",
+  "heard": "top rep was doing and then for quota",
+  "flags": []
+ },
+ {
+  "join": 35,
+  "cut": 213.8,
+  "source": [
+   252.6,
+   252.8
+  ],
+  "before": "higher than quota",
+  "after": "because a lot of times you're going to book",
+  "heard": "percent higher than quota because a lot of times you're going to book",
+  "flags": []
+ },
+ {
+  "join": 36,
+  "cut": 217.5,
+  "source": [
+   256.5,
+   256.633333
+  ],
+  "before": "you book 10 meetings",
+  "after": "you're going to have two that don't",
+  "heard": "book ten meetings you're going to have two that don't",
+  "flags": []
+ },
+ {
+  "join": 37,
+  "cut": 226.167,
+  "source": [
+   265.3,
+   266.4
+  ],
+  "before": "they can't make it a volume",
+  "after": "it's a volume game",
+  "heard": "they can't make it it's a volume game",
+  "flags": [
+   {
+    "kind": "CLIPPED",
+    "text": "a",
+    "start": 226.167,
+    "end": 225.987,
+    "heard_in": 3,
+    "source": 266.4
+   },
+   {
+    "kind": "CLIPPED",
+    "text": "volume",
+    "start": 226.167,
+    "end": 225.987,
+    "heard_in": 3,
+    "source": 266.4
+   }
+  ]
+ },
+ {
+  "join": 38,
+  "cut": 228.733,
+  "source": [
+   268.966667,
+   269.3
+  ],
+  "before": "at the end of the day",
+  "after": "just put in the reps",
+  "heard": "at the end of the day just put in the reps",
+  "flags": []
+ },
+ {
+  "join": 39,
+  "cut": 240.233,
+  "source": [
+   280.8,
+   285.4
+  ],
+  "before": "on itself",
+  "after": "and here's what i found a",
+  "heard": "on itself and here's what i found a",
+  "flags": []
+ },
+ {
+  "join": 40,
+  "cut": 251.033,
+  "source": [
+   296.2,
+   296.4
+  ],
+  "before": "this isn't working i",
+  "after": "need someone like you",
+  "heard": "this isn't working i need someone like you to",
+  "flags": []
+ },
+ {
+  "join": 41,
+  "cut": 255.267,
+  "source": [
+   300.633333,
+   301.0
+  ],
+  "before": "us more meetings",
+  "after": "now the real",
+  "heard": "book us more meetings now the real",
+  "flags": []
+ },
+ {
+  "join": 42,
+  "cut": 255.967,
+  "source": [
+   301.7,
+   301.8
+  ],
+  "before": "meetings now",
+  "after": "the real numbers behind",
+  "heard": "meetings now the real numbers behind it",
+  "flags": []
+ },
+ {
+  "join": 43,
+  "cut": 269.933,
+  "source": [
+   315.766667,
+   315.933333
+  ],
+  "before": "that we're going to hold",
+  "after": "and so my",
+  "heard": "that we're going to hold and so my",
+  "flags": []
+ },
+ {
+  "join": 44,
+  "cut": 273.8,
+  "source": [
+   319.8,
+   319.866667
+  ],
+  "before": "for one meeting",
+  "after": "100 dials typically",
+  "heard": "dials for one meeting 100 dials typically",
+  "flags": []
+ },
+ {
+  "join": 45,
+  "cut": 277.167,
+  "source": [
+   323.233333,
+   323.633333
+  ],
+  "before": "to 10 connects",
+  "after": "sometimes it's higher",
+  "heard": "to ten connect sometimes it's higher",
+  "flags": []
+ },
+ {
+  "join": 46,
+  "cut": 281.367,
+  "source": [
+   327.833333,
+   328.033333
+  ],
+  "before": "use but that's what you'll see",
+  "after": "and then typically about",
+  "heard": "use but that's what you'll see and then typically about",
+  "flags": []
+ },
+ {
+  "join": 47,
+  "cut": 286.533,
+  "source": [
+   333.2,
+   333.4
+  ],
+  "before": "into a meeting",
+  "after": "and so across the",
+  "heard": "and so across the",
+  "flags": []
+ },
+ {
+  "join": 48,
+  "cut": 289.633,
+  "source": [
+   336.5,
+   338.4
+  ],
+  "before": "calls one meeting",
+  "after": "i knew that if i could make",
+  "heard": "calls one meeting i knew that if i could make",
+  "flags": []
+ },
+ {
+  "join": 49,
+  "cut": 298.133,
+  "source": [
+   346.9,
+   347.133333
+  ],
+  "before": "they won't get a meeting",
+  "after": "and so they're going to say okay this",
+  "heard": "they won't get a meat and so they're going to say okay",
+  "flags": []
+ },
+ {
+  "join": 50,
+  "cut": 301.0,
+  "source": [
+   350.0,
+   350.2
+  ],
+  "before": "i've got to change something",
+  "after": "they won't stick with it",
+  "heard": "i've got to change something they won't stick with it",
+  "flags": []
+ },
+ {
+  "join": 51,
+  "cut": 305.933,
+  "source": [
+   355.133333,
+   355.4
+  ],
+  "before": "consistently",
+  "after": "for say 10 work days",
+  "heard": "consistently for say 10 workdays",
+  "flags": []
+ },
+ {
+  "join": 52,
+  "cut": 317.933,
+  "source": [
+   367.4,
+   367.666667
+  ],
+  "before": "times",
+  "after": "i would connect with them and i would",
+  "heard": "times i would connect with them and i would",
+  "flags": []
+ },
+ {
+  "join": 53,
+  "cut": 323.4,
+  "source": [
+   373.133333,
+   379.233333
+  ],
+  "before": "and results i saw",
+  "after": "if it was working before it's",
+  "heard": "if it was working before it's",
+  "flags": [
+   {
+    "kind": "CLIPPED",
+    "text": "saw",
+    "start": 322.877,
+    "end": 323.157,
+    "heard_in": 1,
+    "source": 372.61
+   }
+  ]
+ },
+ {
+  "join": 54,
+  "cut": 326.8,
+  "source": [
+   382.633333,
+   397.833333
+  ],
+  "before": "just have to stick with it",
+  "after": "lesson number three",
+  "heard": "just have to stick with it lesson number three",
+  "flags": []
+ },
+ {
+  "join": 55,
+  "cut": 329.867,
+  "source": [
+   400.9,
+   401.033333
+  ],
+  "before": "i would share is",
+  "after": "don't give up too early",
+  "heard": "i would share is don't give up too early",
+  "flags": []
+ },
+ {
+  "join": 56,
+  "cut": 337.967,
+  "source": [
+   409.133333,
+   409.7
+  ],
+  "before": "i've got to move on",
+  "after": "i call every er",
+  "heard": "i've got to move on i call every single",
+  "flags": [
+   {
+    "kind": "SURVIVED",
+    "text": "single",
+    "start": 339.007,
+    "end": 339.247,
+    "heard_in": 1,
+    "source": 412.34,
+    "span_to_add": {
+     "text": "every single...",
+     "kind": "retake",
+     "after": 412.09
+    }
+   }
+  ]
+ },
+ {
+  "join": 57,
+  "cut": 339.0,
+  "source": [
+   410.733333,
+   412.333333
+  ],
+  "before": "i call every er",
+  "after": "single contact a",
+  "heard": "i call every single contact a minimum",
+  "flags": []
+ },
+ {
+  "join": 58,
+  "cut": 341.733,
+  "source": [
+   415.066667,
+   415.266667
+  ],
+  "before": "of seven times",
+  "after": "seven times is the",
+  "heard": "of seven times seven times is the",
+  "flags": []
+ },
+ {
+  "join": 59,
+  "cut": 348.1,
+  "source": [
+   421.633333,
+   421.7
+  ],
+  "before": "then i break it up",
+  "after": "a lot of people them",
+  "heard": "and then i break it up a lot of people um",
+  "flags": [
+   {
+    "kind": "FRAGMENT",
+    "text": "",
+    "start": 348.12,
+    "end": 348.2,
+    "source": 421.72
+   }
+  ]
+ },
+ {
+  "join": 60,
+  "cut": 349.033,
+  "source": [
+   422.633333,
+   423.533333
+  ],
+  "before": "it up a lot of people",
+  "after": "them they'll call someone seven",
+  "heard": "it up a lot of people then they'll call someone seven",
+  "flags": []
+ },
+ {
+  "join": 61,
+  "cut": 354.633,
+  "source": [
+   429.133333,
+   429.3
+  ],
+  "before": "wednesday thursday friday",
+  "after": "i break it up",
+  "heard": "wednesday thursday friday i break it up so",
+  "flags": []
+ },
+ {
+  "join": 62,
+  "cut": 355.633,
+  "source": [
+   430.3,
+   430.433333
+  ],
+  "before": "i break it up",
+  "after": "so the",
+  "heard": "i break it up so the",
+  "flags": []
+ },
+ {
+  "join": 63,
+  "cut": 410.7,
+  "source": [
+   485.5,
+   485.666667
+  ],
+  "before": "seven calls",
+  "after": "and then i like to filter",
+  "heard": "seven calls and then i like to filter",
+  "flags": []
+ },
+ {
+  "join": 64,
+  "cut": 415.233,
+  "source": [
+   490.2,
+   490.4
+  ],
+  "before": "i can reference",
+  "after": "and if you really want to go",
+  "heard": "that i can reference and if you really want to go",
+  "flags": []
+ },
+ {
+  "join": 65,
+  "cut": 426.367,
+  "source": [
+   501.533333,
+   530.333333
+  ],
+  "before": "success with that",
+  "after": "but if i have thousands of leads",
+  "heard": "see success with that but if i have thousands of",
+  "flags": []
+ },
+ {
+  "join": 66,
+  "cut": 428.367,
+  "source": [
+   532.333333,
+   532.666667
+  ],
+  "before": "of leads to call",
+  "after": "i'm not going to focus on",
+  "heard": "of leads to call i'm not going to focus on calling",
+  "flags": []
+ },
+ {
+  "join": 67,
+  "cut": 437.8,
+  "source": [
+   542.1,
+   553.7
+  ],
+  "before": "it and move on",
+  "after": "lesson number four if i was",
+  "heard": "it and move on lesson number four if i was",
+  "flags": []
+ },
+ {
+  "join": 68,
+  "cut": 451.267,
+  "source": [
+   567.166667,
+   567.5
+  ],
+  "before": "reduce your quota",
+  "after": "i work with a lot",
+  "heard": "reduce your quota i work with a lot",
+  "flags": []
+ },
+ {
+  "join": 69,
+  "cut": 453.733,
+  "source": [
+   569.966667,
+   570.933333
+  ],
+  "before": "of different clients across",
+  "after": "so many different industries",
+  "heard": "of different clients have so many different industries",
+  "flags": []
+ },
+ {
+  "join": 70,
+  "cut": 468.533,
+  "source": [
+   585.733333,
+   585.8
+  ],
+  "before": "make sure we have the right pitch",
+  "after": "now if you're",
+  "heard": "to make sure we have the right pitch now if you're",
+  "flags": []
+ },
+ {
+  "join": 71,
+  "cut": 475.067,
+  "source": [
+   592.333333,
+   592.766667
+  ],
+  "before": "have to worry about that",
+  "after": "but what you do want",
+  "heard": "have to worry about that but you well you do want",
+  "flags": []
+ },
+ {
+  "join": 72,
+  "cut": 481.067,
+  "source": [
+   598.766667,
+   599.3
+  ],
+  "before": "with the product",
+  "after": "and so the",
+  "heard": "possible with the product and so the",
+  "flags": []
+ },
+ {
+  "join": 73,
+  "cut": 483.567,
+  "source": [
+   601.8,
+   604.866667
+  ],
+  "before": "thing for me",
+  "after": "it's because if you",
+  "heard": "thing for me it's because if you",
+  "flags": []
+ },
+ {
+  "join": 74,
+  "cut": 497.033,
+  "source": [
+   618.333333,
+   618.433333
+  ],
+  "before": "going to work against you",
+  "after": "and so what i would",
+  "heard": "going to work against you and so what i",
+  "flags": []
+ },
+ {
+  "join": 75,
+  "cut": 514.133,
+  "source": [
+   635.533333,
+   635.933333
+  ],
+  "before": "a demo of the product",
+  "after": "and so if you're",
+  "heard": "a demo of the product and so if you're",
+  "flags": []
+ },
+ {
+  "join": 76,
+  "cut": 529.267,
+  "source": [
+   651.066667,
+   651.9
+  ],
+  "before": "how it works",
+  "after": "because you",
+  "heard": "how it works because you",
+  "flags": []
+ },
+ {
+  "join": 77,
+  "cut": 536.8,
+  "source": [
+   659.433333,
+   660.166667
+  ],
+  "before": "if you know how",
+  "after": "other customers use",
+  "heard": "if you know how how other customers use",
+  "flags": [
+   {
+    "kind": "DOUBLED",
+    "text": "how how",
+    "start": 536.28,
+    "end": 537.08,
+    "heard_in": 3,
+    "source": 658.91,
+    "span_to_add": {
+     "text": "know how other",
+     "kind": "retake",
+     "after": 658.73
+    }
+   }
+  ]
+ },
+ {
+  "join": 78,
+  "cut": 543.967,
+  "source": [
+   667.333333,
+   678.6
+  ],
+  "before": "person uses this product",
+  "after": "now if you're a founder obviously",
+  "heard": "person uses this product now if you're a founder obviously",
+  "flags": []
+ },
+ {
+  "join": 79,
+  "cut": 551.3,
+  "source": [
+   685.933333,
+   693.4
+  ],
+  "before": "that they have",
+  "after": "the fifth lesson and",
+  "heard": "that they have the fifth lesson in",
+  "flags": []
+ },
+ {
+  "join": 80,
+  "cut": 558.733,
+  "source": [
+   700.833333,
+   701.1
+  ],
+  "before": "is lazy",
+  "after": "no one wants to do the",
+  "heard": "is lazy no one wants to do",
+  "flags": []
+ },
+ {
+  "join": 81,
+  "cut": 560.367,
+  "source": [
+   702.733333,
+   703.133333
+  ],
+  "before": "wants to do the work",
+  "after": "even me there",
+  "heard": "wants to do the work um even me",
+  "flags": []
+ },
+ {
+  "join": 82,
+  "cut": 600.733,
+  "source": [
+   743.5,
+   744.6
+  ],
+  "before": "catch them on the way to work um",
+  "after": "bye i realized if",
+  "heard": "catch them on the way to work but i realized if",
+  "flags": []
+ },
+ {
+  "join": 83,
+  "cut": 610.4,
+  "source": [
+   754.266667,
+   754.5
+  ],
+  "before": "it happens to every rep",
+  "after": "um i would",
+  "heard": "it happens to every rep um i would",
+  "flags": []
+ },
+ {
+  "join": 84,
+  "cut": 617.833,
+  "source": [
+   761.933333,
+   762.466667
+  ],
+  "before": "earlier",
+  "after": "that leads into lesson",
+  "heard": "calling earlier and that leads into less",
+  "flags": [
+   {
+    "kind": "SURVIVED",
+    "text": "and",
+    "start": 617.533,
+    "end": 618.013,
+    "heard_in": 3,
+    "source": 761.63,
+    "span_to_add": {
+     "text": "and that",
+     "kind": "retake",
+     "after": 762.29
+    }
+   }
+  ]
+ },
+ {
+  "join": 85,
+  "cut": 629.067,
+  "source": [
+   773.7,
+   773.966667
+  ],
+  "before": "tracked and my",
+  "after": "company didn't tell me",
+  "heard": "tracked and my company didn't tell me",
+  "flags": []
+ },
+ {
+  "join": 86,
+  "cut": 630.5,
+  "source": [
+   775.4,
+   777.1
+  ],
+  "before": "company didn't tell me this",
+  "after": "you can look it up you",
+  "heard": "company didn't tell me this you can look it up you",
+  "flags": []
+ },
+ {
+  "join": 87,
+  "cut": 643.467,
+  "source": [
+   790.066667,
+   790.266667
+  ],
+  "before": "prospect time",
+  "after": "and the reason for that",
+  "heard": "prospect time and the reason for that",
+  "flags": []
+ },
+ {
+  "join": 88,
+  "cut": 672.6,
+  "source": [
+   819.4,
+   819.933333
+  ],
+  "before": "to 6 p m",
+  "after": "i caught so many people",
+  "heard": "to 6 p m i caught so many people",
+  "flags": []
+ },
+ {
+  "join": 89,
+  "cut": 681.267,
+  "source": [
+   828.6,
+   828.833333
+  ],
+  "before": "they're working late",
+  "after": "they don't have any meetings",
+  "heard": "they're working late they don't have any meetings",
+  "flags": []
+ },
+ {
+  "join": 90,
+  "cut": 687.067,
+  "source": [
+   834.633333,
+   834.833333
+  ],
+  "before": "for calling",
+  "after": "now you don't have to start at 8",
+  "heard": "now you don't have to start at 8",
+  "flags": [
+   {
+    "kind": "CLIPPED",
+    "text": "calling",
+    "start": 686.363,
+    "end": 686.803,
+    "heard_in": 1,
+    "source": 833.93
+   }
+  ]
+ },
+ {
+  "join": 91,
+  "cut": 696.867,
+  "source": [
+   844.633333,
+   845.1
+  ],
+  "before": "at least 10 a m",
+  "after": "and so i",
+  "heard": "at least 10 a m and so i",
+  "flags": []
+ },
+ {
+  "join": 92,
+  "cut": 705.667,
+  "source": [
+   853.9,
+   854.033333
+  ],
+  "before": "move our meetings cause",
+  "after": "i was at a meeting at 9",
+  "heard": "move our meetings because i was at a meeting at 9th",
+  "flags": []
+ },
+ {
+  "join": 93,
+  "cut": 730.333,
+  "source": [
+   878.7,
+   919.566667
+  ],
+  "before": "and when you can call",
+  "after": "now all of this",
+  "heard": "call and when you can call now all of this is",
+  "flags": [
+   {
+    "kind": "SURVIVED",
+    "text": "call",
+    "start": 729.093,
+    "end": 729.253,
+    "heard_in": 1,
+    "source": 877.46,
+    "span_to_add": {
+     "text": "call and",
+     "kind": "retake",
+     "after": 877.3
+    }
+   }
+  ]
+ },
+ {
+  "join": 94,
+  "cut": 750.9,
+  "source": [
+   940.133333,
+   970.5
+  ],
+  "before": "have time to stay consistent",
+  "after": "that's what i do at sdr",
+  "heard": "have time to stay consistent that's what i do at scr",
+  "flags": []
+ },
+ {
+  "join": 95,
+  "cut": 765.333,
+  "source": [
+   984.933333,
+   1007.7
+  ],
+  "before": "feel free to reach out",
+  "after": "one of the clients i worked with",
+  "heard": "feel free to reach out one of the clients i worked with",
+  "flags": []
+ },
+ {
+  "join": 96,
+  "cut": 783.267,
+  "source": [
+   1025.633333,
+   1025.866667
+  ],
+  "before": "at least 20x",
+  "after": "they were in the hardware space",
+  "heard": "at least 20x they were in the hardware space",
+  "flags": []
+ },
+ {
+  "join": 97,
+  "cut": 784.6,
+  "source": [
+   1027.2,
+   1030.3
+  ],
+  "before": "they were in the hardware space",
+  "after": "industries so there's",
+  "heard": "they were in the hardware space industries so",
+  "flags": []
+ },
+ {
+  "join": 98,
+  "cut": 798.367,
+  "source": [
+   1044.066667,
+   1063.466667
+  ],
+  "before": "tell you that as well",
+  "after": "lesson number seven and",
+  "heard": "tell you that as well lesson number seven and",
+  "flags": []
+ },
+ {
+  "join": 99,
+  "cut": 811.233,
+  "source": [
+   1076.333333,
+   1076.6
+  ],
+  "before": "going to be a little bit better",
+  "after": "and so that ramp",
+  "heard": "going to be a little bit better and so that ramp",
+  "flags": []
+ },
+ {
+  "join": 100,
+  "cut": 820.233,
+  "source": [
+   1085.6,
+   1086.833333
+  ],
+  "before": "and i would say",
+  "after": "the biggest thing that you want to",
+  "heard": "it and i would say the biggest thing that you want",
+  "flags": []
+ },
+ {
+  "join": 101,
+  "cut": 826.1,
+  "source": [
+   1092.7,
+   1103.133333
+  ],
+  "before": "train faster",
+  "after": "and so if",
+  "heard": "train faster and so if",
+  "flags": []
+ },
+ {
+  "join": 102,
+  "cut": 837.067,
+  "source": [
+   1114.1,
+   1114.266667
+  ],
+  "before": "know how that feels",
+  "after": "when i first started",
+  "heard": "know how that feels when i first started",
+  "flags": []
+ },
+ {
+  "join": 103,
+  "cut": 842.767,
+  "source": [
+   1119.966667,
+   1120.966667
+  ],
+  "before": "up i just hung up but",
+  "after": "i was terrified",
+  "heard": "up i just hung up i didn't i was terrified",
+  "flags": [
+   {
+    "kind": "CLIPPED",
+    "text": "but",
+    "start": 842.46,
+    "end": 842.54,
+    "heard_in": 3,
+    "source": 1119.66
+   }
+  ]
+ },
+ {
+  "join": 104,
+  "cut": 845.333,
+  "source": [
+   1123.533333,
+   1125.433333
+  ],
+  "before": "i didn't know what to do",
+  "after": "and before that",
+  "heard": "i didn't know what to do and before that",
+  "flags": []
+ },
+ {
+  "join": 105,
+  "cut": 851.433,
+  "source": [
+   1131.533333,
+   1132.366667
+  ],
+  "before": "loan company",
+  "after": "i couldn't even hear them",
+  "heard": "a loan company i couldn't even hear them",
+  "flags": []
+ },
+ {
+  "join": 106,
+  "cut": 861.633,
+  "source": [
+   1142.566667,
+   1142.933333
+  ],
+  "before": "so i was kind of guessing",
+  "after": "and i had a whole team",
+  "heard": "so i was kind of guessing uh and i had a whole team",
+  "flags": []
+ },
+ {
+  "join": 107,
+  "cut": 872.967,
+  "source": [
+   1154.266667,
+   1154.7
+  ],
+  "before": "so i",
+  "after": "had a really rough start and",
+  "heard": "and so i had a really rough start",
+  "flags": []
+ },
+ {
+  "join": 108,
+  "cut": 878.4,
+  "source": [
+   1160.133333,
+   1160.266667
+  ],
+  "before": "i've been rejected",
+  "after": "thousands and thousands of",
+  "heard": "i've been rejected thousands and thousands of",
+  "flags": []
+ },
+ {
+  "join": 109,
+  "cut": 885.533,
+  "source": [
+   1167.4,
+   1167.633333
+  ],
+  "before": "so what",
+  "after": "i would say is you're",
+  "heard": "so what i would say is you're",
+  "flags": []
+ },
+ {
+  "join": 110,
+  "cut": 901.567,
+  "source": [
+   1183.666667,
+   1184.633333
+  ],
+  "before": "easier and",
+  "after": "you do get better with",
+  "heard": "easier and you do get better with",
+  "flags": []
+ },
+ {
+  "join": 111,
+  "cut": 916.467,
+  "source": [
+   1199.533333,
+   1200.133333
+  ],
+  "before": "used to work with",
+  "after": "a rep and he said the worst",
+  "heard": "used to work with a rap and he said the worst",
+  "flags": []
+ },
+ {
+  "join": 112,
+  "cut": 919.433,
+  "source": [
+   1203.1,
+   1203.466667
+  ],
+  "before": "was making cold calls",
+  "after": "that's what he was paid for",
+  "heard": "was making cold calls that's what he was paid for",
+  "flags": []
+ },
+ {
+  "join": 113,
+  "cut": 929.7,
+  "source": [
+   1213.733333,
+   1236.666667
+  ],
+  "before": "he liked a lot more",
+  "after": "but it does get better",
+  "heard": "he liked a lot more but it does get better",
+  "flags": []
+ },
+ {
+  "join": 114,
+  "cut": 946.767,
+  "source": [
+   1253.733333,
+   1254.2
+  ],
+  "before": "you look at the weights and you think",
+  "after": "i don't know",
+  "heard": "look at the way it's and you think i don't know",
+  "flags": []
+ },
+ {
+  "join": 115,
+  "cut": 948.5,
+  "source": [
+   1255.933333,
+   1256.633333
+  ],
+  "before": "don't know what to do",
+  "after": "once you've gone for a few months",
+  "heard": "i don't know what to do once you've gone for a few months",
+  "flags": []
+ },
+ {
+  "join": 116,
+  "cut": 950.467,
+  "source": [
+   1258.6,
+   1285.733333
+  ],
+  "before": "a few months you're more comfortable",
+  "after": "you when that leads to",
+  "heard": "a few months to get more comfortable and that leads to",
+  "flags": []
+ },
+ {
+  "join": 117,
+  "cut": 954.133,
+  "source": [
+   1289.4,
+   1290.1
+  ],
+  "before": "eight",
+  "after": "you're going to get better",
+  "heard": "number eight you're going to get better",
+  "flags": []
+ },
+ {
+  "join": 118,
+  "cut": 955.867,
+  "source": [
+   1291.833333,
+   1291.9
+  ],
+  "before": "going to get better",
+  "after": "you're going to start out",
+  "heard": "going to get better um you're going to start out",
+  "flags": []
+ },
+ {
+  "join": 119,
+  "cut": 958.333,
+  "source": [
+   1294.366667,
+   1294.5
+  ],
+  "before": "worse but",
+  "after": "a part of getting better is",
+  "heard": "worst but a part of getting better is",
+  "flags": []
+ },
+ {
+  "join": 120,
+  "cut": 965.267,
+  "source": [
+   1301.433333,
+   1301.833333
+  ],
+  "before": "become more efficient",
+  "after": "early on i was",
+  "heard": "become more efficient early on i was incredible",
+  "flags": []
+ },
+ {
+  "join": 121,
+  "cut": 967.733,
+  "source": [
+   1304.3,
+   1304.666667
+  ],
+  "before": "incredibly inefficient",
+  "after": "i had to",
+  "heard": "this is incredibly inefficient i had to pros",
+  "flags": []
+ },
+ {
+  "join": 122,
+  "cut": 970.733,
+  "source": [
+   1307.666667,
+   1308.3
+  ],
+  "before": "accounts at that company",
+  "after": "and they",
+  "heard": "accounts at that company and they",
+  "flags": []
+ },
+ {
+  "join": 123,
+  "cut": 972.967,
+  "source": [
+   1310.533333,
+   1310.8
+  ],
+  "before": "had a large team",
+  "after": "so we pulled them often from",
+  "heard": "had a large team so we pulled them often from",
+  "flags": []
+ },
+ {
+  "join": 124,
+  "cut": 978.967,
+  "source": [
+   1316.8,
+   1316.966667
+  ],
+  "before": "of our software tools",
+  "after": "and what i would do",
+  "heard": "of our software tools and what i would do",
+  "flags": []
+ },
+ {
+  "join": 125,
+  "cut": 981.633,
+  "source": [
+   1319.633333,
+   1320.0
+  ],
+  "before": "would pull a lead",
+  "after": "i'd add them to a sequence",
+  "heard": "would pull a lead i'd add them to a sequence",
+  "flags": []
+ },
+ {
+  "join": 126,
+  "cut": 983.967,
+  "source": [
+   1322.333333,
+   1322.6
+  ],
+  "before": "i would call them",
+  "after": "and then i would do that again",
+  "heard": "i would call them and then i would do that again",
+  "flags": []
+ },
+ {
+  "join": 127,
+  "cut": 985.167,
+  "source": [
+   1323.8,
+   1324.533333
+  ],
+  "before": "and then i would do that again",
+  "after": "and over",
+  "heard": "then i would do that again and over time",
+  "flags": []
+ },
+ {
+  "join": 128,
+  "cut": 989.8,
+  "source": [
+   1329.166667,
+   1329.7
+  ],
+  "before": "to learn how they did it",
+  "after": "i realized what they did is",
+  "heard": "to learn how they did it i realized what they did is",
+  "flags": []
+ },
+ {
+  "join": 129,
+  "cut": 992.833,
+  "source": [
+   1332.733333,
+   1333.1
+  ],
+  "before": "in batches",
+  "after": "and this is what i've seen",
+  "heard": "prospect and batches and this is what i've seen consistent",
+  "flags": []
+ },
+ {
+  "join": 130,
+  "cut": 996.033,
+  "source": [
+   1336.3,
+   1336.4
+  ],
+  "before": "the best reps",
+  "after": "they'll time block and",
+  "heard": "the best reps they'll time block",
+  "flags": []
+ },
+ {
+  "join": 131,
+  "cut": 998.933,
+  "source": [
+   1339.3,
+   1344.633333
+  ],
+  "before": "their work",
+  "after": "and so what that looked",
+  "heard": "batch their work and so what that looked",
+  "flags": []
+ },
+ {
+  "join": 132,
+  "cut": 1003.833,
+  "source": [
+   1349.533333,
+   1350.0
+  ],
+  "before": "for prospecting",
+  "after": "and instead of finding",
+  "heard": "for prospecting and instead of finding a",
+  "flags": []
+ },
+ {
+  "join": 133,
+  "cut": 1012.8,
+  "source": [
+   1358.966667,
+   1359.566667
+  ],
+  "before": "a different time block",
+  "after": "that gave me a ton of",
+  "heard": "during a different time block that gave me a ton of success",
+  "flags": []
+ },
+ {
+  "join": 134,
+  "cut": 1018.967,
+  "source": [
+   1365.733333,
+   1366.433333
+  ],
+  "before": "times to call",
+  "after": "prospects where i'm going to get",
+  "heard": "times to call it prospects where i'm going to",
+  "flags": []
+ },
+ {
+  "join": 135,
+  "cut": 1021.2,
+  "source": [
+   1368.666667,
+   1368.933333
+  ],
+  "before": "to get better results",
+  "after": "and so say between",
+  "heard": "to get better results and so say between",
+  "flags": []
+ },
+ {
+  "join": 136,
+  "cut": 1022.733,
+  "source": [
+   1370.466667,
+   1372.7
+  ],
+  "before": "say between",
+  "after": "or 12 to 3 p",
+  "heard": "so say between er 12 to 3 pm",
+  "flags": []
+ },
+ {
+  "join": 137,
+  "cut": 1027.467,
+  "source": [
+   1377.433333,
+   1378.133333
+  ],
+  "before": "my prospecting",
+  "after": "and then i would have a list",
+  "heard": "my prospecting and then i would have a list",
+  "flags": []
+ },
+ {
+  "join": 138,
+  "cut": 1030.9,
+  "source": [
+   1381.566667,
+   1381.833333
+  ],
+  "before": "the peak hours so",
+  "after": "i wasn't just calling it random",
+  "heard": "the peak hours so i wasn't just calling it random",
+  "flags": []
+ },
+ {
+  "join": 139,
+  "cut": 1045.9,
+  "source": [
+   1396.833333,
+   1396.966667
+  ],
+  "before": "magnitude as well",
+  "after": "so it might have",
+  "heard": "magnitude as well so it might have",
+  "flags": []
+ },
+ {
+  "join": 140,
+  "cut": 1051.6,
+  "source": [
+   1402.666667,
+   1403.166667
+  ],
+  "before": "prospects an hour",
+  "after": "when i first started because",
+  "heard": "prospects in our when i first started because",
+  "flags": []
+ },
+ {
+  "join": 141,
+  "cut": 1055.867,
+  "source": [
+   1407.433333,
+   1407.933333
+  ],
+  "before": "i was calling them",
+  "after": "once i started batching",
+  "heard": "i was calling them once i started batching",
+  "flags": []
+ },
+ {
+  "join": 142,
+  "cut": 1058.2,
+  "source": [
+   1410.266667,
+   1411.066667
+  ],
+  "before": "i could do",
+  "after": "five times that i mean i would",
+  "heard": "i could do five times that i mean i would",
+  "flags": []
+ },
+ {
+  "join": 143,
+  "cut": 1067.5,
+  "source": [
+   1420.366667,
+   1420.5
+  ],
+  "before": "that i needed",
+  "after": "and so one of the things",
+  "heard": "that i needed and so one of the things",
+  "flags": []
+ },
+ {
+  "join": 144,
+  "cut": 1075.833,
+  "source": [
+   1428.833333,
+   1429.5
+  ],
+  "before": "before i call them",
+  "after": "before that i was looking at their",
+  "heard": "before that i was looking at their",
+  "flags": [
+   {
+    "kind": "CLIPPED",
+    "text": "them",
+    "start": 1075.47,
+    "end": 1075.67,
+    "heard_in": 2,
+    "source": 1428.47
+   }
+  ]
+ },
+ {
+  "join": 145,
+  "cut": 1080.733,
+  "source": [
+   1434.4,
+   1434.633333
+  ],
+  "before": "and i learned that",
+  "after": "i only needed two or three",
+  "heard": "i learned that i only needed two or three things",
+  "flags": []
+ },
+ {
+  "join": 146,
+  "cut": 1087.4,
+  "source": [
+   1441.3,
+   1441.533333
+  ],
+  "before": "from anything else",
+  "after": "and if they'd made any relevant",
+  "heard": "and if they'd made any relevant",
+  "flags": [
+   {
+    "kind": "CLIPPED",
+    "text": "else",
+    "start": 1086.73,
+    "end": 1087.15,
+    "heard_in": 1,
+    "source": 1440.63
+   }
+  ]
+ },
+ {
+  "join": 147,
+  "cut": 1090.633,
+  "source": [
+   1444.766667,
+   1444.933333
+  ],
+  "before": "that was it",
+  "after": "and so what i would do is in the",
+  "heard": "that was that and so what i would do is in the",
+  "flags": []
+ },
+ {
+  "join": 148,
+  "cut": 1094.267,
+  "source": [
+   1448.566667,
+   1449.2
+  ],
+  "before": "add one or two",
+  "after": "quick notes been at the company",
+  "heard": "add one or two quick notes but at the company",
+  "flags": []
+ },
+ {
+  "join": 149,
+  "cut": 1096.567,
+  "source": [
+   1451.5,
+   1453.866667
+  ],
+  "before": "three years",
+  "after": "transition from x",
+  "heard": "three years transition from x",
+  "flags": []
+ },
+ {
+  "join": 150,
+  "cut": 1099.733,
+  "source": [
+   1457.033333,
+   1457.166667
+  ],
+  "before": "then if they made any post",
+  "after": "then when i'd call i'd say",
+  "heard": "then if they made any post then when i'd call i'd say",
+  "flags": []
+ },
+ {
+  "join": 151,
+  "cut": 1103.467,
+  "source": [
+   1460.9,
+   1461.166667
+  ],
+  "before": "handling you know",
+  "after": "compliance for about",
+  "heard": "handling you know compliance for about three",
+  "flags": []
+ },
+ {
+  "join": 152,
+  "cut": 1107.967,
+  "source": [
+   1465.666667,
+   1466.5
+  ],
+  "before": "then",
+  "after": "i'd give them the pitch",
+  "heard": "um then i'd give them the pitch",
+  "flags": []
+ },
+ {
+  "join": 153,
+  "cut": 1113.167,
+  "source": [
+   1471.7,
+   1471.866667
+  ],
+  "before": "needing to spend five",
+  "after": "minutes prospect",
+  "heard": "needing to spend five minutes prospect",
+  "flags": []
+ },
+ {
+  "join": 154,
+  "cut": 1116.9,
+  "source": [
+   1475.6,
+   1475.966667
+  ],
+  "before": "before the call",
+  "after": "and so that's what i would",
+  "heard": "prospect before the call and so that's what i would",
+  "flags": []
+ },
+ {
+  "join": 155,
+  "cut": 1128.233,
+  "source": [
+   1487.3,
+   1501.666667
+  ],
+  "before": "with my work",
+  "after": "and that brings me to the",
+  "heard": "and that brings me to the final",
+  "flags": []
+ },
+ {
+  "join": 156,
+  "cut": 1134.767,
+  "source": [
+   1508.2,
+   1508.866667
+  ],
+  "before": "not usually better",
+  "after": "they're just more resilient",
+  "heard": "not usually better they're just more resilient",
+  "flags": []
+ },
+ {
+  "join": 157,
+  "cut": 1136.1,
+  "source": [
+   1510.2,
+   1510.866667
+  ],
+  "before": "just more resilient",
+  "after": "and when i",
+  "heard": "just more resilient and when i",
+  "flags": []
+ },
+ {
+  "join": 158,
+  "cut": 1136.933,
+  "source": [
+   1511.7,
+   1511.833333
+  ],
+  "before": "and",
+  "after": "when i first started",
+  "heard": "ilya and when i first started",
+  "flags": []
+ },
+ {
+  "join": 159,
+  "cut": 1140.433,
+  "source": [
+   1515.333333,
+   1515.433333
+  ],
+  "before": "a rep i thought",
+  "after": "all of these people were",
+  "heard": "a rep i thought all these people were incredible",
+  "flags": [
+   {
+    "kind": "CLIPPED",
+    "text": "of",
+    "start": 1140.72,
+    "end": 1140.84,
+    "heard_in": 1,
+    "source": 1515.72
+   }
+  ]
+ },
+ {
+  "join": 160,
+  "cut": 1146.867,
+  "source": [
+   1521.866667,
+   1522.566667
+  ],
+  "before": "to their calls all",
+  "after": "the time i mean",
+  "heard": "to their calls all the time i mean",
+  "flags": []
+ },
+ {
+  "join": 161,
+  "cut": 1156.6,
+  "source": [
+   1532.3,
+   1532.533333
+  ],
+  "before": "something special",
+  "after": "but after i'd been doing work for",
+  "heard": "something special but after i'd been doing work for",
+  "flags": []
+ },
+ {
+  "join": 162,
+  "cut": 1162.7,
+  "source": [
+   1538.633333,
+   1538.866667
+  ],
+  "before": "consistent and doing the work",
+  "after": "they were doing the same work",
+  "heard": "consistent and doing the work they were doing the same work",
+  "flags": []
+ },
+ {
+  "join": 163,
+  "cut": 1169.433,
+  "source": [
+   1545.6,
+   1546.133333
+  ],
+  "before": "stayed consistent",
+  "after": "i've seen a lot of reps",
+  "heard": "stayed consistent i've seen a lot of reps",
+  "flags": []
+ },
+ {
+  "join": 164,
+  "cut": 1172.833,
+  "source": [
+   1549.533333,
+   1549.8
+  ],
+  "before": "initial success",
+  "after": "and then they coast on",
+  "heard": "initial success and then they coast on",
+  "flags": []
+ },
+ {
+  "join": 165,
+  "cut": 1177.7,
+  "source": [
+   1554.666667,
+   1554.833333
+  ],
+  "before": "that consistency",
+  "after": "and so the",
+  "heard": "that consistency and so the",
+  "flags": []
+ },
+ {
+  "join": 166,
+  "cut": 1178.7,
+  "source": [
+   1555.833333,
+   1556.366667
+  ],
+  "before": "and so",
+  "after": "the number one thing",
+  "heard": "and so the number one thing",
+  "flags": []
+ },
+ {
+  "join": 167,
+  "cut": 1180.067,
+  "source": [
+   1557.733333,
+   1557.9
+  ],
+  "before": "number one thing",
+  "after": "i would say if you're",
+  "heard": "number one thing i would say if you're",
+  "flags": []
+ },
+ {
+  "join": 168,
+  "cut": 1189.4,
+  "source": [
+   1567.233333,
+   1568.1
+  ],
+  "before": "least six months",
+  "after": "you're not going to become great",
+  "heard": "least six months you're not going to become great",
+  "flags": []
+ },
+ {
+  "join": 169,
+  "cut": 1212.267,
+  "source": [
+   1590.966667,
+   1591.066667
+  ],
+  "before": "you need to have",
+  "after": "what you need to be doing",
+  "heard": "you need to have what you need to be doing",
+  "flags": []
+ },
+ {
+  "join": 170,
+  "cut": 1220.933,
+  "source": [
+   1599.733333,
+   1600.2
+  ],
+  "before": "and",
+  "after": "a lot of people they just throw in",
+  "heard": "and a lot of people they just throw in",
+  "flags": []
+ },
+ {
+  "join": 171,
+  "cut": 1229.767,
+  "source": [
+   1609.033333,
+   1609.633333
+  ],
+  "before": "but",
+  "after": "the thing that's going to determine",
+  "heard": "but the thing that's going to determine",
+  "flags": []
+ },
+ {
+  "join": 172,
+  "cut": 1236.233,
+  "source": [
+   1616.1,
+   1616.8
+  ],
+  "before": "and if you can",
+  "after": "do the work even without",
+  "heard": "it and if you can do the work even without",
+  "flags": []
+ },
+ {
+  "join": 173,
+  "cut": 1245.867,
+  "source": [
+   1626.433333,
+   1626.6
+  ],
+  "before": "the reps who they're",
+  "after": "always keeping",
+  "heard": "the reps who they're always keeping track",
+  "flags": []
+ },
+ {
+  "join": 174,
+  "cut": 1258.567,
+  "source": [
+   1639.3,
+   1639.6
+  ],
+  "before": "to six months and",
+  "after": "i work with a lot of",
+  "heard": "to six months and i work with a lot of",
+  "flags": []
+ },
+ {
+  "join": 175,
+  "cut": 1265.333,
+  "source": [
+   1646.366667,
+   1646.666667
+  ],
+  "before": "but they're not great",
+  "after": "and then by month three",
+  "heard": "but they're not great and then by month three months",
+  "flags": []
+ },
+ {
+  "join": 176,
+  "cut": 1270.6,
+  "source": [
+   1651.933333,
+   1652.266667
+  ],
+  "before": "closing deals",
+  "after": "i'm working with a client now",
+  "heard": "closing deals i'm working with a client now",
+  "flags": []
+ },
+ {
+  "join": 177,
+  "cut": 1273.867,
+  "source": [
+   1655.533333,
+   1656.1
+  ],
+  "before": "for four months",
+  "after": "their sales cycle",
+  "heard": "for four months their sales cycle",
+  "flags": []
+ },
+ {
+  "join": 178,
+  "cut": 1276.133,
+  "source": [
+   1658.366667,
+   1658.4
+  ],
+  "before": "is about six months",
+  "after": "and so",
+  "heard": "cycle cycle is about six months and so",
+  "flags": [
+   {
+    "kind": "DOUBLED",
+    "text": "cycle cycle",
+    "start": 1275.053,
+    "end": 1275.193,
+    "heard_in": 1,
+    "source": 1657.29,
+    "span_to_add": {
+     "text": "is",
+     "kind": "retake",
+     "after": 1657.23
+    }
+   }
+  ]
+ },
+ {
+  "join": 179,
+  "cut": 1277.767,
+  "source": [
+   1660.033333,
+   1660.066667
+  ],
+  "before": "and so",
+  "after": "they're not going to",
+  "heard": "and so they're not going to",
+  "flags": []
+ },
+ {
+  "join": 180,
+  "cut": 1280.233,
+  "source": [
+   1662.533333,
+   1663.0
+  ],
+  "before": "know if they close a deal",
+  "after": "and even make",
+  "heard": "know if they close a deal and even make money",
+  "flags": []
+ },
+ {
+  "join": 181,
+  "cut": 1282.067,
+  "source": [
+   1664.833333,
+   1665.033333
+  ],
+  "before": "make money for me",
+  "after": "for quite a while",
+  "heard": "even make money for me for quite a while",
+  "flags": []
+ },
+ {
+  "join": 182,
+  "cut": 1283.367,
+  "source": [
+   1666.333333,
+   1667.533333
+  ],
+  "before": "for quite a while",
+  "after": "is this",
+  "heard": "quite a while this this",
+  "flags": [
+   {
+    "kind": "DOUBLED",
+    "text": "this this",
+    "start": 1283.387,
+    "end": 1284.527,
+    "heard_in": 2,
+    "source": 1667.55,
+    "span_to_add": {
+     "text": "is, this is",
+     "kind": "retake",
+     "after": 1667.39
+    }
+   },
+   {
+    "kind": "CLIPPED",
+    "text": "is",
+    "start": 1283.367,
+    "end": 1283.533,
+    "heard_in": 3,
+    "source": 1667.53
+   }
+  ]
+ },
+ {
+  "join": 183,
+  "cut": 1289.4,
+  "source": [
+   1673.566667,
+   1673.7
+  ],
+  "before": "okay in a month we're going to know",
+  "after": "you're not going to know in a month",
+  "heard": "okay in a month we're going to know you're not going to know in a month",
+  "flags": []
+ },
+ {
+  "join": 184,
+  "cut": 1294.667,
+  "source": [
+   1678.966667,
+   1693.566667
+  ],
+  "before": "and you have to make an investment",
+  "after": "and so this client they",
+  "heard": "and you have to make an investment and so this client",
+  "flags": []
+ },
+ {
+  "join": 185,
+  "cut": 1323.433,
+  "source": [
+   1722.333333,
+   1732.3
+  ],
+  "before": "sdr team",
+  "after": "now those are the nine",
+  "heard": "sdr team now those are the nine lessons",
+  "flags": []
+ },
+ {
+  "join": 186,
+  "cut": 1329.567,
+  "source": [
+   1738.433333,
+   1738.666667
+  ],
+  "before": "kind of funny",
+  "after": "not a lot of those are",
+  "heard": "it's kind of funny not a lot of those are",
+  "flags": []
+ },
+ {
+  "join": 187,
+  "cut": 1334.033,
+  "source": [
+   1743.133333,
+   1743.466667
+  ],
+  "before": "the phone how you talk",
+  "after": "now that's for another video",
+  "heard": "the phone how you talk now that's for another video",
+  "flags": []
+ },
+ {
+  "join": 188,
+  "cut": 1340.667,
+  "source": [
+   1750.1,
+   1751.866667
+  ],
+  "before": "biggest thing especially with",
+  "after": "reps who are just starting",
+  "heard": "biggest thing especially with our reps who are just starting",
+  "flags": []
+ },
+ {
+  "join": 189,
+  "cut": 1350.667,
+  "source": [
+   1761.866667,
+   1761.9
+  ],
+  "before": "tracking your metrics",
+  "after": "tweaking and",
+  "heard": "tracking your metrics tweaking and",
+  "flags": []
+ },
+ {
+  "join": 190,
+  "cut": 1357.8,
+  "source": [
+   1769.033333,
+   1771.3
+  ],
+  "before": "what's going to work and what's not",
+  "after": "so if you're a few",
+  "heard": "what's going to work and what's not so if you're a few",
+  "flags": []
+ },
+ {
+  "join": 191,
+  "cut": 1358.3,
+  "source": [
+   1771.8,
+   1772.166667
+  ],
+  "before": "and what's not so",
+  "after": "if you're a few hundred calls",
+  "heard": "and what's not so if you're a few hundred calls",
+  "flags": []
+ },
+ {
+  "join": 192,
+  "cut": 1365.833,
+  "source": [
+   1779.7,
+   1780.666667
+  ],
+  "before": "just need more reps",
+  "after": "you probably need to make",
+  "heard": "just need more reps and you probably need to make",
+  "flags": [
+   {
+    "kind": "SURVIVED",
+    "text": "and",
+    "start": 1365.653,
+    "end": 1365.993,
+    "heard_in": 3,
+    "source": 1779.52,
+    "span_to_add": {
+     "text": "and you",
+     "kind": "retake",
+     "after": 1780.51
+    }
+   }
+  ]
+ },
+ {
+  "join": 193,
+  "cut": 1367.9,
+  "source": [
+   1782.733333,
+   1787.8
+  ],
+  "before": "to make some changes",
+  "after": "you've got to keep going until",
+  "heard": "need to make some changes you've got to keep going until",
+  "flags": []
+ },
+ {
+  "join": 194,
+  "cut": 1372.833,
+  "source": [
+   1792.733333,
+   1799.666667
+  ],
+  "before": "into the calendar",
+  "after": "and if you'd rather",
+  "heard": "into the calendar and if you'd rather",
+  "flags": []
+ },
+ {
+  "join": 195,
+  "cut": 1383.267,
+  "source": [
+   1810.1,
+   1810.3
+  ],
+  "before": "across them all",
+  "after": "i've probably worked in",
+  "heard": "across them all i've probably worked in",
+  "flags": []
+ },
+ {
+  "join": 196,
+  "cut": 1400.633,
+  "source": [
+   1827.666667,
+   1835.333333
+  ],
+  "before": "what that would look like",
+  "after": "and that's all",
+  "heard": "what that would look like and that's all",
+  "flags": []
+ }
+]

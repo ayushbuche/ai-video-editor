@@ -1,0 +1,55 @@
+196 joins, each heard on its own (whisper small, 1.4 s either side)
+
+1:25.1 in the cut (source 1:44.8 -> 1:49.3)  ...makes sense or not the || problem is what happens...
+  heard: makes sense or not problem is what happens
+  CLIPPED 'the' at 1:24.8 (heard in 3 of 3 listens)
+  25/196
+
+3:46.2 in the cut (source 4:25.3 -> 4:26.4)  ...they can't make it a volume || it's a volume game...
+  heard: they can't make it it's a volume game
+  CLIPPED 'a' at 3:46.2 (heard in 3 of 3 listens)
+  CLIPPED 'volume' at 3:46.2 (heard in 3 of 3 listens)
+  50/196
+
+5:48.1 in the cut (source 7:01.6 -> 7:01.7)  ...then i break it up || a lot of people them...
+  heard: and then i break it up a lot of people um
+  FRAGMENT at 5:48.1
+  75/196
+
+8:56.8 in the cut (source 10:59.4 -> 11:00.2)  ...if you know how || other customers use...
+  heard: if you know how how other customers use
+  DOUBLED 'how how' at 8:56.3 (heard in 3 of 3 listens)
+    span to add, if it is real: {"text": "know how other", "kind": "retake", "after": 658.73}
+
+10:17.8 in the cut (source 12:41.9 -> 12:42.5)  ...earlier || that leads into lesson...
+  heard: calling earlier and that leads into less
+  SURVIVED 'and' at 10:17.5 (heard in 3 of 3 listens)
+    span to add, if it is real: {"text": "and that", "kind": "retake", "after": 762.29}
+  100/196
+
+14:02.8 in the cut (source 18:40.0 -> 18:41.0)  ...up i just hung up but || i was terrified...
+  heard: up i just hung up i didn't i was terrified
+  CLIPPED 'but' at 14:02.5 (heard in 3 of 3 listens)
+  125/196
+
+17:55.8 in the cut (source 23:48.8 -> 23:49.5)  ...before i call them || before that i was looking at their...
+  heard: before that i was looking at their
+  CLIPPED 'them' at 17:55.5 (heard in 2 of 3 listens)
+  150/196
+  175/196
+
+21:23.4 in the cut (source 27:46.3 -> 27:47.5)  ...for quite a while || is this...
+  heard: quite a while this this
+  DOUBLED 'this this' at 21:23.4 (heard in 2 of 3 listens)
+    span to add, if it is real: {"text": "is, this is", "kind": "retake", "after": 1667.39}
+  CLIPPED 'is' at 21:23.4 (heard in 3 of 3 listens)
+
+22:45.8 in the cut (source 29:39.7 -> 29:40.7)  ...just need more reps || you probably need to make...
+  heard: just need more reps and you probably need to make
+  SURVIVED 'and' at 22:45.7 (heard in 3 of 3 listens)
+    span to add, if it is real: {"text": "and you", "kind": "retake", "after": 1780.51}
+
+Heard once only (7), most likely the window mishearing: 5:23.4 CLIPPED 'saw', 5:38.0 SURVIVED 'single', 11:27.1 CLIPPED 'calling', 12:10.3 SURVIVED 'call', 18:07.4 CLIPPED 'else', 19:00.4 CLIPPED 'of', 21:16.1 DOUBLED 'cycle cycle'
+
+9 of 196 joins flagged: CLIPPED 6, DOUBLED 2, FRAGMENT 1, SURVIVED 2 -> edits/cold-calling-one/joins.json
+Signal and transcript checks only: listen at each flagged time before changing the cut.

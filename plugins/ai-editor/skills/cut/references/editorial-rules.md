@@ -50,3 +50,30 @@ went missing.
 - Cut dead air before the first kept word and after the last. The script does this.
 - A breath or sigh that opens a personal story can be part of the story. If the user asks for it
   back, keep it with no pause cut between it and the first word.
+
+## How a cut must sound (Ayush, 2026-10-13, long-form)
+
+Rules for every video, in his words, from the first SDR Mastery edit (`edits/cold-calling-one/HANDOFF.md`
+has what was done about each):
+
+- **No word is ever clipped.** "Make sure none of the words are cut off ... when you make a cut, the ending
+  of the words cut off. I think we had that issue with the last video." That includes a word's final "s":
+  "At 49 seconds, the word 'meetings' is cut off ... I think he says 'meetings', so you need to keep stuff
+  like that in mind."
+- **Silences and breaths go.** "When there are gaps and he doesn't speak constantly, and there are small gaps,
+  they cut that silence out." "If he takes in a breath between words or sentences, not just a normal quick
+  one, then that can get cut too ... but still make sure it sounds natural. Don't make it sound a bit weird."
+  "A lot of the breathing gaps, we don't want them."
+- **Fast, never rushed.** "The cut needs to be relatively fast-paced ... especially during the intro, because
+  the intro needs to be fast-paced and get people hooked in." "As fast-paced as possible without sounding
+  rushed. We want it to be natural." (Long-form: `--max-pause 0.3`, breath before a sentence cut, 0.1 s kept
+  before its first voiced sound.)
+- **No harsh joins.** "At 2:48, there's a little bit of a weird, harsh cut ... make sure we don't have any of
+  those anywhere else." A restart said in one breath has no quiet to cut in: move the span's edges to real
+  pauses (check the level between the words), even if that drops a short aside; every join is crossfaded.
+- **Check before the long render when unsure.** "If you are sure that the cuts will look good ... then we can do
+  that. If you're not sure, then it might be best for me to check."
+
+How to check, learned the hard way: word labels drift 0.1-0.5 s from the audio, so a list of "words kept or
+lost" built from labels is mostly noise. The re-listen (`verify_cut.py`) and the level at each join are what
+to trust.

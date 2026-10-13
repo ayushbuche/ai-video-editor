@@ -1,0 +1,2931 @@
+{
+ "source": "/Users/ayushbuche/Downloads/If You Only Watch One Cold Calling Video Make It This.mp4",
+ "fps": 30.0,
+ "duration": 1839.2,
+ "final_s": 1401.6333200000004,
+ "max_pause_s": 0.3,
+ "frames": [
+  [
+   20,
+   241
+  ],
+  [
+   248,
+   308
+  ],
+  [
+   314,
+   363
+  ],
+  [
+   367,
+   390
+  ],
+  [
+   395,
+   576
+  ],
+  [
+   583,
+   813
+  ],
+  [
+   821,
+   936
+  ],
+  [
+   956,
+   1168
+  ],
+  [
+   1171,
+   1267
+  ],
+  [
+   1279,
+   1597
+  ],
+  [
+   1708,
+   2128
+  ],
+  [
+   2433,
+   2476
+  ],
+  [
+   2560,
+   3145
+  ],
+  [
+   3277,
+   3787
+  ],
+  [
+   3801,
+   3903
+  ],
+  [
+   3922,
+   3963
+  ],
+  [
+   4072,
+   4282
+  ],
+  [
+   4296,
+   4343
+  ],
+  [
+   4346,
+   4748
+  ],
+  [
+   4753,
+   4788
+  ],
+  [
+   4794,
+   4833
+  ],
+  [
+   4837,
+   5013
+  ],
+  [
+   5020,
+   5203
+  ],
+  [
+   5207,
+   5442
+  ],
+  [
+   5451,
+   5624
+  ],
+  [
+   5630,
+   5700
+  ],
+  [
+   5704,
+   5836
+  ],
+  [
+   5840,
+   5919
+  ],
+  [
+   6106,
+   6235
+  ],
+  [
+   6247,
+   6912
+  ],
+  [
+   6917,
+   7197
+  ],
+  [
+   7208,
+   7271
+  ],
+  [
+   7273,
+   7450
+  ],
+  [
+   7466,
+   7578
+  ],
+  [
+   7584,
+   7695
+  ],
+  [
+   7699,
+   7959
+  ],
+  [
+   7992,
+   8069
+  ],
+  [
+   8079,
+   8424
+  ],
+  [
+   8562,
+   8886
+  ],
+  [
+   8892,
+   9019
+  ],
+  [
+   9030,
+   9051
+  ],
+  [
+   9054,
+   9473
+  ],
+  [
+   9478,
+   9594
+  ],
+  [
+   9596,
+   9697
+  ],
+  [
+   9709,
+   9835
+  ],
+  [
+   9841,
+   9997
+  ],
+  [
+   10002,
+   10095
+  ],
+  [
+   10152,
+   10410
+  ],
+  [
+   10414,
+   10500
+  ],
+  [
+   10506,
+   10654
+  ],
+  [
+   10662,
+   11022
+  ],
+  [
+   11030,
+   11194
+  ],
+  [
+   11376,
+   11479
+  ],
+  [
+   11935,
+   12027
+  ],
+  [
+   12031,
+   12276
+  ],
+  [
+   12291,
+   12322
+  ],
+  [
+   12370,
+   12452
+  ],
+  [
+   12458,
+   12654
+  ],
+  [
+   12660,
+   12679
+  ],
+  [
+   12706,
+   12876
+  ],
+  [
+   12879,
+   12909
+  ],
+  [
+   12913,
+   14565
+  ],
+  [
+   14570,
+   14706
+  ],
+  [
+   14712,
+   15046
+  ],
+  [
+   15908,
+   15970
+  ],
+  [
+   15980,
+   16263
+  ],
+  [
+   16611,
+   17015
+  ],
+  [
+   17025,
+   17101
+  ],
+  [
+   17128,
+   17580
+  ],
+  [
+   17592,
+   17770
+  ],
+  [
+   17783,
+   17966
+  ],
+  [
+   17979,
+   18054
+  ],
+  [
+   18146,
+   18550
+  ],
+  [
+   18553,
+   19069
+  ],
+  [
+   19078,
+   19532
+  ],
+  [
+   19557,
+   19783
+  ],
+  [
+   19805,
+   20020
+  ],
+  [
+   20358,
+   20578
+  ],
+  [
+   20802,
+   21025
+  ],
+  [
+   21033,
+   21084
+  ],
+  [
+   21094,
+   22305
+  ],
+  [
+   22338,
+   22628
+  ],
+  [
+   22635,
+   22858
+  ],
+  [
+   22874,
+   23211
+  ],
+  [
+   23219,
+   23262
+  ],
+  [
+   23313,
+   23702
+  ],
+  [
+   23708,
+   24582
+  ],
+  [
+   24598,
+   24858
+  ],
+  [
+   24865,
+   25039
+  ],
+  [
+   25045,
+   25339
+  ],
+  [
+   25353,
+   25617
+  ],
+  [
+   25621,
+   26361
+  ],
+  [
+   27587,
+   28207
+  ],
+  [
+   29115,
+   29548
+  ],
+  [
+   30231,
+   30769
+  ],
+  [
+   30776,
+   30816
+  ],
+  [
+   30909,
+   31322
+  ],
+  [
+   31904,
+   32290
+  ],
+  [
+   32298,
+   32568
+  ],
+  [
+   32605,
+   32781
+  ],
+  [
+   33094,
+   33423
+  ],
+  [
+   33428,
+   33599
+  ],
+  [
+   33629,
+   33706
+  ],
+  [
+   33763,
+   33946
+  ],
+  [
+   33971,
+   34277
+  ],
+  [
+   34288,
+   34628
+  ],
+  [
+   34641,
+   34804
+  ],
+  [
+   34808,
+   35022
+  ],
+  [
+   35029,
+   35510
+  ],
+  [
+   35539,
+   35986
+  ],
+  [
+   36004,
+   36093
+  ],
+  [
+   36104,
+   36412
+  ],
+  [
+   37100,
+   37612
+  ],
+  [
+   37626,
+   37678
+  ],
+  [
+   37699,
+   37758
+  ],
+  [
+   38572,
+   38682
+  ],
+  [
+   38703,
+   38755
+  ],
+  [
+   38757,
+   38831
+  ],
+  [
+   38835,
+   39043
+  ],
+  [
+   39055,
+   39129
+  ],
+  [
+   39140,
+   39230
+  ],
+  [
+   39249,
+   39316
+  ],
+  [
+   39324,
+   39504
+  ],
+  [
+   39509,
+   39589
+  ],
+  [
+   39600,
+   39670
+  ],
+  [
+   39678,
+   39714
+  ],
+  [
+   39735,
+   39875
+  ],
+  [
+   39891,
+   39982
+  ],
+  [
+   39993,
+   40089
+  ],
+  [
+   40092,
+   40179
+  ],
+  [
+   40339,
+   40486
+  ],
+  [
+   40500,
+   40771
+  ],
+  [
+   40787,
+   40972
+  ],
+  [
+   40993,
+   41060
+  ],
+  [
+   41068,
+   41114
+  ],
+  [
+   41181,
+   41323
+  ],
+  [
+   41344,
+   41447
+  ],
+  [
+   41455,
+   41905
+  ],
+  [
+   41909,
+   42080
+  ],
+  [
+   42095,
+   42223
+  ],
+  [
+   42238,
+   42308
+  ],
+  [
+   42332,
+   42611
+  ],
+  [
+   42615,
+   42866
+  ],
+  [
+   42883,
+   43032
+  ],
+  [
+   43039,
+   43239
+  ],
+  [
+   43246,
+   43343
+  ],
+  [
+   43348,
+   43457
+  ],
+  [
+   43476,
+   43545
+  ],
+  [
+   43616,
+   43711
+  ],
+  [
+   43715,
+   43828
+  ],
+  [
+   43835,
+   43970
+  ],
+  [
+   43995,
+   44151
+  ],
+  [
+   44156,
+   44268
+  ],
+  [
+   44279,
+   44619
+  ],
+  [
+   45050,
+   45246
+  ],
+  [
+   45266,
+   45306
+  ],
+  [
+   45326,
+   45351
+  ],
+  [
+   45355,
+   45460
+  ],
+  [
+   45463,
+   45656
+  ],
+  [
+   45677,
+   45969
+  ],
+  [
+   45976,
+   46159
+  ],
+  [
+   46166,
+   46368
+  ],
+  [
+   46384,
+   46486
+  ],
+  [
+   46494,
+   46640
+  ],
+  [
+   46645,
+   46675
+  ],
+  [
+   46690,
+   46732
+  ],
+  [
+   46737,
+   47017
+  ],
+  [
+   47043,
+   47729
+  ],
+  [
+   47732,
+   47992
+  ],
+  [
+   48006,
+   48271
+  ],
+  [
+   48289,
+   48483
+  ],
+  [
+   48504,
+   48793
+  ],
+  [
+   48798,
+   49179
+  ],
+  [
+   49188,
+   49391
+  ],
+  [
+   49400,
+   49558
+  ],
+  [
+   49568,
+   49666
+  ],
+  [
+   49683,
+   49758
+  ],
+  [
+   49772,
+   49801
+  ],
+  [
+   49802,
+   49876
+  ],
+  [
+   49890,
+   49945
+  ],
+  [
+   49951,
+   49990
+  ],
+  [
+   50026,
+   50207
+  ],
+  [
+   50211,
+   50369
+  ],
+  [
+   50807,
+   51670
+  ],
+  [
+   51969,
+   52153
+  ],
+  [
+   52160,
+   52294
+  ],
+  [
+   52304,
+   52503
+  ],
+  [
+   52556,
+   52863
+  ],
+  [
+   52872,
+   53071
+  ],
+  [
+   53139,
+   53154
+  ],
+  [
+   53165,
+   53393
+  ],
+  [
+   53420,
+   53482
+  ],
+  [
+   53634,
+   53782
+  ],
+  [
+   53990,
+   54303
+  ],
+  [
+   54309,
+   54830
+  ],
+  [
+   55060,
+   55092
+  ]
+ ],
+ "model_cuts": [
+  {
+   "start": 71.69,
+   "end": 80.54,
+   "kind": "redundant",
+   "evidence": "And so I'm going to share the nine biggest lessons from cold calling, having made over probably close to 200 ,000 cold calls at this point.",
+   "confidence": "high",
+   "note": "restates the nine lessons promise just made"
+  },
+  {
+   "start": 197.16,
+   "end": 203.2,
+   "kind": "redundant",
+   "evidence": "for the teams that I worked at, and I worked with teams, I had 15 other SDRs, 20 SDRs on the team with me.",
+   "confidence": "high",
+   "note": "one-breath restart; cut between real pauses: ...top of the leaderboards. The top three..."
+  },
+  {
+   "start": 265.58,
+   "end": 266.22,
+   "kind": "retake",
+   "evidence": "it's a It's a volume.",
+   "confidence": "high",
+   "note": "keeper: It's a volume game at the end of the day (266.5s)"
+  },
+  {
+   "start": 336.51,
+   "end": 337.39,
+   "kind": "false_start",
+   "evidence": "And I knew that",
+   "confidence": "high",
+   "note": "first take abandoned; keeps: I knew that if I could make 100 calls"
+  },
+  {
+   "start": 373.35,
+   "end": 378.91,
+   "kind": "redundant",
+   "evidence": "A lot of people don't make a switch way too soon. They'll say, okay, I made 100 calls for three days straight, I didn't book a meeting.",
+   "confidence": "high",
+   "note": "restates: they won't stick with it"
+  },
+  {
+   "start": 410.74,
+   "end": 412.64,
+   "kind": "false_start",
+   "evidence": "Every single rep, er, er, every single...",
+   "confidence": "high",
+   "note": "keeps: I call every contact a minimum of seven times"
+  },
+  {
+   "start": 422.86,
+   "end": 423.72,
+   "kind": "false_start",
+   "evidence": "they'll Put them,",
+   "confidence": "high",
+   "note": "keeps: A lot of people, they'll call someone seven times"
+  },
+  {
+   "start": 501.34,
+   "end": 530.04,
+   "kind": "redundant",
+   "evidence": "and if you have a really limited TAM so a total addressable market you'll want to try so the TAM meaning that you You only have a certain amount of companies you can reach out to or contacts. You don't have a huge market. You're not selling to every sales person ever. Maybe you're only selling to specific window washers in New Jersey. You'd wanna have as many touch points as possible and I would increase the number of times that I call depending how many people I have.",
+   "confidence": "high",
+   "note": "aside on small markets; the cadence advice stays"
+  },
+  {
+   "start": 570.05,
+   "end": 571.17,
+   "kind": "false_start",
+   "evidence": "Cross. So.",
+   "confidence": "high",
+   "note": "keeps: clients across many different industries"
+  },
+  {
+   "start": 602.37,
+   "end": 604.37,
+   "kind": "redundant",
+   "evidence": "and this is why it's so important,",
+   "confidence": "high",
+   "note": "filler before the point"
+  },
+  {
+   "start": 667.22,
+   "end": 678.74,
+   "kind": "redundant",
+   "evidence": "And if you truly understand it, so I would say if you're starting out, you want to make sure that the people the reps that are calling, or if you're doing the calling yourself, you truly understand your product. Now,",
+   "confidence": "high",
+   "note": "restates: know your product; 'Now,' too so it reads: And if you're a founder..."
+  },
+  {
+   "start": 744.69,
+   "end": 744.75,
+   "kind": "meta",
+   "evidence": "bye.",
+   "confidence": "high",
+   "note": "stray word between sentences"
+  },
+  {
+   "start": 775.43,
+   "end": 776.27,
+   "kind": "false_start",
+   "evidence": "but the highest,",
+   "confidence": "high",
+   "note": "abandoned; keeps: you can look it up, you can Google it"
+  },
+  {
+   "start": 878.73,
+   "end": 884.53,
+   "kind": "redundant",
+   "evidence": "And so if you only have an hour, make the best use of that hour, especially during the time when it's going to be the most impactful.",
+   "confidence": "high",
+   "note": "restates the peak-hours point"
+  },
+  {
+   "start": 901.48,
+   "end": 905.24,
+   "kind": "retake",
+   "evidence": "Now all of this assumes that you're going to be making calls yourself.",
+   "confidence": "high",
+   "note": "keeper at 919.4s"
+  },
+  {
+   "start": 907.53,
+   "end": 908.67,
+   "kind": "meta",
+   "evidence": "You can cut that out.",
+   "confidence": "high",
+   "note": "said to the editor"
+  },
+  {
+   "start": 940.24,
+   "end": 970.32,
+   "kind": "redundant",
+   "evidence": "that's the work that I do at SDR Mastery. I do work with companies who do not have the capacity or the training for a team or they don't wanna bring on a team and they wanna bring on an SDR to do the outreach who has the expertise, who's done this for years, who's made hundreds of thousands of calls, who's booked hundreds and hundreds of meetings. They wanna bring a rep on to their team who can execute for them. So if you wanna book meetings, if you wanna make outbound a part of your motion,",
+   "confidence": "high",
+   "note": "mid-video pitch trimmed; keeps his second line: that's what I do at SDR Master. I cold call for companies"
+  },
+  {
+   "start": 985.18,
+   "end": 1007.56,
+   "kind": "redundant",
+   "evidence": "I've worked with companies in government, in SaaS, in FinTech, in finance, in legal, in pretty much every industry you can think of and so if you feel like it's not gonna work for you, I have never worked with a company where we did not get meaningful pipeline. That being said, you might as well give it a try with a contract SDR before bringing on a full in -house team.",
+   "confidence": "high",
+   "note": "mid-video pitch trimmed; the case study and link stay"
+  },
+  {
+   "start": 1027.48,
+   "end": 1030.62,
+   "kind": "redundant",
+   "evidence": "So I worked with all kinds of companies across all different industries",
+   "confidence": "high",
+   "note": "mid-video pitch trimmed"
+  },
+  {
+   "start": 1043.86,
+   "end": 1053.28,
+   "kind": "redundant",
+   "evidence": "but that's what I do and that's why companies come to me because they want an outbound motion they've been doing referrals partnerships for so long and now they're ready to go to the next step",
+   "confidence": "high",
+   "note": "mid-video pitch trimmed"
+  },
+  {
+   "start": 1093.0,
+   "end": 1102.56,
+   "kind": "redundant",
+   "evidence": "And that's what I would be focused on early on, getting trained as soon as possible. Because the seventh lesson is you're going to be the worst you'll possibly be before you get better.",
+   "confidence": "high",
+   "note": "restates lesson seven"
+  },
+  {
+   "start": 1183.52,
+   "end": 1184.36,
+   "kind": "false_start",
+   "evidence": "It, it, it,",
+   "confidence": "high",
+   "note": "keeps: it does get easier and you do get better with time and reps"
+  },
+  {
+   "start": 1214.08,
+   "end": 1236.32,
+   "kind": "redundant",
+   "evidence": "And so if you're starting out and you're thinking this isn't for me, I would just say you have to try it for at least six months before you actually know, because the first few months are going to be brutal. It's really hard. It's a tough job. You're calling people, you're figuring out a million different things from tonality to objection handling to a new product to talking to strangers on the phone.",
+   "confidence": "high",
+   "note": "restates: give it three to six months"
+  },
+  {
+   "start": 1285.58,
+   "end": 1285.94,
+   "kind": "false_start",
+   "evidence": "You When",
+   "confidence": "high",
+   "note": "keeps: that leads to lesson number eight"
+  },
+  {
+   "start": 1370.02,
+   "end": 1372.88,
+   "kind": "retake",
+   "evidence": "I mean, 1 p .m. to 3pm, or",
+   "confidence": "high",
+   "note": "corrects to: say between 12 to 3 p.m."
+  },
+  {
+   "start": 1410.09,
+   "end": 1410.61,
+   "kind": "false_start",
+   "evidence": "five,",
+   "confidence": "high",
+   "note": "five, five times"
+  },
+  {
+   "start": 1451.66,
+   "end": 1453.88,
+   "kind": "false_start",
+   "evidence": "role, I mean, I would have their role but",
+   "confidence": "high",
+   "note": "keeps: been at the company three years, transition from X role"
+  },
+  {
+   "start": 1666.6,
+   "end": 1667.7,
+   "kind": "false_start",
+   "evidence": "And this is,",
+   "confidence": "high",
+   "note": "And this is, this is -> This is super consistent"
+  },
+  {
+   "start": 1680.11,
+   "end": 1692.55,
+   "kind": "redundant",
+   "evidence": "Now usually we'll know within a month I can run a Pi lab and doing this long enough, but especially if you're new to this or you're trying to get into it, there's a time frame and especially if you have a long sales cycle, you probably won't see an ROI for a while.",
+   "confidence": "high",
+   "note": "restates (and blurs) the it-takes-time point"
+  },
+  {
+   "start": 1750.12,
+   "end": 1751.86,
+   "kind": "false_start",
+   "evidence": "teams who are for",
+   "confidence": "high",
+   "note": "keeps: especially with reps who are just starting out"
+  },
+  {
+   "start": 1754.35,
+   "end": 1754.51,
+   "kind": "false_start",
+   "evidence": "I'm hearing",
+   "confidence": "high",
+   "note": "keeps: companies that are hiring SDRs"
+  }
+ ],
+ "cuts": [
+  {
+   "start": 0.0,
+   "end": 0.6499999999999999,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.85s before first word | 0.40s silence",
+   "note": "lead-in"
+  },
+  {
+   "start": 8.04,
+   "end": 8.26,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.46s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 10.28,
+   "end": 10.456553,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.71s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 12.1,
+   "end": 12.22,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.63s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 13.02,
+   "end": 13.159002000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.41s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 19.220000000000002,
+   "end": 19.41,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.40s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 27.1,
+   "end": 27.349501,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.60s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 31.22,
+   "end": 31.84,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "1.14s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 38.96,
+   "end": 39.01,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.36s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 42.26,
+   "end": 42.62,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.44s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 53.24,
+   "end": 56.96,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "3.69s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 70.94000000000001,
+   "end": 81.08000000000001,
+   "kind": "redundant",
+   "evidence": "And so I'm going to share the nine biggest lessons from cold calling, having made over probably close to 200 ,000 cold calls at this point. | 0.30s silence | 0.33s silence",
+   "confidence": "high",
+   "note": "restates the nine lessons promise just made"
+  },
+  {
+   "start": 82.56,
+   "end": 85.31542,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "3.00s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 104.84,
+   "end": 109.22,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "4.62s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 126.24,
+   "end": 126.7,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.58s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 130.12,
+   "end": 130.724785,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.98s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 132.12,
+   "end": 135.72229000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "4.12s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 142.76000000000002,
+   "end": 143.18,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.64s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 144.78,
+   "end": 144.84,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.38s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 158.28,
+   "end": 158.43,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.43s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 159.62,
+   "end": 159.766893,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.38s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 161.1,
+   "end": 161.22,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.48s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 167.12,
+   "end": 167.30455800000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.48s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 173.44,
+   "end": 173.56,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.40s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 181.42000000000002,
+   "end": 181.68,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.34s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 187.48000000000002,
+   "end": 187.637234,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.39s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 190.02,
+   "end": 190.14000000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.32s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 194.56,
+   "end": 194.66369600000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.33s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 197.33,
+   "end": 203.52,
+   "kind": "redundant",
+   "evidence": "for the teams that I worked at, and I worked with teams, I had 15 other SDRs, 20 SDRs on the team with me.",
+   "confidence": "high",
+   "note": "one-breath restart; cut between real pauses: ...top of the leaderboards. The top three..."
+  },
+  {
+   "start": 207.86,
+   "end": 208.20000000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.80s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 230.42000000000002,
+   "end": 230.56,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.40s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 239.92000000000002,
+   "end": 240.24,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.46s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 242.38,
+   "end": 242.42000000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.36s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 248.36,
+   "end": 248.86,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.61s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 252.60000000000002,
+   "end": 252.78,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.50s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 256.52,
+   "end": 256.62,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.52s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 265.32,
+   "end": 266.4,
+   "kind": "retake",
+   "evidence": "it's a It's a volume.",
+   "confidence": "high",
+   "note": "keeper: It's a volume game at the end of the day (266.5s)"
+  },
+  {
+   "start": 268.98,
+   "end": 269.29999999999995,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.58s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 280.8,
+   "end": 285.38,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "4.89s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 296.22,
+   "end": 296.45,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.60s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 300.66,
+   "end": 300.98,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.72s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 301.7,
+   "end": 301.773197,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.34s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 315.78000000000003,
+   "end": 315.92999999999995,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.48s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 319.8,
+   "end": 319.84999999999997,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.44s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 323.25,
+   "end": 323.61,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.48s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 327.86,
+   "end": 328.04999999999995,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.52s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 333.26,
+   "end": 333.37,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.60s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 336.5,
+   "end": 338.38,
+   "kind": "false_start",
+   "evidence": "And I knew that | 0.88s silence",
+   "confidence": "high",
+   "note": "first take abandoned; keeps: I knew that if I could make 100 calls"
+  },
+  {
+   "start": 347.0,
+   "end": 347.10999999999996,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.32s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 350.0,
+   "end": 350.2,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.32s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 355.14,
+   "end": 355.4,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.44s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 367.42,
+   "end": 367.65999999999997,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.48s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 373.16,
+   "end": 379.19,
+   "kind": "redundant",
+   "evidence": "A lot of people don't make a switch way too soon. They'll say, okay, I made 100 calls for three days straight, I didn't book a meeting.",
+   "confidence": "high",
+   "note": "restates: they won't stick with it"
+  },
+  {
+   "start": 382.66,
+   "end": 397.822925,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "15.38s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 400.90000000000003,
+   "end": 401.013311,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.34s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 409.22,
+   "end": 409.68,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.78s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 410.74,
+   "end": 412.65,
+   "kind": "false_start",
+   "evidence": "Every single rep, er, er, every single...",
+   "confidence": "high",
+   "note": "keeps: I call every contact a minimum of seven times"
+  },
+  {
+   "start": 415.08000000000004,
+   "end": 415.26,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.52s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 421.82,
+   "end": 421.97999999999996,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.44s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 422.66,
+   "end": 423.86,
+   "kind": "false_start",
+   "evidence": "they'll Put them,",
+   "confidence": "high",
+   "note": "keeps: A lot of people, they'll call someone seven times"
+  },
+  {
+   "start": 429.2,
+   "end": 429.29999999999995,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.52s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 430.32,
+   "end": 430.5,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.44s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 485.5,
+   "end": 485.65999999999997,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.64s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 490.22,
+   "end": 490.38,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.66s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 501.56,
+   "end": 530.24,
+   "kind": "redundant",
+   "evidence": "and if you have a really limited TAM so a total addressable market you'll want to try so the TAM meaning that you You only have a certain amount of companies you can reach out to or contacts. You don't have a huge market. You're not selling to every sales person ever. Maybe you're only selling to sp",
+   "confidence": "high",
+   "note": "aside on small markets; the cadence advice stays"
+  },
+  {
+   "start": 532.36,
+   "end": 532.66,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.38s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 542.13,
+   "end": 553.6700000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "11.98s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 567.1800000000001,
+   "end": 567.5,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.50s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 570.05,
+   "end": 571.2,
+   "kind": "false_start",
+   "evidence": "Cross. So. | 0.30s silence",
+   "confidence": "high",
+   "note": "keeps: clients across many different industries"
+  },
+  {
+   "start": 586.0,
+   "end": 586.38,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.40s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 592.34,
+   "end": 592.74,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.42s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 598.88,
+   "end": 599.27,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.68s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 601.83,
+   "end": 604.93,
+   "kind": "redundant",
+   "evidence": "and this is why it's so important,",
+   "confidence": "high",
+   "note": "filler before the point"
+  },
+  {
+   "start": 618.34,
+   "end": 618.41,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.36s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 635.64,
+   "end": 635.99,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.64s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 651.0799999999999,
+   "end": 651.9,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.32s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 659.44,
+   "end": 660.14,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "1.02s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 667.35,
+   "end": 678.8,
+   "kind": "redundant",
+   "evidence": "And if you truly understand it, so I would say if you're starting out, you want to make sure that the people the reps that are calling, or if you're doing the calling yourself, you truly understand your product. Now,",
+   "confidence": "high",
+   "note": "restates: know your product; 'Now,' too so it reads: And if you're a founder..."
+  },
+  {
+   "start": 685.9599999999999,
+   "end": 693.38,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "7.94s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 700.84,
+   "end": 701.09,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.68s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 702.82,
+   "end": 703.11,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.52s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 743.52,
+   "end": 744.98,
+   "kind": "meta",
+   "evidence": "bye.",
+   "confidence": "high",
+   "note": "stray word between sentences"
+  },
+  {
+   "start": 754.28,
+   "end": 754.49,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.56s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 761.94,
+   "end": 762.46,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.57s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 773.7,
+   "end": 774.01,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.57s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 775.43,
+   "end": 777.09,
+   "kind": "false_start",
+   "evidence": "but the highest,",
+   "confidence": "high",
+   "note": "abandoned; keeps: you can look it up, you can Google it"
+  },
+  {
+   "start": 790.08,
+   "end": 790.25,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.54s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 819.4,
+   "end": 819.9251469999999,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.90s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 828.6,
+   "end": 828.8109069999999,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.56s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 834.64,
+   "end": 834.84,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.40s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 844.64,
+   "end": 845.18,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.62s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 853.9,
+   "end": 854.02,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.47s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 878.71,
+   "end": 919.54,
+   "kind": "redundant",
+   "evidence": "And so if you only have an hour, make the best use of that hour, especially during the time when it's going to be the most impactful. | Now all of this assumes that you're going to be making calls yourself. | You can cut that out. | 0.31s silence | 15.53s silence | 2.37s silence | 10.59s silence",
+   "confidence": "high",
+   "note": "restates the peak-hours point"
+  },
+  {
+   "start": 940.24,
+   "end": 970.5,
+   "kind": "redundant",
+   "evidence": "that's the work that I do at SDR Mastery. I do work with companies who do not have the capacity or the training for a team or they don't wanna bring on a team and they wanna bring on an SDR to do the outreach who has the expertise, who's done this for years, who's made hundreds of thousands of calls",
+   "confidence": "high",
+   "note": "mid-video pitch trimmed; keeps his second line: that's what I do at SDR Master. I cold call for companies"
+  },
+  {
+   "start": 984.96,
+   "end": 1007.6999999999999,
+   "kind": "redundant",
+   "evidence": "I've worked with companies in government, in SaaS, in FinTech, in finance, in legal, in pretty much every industry you can think of and so if you feel like it's not gonna work for you, I have never worked with a company where we did not get meaningful pipeline. That being said, you might as well giv",
+   "confidence": "high",
+   "note": "mid-video pitch trimmed; the case study and link stay"
+  },
+  {
+   "start": 1025.6599999999999,
+   "end": 1025.8600000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.54s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1027.23,
+   "end": 1030.62,
+   "kind": "redundant",
+   "evidence": "So I worked with all kinds of companies across all different industries",
+   "confidence": "high",
+   "note": "mid-video pitch trimmed"
+  },
+  {
+   "start": 1044.08,
+   "end": 1063.438662,
+   "kind": "redundant",
+   "evidence": "but that's what I do and that's why companies come to me because they want an outbound motion they've been doing referrals partnerships for so long and now they're ready to go to the next step | 8.94s silence | 0.84s silence",
+   "confidence": "high",
+   "note": "mid-video pitch trimmed"
+  },
+  {
+   "start": 1076.36,
+   "end": 1076.5800000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.56s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1085.62,
+   "end": 1086.832948,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "1.61s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1092.7,
+   "end": 1103.1200000000001,
+   "kind": "redundant",
+   "evidence": "And that's what I would be focused on early on, getting trained as soon as possible. Because the seventh lesson is you're going to be the worst you'll possibly be before you get better.",
+   "confidence": "high",
+   "note": "restates lesson seven"
+  },
+  {
+   "start": 1114.12,
+   "end": 1114.24,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.58s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1119.9799999999998,
+   "end": 1120.96,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "1.36s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1123.55,
+   "end": 1125.33,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.76s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1123.55,
+   "end": 1125.4190250000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.52s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1131.54,
+   "end": 1132.3400000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.94s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1142.58,
+   "end": 1142.92,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.72s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1154.28,
+   "end": 1154.73,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.74s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1160.1599999999999,
+   "end": 1160.23873,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.30s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1167.4199999999998,
+   "end": 1167.68,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.96s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1183.67,
+   "end": 1184.6200000000001,
+   "kind": "false_start",
+   "evidence": "It, it, it, | 1.20s silence",
+   "confidence": "high",
+   "note": "keeps: it does get easier and you do get better with time and reps"
+  },
+  {
+   "start": 1199.54,
+   "end": 1200.1000000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "1.02s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1203.1,
+   "end": 1203.46,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.56s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1213.76,
+   "end": 1236.66,
+   "kind": "redundant",
+   "evidence": "And so if you're starting out and you're thinking this isn't for me, I would just say you have to try it for at least six months before you actually know, because the first few months are going to be brutal. It's really hard. It's a tough job. You're calling people, you're figuring out a million different things from tonality to objection handling to a new product to talking to strangers on the phone.",
+   "confidence": "high",
+   "note": "restates: give it three to six months"
+  },
+  {
+   "start": 1253.74,
+   "end": 1254.18,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.35s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1255.9599999999998,
+   "end": 1256.617982,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.96s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1258.61,
+   "end": 1285.94,
+   "kind": "false_start",
+   "evidence": "You When",
+   "confidence": "high",
+   "note": "keeps: that leads to lesson number eight"
+  },
+  {
+   "start": 1289.4199999999998,
+   "end": 1290.0756920000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.98s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1291.84,
+   "end": 1291.96,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.66s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1294.3999999999999,
+   "end": 1294.4886620000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.33s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1301.4399999999998,
+   "end": 1301.8200000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.74s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1304.3,
+   "end": 1304.64,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "1.02s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1307.6999999999998,
+   "end": 1308.2800000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.92s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1310.54,
+   "end": 1310.8000000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.60s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1316.82,
+   "end": 1316.96,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.64s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1319.6399999999999,
+   "end": 1319.972086,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.79s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1322.34,
+   "end": 1322.5710430000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.53s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1323.82,
+   "end": 1324.5,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.98s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1329.1799999999998,
+   "end": 1329.6758730000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.82s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1332.76,
+   "end": 1333.0800000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.40s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1336.32,
+   "end": 1336.39,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.52s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1339.3,
+   "end": 1344.6200000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "5.54s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1349.56,
+   "end": 1349.988458,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.72s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1359.04,
+   "end": 1359.5533110000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.82s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1365.74,
+   "end": 1366.46,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.64s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1368.6999999999998,
+   "end": 1368.92,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.46s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1370.49,
+   "end": 1372.96,
+   "kind": "retake",
+   "evidence": "I mean, 1 p .m. to 3pm, or",
+   "confidence": "high",
+   "note": "corrects to: say between 12 to 3 p.m."
+  },
+  {
+   "start": 1377.4399999999998,
+   "end": 1378.1000000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.92s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1381.58,
+   "end": 1381.8500000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.53s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1396.86,
+   "end": 1396.96,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.41s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1402.6999999999998,
+   "end": 1403.14,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.47s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1407.4399999999998,
+   "end": 1407.919116,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.81s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1410.27,
+   "end": 1411.0486170000001,
+   "kind": "false_start",
+   "evidence": "five, | 0.37s silence",
+   "confidence": "high",
+   "note": "five, five times"
+  },
+  {
+   "start": 1420.3999999999999,
+   "end": 1420.49,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.48s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1428.8999999999999,
+   "end": 1429.41,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.84s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1434.4,
+   "end": 1434.6200000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.47s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1441.3,
+   "end": 1441.5299320000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.58s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1444.78,
+   "end": 1444.93,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.58s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1448.58,
+   "end": 1449.1714060000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.98s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1451.5,
+   "end": 1453.88,
+   "kind": "false_start",
+   "evidence": "role, I mean, I would have their role but",
+   "confidence": "high",
+   "note": "keeps: been at the company three years, transition from X role"
+  },
+  {
+   "start": 1457.06,
+   "end": 1457.16,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.40s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1460.96,
+   "end": 1461.18,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.34s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1465.6999999999998,
+   "end": 1466.48,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.49s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1471.72,
+   "end": 1471.8416550000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.39s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1475.6,
+   "end": 1475.96,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.48s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1487.3,
+   "end": 1501.64,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "14.53s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1508.22,
+   "end": 1508.8600000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.66s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1510.22,
+   "end": 1510.91,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "1.08s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1511.72,
+   "end": 1511.818277,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.31s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1515.34,
+   "end": 1515.42873,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.34s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1521.8799999999999,
+   "end": 1522.556689,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.90s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1532.32,
+   "end": 1532.5200000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.60s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1538.6399999999999,
+   "end": 1538.8600000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.44s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1545.6,
+   "end": 1546.1100000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.85s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1549.54,
+   "end": 1549.7800000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.42s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1554.6799999999998,
+   "end": 1554.8300000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.62s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1555.84,
+   "end": 1556.3200000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.61s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1557.76,
+   "end": 1557.8907940000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.39s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1567.26,
+   "end": 1568.071406,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "1.18s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1590.98,
+   "end": 1591.0600000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.44s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1599.74,
+   "end": 1600.18,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.45s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1609.04,
+   "end": 1609.6000000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.60s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1616.1,
+   "end": 1616.7800000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.98s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1626.46,
+   "end": 1626.578481,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.36s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1639.3,
+   "end": 1639.6000000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.54s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1646.3799999999999,
+   "end": 1646.66,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.60s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1651.96,
+   "end": 1652.2400000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.40s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1655.54,
+   "end": 1656.096054,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.98s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1658.62,
+   "end": 1659.0600000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.40s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1660.04,
+   "end": 1660.68,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.63s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1662.56,
+   "end": 1663.0,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.78s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1664.86,
+   "end": 1665.012109,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.41s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1666.36,
+   "end": 1667.84,
+   "kind": "false_start",
+   "evidence": "And this is,",
+   "confidence": "high",
+   "note": "And this is, this is -> This is super consistent"
+  },
+  {
+   "start": 1673.58,
+   "end": 1673.7,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.42s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1678.97,
+   "end": 1693.5400000000002,
+   "kind": "redundant",
+   "evidence": "Now usually we'll know within a month I can run a Pi lab and doing this long enough, but especially if you're new to this or you're trying to get into it, there's a time frame and especially if you have a long sales cycle, you probably won't see an ROI for a while. | 0.32s silence | 0.71s silence",
+   "confidence": "high",
+   "note": "restates (and blurs) the it-takes-time point"
+  },
+  {
+   "start": 1722.3557139999998,
+   "end": 1732.275714,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "10.42s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1738.4399999999998,
+   "end": 1738.66,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.54s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1743.1399999999999,
+   "end": 1743.44,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.62s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1750.13,
+   "end": 1751.935,
+   "kind": "false_start",
+   "evidence": "teams who are for | 0.62s silence",
+   "confidence": "high",
+   "note": "keeps: especially with reps who are just starting out"
+  },
+  {
+   "start": 1762.12,
+   "end": 1762.38,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.40s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1769.06,
+   "end": 1771.3400000000001,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "2.55s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1771.8,
+   "end": 1772.155238,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.58s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1779.77,
+   "end": 1780.66,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "1.30s silence",
+   "note": "tightened to 0.25s"
+  },
+  {
+   "start": 1782.74,
+   "end": 1787.789093,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "5.47s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1792.76,
+   "end": 1799.66,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "7.22s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1810.12,
+   "end": 1810.3000000000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "0.48s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1827.6799999999998,
+   "end": 1835.3141950000002,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "7.89s silence",
+   "note": "tightened to 0.20s"
+  },
+  {
+   "start": 1836.42,
+   "end": 1839.2,
+   "kind": "silence",
+   "confidence": "high",
+   "evidence": "after last word | 3.10s silence",
+   "note": "tail"
+  }
+ ],
+ "labels": {
+  "26": [
+   10.5,
+   10.64
+  ],
+  "28": [
+   12.32,
+   12.42
+  ],
+  "29": [
+   13.22,
+   13.72
+  ],
+  "74": [
+   27.42,
+   27.68
+  ],
+  "165": [
+   50.8,
+   50.97
+  ],
+  "770": [
+   213.06,
+   213.14
+  ],
+  "1084": [
+   295.91,
+   295.95
+  ],
+  "1239": [
+   338.48,
+   338.61
+  ],
+  "1585": [
+   431.56,
+   431.68
+  ],
+  "1830": [
+   485.76,
+   485.88
+  ],
+  "1848": [
+   490.48,
+   490.56
+  ],
+  "1875": [
+   499.0,
+   499.16
+  ],
+  "1900": [
+   508.4,
+   508.64
+  ],
+  "1901": [
+   509.68,
+   509.84
+  ],
+  "1966": [
+   526.58,
+   526.66
+  ],
+  "2246": [
+   609.86,
+   610.11
+  ],
+  "2450": [
+   660.24,
+   660.68
+  ],
+  "2485": [
+   670.02,
+   670.14
+  ],
+  "2556": [
+   693.48,
+   693.59
+  ],
+  "2565": [
+   695.6,
+   695.68
+  ],
+  "2605": [
+   706.52,
+   706.58
+  ],
+  "2633": [
+   715.22,
+   715.66
+  ],
+  "2735": [
+   740.16,
+   740.26
+  ],
+  "2738": [
+   741.56,
+   741.74
+  ],
+  "2748": [
+   743.25,
+   743.3
+  ],
+  "2815": [
+   762.34,
+   762.42
+  ],
+  "2849": [
+   773.5,
+   773.54
+  ],
+  "2956": [
+   801.29,
+   801.46
+  ],
+  "2969": [
+   805.26,
+   805.43
+  ],
+  "3149": [
+   846.14,
+   846.25
+  ],
+  "3177": [
+   854.12,
+   854.27
+  ],
+  "3610": [
+   990.78,
+   990.84
+  ],
+  "3794": [
+   1039.16,
+   1039.4
+  ],
+  "3946": [
+   1086.9,
+   1087.0
+  ],
+  "3985": [
+   1098.06,
+   1098.36
+  ],
+  "4029": [
+   1110.74,
+   1110.82
+  ],
+  "4066": [
+   1121.06,
+   1121.18
+  ],
+  "4180": [
+   1152.66,
+   1152.74
+  ],
+  "4182": [
+   1154.08,
+   1154.12
+  ],
+  "4228": [
+   1165.92,
+   1165.98
+  ],
+  "4230": [
+   1166.76,
+   1166.82
+  ],
+  "4373": [
+   1200.2,
+   1200.26
+  ],
+  "4434": [
+   1214.58,
+   1214.62
+  ],
+  "4899": [
+   1371.34,
+   1371.42
+  ],
+  "4921": [
+   1378.2,
+   1378.37
+  ],
+  "4936": [
+   1381.21,
+   1381.42
+  ],
+  "4944": [
+   1383.54,
+   1383.76
+  ],
+  "4982": [
+   1397.06,
+   1397.3
+  ],
+  "4997": [
+   1403.18,
+   1403.33
+  ],
+  "5035": [
+   1413.08,
+   1413.22
+  ],
+  "5116": [
+   1434.72,
+   1434.83
+  ],
+  "5246": [
+   1464.84,
+   1464.88
+  ],
+  "5358": [
+   1513.62,
+   1513.68
+  ],
+  "5391": [
+   1521.72,
+   1521.76
+  ],
+  "5528": [
+   1556.38,
+   1556.53
+  ],
+  "5533": [
+   1557.94,
+   1558.02
+  ],
+  "5790": [
+   1616.88,
+   1617.1
+  ],
+  "5811": [
+   1623.34,
+   1623.48
+  ],
+  "5871": [
+   1638.94,
+   1639.16
+  ],
+  "5880": [
+   1642.32,
+   1642.46
+  ],
+  "5956": [
+   1663.1,
+   1663.28
+  ],
+  "6210": [
+   1736.96,
+   1737.26
+  ],
+  "6227": [
+   1741.76,
+   1741.9
+  ],
+  "6265": [
+   1751.8,
+   1751.86
+  ],
+  "6365": [
+   1780.56,
+   1780.64
+  ],
+  "703": [
+   197.33,
+   197.38
+  ],
+  "1883": [
+   501.56,
+   501.84
+  ],
+  "2478": [
+   667.35,
+   667.5
+  ],
+  "3813": [
+   1044.08,
+   1044.48
+  ],
+  "4301": [
+   1183.67,
+   1183.8
+  ],
+  "4891": [
+   1370.49,
+   1370.53
+  ],
+  "4892": [
+   1370.49,
+   1370.53
+  ],
+  "4894": [
+   1370.49,
+   1370.74
+  ],
+  "5023": [
+   1410.27,
+   1410.61
+  ],
+  "6262": [
+   1750.13,
+   1750.42
+  ]
+ }
+}

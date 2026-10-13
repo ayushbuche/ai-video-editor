@@ -1,0 +1,575 @@
+{
+ "graphics": [
+  {
+   "kind": "phrase",
+   "from": "I have made over a hundred",
+   "to": "many for clients across different industries",
+   "lines": [
+    {
+     "text": "I have made over"
+    },
+    {
+     "text": "100,000 cold calls",
+     "italic": true,
+     "on": "a hundred thousand cold calls"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "I have generated over",
+   "to": "And in all that time",
+   "items": [
+    {
+     "label": "$10M+",
+     "text": "in pipeline",
+     "on": "generated over $10 million"
+    },
+    {
+     "label": "$2M+",
+     "text": "attributed to me",
+     "on": "$2 million attributed"
+    },
+    {
+     "label": "500+",
+     "text": "demos booked",
+     "on": "booked over 500 demos"
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "from": "the nine lessons I wish",
+   "to": "could have booked more meetings",
+   "heading": "The 9 lessons I wish I'd known",
+   "sub": {
+    "text": "when I first started cold calling",
+    "on": "when I first started cold calling"
+   },
+   "items": [],
+   "marker": "none"
+  },
+  {
+   "kind": "phrase",
+   "from": "trying to sound like a robot",
+   "to": "And here's the first one",
+   "lines": [
+    {
+     "text": "sound like a robot",
+     "on": "sound like a robot"
+    },
+    {
+     "text": "more natural",
+     "italic": true,
+     "on": "being more natural"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "They're going to forget about you",
+   "to": "reason that they're terrified",
+   "after": 60,
+   "items": [
+    {
+     "label": "Lesson 1",
+     "text": "They'll forget you before they hang up",
+     "on": "going to forget about you"
+    }
+   ]
+  },
+  {
+   "kind": "illustration",
+   "from": "if they have a negative interaction",
+   "to": "because I had a bad experience",
+   "image": "images/bad-call.png",
+   "line": {
+    "text": "thinking about it the rest of the day",
+    "on": "thinking about it the rest of the day"
+   }
+  },
+  {
+   "kind": "rule",
+   "from": "Most people don't stop because",
+   "to": "That's the number one thing",
+   "heading": "Most people stop:",
+   "items": [
+    {
+     "text": "Not because cold calling doesn't work",
+     "on": "because cold calling doesn't work"
+    },
+    {
+     "text": "Because it's hard",
+     "on": "because it's hard"
+    }
+   ],
+   "dots": true,
+   "card": true
+  },
+  {
+   "kind": "rows",
+   "from": "It's volume",
+   "to": "the reps that always, always",
+   "items": [
+    {
+     "label": "Lesson 2",
+     "text": "It's a volume game",
+     "on": "it's volume"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "And so I would always set my goals",
+   "to": "you're gonna have two that don't show",
+   "items": [
+    {
+     "label": "Volume",
+     "text": "2x the top rep",
+     "on": "twice what the top rep"
+    },
+    {
+     "label": "Quota",
+     "text": "20% higher",
+     "on": "20 % higher than quota"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "And so, my average has been",
+   "to": "I would hit my quota",
+   "items": [
+    {
+     "label": "100 dials",
+     "text": "7-10 connects",
+     "on": "seven to 10 connects"
+    },
+    {
+     "label": "10%",
+     "text": "of conversations convert",
+     "on": "10 % of the conversations"
+    },
+    {
+     "label": "100 calls",
+     "text": "1 meeting",
+     "on": "100 calls, one meeting"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "Lesson number three",
+   "to": "Way too many reps",
+   "items": [
+    {
+     "label": "Lesson 3",
+     "text": "Don't give up too early",
+     "on": "don't give up too early"
+    }
+   ]
+  },
+  {
+   "kind": "rule",
+   "from": "every single contact",
+   "to": "highest likelihood of them picking up",
+   "heading": "I call every prospect:",
+   "items": [
+    {
+     "text": "A minimum of 7 times",
+     "on": "a minimum of seven times"
+    }
+   ],
+   "dots": true,
+   "card": false
+  },
+  {
+   "kind": "list",
+   "from": "So what I'll typically do is I'll dial",
+   "to": "Cause what I've found is",
+   "heading": "Break the 7 calls up",
+   "marker": "dot",
+   "items": [
+    {
+     "text": "Day 1, day 2",
+     "on": "day one, day two"
+    },
+    {
+     "text": "Skip a day, call on day 4",
+     "on": "skip a day"
+    },
+    {
+     "text": "Then skip 2 days, then 3",
+     "on": "skip two days"
+    },
+    {
+     "text": "Over 2-3 weeks",
+     "on": "two to three weeks"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "Lesson number four",
+   "to": "a lot of companies do this",
+   "items": [
+    {
+     "label": "Lesson 4",
+     "text": "The first weeks are training",
+     "on": "treat the first couple of weeks"
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "from": "we're gonna be testing the market",
+   "to": "Now if you're working as an SDR",
+   "heading": "The first two weeks: test",
+   "marker": "dot",
+   "items": [
+    {
+     "text": "The right ICP",
+     "on": "the right ICP"
+    },
+    {
+     "text": "The right companies",
+     "on": "the right companies"
+    },
+    {
+     "text": "The right pitch",
+     "on": "the right pitch"
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "from": "if you know the pricing",
+   "to": "this person uses this product",
+   "heading": "Know your product",
+   "marker": "dot",
+   "items": [
+    {
+     "text": "The pricing",
+     "on": "know the pricing"
+    },
+    {
+     "text": "How customers use it",
+     "on": "how other customers use it"
+    },
+    {
+     "text": "The value prop",
+     "on": "the value prop"
+    },
+    {
+     "text": "Customers to name-drop",
+     "on": "name drop other customers"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "fifth lesson",
+   "to": "No one wants to do the work",
+   "items": [
+    {
+     "label": "Lesson 5",
+     "text": "Everyone is lazy",
+     "on": "everyone is lazy"
+    }
+   ]
+  },
+  {
+   "kind": "phrase",
+   "from": "usually I would book meetings by noon",
+   "to": "rest of the day off",
+   "lines": [
+    {
+     "text": "I would book",
+     "on": "I would book two"
+    },
+    {
+     "text": "2 or 3 meetings by noon",
+     "italic": true,
+     "on": "two or three meetings by noon"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "lesson six",
+   "to": "based on the data that I tracked",
+   "items": [
+    {
+     "label": "Lesson 6",
+     "text": "There are certain times to call",
+     "on": "certain times to call"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "The best times to call prospects",
+   "to": "I found a ton of success with this",
+   "items": [
+    {
+     "label": "8-10 a.m.",
+     "text": "their time, not yours",
+     "on": "8 to 10"
+    },
+    {
+     "label": "4-6 p.m.",
+     "text": "their time",
+     "on": "four"
+    }
+   ]
+  },
+  {
+   "kind": "illustration",
+   "from": "they're commuting to work",
+   "to": "whatever it might be",
+   "image": "images/commute.png",
+   "line": {
+    "text": "they're just in their car",
+    "on": "they're just in their car"
+   }
+  },
+  {
+   "kind": "list",
+   "from": "I cold call for companies",
+   "to": "know if it's gonna make sense for you",
+   "heading": "What I do at SDR Mastery",
+   "marker": "dot",
+   "items": [
+    {
+     "text": "I build the lists",
+     "on": "I build the lists"
+    },
+    {
+     "text": "I call their prospects",
+     "on": "I call their prospects"
+    },
+    {
+     "text": "I build the scripts",
+     "on": "I build the scripts"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "After three months, I generated",
+   "to": "They were in the hardware space",
+   "items": [
+    {
+     "label": "$500K+",
+     "text": "revenue in 3 months",
+     "on": "half a million dollars"
+    },
+    {
+     "label": "20x",
+     "text": "ROI",
+     "on": "at least 20X"
+    }
+   ]
+  },
+  {
+   "kind": "phrase",
+   "from": "there's a link in the description",
+   "to": "set up some time to meet",
+   "lines": [
+    {
+     "text": "Link in the description",
+     "on": "link in the description"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "Lesson number seven",
+   "to": "and by day three",
+   "items": [
+    {
+     "label": "Lesson 7",
+     "text": "Day one is your worst",
+     "on": "the worst you're ever gonna be"
+    }
+   ]
+  },
+  {
+   "kind": "illustration",
+   "from": "When I first started and I made my first cold call",
+   "to": "I didn't know what to do",
+   "image": "images/hang-up.png",
+   "line": {
+    "text": "as soon as the prospect picked up, I just hung up",
+    "on": "as soon as the prospect picked up"
+   }
+  },
+  {
+   "kind": "illustration",
+   "from": "It's like going to the gym",
+   "to": "you're more comfortable",
+   "image": "images/gym.png",
+   "line": {
+    "text": "It's like going to the gym for the first time",
+    "on": "going to the gym for the first time"
+   }
+  },
+  {
+   "kind": "rows",
+   "from": "lesson number eight",
+   "to": "I was incredibly inefficient",
+   "items": [
+    {
+     "label": "Lesson 8",
+     "text": "Become more efficient",
+     "on": "become more efficient"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "And what I would do is I would pull a lead",
+   "to": "during a different time block",
+   "items": [
+    {
+     "label": "Before",
+     "text": "one lead, add, call, repeat",
+     "on": "I would pull a lead"
+    },
+    {
+     "label": "After",
+     "text": "batch the leads, call later",
+     "on": "I would find a bunch of leads"
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "it might have taken me probably",
+   "to": "the pre -call research",
+   "items": [
+    {
+     "label": "Before",
+     "text": "10-15 leads an hour",
+     "on": "10 maybe 15 prospects"
+    },
+    {
+     "label": "Batching",
+     "text": "50-60 leads an hour",
+     "on": "50, 60 leads"
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "from": "I needed to know how long",
+   "to": "in the notes for the contact",
+   "heading": "Pre-call research: 3 things",
+   "marker": "number",
+   "items": [
+    {
+     "text": "Time at the company",
+     "on": "how long they'd worked"
+    },
+    {
+     "text": "Their role (and the last one)",
+     "on": "what their role was"
+    },
+    {
+     "text": "A relevant LinkedIn post",
+     "on": "relevant post on LinkedIn"
+    }
+   ]
+  },
+  {
+   "kind": "dialogue",
+   "from": "when I'd call I'd say",
+   "to": "I'd give them the pitch",
+   "turns": [
+    {
+     "head": "Then I'd say:",
+     "head_on": "I'd say",
+     "line": {
+      "text": "Hey, I saw you've been handling compliance for about three years at XYZ company",
+      "on": "hey, I've saw"
+     }
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "from": "lesson number nine",
+   "to": "And when I first started out as a rep",
+   "items": [
+    {
+     "label": "Lesson 9",
+     "text": "Winners are more resilient",
+     "on": "more resilient"
+    }
+   ]
+  },
+  {
+   "kind": "phrase",
+   "from": "you have to decide to commit",
+   "to": "become great in a week or two",
+   "lines": [
+    {
+     "text": "decide to commit",
+     "on": "decide to commit"
+    },
+    {
+     "text": "for at least six months",
+     "italic": true
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "from": "it really comes down to the consistency",
+   "to": "before you know what's gonna work and what's not",
+   "marker": "dot",
+   "card": true,
+   "items": [
+    {
+     "text": "Consistency",
+     "on": "the consistency"
+    },
+    {
+     "text": "Doing the work",
+     "on": "doing the work"
+    },
+    {
+     "text": "Staying resilient",
+     "on": "staying resilient"
+    },
+    {
+     "text": "Knowing your data",
+     "on": "knowing your data"
+    },
+    {
+     "text": "Tracking your metrics",
+     "on": "tracking your metrics"
+    },
+    {
+     "text": "Tweaking and refining",
+     "on": "tweaking and refining"
+    }
+   ]
+  },
+  {
+   "kind": "phrase",
+   "from": "there's a link below to my calendar",
+   "to": "go over the work that I do",
+   "lines": [
+    {
+     "text": "Link below to my calendar",
+     "on": "link below to my calendar"
+    }
+   ]
+  }
+ ],
+ "music": {
+  "from": "And in all that time",
+  "to": "coming into the calendar"
+ }
+}

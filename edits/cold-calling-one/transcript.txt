@@ -1,0 +1,316 @@
+# cold-calling-one 5841 tokens. [start-end] seconds, then the words. (+N.Ns) = the pause before a phrase. Quote words from here in spans.json; use "after": <a start time> when a phrase repeats.
+[0.85-14.71] I have made over a hundred thousand cold calls, many for my own business, many for clients across different industries, ranging from SaaS to business to drones to government.
+[15.19-19.11] I've sold just about every product you can think of, fintech, financial products, you name it.
+[19.51-21.73] I have generated over $10 million in pipeline,
+[22.25-30.63] I've had over $2 million attributed to me and I've booked over 500 demos throughout my time as an SDR.
+(+1.1s) [31.77-42.09] And in all that time I spent so much time watching people go over how to make the perfect cold call, what that looked like, and what I found, a lot of the perfect openers doesn't really matter at the end of the day.
+[42.53-52.93] I really focus on a conversational approach and today I'm going to be going over what I wish I'd known, the nine lessons I wish I'd known when I first started cold calling so that I could have booked more meetings.
+(+3.7s) [56.62-70.76] The funny thing is, most of the means that I ended up booking and what really worked the best for me is when I started transitioning from trying to sound like a robot reading off the perfect script or a template, and when I just started being more natural in conversation on the phone.
+[71.69-75.51] And so I'm going to share the nine biggest lessons from cold calling,
+[76.24-80.54] having made over probably close to 200 ,000 cold calls at this point.
+[81.18-82.42] And here's the first one.
+(+2.9s) [85.30-87.94] They're going to forget about you before they even put the phone down.
+[87.94-97.04] A lot of people the reason that they're terrified to make cold calls is because they think that these people are going to think about them forever If it goes bad, then it's the end of their day.
+[97.06-101.14] It doesn't really matter the end of the day It's a person on the other end of the line.
+[101.14-105.26] You're calling with the pitch You have an offer you see if it makes sense or not The
+(+4.1s) [109.32-126.02] problem is what happens with most reps is if they have a negative interaction They're thinking about it the rest of the day for the next ten calls someone and cusses you out, they tell you never call them again, they tell you that they're at a funeral, whatever it might be, they think, okay, well, you know, I'm gonna be done cold calling because I had a bad experience.
+[126.60-127.44] That's not the game.
+[127.60-129.84] The game is to call people, get through the pitch,
+[130.54-131.70] and have a conversation.
+(+4.0s) [135.66-136.60] And that's the problem.
+[136.80-139.44] Most people don't stop because cold calling doesn't work.
+[139.56-142.64] They stop because it's hard, because they feel bad about it.
+[143.28-144.56] That's the number one thing.
+[144.94-156.30] And I had the benefit early on, I ran a podcast and I would interview CEOs, founders of companies, doing anywhere from 30 million to 50 million, a lot of smaller ones as well.
+[156.72-160.84] What I realized at the end of the day is all these people, they're just people.
+[161.32-169.80] You can just have a conversation, you can get through a pitch, and the worst thing that can happen is they tell you, not a fit, don't call me again, and you move on to the next one.
+[170.08-173.26] That's the game of sales, and that's where most people get caught up.
+[173.66-188.92] So my number one piece of advice and the number one lesson I learned These are people, if you have a bad experience, move on, water off a duck's back, and just get into a groove where you keep calling, regardless of the outcomes that you're getting, because that's what lesson two is.
+[189.14-192.64] It's volume, it's not a lead problem, it's not the perfect script problem.
+[193.12-203.20] At the end of the day, the reps that always, always were on the top of the leaderboards for the teams that I worked at, and I worked with teams, I had 15 other SDRs, 20 SDRs on the team with me.
+[203.62-207.50] The top three, you could always, always see who was in the top based on the volume.
+[208.30-220.30] Now, typically they were better on the phones, they sounded better, they were more conversational, they had objection handles ready as they came up, but what we saw consistently was a volume game.
+[220.66-227.26] And so when I first started my first three months, my goal was to be the top performer, the highest volume rep.
+[227.82-239.68] Because, and you'll hear this a lot, and I say this a lot, if the top rep's making 100 dials and I make 100 dials a day, and he's been doing it for a year and I just started, I will never catch him because I'm always doing the same amount of volume.
+[240.14-242.16] So if I ever wanna catch him, I have to do more.
+[242.52-248.12] And so I would always set my goals for volume twice what the top rep was doing.
+[248.62-252.38] And then for quota, I would always set it 20 % higher than quota,
+[252.88-256.20] because a lot of times you're gonna book, say your quota's 10 meetings, you book 10 meetings,
+[256.72-258.02] you're gonna have two that don't show.
+[258.26-266.22] It's just statistics, it's numbers, something comes up, they don't wanna show, they're not interested, they have a funeral or an emergency they can't make it, it's a It's a volume.
+[266.46-267.20] It's a volume.
+[267.28-268.82] game at the end of the day.
+[269.40-278.16] Just put in the reps, more work, more volume always will yield better results and you'll get better as a result of doing more volume.
+[278.42-280.40] So it feeds in on itself.
+(+4.9s) [285.29-286.35] And here's what I found.
+[286.59-287.99] A lot of people they'll give up early.
+[288.31-290.61] I had a company founder reach out to me.
+[290.71-295.91] She said, I've made 50 calls, I only spoke to five people, I booked three meetings, this isn't working.
+[295.91-300.35] I need someone like you to come on the team and book us more meetings.
+[301.07-306.71] Now, the real numbers behind it, and I used to track my numbers and data, and I mean, I still do,
+[307.35-308.25] meticulously,
+[308.83-315.55] I knew how many calls it took me to get a meeting, how many conversations it took to get a meeting, and then how many meetings I had that we're gonna hold.
+[316.03-319.51] And so, my average has been 100 dials for one meeting.
+[319.95-323.21] 100 dials, typically I'll see about seven to 10 connects.
+[323.69-325.61] Sometimes it's higher, sometimes it's lower.
+[325.61-327.63] there are tools you can use, but that's what you'll see.
+[328.15-332.87] And then typically about 10 % of the conversations I had converted into a meeting.
+[333.47-336.21] And so across the board, 100 calls, one meeting.
+[336.51-341.25] And I knew that I knew that if I could make 100 calls, I would hit my quota.
+[341.63-346.89] Now the biggest thing for folks is they'll make 100 calls on day one, day two, they won't get a meeting.
+[347.21-348.85] And so they're gonna say, okay, this isn't working.
+[348.97-349.75] I've got to change something.
+[350.07-351.41] They won't stick with it.
+[351.51-358.37] And what I found is if I made 100 calls a day consistently For, say, 10 work days straight, I would book 10 meetings.
+[358.63-372.89] But I might not get a meeting the first day or the second day or the third day, but with the follow -ups that I made, having those people contacted one, two, three, four times, I would connect with them and I would book those meetings and it was just about staying consistent with the numbers and results I saw.
+[373.35-375.91] A lot of people don't make a switch way too soon.
+[376.01-378.91] They'll say, okay, I made 100 calls for three days straight, I didn't book a meeting.
+[379.29-382.55] If it was working before it's going to keep working, you just have to stick with it.
+(+15.2s) [397.72-402.42] Lesson number three that I would share is don't give up too early.
+[402.64-404.14] Way too many reps.
+[404.28-408.80] They'll make a call once, twice, three times and they'll say, okay, they never answered, I've got to move on.
+[409.58-412.64] I call every Every single rep, er, er, every single...
+[412.66-414.84] contact a minimum of seven times.
+[415.36-421.64] Seven times is the key number that I found where you have the highest likelihood of them picking up and then I break it up.
+[422.08-424.14] A lot of people, they'll Put them, they'll call.
+[424.20-428.88] someone seven times just seven days in a row, seven work days, Monday, Tuesday, Wednesday, Thursday, Friday,
+[429.40-430.18] I break it up.
+[430.60-433.88] So the third most important thing is to have a sequence.
+[434.26-436.16] You can use a lot of tools like that for this.
+[436.40-442.12] I use Apollo, you can use clothes, Salesforce does this, Sales Loft, you name it, but you wanna break it up.
+[442.22-446.10] So what I'll typically do is I'll dial on day one, day two, I'll skip a day.
+[446.44-448.74] The third day, dial will be on day four.
+[449.10-453.34] I'll skip another day, call, and then I'll skip two days, two days, and then three days.
+[453.34-460.14] And so what that does is it breaks it out over a couple weeks, typically about two to three weeks I wanna be calling a prospect over.
+[460.58-464.36] Cause what I've found is a lot of times if you call them and they don't answer in the beginning,
+[464.98-479.72] you can be calling them when they're on vacation, when they had an emergency come up and I've had that happen multiple times and I'll say, hey, I called you a bunch of times and they're like, I was on vacation for two weeks or I was out of town or, you know, I was traveling Europe, it all comes up.
+[479.92-513.64] So you wanna sequence it up and you wanna break it up and you want to make sure you have at least seven calls and then I like to filter in at least one or two emails throughout that I can reference and if you really want to go above and beyond and this wasn't my specialty but the multi -touch doing something like an email calling LinkedIn outreach a lot of people see success with that and if you have a really limited TAM so a total addressable market you'll want to try so the TAM meaning that you You only have a certain amount of companies you can reach out to or contacts.
+[513.96-515.34] You don't have a huge market.
+[515.48-517.12] You're not selling to every sales person ever.
+[517.24-521.52] Maybe you're only selling to specific window washers in New Jersey.
+[521.96-530.04] You'd wanna have as many touch points as possible and I would increase the number of times that I call depending how many people I have.
+[530.34-535.12] But if I have thousands of leads to call, I'm not gonna focus on calling everyone 14 times.
+[535.22-539.84] I'm gonna call them a total of seven, send a couple emails, maybe a LinkedIn Connect request and a message.
+[539.84-541.74] but that's it and move on.
+(+11.9s) [553.65-566.89] Lesson number four, if I was starting cold calling, I would treat the first couple of weeks as a training grounds and a lot of companies do this, they do this really well, they'll have a ramp period where they want you to get comfortable with it and so they'll reduce your quota.
+[567.39-570.27] I work with a lot of different clients across Cross.
+[570.63-571.17] So.
+[571.23-573.91] many different industries, services, SaaS, government.
+[574.61-581.91] And so what I've found is the first two weeks and I tell my clients this, we're gonna be testing the market, We're gonna make sure we have the right ICP.
+[582.07-585.75] We're gonna make sure we're calling the right companies and we're gonna make sure we have the right pitch.
+[586.15-592.21] Now if you're working as an SDR at a company, they should have this built out for you so you don't have to worry about that.
+[592.63-598.69] But what you do want to worry about is getting as comfortable as you can as quickly as possible with the product.
+[599.37-601.51] And so the biggest thing for me,
+[602.37-604.37] and this is why it's so important,
+[605.03-611.13] it's because if you don't understand the product, you're gonna run into questions that you can't answer and you're gonna feel uncomfortable.
+[611.57-612.87] And people can hear that on the phone.
+[612.95-618.15] If you feel uncomfortable about the product you're pitching because you're uncertain, you don't know, that's gonna work against you.
+[618.51-624.35] And so what I would do, and this is what I do with clients now, is when we onboard, I have a list of questions.
+[624.43-630.87] It takes a while to fill out, but it gives me all the background I need on the product, the prospect, who I'm talking to.
+[631.49-635.45] And then the other thing that I do is I they always have them give me a demo of the product.
+[636.09-641.71] And so if you're an SDR or hiring SDRs, always have them go through a few demos of the product.
+[641.91-650.59] You can do it or your AEs, your account executives, your sales guys can go through a demo of the product so they can understand the background, the nuances, how it works.
+(+1.7s) [652.28-667.22] Because you feel a lot more confident pitching something if you actually know how it works, if you know the pricing, if you know how other customers use it, the value prop, if you can name drop other customers and say, oh, yeah, this this person uses this product.
+[667.22-678.14] And if you truly understand it, so I would say if you're starting out, you want to make sure that the people the reps that are calling, or if you're doing the calling yourself, you truly understand your product.
+[678.30-685.54] Now, if you're a founder, obviously you're going to understand inside and out, but a sales rep is not and you want to make sure you address all those questions that they have.
+[685.54-686.52] The
+(+7.1s) [693.59-700.51] fifth lesson, and this is where I really started to shine, is when I realized that everyone is lazy.
+[701.19-702.69] No one wants to do the work,
+[703.21-704.17] even me.
+[704.29-708.73] There are days I wake up and I don't want a cold call, but it all starts with one.
+(+1.0s) [709.77-716.61] And so what I did, and this is what I do now, is I'll start my day cold calling right from the get -go.
+[716.91-738.29] And I found a ton of success with that because one, usually I would book meetings by noon most of my managers I would book two or three meetings by noon they would tell me I could take the rest of the day off now that's not how I'm wired but it was kind of nice if I wanted to take a half day pretty much three or four days a week I could because I would start from typically it was 8 30 a .m.
+[738.31-743.99] so I like to start a little bit earlier I'm calling prospects I try to catch them on the way to work Um,
+[744.69-744.75] bye.
+[744.77-753.07] I realized if I'd started calling early in the morning, even if towards the end of the day, I felt like I didn't want to call, which does happen to me.
+[753.13-754.03] It happens to every rep.
+[754.59-758.49] Um, I would have had the work done already, so it was okay.
+[758.67-767.71] And so I would always recommend calling earlier and that leads into lesson six, which is there are certain times to call.
+[767.89-770.65] And this took me a long time to learn.
+[770.65-776.27] It was based on the data that I tracked and my company didn't tell me this, but the highest,
+[777.19-778.83] you can look it up, you can Google it.
+[779.13-782.59] The best times to call prospects are between 8 to 10 a .m.
+[782.97-785.53] local time, so the prospects time, not yours,
+[786.29-787.89] and Um, four.
+[787.91-788.83] to 6 p .m.
+[789.07-789.81] prospect time.
+[790.35-796.81] And the reason for that, and I found a ton of success with this, is between 8 to 9, especially if you're calling directors and above.
+[797.05-800.53] If you're calling below that, it probably won't work, but directors, C -suite,
+[801.29-814.91] a lot of them are either They're working already, they'll start early or they're commuting to work and they have nothing to do, they're just in their car and it's easy to have a conversation, get through the pitch, talk to them because they're driving, they're stuck in traffic, whatever it might be.
+[815.29-817.57] I booked a lot of meetings between 8 to 9 a .m.
+[817.71-819.13] and then 5 to 6 p .m.
+[819.79-834.37] I caught so many people on the way home from work, I caught people who are working late and the nice thing about that is if they're working between 5 to 6 and they're working late, they don't have any meetings, they're not as busy and so So those are the times that I would prioritize for calling.
+[834.77-836.35] Now you don't have to start at 8 a .m.
+[836.41-837.25] You can start at 9.
+[837.53-839.81] I found between 9 to 10 is really good too.
+[840.15-844.39] Before the day really starts, a lot of people don't have meetings start until at least 10 a .m.
+[845.01-849.69] And so I would definitely make sure that I'm time blocking those times.
+[850.07-853.37] And I would even ask managers, hey, can we move our meetings?
+[853.57-855.61] Cause I was at a meeting at 9 .30.
+[855.87-858.33] I always had a meeting end of day at 4 .30.
+[858.43-865.57] And I would ask my managers, is can we meet at a different time or can I skip these because this is the peak time for me to call.
+[865.87-867.87] And my managers were super flexible, thankfully,
+[868.39-878.55] they were really good about it, but I would highly recommend doing that just to make sure you're getting the most bang for your buck when you're calling because you are limited on who you can call and when you can call.
+[878.73-884.53] And so if you only have an hour, make the best use of that hour, especially during the time when it's going to be the most impactful.
+(+17.0s) [901.48-905.24] Now all of this assumes that you're going to be making calls yourself.
+(+2.3s) [907.53-908.67] You can cut that out.
+(+10.7s) [919.36-925.42] Now all of this assumes that you're going to either have reps to call for you or you're going to have time to call.
+[925.76-935.54] Now if you're trying to do time -based calling and you're running a business it's really really hard to find the time or if you have sales reps they have meetings or they have to check in with clients they're doing customer success.
+[935.98-940.24] Oftentimes they won't have time to do these follow -ups they won't have time to stay consistent.
+[940.24-942.80] that's the work that I do at SDR Mastery.
+[942.88-945.34] I do work with companies who do not have the capacity
+[946.00-958.14] or the training for a team or they don't wanna bring on a team and they wanna bring on an SDR to do the outreach who has the expertise, who's done this for years, who's made hundreds of thousands of calls, who's booked hundreds and hundreds of meetings.
+[958.62-962.42] They wanna bring a rep on to their team who can execute for them.
+(+3.7s) [966.12-972.06] So if you wanna book meetings, if you wanna make outbound a part of your motion, that's what I do at SDR Master.
+[972.06-978.92] I cold call for companies, I build the lists, I call their prospects, I build the scripts, I've been doing this for years so I know how to tweak it.
+[979.18-981.52] Within two weeks we'll know what's working, what's not.
+[981.82-984.78] We'll know if it's gonna make sense for you so feel free to reach out.
+[985.18-989.64] I've worked with companies in government, in SaaS, in FinTech, in finance,
+[990.30-1000.14] in legal, in pretty much every industry you can think of and so if you feel like it's not gonna work for you, I have never worked with a company where we did not get meaningful pipeline.
+[1000.14-1007.56] That being said, you might as well give it a try with a contract SDR before bringing on a full in -house team.
+[1007.80-1010.42] One of the clients I worked with, we worked together for three months.
+[1010.58-1012.00] They wanted to build an in -house team.
+[1012.44-1015.10] They used my expertise to help build that.
+[1015.34-1019.26] After three months, I generated over half a million dollars in revenue.
+[1019.50-1020.54] They'd closed 50K.
+[1020.68-1022.74] They expected to close at least another 100K.
+[1023.26-1025.42] Their ROI was at least 20X.
+[1025.96-1027.18] They were in the hardware space.
+[1027.48-1053.28] So I worked with all kinds of companies across all different industries so there's a link in the description feel free to click that you can fill out the form let me know a little bit about the business we can set up some time to meet no pressure but if it is a fit I'll tell you if not I'll tell you that as well but that's what I do and that's why companies come to me because they want an outbound motion they've been doing referrals partnerships for so long and now they're ready to go to the next step
+(+10.1s) [1063.38-1068.76] Lesson number seven, and this was really, really important for me, and this kind of goes into the volume.
+[1069.28-1076.12] You're gonna be the worst you're ever gonna be on day one, and you're gonna be a little bit better on day two, and by day three, you're gonna be a little bit better.
+[1076.68-1084.46] And so that ramp period I talked about where you're doing demos, you're studying the product, you're talking to other reps on the team, that's super important.
+[1084.68-1092.52] And I would say the biggest thing that you wanna be doing is getting more volume in so you can train faster.
+[1093.00-1097.18] And that's what I would be focused on early on, getting trained as soon as possible.
+[1097.38-1102.56] Because the seventh lesson is you're going to be the worst you'll possibly be before you get better.
+[1103.22-1113.76] And so if you're having a really tough week or first few days, you might think this isn't for me or cold calling doesn't work and I've been there, I know how that feels.
+[1114.34-1119.66] When I first started and I made my first cold call, as soon as the prospect picked up, I just hung up.
+[1119.66-1119.74] But
+[1120.38-1123.22] I was terrified, I didn't know what to do.
+(+2.2s) [1125.40-1131.28] And before that, my first worm lead, I used to work at a loan company,
+[1132.22-1133.36] I couldn't even hear them.
+[1133.64-1134.76] My microphone was broken,
+[1135.36-1138.84] and so I had to get through a whole pitch, not being able to hear them.
+[1139.04-1142.30] I had a transcript of what they were saying, and so I was kind of guessing.
+[1143.02-1149.28] And I had a whole team of four other reps watching me, and afterwards they were Like, what were you doing, Dan?
+[1149.94-1150.82] And I was like...
+[1150.84-1157.22] I could not even hear this prospect and so I had a really rough start and now I've been doing this for years.
+[1157.44-1161.74] I feel super comfortable on the phone because I've been rejected thousands and thousands of times.
+[1161.92-1164.24] I've booked hundreds and hundreds of meetings.
+[1164.44-1184.82] I've had a lot of success and so what I would say is you're going to be the worst at the start and a lot of people they want to quit early on because they realize how difficult and hard it is and that is part of the reason I'm able to work as a contract SGR for different companies because not a lot of people are willing to do the work, but it does get easier and It, it, it, you.
+[1184.84-1186.44] do get better with time and reps.
+[1186.84-1190.70] And so staying consistent and sticking with that, I think that's the hardest thing.
+[1191.12-1195.90] If you do it for three to six months and you find this isn't for me, I can't stand this, I still hate this.
+[1196.04-1197.54] I would say find a different job.
+[1198.10-1202.78] I used to work with a rep and he said the worst part of his day was making cold calls.
+[1203.34-1204.46] That's what he was paid for.
+[1204.78-1208.10] And so I told him, you should probably get another job.
+[1208.28-1209.42] And he ultimately did.
+[1209.62-1212.60] He transitioned to a different role as a way better fit.
+[1212.72-1213.48] He liked a lot more.
+[1214.08-1224.52] And so if you're starting out and you're thinking this isn't for me, I would just say you have to try it for at least six months before you actually know, because the first few months are going to be brutal.
+[1224.72-1225.64] It's really hard.
+[1225.80-1226.70] It's a tough job.
+[1226.96-1236.32] You're calling people, you're figuring out a million different things from tonality to objection handling to a new product to talking to strangers on the phone.
+[1236.76-1244.22] but it does get better with time and reps and so I would definitely say staying consistent, knowing that you're going to be the worst you're ever going to be.
+[1244.46-1245.38] It only gets better from here.
+[1246.06-1247.88] It's like going to the gym for the first time.
+[1248.38-1249.52] You have no idea what you're doing.
+[1249.92-1251.62] You're worried everyone's looking at you.
+[1251.82-1252.46] You look around.
+[1252.60-1253.60] You look at the weights and you think,
+[1254.54-1255.76] I don't know what to do.
+[1256.58-1258.60] Once you've gone for a few months, you're more comfortable.
+(+27.0s) [1285.58-1289.20] You When that leads to lesson number eight,
+[1290.00-1291.40] you're going to get better.
+[1292.06-1301.18] You're gonna start out the worse, but a part of getting better is making sure that you're paying attention to the work that you're doing and you're trying to do better work and become more efficient.
+[1301.92-1303.72] Early on, I was incredibly inefficient.
+(+1.0s) [1304.74-1307.46] I had to prospect my own accounts at that company
+[1308.38-1310.30] and they had a large team.
+[1310.90-1316.42] So we pulled them often from LinkedIn sales navigator and we had Zoom Info as one of our software tools.
+[1317.06-1319.28] And what I would do is I would pull a lead,
+[1320.02-1323.62] I'd add them to a sequence, I would call them, and then I would do that again.
+[1324.60-1328.96] And over time, as I met with other reps, I started to learn how they did it.
+[1329.75-1332.57] I realized what they did is they would prospect in batches.
+[1332.97-1335.97] And this is what I've seen consistently across the best reps,
+[1336.49-1338.93] they'll time block and batch their work.
+(+5.5s) [1344.47-1349.37] And so what that looked like is I would block off two, three hours just for prospecting.
+[1350.01-1358.83] And instead of finding lead, adding it to a sequence calling them, I would find a bunch of leads, I would add them all to my sequence, and then I would call them later during a different time block.
+[1359.39-1368.38] That gave me a ton of success, especially once I started to realize, oh, there are different times to call prospects where I'm going to get better results.
+[1368.84-1371.10] And so say between I mean, 1 p .m.
+[1371.12-1372.04] to 3pm,
+[1372.70-1374.00] or 12 to 3 p .m.
+[1374.04-1405.99] I'd have lower connect rates that's when I would batch my prospecting and then I would have a list of people to call during the peak hours so I wasn't just calling it random hours and so I would say as you work try to find efficiencies like that you're gonna get far more leads added to a sequence if you just prospect all at once and it's orders of magnitude as well so it might have taken me probably to find 10 maybe 15 prospects an hour when I first started because I was adding them to a sequence.
+[1406.47-1407.21] I was calling them.
+[1407.93-1411.89] Once I started batching, I could do five, five times that.
+[1411.97-1414.77] I mean, I would add 50, 60 leads in an hour.
+[1415.17-1420.11] And I figured out the PCR, the pre -call research that I needed.
+[1420.59-1428.67] And so one of the things that really set me up for success is I realized there are only two or three things I need to research about a prospect before I call them.
+[1429.51-1436.03] Before that, I was looking at their whole LinkedIn profile, I was looking at their website, and I learned that I only needed two or three things.
+[1436.09-1443.51] I needed to know how long they'd worked at the company, what their role was, and if they'd transition from anything else, and if they'd made any relevant post on LinkedIn.
+[1443.99-1444.45] That was it.
+[1445.03-1448.29] And so what I would do is in the notes for the contact, I would just add one or two
+[1449.10-1451.04] quick notes, been at the company three years,
+[1451.66-1451.90] role,
+[1452.66-1464.18] I mean, I would have their role but transition from X role, and then if they made any post, then when I'd call I'd say, hey, I've saw you've been handling, you know, compliance for about three years at XYZ company,
+[1464.84-1475.38] then I'd give them the pitch, and it built a little bit of credibility without me needing to spend five minutes prospect, researching a prospect before the call.
+[1475.86-1479.84] And so that's what I would be looking at for early on the orders of magnitude.
+[1480.12-1481.98] What are the one or two things I need to know?
+[1482.16-1486.78] What can I batch and put together so I can be more efficient and effective with my work?
+(+14.5s) [1501.31-1504.87] And that brings me to the final lesson, lesson number nine.
+[1505.27-1507.89] The people who win, they're not usually better,
+[1508.60-1509.98] they're just more resilient.
+(+1.1s) [1511.06-1516.86] And when I first started out as a rep, I thought all of these people were incredible.
+[1517.14-1519.56] They were booking so many meetings, they were doing so well.
+[1519.98-1524.20] I would listen to their calls all the time, I mean constantly.
+[1524.56-1529.66] I would review my own calls as well, but I was always trying to listen and tweak and learn what they were doing.
+[1529.66-1531.84] and I felt like they were doing something special.
+[1532.44-1538.52] But after I'd been doing work for about three, six months, I realized the people who were winning, they were just staying consistent and doing the work.
+[1538.96-1542.48] They were doing the same work they were doing in month one and month six and year one.
+[1542.72-1545.36] It didn't matter across the board, they stayed consistent.
+[1546.21-1554.31] I've seen a lot of reps who have a ton of initial success and then they coast on it and then they drop off because they lose that consistency.
+[1554.93-1563.45] And so the number one thing I would say If you're cold calling, if you want to get better at cold calling, if you want to improve, if you want to start a motion,
+[1563.95-1566.99] you have to decide to commit for at least six months.
+[1567.94-1570.42] You're not going to become great in a week or two.
+[1570.84-1576.46] Maybe you'll do pretty good by month three, but six months in, you're going to know if this is actually for you.
+[1576.76-1581.24] Because the reps who win, the sales reps who win, they're the ones who stick to the work.
+[1581.40-1583.86] They do it consistently over a six month period.
+[1584.40-1594.94] And by then, you'll know your numbers, what metrics you need to hit, how many calls you need to make, how many conversations you need to have, what you need to be doing every single day to be successful at the job.
+[1595.30-1598.48] And that's when you'll know, okay, this is for me or this is working or not.
+(+1.1s) [1599.62-1602.66] And a lot of people, they just throw in the towel way too soon.
+[1602.96-1607.88] They'll say, okay, I've been doing this for a month, I've been doing this for three months, it's not working, I give up.
+(+1.0s) [1608.90-1646.16] But the thing that's going to determine whether or not you win or you're good is if you can stick to it, if you can stay resilient and if you can do the work even without the results showing for a month or two or three because that's how it works and the reps that really crush it they're the reps who they're always keeping track of their numbers and their work and they're following up with leads when they need the follow -up and so if you want to win if you want to be one of the best you just have to stay consistent resilient and commit to six months and I work with a lot of clients who in month one month two we might get good results, but they're not great.
+[1646.76-1649.98] And then by month three, month four, that's when the meetings start to roll.
+[1650.10-1651.58] And that's when they start closing deals.
+[1651.98-1655.22] I'm working with a client now we've been working together for four months.
+[1656.02-1658.42] Their sales cycle is about six months.
+[1658.82-1666.16] And so they're not going to know if they close a deal and even make money for me for quite a while.
+[1666.60-1673.38] And this is, this is super consistent with what I see a lot of companies they think, okay, in a month, we're going to know.
+[1673.80-1674.80] You're not going to know in a month.
+[1674.98-1678.96] It takes a long time to know if something's going to work and you have to make an investment.
+(+1.1s) [1680.11-1692.55] Now usually we'll know within a month I can run a Pi lab and doing this long enough, but especially if you're new to this or you're trying to get into it, there's a time frame and especially if you have a long sales cycle, you probably won't see an ROI for a while.
+[1693.50-1699.18] And so this client, they expect to close about two or three deals, which will more than pay for me.
+[1699.30-1701.00] They'll have way more than a 10x ROI,
+[1701.72-1703.40] but it's because they're sticking with it.
+[1703.70-1710.82] And so now they're starting to see the results or seeing these deals move towards the finish line and it's the same for working as an SDR or hiring an SDR team.
+[1711.36-1715.12] There's a time delay before you're gonna actually start to see revenue come in
+[1715.70-1717.96] unless you have a super short sales cycle.
+[1718.44-1721.96] But that's pretty uncommon if you're hiring an SDR team.
+(+10.3s) [1732.26-1735.20] Now those are the nine lessons I've taken away from cold calling.
+[1735.70-1738.22] I think you'll notice that it's kind of funny.
+[1738.76-1742.92] Not a lot of those are actually based on how you perform on the phone, how you talk.
+[1743.54-1744.78] Now that's for another video.
+[1745.06-1755.23] It does matter what that looks like and how you go into it, but the biggest thing, especially with teams who are for reps who are just starting out or companies that are hiring I'm hearing SDRs.
+[1755.51-1757.29] it really comes down to the consistency,
+[1757.81-1760.33] doing the work, staying resilient, knowing your data,
+[1760.87-1768.89] tracking your metrics, tweaking and refining for a few months before you actually get things cleaned up and before you know what's gonna work and what's not.
+(+2.5s) [1771.44-1777.86] So if you're a few hundred calls into this, or a few thousand, it's not clicking, it doesn't mean it's not going to work.
+[1778.08-1782.42] It means you just need more reps and you probably need to make some changes.
+(+5.2s) [1787.60-1792.20] You've got to keep going until it starts working and then you'll start seeing the meetings coming into the calendar.
+(+7.2s) [1799.42-1809.92] And if you'd rather have someone on your team hire someone who's been doing work like this for years who's worked across dozens and dozens of industries seen success across them all.
+[1810.40-1813.16] I've probably worked in your industry, industry adjacent.
+[1813.84-1817.24] I know that we can run a pilot in a month and see what results we're gonna get.
+[1817.74-1819.80] And so there's a link below to my calendar.
+[1820.14-1821.60] Feel free to click it, book some time.
+[1821.76-1827.52] We can go over the work that I do, how I could help your company, how we could add an outbound motion, what that would look like.
+(+7.8s) [1835.34-1836.02] And that's all.

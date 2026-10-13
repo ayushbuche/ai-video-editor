@@ -25,6 +25,12 @@ def test_derive():
     noise, d = B.derive_noise_db(levels(-13, -28, n_speech=50, n_floor=4000))
     assert d["speech"] == -13 and d["bed"] == -27.6, d           # busy floor is not speech
     assert B.derive_noise_db(levels(-11, -38))[0] == -32.0      # never under floor + 6
+    # a speaker who hardly stops: more windows inside his speech (spread -40..-14 dB) than in the room tone
+    # (-65 dB). The floor is the room tone, so no music bed (cold-calling-one, 2026-10-13)
+    talky = [-14.6 - (i % 27) for i in range(9000)] + [-21.6 - (i % 10) for i in range(20000)] + [-64.6] * 1700 \
+        + [-55.6 - (i % 9) for i in range(1500)]
+    noise, d = B.derive_noise_db(talky)
+    assert "bed" not in d and d["floor"] == -65, d
 
 
 def test_audible_end():

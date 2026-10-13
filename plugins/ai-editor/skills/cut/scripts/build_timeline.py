@@ -189,6 +189,7 @@ SPEECH_OFFSET_DB = 26.0
 MIN_SEPARATION_DB = 20.0
 BED_PERCENTILE = 0.10
 FLOOR_SEARCH_DB = 10
+FLOOR_QUIET_SHARE = 0.15   # the floor is looked for among the quietest 15% of the take
 FLOOR_HEADROOM_DB = 6.0
 RMS_WIN_S = 0.020
 
@@ -367,7 +368,14 @@ def derive_noise_db(lvl):
         hist[int(math.floor(v))] = hist.get(int(math.floor(v)), 0) + 1
     srt = sorted(lvl)
     speech = int(math.floor(srt[min(len(srt) - 1, int(0.99 * len(srt)))]))
-    floor = max((b for b in hist if b < speech - FLOOR_SEARCH_DB), key=lambda b: hist[b], default=None)
+    # the floor is the commonest level among the QUIET windows (the quietest 15%): a speaker who talks almost
+    # without stopping has more windows inside his own speech than in the room tone, so the commonest level of
+    # all those under speech - 10 dB is a speech level, and a clean take was taken for one over a music bed
+    # (cold-calling-one, 2026-10-13: room tone -65 dB, but the pick was -26, so splices followed word labels
+    # and clipped word endings, and breaths kept the pauses in)
+    quiet_top = math.floor(srt[int(FLOOR_QUIET_SHARE * (len(srt) - 1))])
+    pool = [b for b in hist if b < speech - FLOOR_SEARCH_DB and b <= quiet_top] or [b for b in hist if b < speech - FLOOR_SEARCH_DB]
+    floor = max(pool, key=lambda b: hist[b], default=None)
     if floor is None:
         return None, {"reason": f"no floor below speech ({speech} dB)", "speech": speech}
     sep = speech - floor

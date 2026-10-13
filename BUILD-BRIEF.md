@@ -14,7 +14,7 @@ A fork of NextWork's open-source editor (github.com/nextwork-projects/ai-video-e
 | Output | 16:9 YouTube, finished length roughly 10–20 min. One finished `render.mp4`. |
 | Premiere / NLE export | **Not now.** Changes happen by asking Claude in chat. Leave `export_nle.py` alone; it isn't part of the main workflow. |
 | Visuals | **Only motion graphics and animations the editor makes itself**, plus screenshots or B-roll the client supplies. **No stock B-roll (Pexels etc.) and no footage or images of real people.** |
-| Music | **Use music the way the references do** (changed 2026-10-10; was "left out for now"). |
+| Music | **Use music the way the references do** (changed 2026-10-10; was "left out for now"). **Only free tracks that need no credit in the description** (Ayush, 2026-10-13): no CC BY. |
 | Styles | **One style to start**, measured from the three reference videos below. Keep the per-style folder system so more styles can be added later. |
 | Rendering | On Ayush's Mac (Apple Silicon). Cloud rendering later if needed. |
 | Mode | **Automatic.** One approval point only: the cut, shown as a transcript with removals struck through (text, no rendering). **No visuals approval: no stills sheet, no preview clips.** Make the visuals and render. Drop every visual review step: the stills sheet, the LOOK pass where Claude inspects rendered frames, and `check.py render`. The only checks kept are the instant script checks on the plan (`check.py` plan check, `ai_tells.py --plan`). They render nothing and use no Claude usage; they just stop graphics covering the face or running off-screen. If Ayush asks for those to go too, remove them. |
@@ -37,6 +37,8 @@ below; Ayush signs off the summary before it's used.
   the reference does, this style does. Every other decision above still holds (one approval: the cut;
   copy, don't invent).
 - Same client as the reference, so their branding (logo, colours, fonts) is copied too.
+- **Pace: fast.** Every silence and breath over 0.3 s is cut, the intro especially; no word ending is ever
+  clipped (Ayush, 2026-10-13). The cut matched the reference: sentence gaps median 0.26 s, 220 words a minute.
 
 ## Reference style (`axis-story`, the first style)
 

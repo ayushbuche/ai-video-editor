@@ -12,6 +12,11 @@ understood perfectly well from the speaker. Long stretches with no graphic are f
 
 Before adding one, ask: would a viewer understand this line better with it? If not, leave the speaker.
 
+**The kind follows the shape of what he says** (Ayush, 2026-10-13): a style's graphic kinds are tools, not
+a checklist to work through. An acronym card only when he spells out an acronym or a named framework; a
+call script only when he gives the actual words; a list only when he gives several things in a row. If no
+kind fits the line naturally, it gets no graphic. Never flashy for its own sake.
+
 ## Which kind
 
 The kinds below are axis-story's. **Each style lists its own kinds** (`style.json` design.kinds) and the

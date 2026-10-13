@@ -34,13 +34,15 @@ Write `spans.json` (cut skill, `references/retake-detection.md`): last take wins
 Then build, read `paper-edit.md` straight through, render and verify, exactly as the cut skill's steps 3-5:
 
 ```bash
-python3 "$C/build_timeline.py" <source> edits/<name>
+python3 "$C/build_timeline.py" <source> edits/<name> --max-pause 0.3
 python3 "$C/render.py" <source> edits/<name>
 $PY "$C/verify_cut.py" edits/<name> --engine whisper
 python3 "$C/preview_cut.py" edits/<name>
 ```
 
-Pauses follow the references (0.2-0.3 s between sentences); every word rings out before a cut. The
+Pauses follow the references (0.2-0.3 s between sentences): always pass `--max-pause 0.3`, because the
+taste file's `cut.max_pause` is a Shorts setting (0.1). Every pause and breath over 0.3 s is cut, the intro
+included (Ayush, 2026-10-13: "relatively fast-paced"); every word rings out before a cut. The
 page underlines words that play though the first transcript missed them. **Wait for the cut approval.** A
 note about a word clipped or a join that sounds wrong is a timing fault in `build_timeline.py`: fix it there
 (with a test in `test_build_timeline.py`), not by hand in this edit.
@@ -58,8 +60,9 @@ Anything the client supplied (screenshots, logos, thumbnails, their own episode 
 ## 3. Music
 
 The bed runs from after the opening to before the sign-off, about 22 dB under the voice, as the references
-do. Use the track the user named; with none, a free track that needs no sign-in, with its licence and
-credit line in `edits/<name>/audio/MUSIC-LICENSE.md` (say the credit must go in the description).
+do. Use the track the user named; with none, a free track that needs **no credit** and no sign-in (Mixkit's
+free licence; never CC BY: Ayush, 2026-10-13), its source and licence in `edits/<name>/audio/MUSIC-LICENSE.md`.
+The level is the style's (`style.json` sound.music.level_db).
 
 ## 4. Plan and check
 

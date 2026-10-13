@@ -1,0 +1,620 @@
+{
+ "handle": "sdr-mastery",
+ "videos": 1,
+ "aspect": "16:9",
+ "pace": {
+  "wpm": 217,
+  "max_pause_s": 0.42,
+  "cuts_per_10s": 1.03,
+  "median_shot_s": 5.7,
+  "cut_kinds": {
+   "zoom-punch": 61,
+   "whip": 23,
+   "hard": 13,
+   "match": 2,
+   "mask": 1
+  }
+ },
+ "zoom": {
+  "per_min": 4.9,
+  "kind": "punch",
+  "scale": 1.15,
+  "duration_s": 0.0,
+  "on": "every_cut",
+  "ease": "none"
+ },
+ "camera": {
+  "pan_per_min": 3.8,
+  "shake_pct": 1,
+  "push_per_min": 1.1
+ },
+ "transitions": [
+  "push"
+ ],
+ "captions": {
+  "present": false
+ },
+ "face": {
+  "present_pct": 82,
+  "x_pct": 51.2,
+  "y_pct": 46.9,
+  "height_pct": 40.7,
+  "framing": "close"
+ },
+ "graphics": {
+  "share_pct": 20,
+  "per_min": 1.7,
+  "hold_s": 5.67,
+  "ease_in_s": 0.033,
+  "palette": [
+   {
+    "hex": "#FFFFFF",
+    "pct": 86
+   },
+   {
+    "hex": "#CAC3B7",
+    "pct": 6
+   },
+   {
+    "hex": "#313535",
+    "pct": 3
+   },
+   {
+    "hex": "#867F7A",
+    "pct": 3
+   },
+   {
+    "hex": "#F44643",
+    "pct": 2
+   }
+  ],
+  "kinds": {
+   "real screenshot": 46,
+   "text card": 34,
+   "UI recording": 9,
+   "b-roll": 7,
+   "photo": 3,
+   "logo": 1
+  },
+  "kinds_source": "code",
+  "measured": 53,
+  "per_min_measured": 2.3,
+  "share_pct_measured": 18,
+  "hold_s_measured": 3.8,
+  "layout": {
+   "zones_pct": {
+    "top": 0,
+    "middle": 0,
+    "bottom": 11,
+    "full": 89
+   },
+   "median_box": [
+    0.0,
+    0.0,
+    100.0,
+    100.0
+   ],
+   "area_pct": 100.0,
+   "covers_face_pct": 89,
+   "heatmap": "graphics/heatmap.png",
+   "grid": [
+    [
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     92,
+     91,
+     91,
+     91
+    ],
+    [
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     92,
+     91,
+     91,
+     91
+    ],
+    [
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     92,
+     91,
+     91,
+     91
+    ],
+    [
+     92,
+     92,
+     92,
+     92,
+     92,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91
+    ],
+    [
+     92,
+     92,
+     92,
+     92,
+     92,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91
+    ],
+    [
+     92,
+     93,
+     93,
+     93,
+     93,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     93,
+     93,
+     93,
+     93
+    ],
+    [
+     92,
+     93,
+     93,
+     93,
+     93,
+     91,
+     91,
+     91,
+     91,
+     91,
+     92,
+     93,
+     99,
+     98,
+     95,
+     93
+    ],
+    [
+     92,
+     93,
+     93,
+     93,
+     93,
+     91,
+     91,
+     91,
+     91,
+     91,
+     92,
+     93,
+     100,
+     99,
+     97,
+     93
+    ],
+    [
+     92,
+     92,
+     92,
+     92,
+     92,
+     91,
+     91,
+     91,
+     91,
+     91,
+     91,
+     92,
+     98,
+     97,
+     95,
+     91
+    ]
+   ]
+  },
+  "entrances": [
+   {
+    "kind": "cut",
+    "ease": "none",
+    "share_pct": 49,
+    "n": 26,
+    "duration_s": 0.0,
+    "overshoot": 0.0,
+    "fade": false
+   },
+   {
+    "kind": "scale",
+    "ease": "none",
+    "share_pct": 9,
+    "n": 5,
+    "duration_s": 0.6,
+    "overshoot": 0.0,
+    "fade": true,
+    "scale_from": 0.47
+   },
+   {
+    "kind": "scale",
+    "ease": "power3.inOut",
+    "share_pct": 9,
+    "n": 5,
+    "duration_s": 0.45,
+    "overshoot": 0.0,
+    "fade": true,
+    "scale_from": 0.62
+   },
+   {
+    "kind": "slide",
+    "ease": "expo.out",
+    "share_pct": 6,
+    "n": 3,
+    "duration_s": 0.117,
+    "overshoot": 0.096,
+    "fade": false,
+    "from": "left",
+    "distance_pct": 63.3
+   },
+   {
+    "kind": "slide",
+    "ease": "back.out(3.5)",
+    "share_pct": 6,
+    "n": 3,
+    "duration_s": 0.733,
+    "overshoot": 0.4,
+    "fade": false,
+    "from": "left",
+    "distance_pct": 8.9
+   }
+  ],
+  "exits": [
+   {
+    "kind": "cut",
+    "ease": "none",
+    "share_pct": 57,
+    "n": 29,
+    "duration_s": 0.0,
+    "overshoot": 0.0,
+    "fade": false
+   },
+   {
+    "kind": "slide",
+    "ease": "power3.inOut",
+    "share_pct": 8,
+    "n": 4,
+    "duration_s": 0.367,
+    "overshoot": 0.0,
+    "fade": true,
+    "to": "bottom",
+    "distance_pct": 63.8
+   },
+   {
+    "kind": "slide",
+    "ease": "expo.in",
+    "share_pct": 6,
+    "n": 3,
+    "duration_s": 1.233,
+    "overshoot": 0.0,
+    "fade": true,
+    "to": "right",
+    "distance_pct": 75.6
+   },
+   {
+    "kind": "slide",
+    "ease": "none",
+    "share_pct": 6,
+    "n": 3,
+    "duration_s": 0.433,
+    "overshoot": 0.02,
+    "fade": false,
+    "to": "left",
+    "distance_pct": 19.4
+   },
+   {
+    "kind": "slide",
+    "ease": "none",
+    "share_pct": 6,
+    "n": 3,
+    "duration_s": 1.5,
+    "overshoot": 0.0,
+    "fade": false,
+    "to": "bottom",
+    "distance_pct": 5.9
+   }
+  ],
+  "secondary_motion": {
+   "still": 51,
+   "video": 40,
+   "push": 9
+  },
+  "blur_behind_pct": 9,
+  "crop_palette": [
+   {
+    "hex": "#FFFFFF",
+    "pct": 55
+   },
+   {
+    "hex": "#B0B6B3",
+    "pct": 18
+   },
+   {
+    "hex": "#8D8D8A",
+    "pct": 9
+   },
+   {
+    "hex": "#EFCCC5",
+    "pct": 8
+   },
+   {
+    "hex": "#E57F6C",
+    "pct": 7
+   },
+   {
+    "hex": "#2D393E",
+    "pct": 3
+   }
+  ]
+ },
+ "motion": {
+  "cuts_per_min": 6.2,
+  "ease_in_s": 0.033,
+  "hold_s": 5.67,
+  "caption_ease_s": null,
+  "zoom_punch_per_min": 4.9,
+  "personality": "calm"
+ },
+ "sound": {
+  "sfx_per_min": 0.6,
+  "sfx_per_min_by_video": [
+   0.6
+  ],
+  "kinds": {
+   "impact": 46,
+   "other": 46,
+   "whoosh": 8
+  },
+  "on_cut_pct": 15,
+  "on_graphic_pct": 0,
+  "in_voice_pct": 100,
+  "music": {
+   "present_pct": 100,
+   "level_db": -14.1
+  },
+  "measured": 1,
+  "source": "code"
+ },
+ "sources": [
+  "https://www.youtube.com/watch?v=Wkxg6XCiSwE"
+ ],
+ "longform": {
+  "measured_on_s": {
+   "Wkxg6XCiSwE": 1374.53
+  },
+  "layout_share_pct": {
+   "Wkxg6XCiSwE": {
+    "speaker_wide": 0.9,
+    "full_graphic": 18.2,
+    "speaker_close": 80.9
+   }
+  },
+  "graphics_on_screen_pct_median": 18.2,
+  "full_graphic_segment_s": {
+   "n": 37,
+   "median_s": 6.0,
+   "p90_s": 10.0
+  },
+  "speaker_only_gap_s": {
+   "median": 18.8,
+   "p90": 96.7,
+   "max": 152.7
+  },
+  "first_graphic_s_median": 3.0,
+  "cuts_per_min": {
+   "Wkxg6XCiSwE": [
+    25,
+    10,
+    10,
+    10,
+    6,
+    10,
+    6,
+    8,
+    4,
+    5,
+    4,
+    5,
+    4,
+    5,
+    5,
+    2,
+    3,
+    4,
+    0,
+    4,
+    4,
+    2,
+    6
+   ]
+  },
+  "punch_per_min": {
+   "Wkxg6XCiSwE": [
+    6,
+    6,
+    5,
+    3,
+    2,
+    2,
+    4,
+    8,
+    5,
+    5,
+    2,
+    3,
+    2,
+    5,
+    5,
+    2,
+    3,
+    4,
+    0,
+    4,
+    3,
+    2,
+    6
+   ]
+  },
+  "graphics_pct_per_min": {
+   "Wkxg6XCiSwE": [
+    48,
+    27,
+    23,
+    29,
+    12,
+    16,
+    25,
+    33,
+    0,
+    48,
+    40,
+    7,
+    26,
+    18,
+    11,
+    4,
+    5,
+    8,
+    0,
+    0,
+    20,
+    0,
+    16
+   ]
+  },
+  "sections": [
+   {
+    "name": "hook",
+    "start_s": 0,
+    "end_s": 52.7,
+    "note": "credentials with numbers, promise, \"three parts\" roadmap card"
+   },
+   {
+    "name": "part 1: the list",
+    "start_s": 52.7,
+    "end_s": 383.7,
+    "note": "mid-video CTA at 6:18, \"link in the description\" text over speaker"
+   },
+   {
+    "name": "part 2: the script",
+    "start_s": 383.7,
+    "end_s": 811.5
+   },
+   {
+    "name": "part 3: doing it consistently",
+    "start_s": 811.5,
+    "end_s": 1342
+   },
+   {
+    "name": "recap + CTA + thanks",
+    "start_s": 1342,
+    "end_s": 1375,
+    "note": "no end screen"
+   }
+  ],
+  "part_card": "the Part 1/2/3 roadmap card returns at the start of each part: done parts and the current one readable, later ones blurred",
+  "graphics_by_eye": {
+   "white_text_page": 26,
+   "illustration_with_italic_line": 5,
+   "third_party_screenshot": 6,
+   "stock_photo_or_icon": 3,
+   "client_footage_blurred": 1,
+   "text_over_speaker": 5,
+   "false_detections_speaker_only": 14
+  }
+ },
+ "design": {
+  "colors": {
+   "white": "#FFFFFF",
+   "page": "#FAFAFA",
+   "ink": "#313535",
+   "grey_word_not_yet_said": "#A8A8A8",
+   "red": "#F44643",
+   "red_pill": "#E8344A",
+   "illustration_navy": "#2B3A67"
+  },
+  "fonts": {
+   "body": "clean neo-grotesk sans (Inter / SF Pro-like), dark grey, sentence case",
+   "italic": "high-contrast italic serif (Playfair Display Italic-like), used for spoken lines, script headers and captions under the illustration"
+  },
+  "layouts": {
+   "title_list": "white page; centred sans heading with a hand-drawn red marker underline (two strokes) under it; numbered list or red-dot bullets below, each line appears as he says it",
+   "part_rows": "white page; rows of a filled red rounded label (\"Part 1\", \"10%-20% will convert\") joined to a red-outlined white box with the text; future rows blurred",
+   "script_page": "white page; italic serif header (\"Let's say someone said:\", \"I will say:\") with a thick red highlighter bar through its lower half; the quote in sans below; each turn of the dialogue adds on and stays",
+   "rule_card": "white page with a soft-shadowed white card; italic serif header with red highlighter + one sans line (\"The one rule that I have is:\" / \"The only point of a cold call\")",
+   "acronym_card": "shadowed card; huge black heavy sans letters on a red highlighter bar (BANT), italic serif words under each letter, joined by thin hand-drawn lines as each is said",
+   "bullet_card": "shadowed white card with red-dot bullets",
+   "illustration": "navy line-art illustration (one consistent character style) with an italic serif line underneath and a red marker underline; sometimes a photo or stat beside it. The SUBJECT is made for each video from what he says there, never reused from the reference (Ayush, 2026-10-13)",
+   "stat_cards": "screenshot-like UI card ($50,000 / $500,000) on white",
+   "screenshot": "real website or app screenshot, full frame or framed on white, sometimes scrolling",
+   "text_over_speaker": "a short spoken phrase over the speaker, bottom third: white bold sans + white italic serif mixed, words fading on one by one, red underline on the key words",
+   "opening_broll": "client's own footage (blurred video-call grid) for the first seconds"
+  },
+  "motion": {
+   "words": "write on word by word as spoken, each fading up from light grey/soft blur",
+   "enter": "hard cut (about half), or a quick scale-up from 0.4-0.8x with a fade (0.25-1 s, power3.inOut); small images slide or pop in with a slight overshoot (back.out)",
+   "underline": "red marker underline draws on left to right"
+  }
+ },
+ "not_copied": {},
+ "needs_from_client": [
+  "their own footage or screenshots for the opening and anything they want shown"
+ ],
+ "music_choice": "a track picked to match the reference bed (Ayush, 2026-10-13: pick a similar one)"
+}

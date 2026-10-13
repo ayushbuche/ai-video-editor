@@ -26,7 +26,19 @@ A fork of NextWork's open-source editor (github.com/nextwork-projects/ai-video-e
 | Silence | **Never graphics on screen with no talking**, and the voice never drops out under a graphic (decided 2026-10-10). |
 | Captions | **Copy the reference videos' caption style exactly**: font, size, colour, position, how many words at a time, highlighting, animation, and when captions appear at all. Add nothing the references don't do. |
 
-## Reference style (the one style)
+## Second style: `sdr-mastery` (added 2026-10-13)
+
+For the client SDR Mastery: their two new raw videos are edited to match one past edit of theirs by an
+Axis Story editor, https://www.youtube.com/watch?v=Wkxg6XCiSwE (22:55). Measured the same way as
+below; Ayush signs off the summary before it's used.
+
+- **Copy it exactly** (Ayush, 2026-10-13). For this style only, the fixed decisions above about one
+  camera angle, no stock footage and no footage or images of real people do **not** apply: whatever
+  the reference does, this style does. Every other decision above still holds (one approval: the cut;
+  copy, don't invent).
+- Same client as the reference, so their branding (logo, colours, fonts) is copied too.
+
+## Reference style (`axis-story`, the first style)
 
 - https://www.youtube.com/watch?v=NEi32Vn302w
 - https://www.youtube.com/watch?v=m_D2yOUapNQ

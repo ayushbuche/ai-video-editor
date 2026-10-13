@@ -169,3 +169,14 @@ first minutes) instead of the struck-through page?
    clicks at each join), then `preview_cut.py` to refresh `cut-check.html`.
 4. Ayush listens (he reviews by watching). Then: `face.py`, re-check `board.json` against the new `words.json`,
    `longplan.py edits/cold-calling-one --style styles/sdr-mastery/style.json --music audio/track.mp3`, `edit.py render`.
+
+## Update 2026-10-13 evening: graphics rendered, video 1 delivered
+
+Ayush approved the cut after watching the first 3 minutes ("seems pretty good"), and asked to see the full video
+with graphics before giving cut notes. Done: face.py, board.json re-checked (one quote moved to "contact a
+minimum of seven"), longplan.py (36 graphics, 42 zooms x1.15, 14 cues, music 14.1 dB under), `edit.py render`
+(49 min; the first two attempts died on a full disk). `render.mp4`: 42,051 frames, 1.1 GB. Voice per channel
+-19.3 dB vs the cut's -19.4 (the cut is mono: compare per channel), no dropouts. Sent to Ayush.
+
+Next: Ayush watches it in full and gives notes on cuts and graphics by timestamp. Known cut issues still to fix
+then: 1:25 "the" and 17:55 "them" (click rule regressions, above). Any re-render: `fast_render.py` (new, ~15-20 min).

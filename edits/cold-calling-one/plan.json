@@ -1,0 +1,1975 @@
+{
+ "composition": "LongEdit",
+ "video": "cut.mp4",
+ "width": 1920,
+ "height": 1080,
+ "fps": 30.0,
+ "durationInFrames": 42051,
+ "face": {
+  "cx": 0.5105,
+  "top": 0.256,
+  "h": 0.565
+ },
+ "zooms": [
+  {
+   "start": 7.367,
+   "end": 11.0,
+   "scale": 1.15
+  },
+  {
+   "start": 36.367,
+   "end": 39.567,
+   "scale": 1.15
+  },
+  {
+   "start": 129.2,
+   "end": 134.767,
+   "scale": 1.15
+  },
+  {
+   "start": 143.367,
+   "end": 151.2,
+   "scale": 1.15
+  },
+  {
+   "start": 166.333,
+   "end": 170.6,
+   "scale": 1.15
+  },
+  {
+   "start": 192.767,
+   "end": 202.067,
+   "scale": 1.15
+  },
+  {
+   "start": 226.167,
+   "end": 240.233,
+   "scale": 1.15
+  },
+  {
+   "start": 251.033,
+   "end": 255.267,
+   "scale": 1.15
+  },
+  {
+   "start": 298.133,
+   "end": 305.933,
+   "scale": 1.15
+  },
+  {
+   "start": 317.933,
+   "end": 323.4,
+   "scale": 1.15
+  },
+  {
+   "start": 348.1,
+   "end": 354.633,
+   "scale": 1.15
+  },
+  {
+   "start": 410.7,
+   "end": 415.233,
+   "scale": 1.15
+  },
+  {
+   "start": 475.067,
+   "end": 481.067,
+   "scale": 1.15
+  },
+  {
+   "start": 497.033,
+   "end": 514.133,
+   "scale": 1.15
+  },
+  {
+   "start": 600.733,
+   "end": 610.4,
+   "scale": 1.15
+  },
+  {
+   "start": 672.6,
+   "end": 681.267,
+   "scale": 1.15
+  },
+  {
+   "start": 687.067,
+   "end": 696.867,
+   "scale": 1.15
+  },
+  {
+   "start": 705.667,
+   "end": 730.333,
+   "scale": 1.15
+  },
+  {
+   "start": 811.233,
+   "end": 820.233,
+   "scale": 1.15
+  },
+  {
+   "start": 851.433,
+   "end": 861.633,
+   "scale": 1.15
+  },
+  {
+   "start": 872.967,
+   "end": 878.4,
+   "scale": 1.15
+  },
+  {
+   "start": 885.533,
+   "end": 901.567,
+   "scale": 1.15
+  },
+  {
+   "start": 916.467,
+   "end": 929.7,
+   "scale": 1.15
+  },
+  {
+   "start": 967.733,
+   "end": 972.967,
+   "scale": 1.15
+  },
+  {
+   "start": 1018.967,
+   "end": 1027.467,
+   "scale": 1.15
+  },
+  {
+   "start": 1067.5,
+   "end": 1075.833,
+   "scale": 1.15
+  },
+  {
+   "start": 1094.267,
+   "end": 1099.733,
+   "scale": 1.15
+  },
+  {
+   "start": 1113.167,
+   "end": 1128.233,
+   "scale": 1.15
+  },
+  {
+   "start": 1140.433,
+   "end": 1146.867,
+   "scale": 1.15
+  },
+  {
+   "start": 1156.6,
+   "end": 1162.7,
+   "scale": 1.15
+  },
+  {
+   "start": 1169.433,
+   "end": 1177.7,
+   "scale": 1.15
+  },
+  {
+   "start": 1189.4,
+   "end": 1212.267,
+   "scale": 1.15
+  },
+  {
+   "start": 1220.933,
+   "end": 1229.767,
+   "scale": 1.15
+  },
+  {
+   "start": 1236.233,
+   "end": 1245.867,
+   "scale": 1.15
+  },
+  {
+   "start": 1258.567,
+   "end": 1265.333,
+   "scale": 1.15
+  },
+  {
+   "start": 1270.6,
+   "end": 1276.133,
+   "scale": 1.15
+  },
+  {
+   "start": 1280.233,
+   "end": 1289.4,
+   "scale": 1.15
+  },
+  {
+   "start": 1294.667,
+   "end": 1323.433,
+   "scale": 1.15
+  },
+  {
+   "start": 1329.567,
+   "end": 1334.033,
+   "scale": 1.15
+  },
+  {
+   "start": 1358.3,
+   "end": 1365.833,
+   "scale": 1.15
+  },
+  {
+   "start": 1372.833,
+   "end": 1383.267,
+   "scale": 1.15
+  },
+  {
+   "start": 1400.633,
+   "end": 1401.7,
+   "scale": 1.15
+  }
+ ],
+ "graphics": [
+  {
+   "kind": "phrase",
+   "start": 0.033,
+   "end": 7.633,
+   "lines": [
+    {
+     "words": [
+      {
+       "text": "I",
+       "at": 0.15
+      },
+      {
+       "text": "have",
+       "at": 0.69
+      },
+      {
+       "text": "made",
+       "at": 0.83
+      },
+      {
+       "text": "over",
+       "at": 1.07
+      }
+     ],
+     "italic": false
+    },
+    {
+     "words": [
+      {
+       "text": "100,000",
+       "at": 1.31
+      },
+      {
+       "text": "cold",
+       "at": 2.39
+      },
+      {
+       "text": "calls",
+       "at": 2.73
+      }
+     ],
+     "italic": true
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "start": 17.727,
+   "end": 30.753,
+   "items": [
+    {
+     "label": "$10M+",
+     "at": 0.45,
+     "text": [
+      {
+       "text": "in",
+       "at": 1.59
+      },
+      {
+       "text": "pipeline",
+       "at": 2.07
+      }
+     ]
+    },
+    {
+     "label": "$2M+",
+     "at": 3.83,
+     "text": [
+      {
+       "text": "attributed",
+       "at": 4.33
+      },
+      {
+       "text": "to",
+       "at": 5.01
+      },
+      {
+       "text": "me",
+       "at": 5.55
+      }
+     ]
+    },
+    {
+     "label": "500+",
+     "at": 6.35,
+     "text": [
+      {
+       "text": "demos",
+       "at": 8.103
+      },
+      {
+       "text": "booked",
+       "at": 9.003
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "list",
+   "start": 44.213,
+   "end": 50.213,
+   "heading": "The 9 lessons I wish I'd known",
+   "marker": "none",
+   "card": false,
+   "sub": [
+    {
+     "text": "when",
+     "at": 1.63
+    },
+    {
+     "text": "I",
+     "at": 1.81
+    },
+    {
+     "text": "first",
+     "at": 1.97
+    },
+    {
+     "text": "started",
+     "at": 2.17
+    },
+    {
+     "text": "cold",
+     "at": 2.47
+    },
+    {
+     "text": "calling",
+     "at": 2.73
+    }
+   ],
+   "items": []
+  },
+  {
+   "kind": "phrase",
+   "start": 56.963,
+   "end": 65.45,
+   "lines": [
+    {
+     "words": [
+      {
+       "text": "sound",
+       "at": 0.65
+      },
+      {
+       "text": "like",
+       "at": 0.85
+      },
+      {
+       "text": "a",
+       "at": 0.99
+      },
+      {
+       "text": "robot",
+       "at": 1.09
+      }
+     ],
+     "italic": false
+    },
+    {
+     "words": [
+      {
+       "text": "more",
+       "at": 4.95
+      },
+      {
+       "text": "natural",
+       "at": 5.23
+      }
+     ],
+     "italic": true
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "start": 65.45,
+   "end": 71.017,
+   "items": [
+    {
+     "label": "Lesson 1",
+     "at": 0.437,
+     "text": [
+      {
+       "text": "They'll",
+       "at": 0.437
+      },
+      {
+       "text": "forget",
+       "at": 0.617
+      },
+      {
+       "text": "you",
+       "at": 1.117
+      },
+      {
+       "text": "before",
+       "at": 1.357
+      },
+      {
+       "text": "they",
+       "at": 1.697
+      },
+      {
+       "text": "hang",
+       "at": 1.917
+      },
+      {
+       "text": "up",
+       "at": 2.077
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "illustration",
+   "start": 87.25,
+   "end": 102.15,
+   "image": "images/bad-call.png",
+   "line": [
+    {
+     "text": "thinking",
+     "at": 2.17
+    },
+    {
+     "text": "about",
+     "at": 2.51
+    },
+    {
+     "text": "it",
+     "at": 2.89
+    },
+    {
+     "text": "the",
+     "at": 3.15
+    },
+    {
+     "text": "rest",
+     "at": 3.35
+    },
+    {
+     "text": "of",
+     "at": 3.59
+    },
+    {
+     "text": "the",
+     "at": 3.81
+    },
+    {
+     "text": "day",
+     "at": 3.99
+    }
+   ]
+  },
+  {
+   "kind": "rule",
+   "start": 108.15,
+   "end": 115.943,
+   "heading": "Most people stop:",
+   "items": [
+    [
+     {
+      "text": "Not",
+      "at": 1.09
+     },
+     {
+      "text": "because",
+      "at": 1.35
+     },
+     {
+      "text": "cold",
+      "at": 1.65
+     },
+     {
+      "text": "calling",
+      "at": 2.29
+     },
+     {
+      "text": "doesn't",
+      "at": 2.57
+     },
+     {
+      "text": "work",
+      "at": 2.91
+     }
+    ],
+    [
+     {
+      "text": "Because",
+      "at": 3.27
+     },
+     {
+      "text": "it's",
+      "at": 3.51
+     },
+     {
+      "text": "hard",
+      "at": 3.75
+     }
+    ]
+   ],
+   "dots": true,
+   "card": true
+  },
+  {
+   "kind": "rows",
+   "start": 158.29,
+   "end": 165.023,
+   "items": [
+    {
+     "label": "Lesson 2",
+     "at": 0.15,
+     "text": [
+      {
+       "text": "It's",
+       "at": 0.15
+      },
+      {
+       "text": "a",
+       "at": 1.257
+      },
+      {
+       "text": "volume",
+       "at": 1.417
+      },
+      {
+       "text": "game",
+       "at": 1.557
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "rows",
+   "start": 204.103,
+   "end": 219.237,
+   "items": [
+    {
+     "label": "Volume",
+     "at": 3.13,
+     "text": [
+      {
+       "text": "2x",
+       "at": 3.13
+      },
+      {
+       "text": "the",
+       "at": 4.61
+      },
+      {
+       "text": "top",
+       "at": 4.75
+      },
+      {
+       "text": "rep",
+       "at": 5.03
+      }
+     ]
+    },
+    {
+     "label": "Quota",
+     "at": 7.957,
+     "text": [
+      {
+       "text": "20%",
+       "at": 7.957
+      },
+      {
+       "text": "higher",
+       "at": 8.577
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "rows",
+   "start": 269.88,
+   "end": 292.833,
+   "items": [
+    {
+     "label": "100 dials",
+     "at": 5.763,
+     "text": [
+      {
+       "text": "7-10",
+       "at": 5.763
+      },
+      {
+       "text": "connects",
+       "at": 6.783
+      }
+     ]
+    },
+    {
+     "label": "10%",
+     "at": 12.563,
+     "text": [
+      {
+       "text": "of",
+       "at": 13.403
+      },
+      {
+       "text": "conversations",
+       "at": 13.643
+      },
+      {
+       "text": "convert",
+       "at": 14.703
+      }
+     ]
+    },
+    {
+     "label": "100 calls",
+     "at": 18.283,
+     "text": [
+      {
+       "text": "1",
+       "at": 18.283
+      },
+      {
+       "text": "meeting",
+       "at": 19.183
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "rows",
+   "start": 326.65,
+   "end": 333.323,
+   "items": [
+    {
+     "label": "Lesson 3",
+     "at": 3.217,
+     "text": [
+      {
+       "text": "Don't",
+       "at": 3.217
+      },
+      {
+       "text": "give",
+       "at": 3.643
+      },
+      {
+       "text": "up",
+       "at": 3.783
+      },
+      {
+       "text": "too",
+       "at": 4.003
+      },
+      {
+       "text": "early",
+       "at": 4.223
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "rule",
+   "start": 339.177,
+   "end": 346.937,
+   "heading": "I call every prospect:",
+   "items": [
+    [
+     {
+      "text": "A",
+      "at": 0.57
+     },
+     {
+      "text": "minimum",
+      "at": 0.91
+     },
+     {
+      "text": "of",
+      "at": 1.19
+     },
+     {
+      "text": "7",
+      "at": 1.55
+     },
+     {
+      "text": "times",
+      "at": 1.81
+     }
+    ]
+   ],
+   "dots": true,
+   "card": false
+  },
+  {
+   "kind": "list",
+   "start": 367.27,
+   "end": 387.19,
+   "heading": "Break the 7 calls up",
+   "marker": "dot",
+   "card": false,
+   "items": [
+    [
+     {
+      "text": "Day",
+      "at": 1.95
+     },
+     {
+      "text": "1,",
+      "at": 2.11
+     },
+     {
+      "text": "day",
+      "at": 2.63
+     },
+     {
+      "text": "2",
+      "at": 2.69
+     }
+    ],
+    [
+     {
+      "text": "Skip",
+      "at": 3.41
+     },
+     {
+      "text": "a",
+      "at": 3.61
+     },
+     {
+      "text": "day,",
+      "at": 3.81
+     },
+     {
+      "text": "call",
+      "at": 4.37
+     },
+     {
+      "text": "on",
+      "at": 6.05
+     },
+     {
+      "text": "day",
+      "at": 6.19
+     },
+     {
+      "text": "4",
+      "at": 6.33
+     }
+    ],
+    [
+     {
+      "text": "Then",
+      "at": 8.97
+     },
+     {
+      "text": "skip",
+      "at": 9.17
+     },
+     {
+      "text": "2",
+      "at": 9.41
+     },
+     {
+      "text": "days,",
+      "at": 10.03
+     },
+     {
+      "text": "then",
+      "at": 10.63
+     },
+     {
+      "text": "3",
+      "at": 10.77
+     }
+    ],
+    [
+     {
+      "text": "Over",
+      "at": 15.51
+     },
+     {
+      "text": "2-3",
+      "at": 15.75
+     },
+     {
+      "text": "weeks",
+      "at": 16.11
+     }
+    ]
+   ]
+  },
+  {
+   "kind": "rows",
+   "start": 437.65,
+   "end": 445.14,
+   "items": [
+    {
+     "label": "Lesson 4",
+     "at": 2.72,
+     "text": [
+      {
+       "text": "The",
+       "at": 3.02
+      },
+      {
+       "text": "first",
+       "at": 3.2
+      },
+      {
+       "text": "weeks",
+       "at": 4.14
+      },
+      {
+       "text": "are",
+       "at": 4.38
+      },
+      {
+       "text": "training",
+       "at": 4.76
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "list",
+   "start": 460.82,
+   "end": 471.093,
+   "heading": "The first two weeks: test",
+   "marker": "dot",
+   "card": false,
+   "items": [
+    [
+     {
+      "text": "The",
+      "at": 2.91
+     },
+     {
+      "text": "right",
+      "at": 3.03
+     },
+     {
+      "text": "ICP",
+      "at": 3.19
+     }
+    ],
+    [
+     {
+      "text": "The",
+      "at": 5.31
+     },
+     {
+      "text": "right",
+      "at": 5.45
+     },
+     {
+      "text": "companies",
+      "at": 5.57
+     }
+    ],
+    [
+     {
+      "text": "The",
+      "at": 7.17
+     },
+     {
+      "text": "right",
+      "at": 7.29
+     },
+     {
+      "text": "pitch",
+      "at": 7.45
+     }
+    ]
+   ]
+  },
+  {
+   "kind": "list",
+   "start": 534.497,
+   "end": 544.203,
+   "heading": "Know your product",
+   "marker": "dot",
+   "card": false,
+   "items": [
+    [
+     {
+      "text": "The",
+      "at": 0.55
+     },
+     {
+      "text": "pricing",
+      "at": 0.69
+     }
+    ],
+    [
+     {
+      "text": "How",
+      "at": 1.79
+     },
+     {
+      "text": "customers",
+      "at": 2.816
+     },
+     {
+      "text": "use",
+      "at": 3.176
+     },
+     {
+      "text": "it",
+      "at": 3.556
+     }
+    ],
+    [
+     {
+      "text": "The",
+      "at": 3.716
+     },
+     {
+      "text": "value",
+      "at": 3.876
+     },
+     {
+      "text": "prop",
+      "at": 4.176
+     }
+    ],
+    [
+     {
+      "text": "Customers",
+      "at": 6.176
+     },
+     {
+      "text": "to",
+      "at": 6.656
+     },
+     {
+      "text": "name-drop",
+      "at": 6.916
+     }
+    ]
+   ]
+  },
+  {
+   "kind": "rows",
+   "start": 551.34,
+   "end": 560.673,
+   "items": [
+    {
+     "label": "Lesson 5",
+     "at": 5.49,
+     "text": [
+      {
+       "text": "Everyone",
+       "at": 5.49
+      },
+      {
+       "text": "is",
+       "at": 6.19
+      },
+      {
+       "text": "lazy",
+       "at": 6.59
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "phrase",
+   "start": 576.973,
+   "end": 585.753,
+   "lines": [
+    {
+     "words": [
+      {
+       "text": "I",
+       "at": 3.53
+      },
+      {
+       "text": "would",
+       "at": 3.79
+      },
+      {
+       "text": "book",
+       "at": 3.93
+      }
+     ],
+     "italic": false
+    },
+    {
+     "words": [
+      {
+       "text": "2",
+       "at": 4.15
+      },
+      {
+       "text": "or",
+       "at": 4.39
+      },
+      {
+       "text": "3",
+       "at": 4.49
+      },
+      {
+       "text": "meetings",
+       "at": 4.71
+      },
+      {
+       "text": "by",
+       "at": 4.99
+      },
+      {
+       "text": "noon",
+       "at": 5.29
+      }
+     ],
+     "italic": true
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "start": 618.687,
+   "end": 628.567,
+   "items": [
+    {
+     "label": "Lesson 6",
+     "at": 2.81,
+     "text": [
+      {
+       "text": "There",
+       "at": 2.81
+      },
+      {
+       "text": "are",
+       "at": 3.25
+      },
+      {
+       "text": "certain",
+       "at": 3.75
+      },
+      {
+       "text": "times",
+       "at": 4.09
+      },
+      {
+       "text": "to",
+       "at": 5.31
+      },
+      {
+       "text": "call",
+       "at": 5.83
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "rows",
+   "start": 632.38,
+   "end": 646.7,
+   "items": [
+    {
+     "label": "8-10 a.m.",
+     "at": 2.31,
+     "text": [
+      {
+       "text": "their",
+       "at": 2.31
+      },
+      {
+       "text": "time,",
+       "at": 4.07
+      },
+      {
+       "text": "not",
+       "at": 5.99
+      },
+      {
+       "text": "yours",
+       "at": 6.21
+      }
+     ]
+    },
+    {
+     "label": "4-6 p.m.",
+     "at": 8.73,
+     "text": [
+      {
+       "text": "their",
+       "at": 8.73
+      },
+      {
+       "text": "time",
+       "at": 10.29
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "illustration",
+   "start": 658.48,
+   "end": 668.46,
+   "image": "images/commute.png",
+   "line": [
+    {
+     "text": "they're",
+     "at": 2.33
+    },
+    {
+     "text": "just",
+     "at": 2.45
+    },
+    {
+     "text": "in",
+     "at": 2.63
+    },
+    {
+     "text": "their",
+     "at": 2.77
+    },
+    {
+     "text": "car",
+     "at": 2.91
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "start": 752.31,
+   "end": 764.23,
+   "heading": "What I do at SDR Mastery",
+   "marker": "dot",
+   "card": false,
+   "items": [
+    [
+     {
+      "text": "I",
+      "at": 1.61
+     },
+     {
+      "text": "build",
+      "at": 1.69
+     },
+     {
+      "text": "the",
+      "at": 1.91
+     },
+     {
+      "text": "lists",
+      "at": 2.09
+     }
+    ],
+    [
+     {
+      "text": "I",
+      "at": 2.63
+     },
+     {
+      "text": "call",
+      "at": 2.75
+     },
+     {
+      "text": "their",
+      "at": 2.95
+     },
+     {
+      "text": "prospects",
+      "at": 3.13
+     }
+    ],
+    [
+     {
+      "text": "I",
+      "at": 3.87
+     },
+     {
+      "text": "build",
+      "at": 3.97
+     },
+     {
+      "text": "the",
+      "at": 4.19
+     },
+     {
+      "text": "scripts",
+      "at": 4.39
+     }
+    ]
+   ]
+  },
+  {
+   "kind": "rows",
+   "start": 772.823,
+   "end": 784.93,
+   "items": [
+    {
+     "label": "$500K+",
+     "at": 2.51,
+     "text": [
+      {
+       "text": "revenue",
+       "at": 3.71
+      },
+      {
+       "text": "in",
+       "at": 4.31
+      },
+      {
+       "text": "3",
+       "at": 4.47
+      },
+      {
+       "text": "months",
+       "at": 4.71
+      }
+     ]
+    },
+    {
+     "label": "20x",
+     "at": 9.23,
+     "text": [
+      {
+       "text": "ROI",
+       "at": 9.23
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "phrase",
+   "start": 785.27,
+   "end": 793.57,
+   "lines": [
+    {
+     "words": [
+      {
+       "text": "Link",
+       "at": 0.75
+      },
+      {
+       "text": "in",
+       "at": 0.91
+      },
+      {
+       "text": "the",
+       "at": 1.03
+      },
+      {
+       "text": "description",
+       "at": 1.13
+      }
+     ],
+     "italic": false
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "start": 798.217,
+   "end": 810.25,
+   "items": [
+    {
+     "label": "Lesson 7",
+     "at": 6.383,
+     "text": [
+      {
+       "text": "Day",
+       "at": 6.383
+      },
+      {
+       "text": "one",
+       "at": 7.563
+      },
+      {
+       "text": "is",
+       "at": 7.883
+      },
+      {
+       "text": "your",
+       "at": 8.763
+      },
+      {
+       "text": "worst",
+       "at": 8.883
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "illustration",
+   "start": 836.99,
+   "end": 845.37,
+   "image": "images/hang-up.png",
+   "line": [
+    {
+     "text": "as",
+     "at": 3.45
+    },
+    {
+     "text": "soon",
+     "at": 3.63
+    },
+    {
+     "text": "as",
+     "at": 3.79
+    },
+    {
+     "text": "the",
+     "at": 3.87
+    },
+    {
+     "text": "prospect",
+     "at": 3.97
+    },
+    {
+     "text": "picked",
+     "at": 4.25
+    },
+    {
+     "text": "up,",
+     "at": 4.63
+    },
+    {
+     "text": "I",
+     "at": 4.87
+    },
+    {
+     "text": "just",
+     "at": 4.97
+    },
+    {
+     "text": "hung",
+     "at": 5.13
+    },
+    {
+     "text": "up",
+     "at": 5.29
+    }
+   ]
+  },
+  {
+   "kind": "illustration",
+   "start": 938.943,
+   "end": 951.383,
+   "image": "images/gym.png",
+   "line": [
+    {
+     "text": "It's",
+     "at": 0.61
+    },
+    {
+     "text": "like",
+     "at": 0.75
+    },
+    {
+     "text": "going",
+     "at": 0.87
+    },
+    {
+     "text": "to",
+     "at": 0.99
+    },
+    {
+     "text": "the",
+     "at": 1.33
+    },
+    {
+     "text": "gym",
+     "at": 1.43
+    },
+    {
+     "text": "for",
+     "at": 1.63
+    },
+    {
+     "text": "the",
+     "at": 2.47
+    },
+    {
+     "text": "first",
+     "at": 2.65
+    },
+    {
+     "text": "time",
+     "at": 2.75
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "start": 951.383,
+   "end": 967.503,
+   "items": [
+    {
+     "label": "Lesson 8",
+     "at": 12.73,
+     "text": [
+      {
+       "text": "Become",
+       "at": 12.73
+      },
+      {
+       "text": "more",
+       "at": 12.97
+      },
+      {
+       "text": "efficient",
+       "at": 13.25
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "rows",
+   "start": 978.91,
+   "end": 1013.013,
+   "items": [
+    {
+     "label": "Before",
+     "at": 1.37,
+     "text": [
+      {
+       "text": "one",
+       "at": 1.37
+      },
+      {
+       "text": "lead,",
+       "at": 2.13
+      },
+      {
+       "text": "add,",
+       "at": 2.963
+      },
+      {
+       "text": "call,",
+       "at": 3.123
+      },
+      {
+       "text": "repeat",
+       "at": 3.243
+      }
+     ]
+    },
+    {
+     "label": "After",
+     "at": 28.533,
+     "text": [
+      {
+       "text": "batch",
+       "at": 28.533
+      },
+      {
+       "text": "the",
+       "at": 28.833
+      },
+      {
+       "text": "leads,",
+       "at": 29.493
+      },
+      {
+       "text": "call",
+       "at": 29.853
+      },
+      {
+       "text": "later",
+       "at": 29.953
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "rows",
+   "start": 1046.113,
+   "end": 1066.713,
+   "items": [
+    {
+     "label": "Before",
+     "at": 2.85,
+     "text": [
+      {
+       "text": "10-15",
+       "at": 2.85
+      },
+      {
+       "text": "leads",
+       "at": 3.37
+      },
+      {
+       "text": "an",
+       "at": 4.57
+      },
+      {
+       "text": "hour",
+       "at": 4.91
+      }
+     ]
+    },
+    {
+     "label": "Batching",
+     "at": 14.1,
+     "text": [
+      {
+       "text": "50-60",
+       "at": 14.1
+      },
+      {
+       "text": "leads",
+       "at": 14.87
+      },
+      {
+       "text": "an",
+       "at": 15.39
+      },
+      {
+       "text": "hour",
+       "at": 15.59
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "list",
+   "start": 1082.04,
+   "end": 1093.02,
+   "heading": "Pre-call research: 3 things",
+   "marker": "number",
+   "card": false,
+   "items": [
+    [
+     {
+      "text": "Time",
+      "at": 0.77
+     },
+     {
+      "text": "at",
+      "at": 1.55
+     },
+     {
+      "text": "the",
+      "at": 1.75
+     },
+     {
+      "text": "company",
+      "at": 1.83
+     }
+    ],
+    [
+     {
+      "text": "Their",
+      "at": 2.51
+     },
+     {
+      "text": "role",
+      "at": 2.71
+     },
+     {
+      "text": "(and",
+      "at": 3.35
+     },
+     {
+      "text": "the",
+      "at": 3.55
+     },
+     {
+      "text": "last",
+      "at": 3.75
+     },
+     {
+      "text": "one)",
+      "at": 4.17
+     }
+    ],
+    [
+     {
+      "text": "A",
+      "at": 6.217
+     },
+     {
+      "text": "relevant",
+      "at": 6.537
+     },
+     {
+      "text": "LinkedIn",
+      "at": 7.097
+     },
+     {
+      "text": "post",
+      "at": 7.817
+     }
+    ]
+   ]
+  },
+  {
+   "kind": "dialogue",
+   "start": 1099.877,
+   "end": 1109.437,
+   "turns": [
+    {
+     "head": "Then I'd say:",
+     "head_at": 0.71,
+     "line": [
+      {
+       "text": "Hey,",
+       "at": 1.13
+      },
+      {
+       "text": "I",
+       "at": 1.39
+      },
+      {
+       "text": "saw",
+       "at": 1.57
+      },
+      {
+       "text": "you've",
+       "at": 1.71
+      },
+      {
+       "text": "been",
+       "at": 1.97
+      },
+      {
+       "text": "handling",
+       "at": 2.17
+      },
+      {
+       "text": "compliance",
+       "at": 3.59
+      },
+      {
+       "text": "for",
+       "at": 3.983
+      },
+      {
+       "text": "about",
+       "at": 4.383
+      },
+      {
+       "text": "three",
+       "at": 4.623
+      },
+      {
+       "text": "years",
+       "at": 4.963
+      },
+      {
+       "text": "at",
+       "at": 5.343
+      },
+      {
+       "text": "XYZ",
+       "at": 5.583
+      },
+      {
+       "text": "company",
+       "at": 6.143
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "kind": "rows",
+   "start": 1130.087,
+   "end": 1139.85,
+   "items": [
+    {
+     "label": "Lesson 9",
+     "at": 5.073,
+     "text": [
+      {
+       "text": "Winners",
+       "at": 5.073
+      },
+      {
+       "text": "are",
+       "at": 5.293
+      },
+      {
+       "text": "more",
+       "at": 6.206
+      },
+      {
+       "text": "resilient",
+       "at": 6.846
+      }
+     ]
+    }
+   ],
+   "preview": false
+  },
+  {
+   "kind": "phrase",
+   "start": 1185.967,
+   "end": 1192.37,
+   "lines": [
+    {
+     "words": [
+      {
+       "text": "decide",
+       "at": 0.93
+      },
+      {
+       "text": "to",
+       "at": 1.31
+      },
+      {
+       "text": "commit",
+       "at": 1.47
+      }
+     ],
+     "italic": false
+    },
+    {
+     "words": [
+      {
+       "text": "for",
+       "at": 1.81
+      },
+      {
+       "text": "at",
+       "at": 2.13
+      },
+      {
+       "text": "least",
+       "at": 2.27
+      },
+      {
+       "text": "six",
+       "at": 2.55
+      },
+      {
+       "text": "months",
+       "at": 2.89
+      }
+     ],
+     "italic": true
+    }
+   ]
+  },
+  {
+   "kind": "list",
+   "start": 1344.16,
+   "end": 1358.007,
+   "heading": "",
+   "marker": "dot",
+   "card": true,
+   "items": [
+    [
+     {
+      "text": "Consistency",
+      "at": 1.39
+     }
+    ],
+    [
+     {
+      "text": "Doing",
+      "at": 2.45
+     },
+     {
+      "text": "the",
+      "at": 2.65
+     },
+     {
+      "text": "work",
+      "at": 2.81
+     }
+    ],
+    [
+     {
+      "text": "Staying",
+      "at": 3.29
+     },
+     {
+      "text": "resilient",
+      "at": 3.47
+     }
+    ],
+    [
+     {
+      "text": "Knowing",
+      "at": 4.25
+     },
+     {
+      "text": "your",
+      "at": 4.43
+     },
+     {
+      "text": "data",
+      "at": 4.63
+     }
+    ],
+    [
+     {
+      "text": "Tracking",
+      "at": 5.51
+     },
+     {
+      "text": "your",
+      "at": 5.77
+     },
+     {
+      "text": "metrics",
+      "at": 5.95
+     }
+    ],
+    [
+     {
+      "text": "Tweaking",
+      "at": 6.897
+     },
+     {
+      "text": "and",
+      "at": 7.417
+     },
+     {
+      "text": "refining",
+      "at": 7.617
+     }
+    ]
+   ]
+  },
+  {
+   "kind": "phrase",
+   "start": 1390.897,
+   "end": 1396.857,
+   "lines": [
+    {
+     "words": [
+      {
+       "text": "Link",
+       "at": 0.47
+      },
+      {
+       "text": "below",
+       "at": 0.63
+      },
+      {
+       "text": "to",
+       "at": 0.99
+      },
+      {
+       "text": "my",
+       "at": 1.33
+      },
+      {
+       "text": "calendar",
+       "at": 1.47
+      }
+     ],
+     "italic": false
+    }
+   ]
+  }
+ ],
+ "cards": [],
+ "palette": {
+  "red": "#FF4A4A",
+  "marker": "#FE2828",
+  "ink": "#333333",
+  "page": "#FFFFFF"
+ },
+ "music": {
+  "src": ".sfx/music-long.wav",
+  "start": 0
+ },
+ "voice": ".sfx/voice.wav",
+ "sfx": [
+  {
+   "src": ".sfx/hit.wav",
+   "start": 17.212
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 43.698
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 64.935
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 107.635
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 269.365
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 338.662
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 460.305
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 550.825
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 657.965
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 772.308
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 938.428
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 978.395
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 1099.362
+  },
+  {
+   "src": ".sfx/hit.wav",
+   "start": 1343.645
+  }
+ ]
+}

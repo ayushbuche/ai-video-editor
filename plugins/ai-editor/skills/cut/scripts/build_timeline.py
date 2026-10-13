@@ -499,6 +499,27 @@ def sibilant_end(lvl, noise_db, t, limit, hf=None, hf_floor=None):
     return t if be is None or be * W >= limit else round(be * W + 0.02, 3)
 
 
+VOICED_RUN_DB = 8.0   # this far over the threshold for VOICED_RUN_S is a spoken sound (his breaths peak ~6 dB under it)
+VOICED_RUN_S = 0.06
+
+
+def voiced_runs(lvl, noise_db, a, b, hf=None, hf_floor=None):
+    """[(start, end)] of the spoken sounds between a and b: VOICED_RUN_S or more over noise + VOICED_RUN_DB, or hissing."""
+    W, n = RMS_WIN_S, len(lvl)
+    out, k, kb = [], max(0, int(a / W)), min(n, int(b / W))
+    while k < kb:
+        if lvl[k] > noise_db + VOICED_RUN_DB or hissing(lvl, hf, hf_floor, k):
+            j = k
+            while j < kb and (lvl[j] > noise_db + VOICED_RUN_DB - 4 or hissing(lvl, hf, hf_floor, j)):
+                j += 1
+            if (j - k) * W >= VOICED_RUN_S:
+                out.append((k * W, j * W))
+            k = j
+        else:
+            k += 1
+    return out
+
+
 def breath_end(lvl, speech_db, b):
     """Where the voice starts after the pause that ends at b: if the sound from b on stays BREATH_UNDER_DB under
     speech for a while before the voice comes in, that was an in-breath; else b."""
@@ -528,6 +549,11 @@ def silence_cuts(words, gap_max, gap_keep, heard, lvl=None, noise_db=None, hf=No
         s, e = (rel if rising else max(a + keep / 2, rel)), b - keep / 2
         if lvl and noise_db is not None and speech_db is not None:
             e = max(e, breath_end(lvl, speech_db, b) - PRE_ONSET_S)   # the in-breath before the next words goes too
+            # a pause cut takes room tone and breath only, never a voiced sound inside it: a soft "and" said after a
+            # tiny gap was taken for a breath and cut (cold-calling-one, 2026-10-13: "six months and I work")
+            v = voiced_runs(lvl, noise_db, s, e, hf, hf_floor)
+            if v:
+                s = max(s, v[-1][1] + RELEASE_PAD_S)
         if e - s >= 0.04:
             out.append({"start": s, "end": e, "kind": "silence", "confidence": "high",
                         "evidence": f"{b - a:.2f}s silence", "note": f"tightened to {keep:.2f}s"})

@@ -319,6 +319,16 @@ def test_sibilant_and_breath():
     assert abs(B.breath_end(lv, -15.0, 4.3) - 4.74) < 0.03
     cuts = B.silence_cuts([{"text": "The", "start": 4.75, "end": 5.0}], 0.3, 0.2, [(0.94, 4.3)], lv, -41.0)
     assert cuts and cuts[0]["start"] >= 1.18 and 4.6 <= cuts[0]["end"] <= 4.66, cuts
+    # a soft "and" (-31 dB, 10 over the threshold) after a tiny gap is a word, never cut as if it were a breath
+    lv3 = [-63.0] * 200
+    for k in range(10, 40):
+        lv3[k] = -18.0                          # "months" to 0.8
+    for k in range(44, 52):
+        lv3[k] = -31.0                          # "and" 0.88-1.04
+    for k in range(90, 150):
+        lv3[k] = -16.0                          # "I work" from 1.8
+    cuts = B.silence_cuts([{"text": "I", "start": 1.8, "end": 2.0}], 0.3, 0.2, [(0.8, 1.8)], lv3, -41.0)
+    assert all(c["start"] >= 1.04 for c in cuts), cuts
     # no breath: the pause keeps its 0.1 s before the next word as before
     assert B.breath_end([-63.0] * 100 + [-15.0] * 50, -15.0, 2.0) == 2.0
 

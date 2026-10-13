@@ -242,8 +242,50 @@ def test_restart_in_one_breath_is_never_kept():
     assert not B.voiced_rise(lvl, -42, 1.0, 1.3)
 
 
+def test_quiet_edges():
+    """No kept audio starts or stops while the voice is sounding (cold-calling-one, 2026-10-13)."""
+    q, v = -60.0, -20.0
+    win = lambda spans, n=150: [v if any(a <= i * B.RMS_WIN_S < b for a, b in spans) else q for i in range(n)]  # noqa: E731
+    # the kept word rings on to 1.0 s, past its label: a cut starting at 0.9 waits for the tail
+    c = B.quiet_edges([{"start": 0.9, "end": 1.5}], win([(0.5, 1.0), (1.6, 2.5)]), -40.0, 3.0)
+    assert abs(c[0]["start"] - 1.0) < 0.03, c
+    # a removed word already began at 0.76 (said straight on to 1.4): the cut moves back to the quiet before it
+    c = B.quiet_edges([{"start": 0.8, "end": 1.6}], win([(0.3, 0.7), (0.76, 1.4), (1.7, 2.5)]), -40.0, 3.0)
+    assert 0.7 <= c[0]["start"] <= 0.76, c
+    # the kept audio began inside a removed "er" (0.6-0.78): it starts in the quiet after it instead
+    c = B.quiet_edges([{"start": 0.2, "end": 0.74}], win([(0.0, 0.15), (0.6, 0.78), (0.86, 2.0)]), -40.0, 3.0)
+    assert 0.78 <= c[0]["end"] <= 0.86, c
+    # the kept audio began inside its own word's onset (from 1.96): it starts in the quiet before it
+    c = B.quiet_edges([{"start": 1.2, "end": 2.02}], win([(0.5, 1.1), (1.96, 2.8)]), -40.0, 3.0)
+    assert 1.9 <= c[0]["end"] <= 1.96, c
+    # a soft tail 8 dB over the room (a word ringing out) is kept until the room, not just until it is soft
+    lv = win([(0.5, 0.9), (1.6, 2.5)])
+    for k in range(45, 55):
+        lv[k] = -33.0                                            # 0.90-1.10 s: the fading release
+    c = B.quiet_edges([{"start": 0.9, "end": 1.5}], lv, -40.0, 3.0)
+    assert c[0]["start"] >= 1.08, c
+    # a dip inside the removed words (0.8 s), then the voice again: not a tail, so back to the quiet before them
+    lv = win([(0.3, 0.7), (0.74, 0.8), (0.84, 1.4), (1.7, 2.5)])
+    c = B.quiet_edges([{"start": 0.78, "end": 1.6}], lv, -40.0, 3.0)
+    assert 0.7 <= c[0]["start"] <= 0.74, c
+    # the kept audio began in a removed word's fading tail (0.62-0.70, then quiet a long while): forward, not back
+    lv = win([(0.2, 0.62), (1.4, 2.0)])
+    lv[31], lv[32], lv[33], lv[34] = -30.0, -31.0, -36.0, -45.0
+    c = B.quiet_edges([{"start": 0.1, "end": 0.64}], lv, -40.0, 3.0)
+    assert c[0]["end"] >= 0.64, c
+    # a start settled on a tail's end is rounded UP to the next frame, so the frame never takes the tail back off
+    fr = B.kept_frames([{"start": 1.001, "end": 1.5, "_settled": True}], 30, 3.0)
+    assert fr[0] == [0, 31], fr
+    # an edge in silence is left alone
+    c = B.quiet_edges([{"start": 1.2, "end": 1.8}], win([(0.5, 1.1), (1.96, 2.8)]), -40.0, 3.0)
+    assert c == [{"start": 1.2, "end": 1.8}], c
+    c = B.quiet_edges([{"start": 2.9, "end": math.inf}], win([(0.5, 1.1), (1.96, 2.8)]), -40.0, 3.0)
+    assert c[0]["end"] == math.inf, c                            # a cut to the end of the take is left alone
+
+
 if __name__ == "__main__":
     test_derive()
+    test_quiet_edges()
     test_audible_end()
     test_splice_budget()
     test_spans()

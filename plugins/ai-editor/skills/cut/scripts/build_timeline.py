@@ -627,6 +627,59 @@ def enforce_splice_budget(cuts, words, model_cuts, budget, lvl=None, noise_db=No
     return cuts
 
 
+EDGE_DB = 6.0           # a window this far over the threshold is sound (room flicker sits under it)
+EDGE_TAIL_S = 0.26      # a sound under a cut's start that dies within this, with no new word, is a word's tail
+EDGE_SEARCH_S = 0.30    # how far back a cut edge may move to the quiet before a sound
+EDGE_GAP_S = 0.14       # how far forward a kept start may move past a removed sound's tail
+EDGE_HOLD_S = 0.12      # a tail has died only if the quiet holds this long (a dip inside "And that's" does not)
+
+
+def quiet_edges(cuts, lvl, noise_db, dur):
+    """Last pass: no kept audio ever starts or stops while the voice is sounding. Word labels run early or late
+    (cold-calling-one, 2026-10-13: "And" labelled to 336.83 s but said to 336.95, the kept audio stopped at
+    336.80 on its first sliver; a removed "er" heard at the start of the next kept span), and every earlier
+    step trusts them somewhere. Measured from the audio:
+      a cut's START (kept audio stops) inside a sound: if the sound dies within EDGE_TAIL_S with no new word,
+        it is the kept word's tail, so the cut waits for it; else a removed word had already begun, so the cut
+        moves back to the quiet before it;
+      a cut's END (kept audio starts) inside a sound: if it goes quiet within EDGE_GAP_S and the voice comes
+        back, the edge sat in a removed sound's tail, so the kept audio starts in that quiet; else the sound is
+        the kept word's own onset, so the kept audio starts in the quiet before it."""
+    if not lvl or noise_db is None:
+        return cuts
+    n = len(lvl)
+    loud = lambda k: 0 <= k < n and lvl[k] > noise_db + EDGE_DB  # noqa: E731
+    W = RMS_WIN_S
+    for c in cuts:
+        s, e = c["start"], c["end"]
+        if not (math.isfinite(s) and math.isfinite(e)):   # a cut to the end of the take
+            continue
+        i = int(s / W)
+        if s > W and loud(i - 1) and loud(i):
+            # the tail has died when the level is back at the room (not just under "loud") and stays there
+            hold = int(EDGE_HOLD_S / W)
+            j = next((k for k in range(i, min(n, i + int(EDGE_TAIL_S / W) + 1)) if lvl[k] <= noise_db), None)
+            held = j is not None and not any(loud(k) for k in range(j, min(n, j + hold, int(e / W))))
+            if held and j * W < e - 0.02 and not voiced_rise(lvl, noise_db, s, j * W):
+                c["start"], c["_settled"] = round(j * W, 3), True   # frames round this one up, past the tail
+            else:
+                b = next((k for k in range(i - 1, max(-1, i - int(EDGE_SEARCH_S / W) - 1), -1) if not loud(k)), None)
+                if b is not None:
+                    c["start"] = round(b * W + W / 2, 3)
+        i = int(c["end"] / W)
+        if c["end"] < dur - W and loud(i - 1) and loud(i):
+            # a sound that dies away within EDGE_GAP_S is a removed word's tail (a kept word's onset builds)
+            f = next((k for k in range(i, min(n, i + int(EDGE_GAP_S / W) + 1)) if not loud(k)), None)
+            if f is not None:
+                back_in = next((k for k in range(f, min(n, f + 12)) if loud(k)), None)
+                c["end"] = round(f * W if back_in is None else max(f * W, back_in * W - ONSET_MARGIN_S), 3)
+            else:
+                b = next((k for k in range(i - 1, max(-1, i - int(EDGE_SEARCH_S / W) - 1), -1) if not loud(k)), None)
+                if b is not None and b * W + W / 2 > c["start"]:
+                    c["end"] = round(b * W + W / 2, 3)
+    return [c for c in cuts if c["end"] > c["start"] + 1e-3]
+
+
 def splice_gaps(cuts, words, model_cuts, lvl=None, noise_db=None):
     kept = [w for w in words if not covered_by(w, model_cuts)]
     out = []
@@ -651,7 +704,9 @@ def kept_frames(cuts, fps, dur, total=None):
     total = int(round(dur * fps)) if total is None else total
     kept, cursor = [], 0
     for c in cuts:
-        a = max(0, min(total, math.floor(c["start"] * fps)))
+        # floored (a flub's onset starts before its label), unless quiet_edges found where a kept word's tail
+        # dies: then up, so the frame does not take the tail back off
+        a = max(0, min(total, (math.ceil if c.get("_settled") else math.floor)(c["start"] * fps)))
         b = total if c["end"] == math.inf else max(0, min(total, math.ceil(c["end"] * fps)))
         if c.get("_next") is not None:
             b = min(b, max(a + 1, math.floor(c["_next"] * fps)))
@@ -763,6 +818,7 @@ def main():
                     + lead_trail_cuts(kept_words, dur, gap_keep))
     starts = {id(c): c["start"] for c in allcuts}
     allcuts = enforce_splice_budget(allcuts, words, model_cuts, splice_max, lvl, splice_noise)
+    allcuts = quiet_edges(allcuts, lvl, splice_noise, dur)
     labels.update(held_labels(raw, allcuts, starts))
     raw = apply_labels(raw, labels)
     toks = [t for t in raw if t.get("type") in ("word", "audio_event")]
@@ -798,6 +854,7 @@ def main():
     for c in allcuts:
         c.pop("_next", None)
         c.pop("_first", None)
+        c.pop("_settled", None)
         if c["end"] == math.inf:
             c["end"] = dur
     (d / "decisions.json").write_text(json.dumps(spans, indent=1))

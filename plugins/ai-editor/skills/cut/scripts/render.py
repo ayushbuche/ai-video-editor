@@ -143,35 +143,58 @@ def main():
     print(out)
 
 
-def audio_graph(frames, fps, off, x=XFADE_S):
-    """The audio filter graph: each kept span trimmed, reaching x past each inner cut, and joined by
-    crossfades of 2x, so the total length is exactly the kept frames' length."""
-    n, parts = len(frames), []
-    for i, (s, e) in enumerate(frames):
-        t0 = off + s / fps - (x if i > 0 else 0.0)
-        t1 = off + e / fps + (x if i < n - 1 else 0.0)
-        fades = f"afade=t=in:d={FADE_S}," if i == 0 else ""
-        if i == n - 1:
-            fades += f"afade=t=out:st={max(0.0, t1 - t0 - FADE_S):.6f}:d={FADE_S},"
-        parts.append(f"[0:a:0]atrim=start={max(0.0, t0):.6f}:end={t1:.6f},asetpts=PTS-STARTPTS,{fades}anull[a{i}]")
+def audio_graph(frames, fps, off, x=XFADE_S, sr=48000):
+    """The audio filter graph. Each kept span reaches x past each inner cut and fades in and out over 2x; even
+    spans go on one track and odd spans on another, each laid out with silence so the spans sit where they play,
+    and the two tracks are summed. So every join is a 2x crossfade, the total length is exactly the kept
+    frames' length, and the graph is two flat concats (a chain of 200 acrossfades ran 5x slower than real time)."""
+    n = len(frames)
     if n == 1:
-        return parts[0].replace("[a0]", "[ac]")
-    chain, prev = [], "a0"
-    for i in range(1, n):
-        out = "ac" if i == n - 1 else f"x{i}"
-        chain.append(f"[{prev}][a{i}]acrossfade=d={2 * x:.6f}:c1=tri:c2=tri[{out}]")
-        prev = out
-    return ";".join(parts + chain)
+        s, e = frames[0]
+        return (f"[0:a:0]atrim=start={off + s / fps:.6f}:end={off + e / fps:.6f},asetpts=PTS-STARTPTS,"
+                f"aresample={sr},afade=t=in:d={FADE_S},afade=t=out:st={max(0.0, (e - s) / fps - FADE_S):.6f}:d={FADE_S}[ac]")
+    X = round(x * sr)                         # samples, so every placement is exact
+    lens = [round((e - s) / fps * sr) for s, e in frames]
+    pos, p = [], 0
+    for L in lens:
+        pos.append(p)
+        p += L
+    total = p
+    parts, tracks = [], {0: [], 1: []}
+    cursor = {0: 0, 1: 0}
+    for i, (s, e) in enumerate(frames):
+        pre, post = (X if i > 0 else 0), (X if i < n - 1 else 0)
+        start = pos[i] - pre                  # where this span's audio begins in the cut, samples
+        length = lens[i] + pre + post
+        t0 = off + s / fps - pre / sr
+        fin = f"afade=t=in:ns={2 * pre}:curve=tri" if pre else f"afade=t=in:d={FADE_S}"
+        fout = (f"afade=t=out:ss={length - 2 * post}:ns={2 * post}:curve=tri" if post
+                else f"afade=t=out:st={max(0.0, length / sr - FADE_S):.6f}:d={FADE_S}")
+        parts.append(f"[0:a:0]atrim=start={max(0.0, t0):.6f},asetpts=PTS-STARTPTS,aresample={sr},"
+                     f"atrim=end_sample={length},{fin},{fout}[s{i}]")
+        tr = i % 2
+        gap = start - cursor[tr]
+        if gap > 0:
+            parts.append(f"aevalsrc=0:s={sr}:n={gap},atrim=end_sample={gap}[g{i}]")
+            tracks[tr].append(f"[g{i}]")
+        tracks[tr].append(f"[s{i}]")
+        cursor[tr] = start + length
+    for tr in (0, 1):
+        tail = total - cursor[tr]
+        if tail > 0:
+            parts.append(f"aevalsrc=0:s={sr}:n={tail},atrim=end_sample={tail}[t{tr}]")
+            tracks[tr].append(f"[t{tr}]")
+        parts.append("".join(tracks[tr]) + f"concat=n={len(tracks[tr])}:v=0:a=1[k{tr}]")
+    parts.append(f"[k0][k1]amix=inputs=2:normalize=0:duration=longest,atrim=end_sample={total}[ac]")
+    return ";".join(parts)
 
 
 def demo():
     g = audio_graph([(0, 30), (60, 90), (120, 150)], 30, 0.0)
-    assert g.count("acrossfade") == 2 and g.endswith("[ac]"), g
-    assert "atrim=start=1.988000:end=3.012000" in g, g        # the middle span reaches 12 ms past both cuts
-    assert "atrim=start=0.000000:end=1.012000" in g and "atrim=start=3.988000:end=5.000000" in g, g
-    # length: spans 1.024 + 1.024 + 1.012 + ... minus two 24 ms overlaps = the kept 3.000 s
-    lens = [1.012, 1.024, 1.012]
-    assert abs(sum(lens) - 2 * 0.024 - 3.0) < 1e-9
+    assert g.count("concat=") == 2 and "amix=inputs=2:normalize=0" in g and g.endswith("[ac]"), g
+    assert "atrim=end_sample=144000[ac]" in g, g             # 3 s at 48 kHz exactly: the kept frames' length
+    assert "[s1]" in g and "aevalsrc=0:s=48000:n=47424" in g, g   # span 1 on the odd track, after 0.988 s of silence
+    assert "ns=1152:curve=tri" in g, g                         # 24 ms crossfades
     print("render demo ok")
 
 
